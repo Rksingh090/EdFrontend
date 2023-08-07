@@ -1,0 +1,1945 @@
+/* utils  */
+.CBInput {
+    padding: 10px;
+    border: 1px solid #777;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    resize: none;
+}
+
+.CBInput:focus {
+    border-color: var(--main);
+}
+
+.CBContainerBody {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.CBMediaUpload {
+    padding: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    align-items: flex-start;
+}
+
+
+/* action header  */
+.CourseBuilderHeader {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(5, 5, 5, .2);
+    z-index: 5445;
+    height: 70px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    font-family: var(--poppins);
+}
+
+.CBHeaderBarResponsive {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 40px;
+}
+
+.CBBackBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: var(--grayPrimary);
+    font-family: var(--poppins);
+    font-size: 14px;
+}
+
+
+.submitCourse,
+.previewCourse {
+    border-radius: 5px;
+    padding: 8px 20px;
+    cursor: pointer;
+}
+
+.submitCourse {
+    background-color: var(--main);
+    color: white;
+    border: 1px solid var(--main);
+}
+
+.previewCourse {
+    border: 1px solid var(--main);
+    color: var(--main);
+}
+
+.CBStatusBtn {
+    padding: 9px 20px;
+    border-radius: 5px;
+}
+
+.courseStatus.success {
+    background-color: green;
+    color: white;
+}
+.courseStatus.warning {
+    background-color: rgb(255, 145, 0);
+    color: white;
+}
+
+
+/* course builder  */
+.courseBuilderResponsive {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--poppins);
+    background-color: #EAEEF3;
+}
+
+.courseBuilderMainContainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr);
+    gap: 30px;
+    padding: 20px 40px;
+}
+
+/* first column of grid  */
+.courseBuilderDiv1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.courseInput {
+    display: flex;
+    flex-direction: column;
+    gap: 5px 0;
+}
+
+.courseSubHeading {
+    font-size: 17px;
+    color: #444;
+    font-weight: 500;
+}
+
+.courseInput>input {
+    width: 100%;
+    padding: 10px 20px;
+    border: 1px solid #444;
+    outline: none;
+    border-radius: 8px;
+    font-family: sans-serif;
+}
+
+/* course info  */
+.courseDescriptionRQ .ql-editor {
+    height: 250px;
+}
+
+.courseDescriptionRQ .ql-toolbar.ql-snow {
+    border: 1px solid #555;
+    border-bottom: 1px solid #aaa;
+    border-radius: 10px 10px 0 0;
+}
+
+.courseDescriptionRQ .ql-container.ql-snow {
+    border: 1px solid #555;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+}
+
+.courseDescriptionRQ .ql-editor.ql-blank::before {
+    font-style: normal;
+}
+
+/* course builder  */
+.CBBuilder {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    font-family: var(--poppins);
+}
+
+.CBTopicContainer {
+    width: 100%;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.CBTopicItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #F4F6F9;
+}
+
+.CBTopicItem>.orderAndTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+.CBTopicItem>.orderAndTitle>p {
+    font-size: 17px;
+}
+
+.CBTopicActions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    color: #777;
+}
+
+.CBTopicIcon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    aspect-ratio: 1;
+    border-radius: 500px;
+    cursor: pointer;
+}
+
+.CBTopicIcon:hover {
+    background-color: rgb(234, 249, 255);
+    border: 1px solid #DDD;
+    color: var(--main);
+}
+
+.CBAddNewTopic {
+    background-color: var(--main);
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: white;
+    gap: 5px;
+}
+
+
+/* item container - Quiz, Assignment, Lessons  */
+.CBItemContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 10px 10px 25px;
+    overflow: hidden;
+}
+
+.CBOneItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+    padding: 8px;
+}
+
+.CBOneItem>.orderAndTitle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    color: #111;
+}
+
+.CBOneItem>.orderAndTitle>p {
+    font-size: 14px;
+}
+
+
+.CBItemActions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0 5px 0;
+}
+
+.CBItemAddBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 14px;
+    border-radius: 5px;
+    border: 1px solid var(--main);
+    color: var(--main);
+    transition: all .4s ease;
+}
+
+.CBItemAddBtn>p {
+    font-size: 14px;
+}
+
+.CBItemAddBtn:hover {
+    color: white;
+    background-color: var(--main);
+}
+
+/* second section of grid  */
+.courseBuilderDiv2 {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.CBBatchData {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.courseUploadTip {
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+}
+
+.courseUploadTip>p {
+    margin-top: -5px;
+    text-align: justify;
+}
+
+/* course setting  */
+.courseSettingContainer {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    border-radius: 10px;
+    align-items: flex-start;
+    border: 1px solid #aaa;
+    overflow: hidden;
+}
+
+.courseSettingMenu {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(237, 241, 245);
+    box-shadow: 1px -1px 4px #5e5e5e8c;
+}
+
+.courseSettingMenu>div {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    padding: 10px;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.courseSettingGeneral {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 0;
+    row-gap: 20px;
+}
+
+.gridTwoByThree,
+.gridTwoByThreeNS {
+    display: grid;
+    grid-template-columns: minmax(100px, 2fr) minmax(150px, 3fr);
+    padding: 0 20px;
+}
+
+
+.gridTwoByThree>div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}
+
+.coursePriceInputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 70%;
+    gap: 15px;
+}
+
+.coursePriceInputs>div {
+    width: 100%;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 45px 1fr;
+    border: 1px solid #999;
+    overflow: hidden;
+}
+
+.coursePriceInputs>div>svg {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    border-right: 1px solid #999;
+}
+
+.coursePriceInputs>div>input {
+    padding: 10px;
+    outline: none;
+}
+
+.courseOffersCheckbox {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+
+}
+
+.courseOffersCheckbox>.checkBoxItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.courseStartedOrNot {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.subscriptionChekbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.subscriptionChekbox>input[type="checkbox"] {
+    width: 18px;
+    aspect-ratio: 1;
+}
+
+.courseSubscriptionInput {
+    width: 100%;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+
+.VideoThumbnailContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: 2px dashed var(--main);
+    border-radius: 10px;
+    padding: 20px;
+    height: 250px;
+    overflow: hidden;
+}
+
+
+.CBThumbnailContainer {
+    width: 100%;
+    height: 250px;
+    background-color: #eff3f7;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.courseThumbnailImg {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dbe2e7;
+    color: #777;
+}
+
+.courseThumbnailImg>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.courseThumbnailMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    font-family: var(--poppins);
+}
+
+.thumbnailUploadImg {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    background-color: var(--main);
+    color: white;
+}
+
+/* topic form  */
+.topicModalFormDiv {
+    max-height: 700px;
+    width: 600px;
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.topicHeading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.topicHeading>svg {
+    cursor: pointer;
+}
+
+.topicHeading>h2 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.topicBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(232, 237, 241);
+    overflow-y: auto;
+}
+
+.topicBodyWidthGuider {
+    width: 80%;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.topicBodyWidthGuider>div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.topicBodyWidthGuider>div>input,
+.topicBodyWidthGuider>div>textarea {
+    border: 1px solid #d9d9d9;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    resize: none;
+}
+
+.cardInputInfo {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+}
+
+.cardInputInfo>svg {
+    color: rgb(153, 153, 153);
+}
+
+.cardInputInfo>span {
+    margin-top: -3px;
+    font-size: 15px;
+    color: rgb(153, 153, 153);
+}
+
+.topicFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.topicFooterWidthGuider {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.topicFooterWidthGuider>.btn {
+    padding: 6px 15px;
+    border: 1px solid var(--main);
+    border-radius: 7px;
+}
+
+.topicFooterWidthGuider>.btn.cusSubmit {
+    background-color: var(--main);
+    color: white;
+}
+
+.topicFooterWidthGuider>.btn.cusCancle {
+    color: var(--main);
+}
+
+/* course builder quiz form  */
+.quizForm {
+    max-height: 750px;
+    min-height: 350px;
+    background-color: white;
+    width: 600px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 130px 1fr 80px;
+    overflow: hidden;
+}
+
+
+.quizFormHeader,
+.quizFormBody,
+.quizFormFooter {
+    width: 100%;
+    height: 100%;
+}
+
+/* quiz form header  */
+.quizFormHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.quizHeadText {
+    font-size: 24px;
+    font-weight: 500;
+    color: #333;
+}
+
+.quizProgress {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.quizProgressText {
+    display: grid;
+    grid-template-columns: 100px 1fr 100px 1fr 100px;
+    align-items: center;
+    width: 100%;
+}
+
+.quizProgressLine {
+    display: grid;
+    grid-template-columns: 25px 1fr 25px 1fr 25px;
+    align-items: center;
+    max-width: 95%;
+    width: 95%;
+}
+
+.quizLine {
+    height: 4px;
+    width: 100%;
+    background-color: rgb(216, 216, 216);
+}
+
+.quizNumber {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50px;
+    background-color: rgb(214, 214, 214);
+    font-size: 14px;
+    text-align: center;
+}
+
+.quizNumber.fillLine,
+.quizLine.fillLine {
+    background-color: var(--main);
+    color: white;
+}
+
+
+
+/* quiz form body  */
+.quizFormBody {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    background-color: rgb(227, 232, 236);
+}
+
+.centerBody {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* quiz form footer  */
+.quizFormFooter {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.widthManager {
+    width: 90%;
+}
+
+.quizFooterBTNs {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.qCancleBtn,
+.qSubmitBtn {
+    padding: 8px 15px;
+    border: 1px solid var(--main);
+    border-radius: 5px;
+}
+
+.qCancleBtn {
+    color: var(--main);
+    font-weight: 500;
+    transition: all .5s ease-in-out;
+}
+
+.qCancleBtn:hover {
+    background-color: var(--main);
+    color: white;
+}
+
+.qSubmitBtn {
+    background-color: var(--main);
+    color: white;
+}
+
+.qFormAdjBTNS {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0 15px;
+}
+
+
+/* quiz form pages  */
+/* page 1  */
+.quizFormPage1 {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.quizFormPage1>.qfpInputDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quizFormInputText {
+    font-family: var(--poppins);
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(56, 56, 56);
+}
+
+.quizFormInput {
+    width: 100%;
+    padding: 8px 15px;
+    border: 1px solid #c9c9c9;
+    outline: none;
+    border-radius: 5px;
+    resize: none;
+    font-family: var(--poppins);
+}
+
+/* page 2  */
+.quizFormPage2 {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px 0;
+}
+
+.singleQuestion {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 40px 2fr 50px 120px 40px 40px;
+    align-items: center;
+    padding: 8px 5px;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+}
+
+.quizAddQuestionBtn {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid var(--main);
+    color: white;
+    padding: 8px 10px;
+    border-radius: 5px;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    background-color: var(--secondary);
+}
+
+.quizAddQuestionBtn:hover {
+    color: white;
+    background-color: var(--main);
+}
+
+.dragBtn {
+    cursor: move;
+}
+
+
+.quizQueContextMenu {
+    cursor: pointer;
+    height: 35px;
+    aspect-ratio: 1;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+}
+
+.quizQueContextMenu:hover {
+    background-color: aliceblue;
+    border: 1px solid rgb(210, 214, 218);
+}
+
+.quizQueContextMenu>svg {
+    color: #272727;
+}
+
+
+/* quiz page 3  */
+.quizFormPage3Time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+}
+
+.quizFormPage3 {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+    gap: 20px;
+}
+
+.quizFormTimeInput {
+    display: flex;
+    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.quizInput {
+    padding: 8px 10px;
+    border: 1px solid rgb(190, 190, 190);
+    outline: none;
+    border-radius: 5px;
+}
+
+.timeInput {
+    width: 100px;
+}
+
+.quizFormPage3Feedback {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.quizFeedbackMode {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 10px;
+}
+
+.feedbackRadio {
+    border-radius: 5px;
+    border: 1px solid #cecece;
+    background-color: white;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    padding: 10px 0;
+}
+
+.feedbackRadio>div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedbackRadio>div>input[type="radio"] {
+    width: 18px;
+    aspect-ratio: 1;
+}
+
+.quizPassingGrade {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 5px;
+}
+
+.passGradeInp {
+    width: 100%;
+}
+
+.advanceSettingContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: hidden;
+    border-radius: 5px;
+    gap: 10px;
+}
+
+.advanceMenu {
+    background-color: white;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50px 1fr 40px;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px 15px;
+}
+
+.iconCenter {
+    height: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.advanceSettingH4 {
+    font-size: 18px;
+}
+
+.gearIcon {
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 50px;
+    background-color: var(--lightBG);
+    color: var(--main);
+}
+
+.gearIcon>svg {
+    font-size: 20px;
+}
+
+.arrowDown {
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+}
+
+.arrowDown>svg {
+    font-size: 22px;
+}
+
+.advContextMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    gap: 25px;
+    overflow: hidden;
+    transition: all .4s ease;
+    padding: 0 20px;
+}
+
+.showAdvMenu {
+    padding: 20px;
+    height: 627px;
+}
+
+.hideAdvMenu {
+    height: 0;
+}
+
+.rotate180deg {
+    transform: rotate(180deg);
+}
+
+.questionLayoutMode {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.questionLayoutMode>div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 5px;
+}
+
+.questionLayoutMode>div>select {
+    width: 100%;
+}
+
+/* add question page quiz form */
+.quizPageAddQuestion {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    gap: 30px;
+}
+
+.quiz90p {
+    width: 90%;
+    flex-direction: row;
+    display: flex;
+    gap: 8px;
+}
+
+.quiz90p.col {
+    flex-direction: column;
+}
+
+.backBtnAddQue {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #333;
+    gap: 8px;
+}
+
+.answerRequiredOption {
+    align-items: center;
+    gap: 20px;
+}
+
+.answerRequiredOption>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.questionPointOption {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+}
+
+.questionImageUpload {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* question type  */
+.singleChoiceOption {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+
+
+/* true false type  */
+.trueFalseOption {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+}
+
+.trueFasleRadio {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+    background-color: var(--optionBG);
+    padding: 20px 0;
+}
+
+.trueFasleRadio>div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+}
+
+.trueFasleRadio>div>div {
+    background-color: white;
+    padding: 8px 10px;
+    display: grid;
+    grid-template-columns: 1fr auto 25px;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid #ccc;
+}
+
+.trueFasleRadio>div>input {
+    width: 16px;
+    aspect-ratio: 1;
+}
+
+.dragTrueFalseOption {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+}
+
+/* single choice type  */
+.single_choice_options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: var(--optionBG);
+    padding-bottom: 15px;
+}
+
+.single_choice_options>div {
+    width: 90%;
+}
+
+.optionHeadText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+}
+
+.allOptionList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+}
+
+.allOptionList>div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background-color: white;
+    width: 100%;
+}
+
+.allOptionList>div>div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.optionAction {
+    color: #3d3d3d;
+}
+
+.addAndOptionBTN {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.optionInputs {
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.optionInputs>div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.answerTitle {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.imageOptionUpload {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: white;
+    padding: 10px 15px;
+    gap: 15px;
+    border-radius: 5px;
+}
+
+.imgGrid1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.imgGrid1>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    justify-content: center;
+    background-color: rgb(216, 224, 230);
+    color: #9c9c9c;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+.imgGrid1>div>p {
+    font-size: 25px;
+}
+
+.imgGrid2 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    padding: 15px 0;
+}
+
+.imgGrid2>p {
+    font-size: 14px;
+}
+
+.imgGrid2>button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--main);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+}
+
+.optionFormatRadios {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.optionFormatRadios>div {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.optionFormatRadios>div>input {
+    width: 16px;
+    aspect-ratio: 1;
+}
+
+.optionFormatRadios>div>label {
+    font-size: 16px;
+    color: #303030;
+    font-weight: 500;
+}
+
+.optionRadioButton {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.addOptionBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.addOptionBtn>button {
+    padding: 6px 15px;
+    border-radius: 5px;
+    background-color: var(--main);
+    color: white;
+}
+
+.courseBuilderCertificates {
+    max-height: 600px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px 0;
+    padding-right: 5px;
+}
+
+.courseBuilderCertificates>div {
+    box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.247);
+    border-radius: 5px;
+    border: 1px solid #0004;
+    width: 100%;
+    aspect-ratio: 1 / .75;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.courseBuilderCertificates>div>img {
+    width: 100%;
+    height: 100%;
+}
+
+.courseBuilderCertificates::-webkit-scrollbar {
+    width: 2px;
+}
+
+
+/* assignment form  */
+.assignmentform {
+    background-color: white;
+    width: 650px;
+    max-height: 750px;
+    height: 750px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 60px 1fr 70px;
+    overflow: hidden;
+    font-family: var(--poppins);
+}
+
+.assignmentFormHeading {
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.assignmentFormInput {
+    padding: 8px 15px;
+    border: 1px solid #c9c9c9;
+    outline: none;
+    border-radius: 5px;
+    width: 100%;
+}
+
+textarea.assignmentFormInput {
+    resize: none;
+}
+
+.assignmentHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+
+
+.assignmentTitle {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.addAssignmentMedia {
+    border: 1px solid var(--main);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--main);
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+
+.assignmentQuilTool {
+    background-color: white;
+
+}
+
+.assignmentReactQuill {
+    background-color: white;
+}
+
+.assignmentReactQuill .ql-editor {
+    min-height: 200px;
+}
+
+.uploadPDFs {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.uploadPDFs>button {
+    color: white;
+    background-color: var(--main);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 8px 10px;
+}
+
+.removeAssignmentPdf {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.removeAssignmentPdf>.pdfFile {
+    padding: 10px 25px;
+    border: 1px solid var(--main);
+    color: var(--main);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+}
+
+.removeAssignmentPdf>.pdfFile>.removePdf {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    height: 30px;
+    aspect-ratio: 1;
+    cursor: pointer;
+    border-radius: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .4s ease-in-out;
+    background-color: var(--main);
+    color: white;
+}
+
+.addAssignmentMedia:hover {
+    color: #14446b;
+}
+
+.assignButton {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.timeLimitDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.assignmentBodyThirdSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+}
+
+.inputWithHeadingInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.uploadAttachemnts {
+    border: 1px solid var(--main);
+    padding: 7px 10px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--main);
+    border-radius: 4px;
+}
+
+.contentDrip {
+    background-color: rgb(201, 214, 226);
+}
+
+.unlocking {
+    padding: 10px 0px;
+    color: #7e7979;
+    padding-bottom: 20px;
+}
+
+.infoIconText {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    gap: 5px;
+}
+
+.infoIconText>svg {
+    min-width: 20px;
+    font-size: 16px;
+    color: rgb(124, 124, 124);
+}
+
+.infoIconText>p {
+    margin-top: -2px;
+    font-size: 15px;
+    font-family: sans-serif;
+    color: rgb(124, 124, 124);
+}
+
+.closeAssignmentFormBtn {
+    width: 30px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d9d9d9;
+    cursor: pointer;
+}
+
+.pdfPageActions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-family: var(--poppins);
+}
+
+.pdfPageActions>.goBackPdf {
+    padding: 5px 10px;
+    background-color: #D9D9D9;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+/* lesson form  */
+
+.lessonForm {
+    background-color: white;
+    width: 700px;
+    max-height: 800px;
+    height: 800px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 60px 1fr 70px;
+    overflow: hidden;
+    font-family: var(--poppins);
+}
+
+.lessonFormHeading {
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.featuredImage {
+    background-color: white;
+    width: 100%;
+    height: 200px;
+    border: 1px solid #c9c9c9;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
+    padding: 20px;
+}
+
+.placeholderImg {
+    width: 100%;
+    height: 100%;
+    background-color: #EFF1F6;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+    gap: 10px;
+}
+
+
+.placeholderImg>.featuredWithDel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.featuredWithDel .placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.featuredWithDel .deleteIcon {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+}
+
+
+.featuredImagePrequisites {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 25px;
+    justify-content: center;
+    gap: 10px;
+}
+
+.featuredUploadBTN {
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--main);
+    color: white;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.customSelectInput {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #c9c9c9;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.customSelectInput>select {
+    width: 100%;
+    padding: 10px 35px;
+    outline: none;
+}
+
+.fixedSelectIcon {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    transform: translateY(30%);
+    height: 100%;
+}
+
+
+.videoSource {
+    border: 2px dashed var(--main);
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+.videoSource.noPadding {
+    padding: 0;
+}
+
+.videoSource .bold {
+    font-weight: 600;
+}
+
+.html5Style {
+    background-color: white;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.html5Style .browseVideo {
+    padding: 5px 8px;
+    border: 1px solid var(--main);
+    color: var(--main);
+    background-color: rgba(217, 161, 255, 0.5);
+    border-radius: 5px;
+}
+
+.videoSource>input,
+.videoSource>textarea {
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+    transition: all .4s ease;
+}
+
+.videoSource>textarea {
+    resize: none;
+}
+
+.videoSource>input:focus {
+    border-color: var(--main);
+}
+
+.playBackTimeGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.playBackTimeGrid>.timeInput {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.playBackTimeGrid>.timeInput>input {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #c9c9c9;
+    border-radius: 5px;
+}
+
+.playBackTimeGrid>.timeInput>label {
+    font-size: 14px;
+    padding: 0 5px;
+}
+
+.uploadLAttachment {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    background-color: var(--main);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* recording area  */
+.recordingItemArea {
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 15px;
+}
+
+.CBOneRecording {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 100px) minmax(0, 1fr);
+    gap: 10px;
+    border: 1px solid #DDD;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.RecordingFileIcon {
+    width: 100%;
+    height: 100%;
+    background-color: #EFEFEF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.OneRecordingMeta {
+    width: 100%;
+    height: 100%;
+    padding: 10px 5px;
+}
+
+.OneRecordingMeta > h2 {
+    font-size: 16px;
+    color: var(--main);
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.OneRecordingMeta > p {
+    font-size: 13px;
+    color: #222;
+    margin-top: 10px;
+    text-transform: capitalize;
+}
+.OneRecordingMeta > span {
+    font-size: 13px;
+    color: #222;
+}
+
+
+/* recording form  */
+.CBRecordingForm {
+    width: 700px;
+    background-color: white;
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 80px minmax(0,1fr) 80px;
+}
+
+.CBRecordingFormBody {
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 500px;
+    background-color: rgb(232, 237, 241);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.CBInputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-family: var(--poppins);
+}
+
+.CBInputGroup > label {
+    font-size: 16px;
+}
+.CBFormInput {
+    border: 1px solid #d9d9d9;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    resize: none;
+} 
+
+@media only screen and (max-width: 800px) {
+
+    .courseBuilderMainContainer {
+        max-width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    .courseBuilderDiv1 {
+        padding: 0;
+    }
+
+    /* course setting  */
+    .courseSettingContainer {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* assignmentheader */
+
+    .assignmentHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 10px;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .CBThumbnailContainer {
+        grid-template-rows: minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

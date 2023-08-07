@@ -1,0 +1,137 @@
+
+.A1RegInputGroup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    height: 45px;
+}
+
+
+.A1RegAreaGroup {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+}
+
+
+.A1RegAreaGroup>label,
+.A1RegInputGroup>label {
+    font-size: 14px;
+    line-height: 14px;
+    color: #555;
+    background-color: white;
+    position: absolute;
+    top: -6px;
+    left: 10px;
+    transition: all .5s ease-in-out;
+    pointer-events: none;
+    padding: 0 2px;
+}
+
+
+.A1RegInput,
+.A1RegTextArea,
+.A1RegInputGroup>input {
+    border: 1px solid #222;
+    padding: 10px;
+    outline: none;
+    resize: none;
+    width: 100%;
+}
+
+.A1RegInput,
+.A1RegInputGroup>input {
+    height: 100%;
+}
+
+
+/* radio  */
+input[type="radio"].llInput {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    color: var(--main);
+    border: 2px solid var(--main);
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+input[type="radio"].llInput::before {
+    content: "";
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    background-color: var(--main);
+    width: 15px;
+    height: 15px;
+}
+
+input[type="radio"].llInput:checked::before {
+    transform: scale(1);
+}
+
+input[type="radio"].llInput:disabled {
+    border: 2px solid #999;
+    color: gray;
+}
+input[type="radio"].llInput:disabled::before {
+    background-color: #999;
+}
+
+/* sm size  */
+input[type="radio"].llInput.sm {
+    width: 20px;
+    height: 20px;
+}
+input[type="radio"].llInput.sm::before {
+    width: 12px;
+    height: 12px;
+}
+
+
+/* check box  */
+input[type="checkbox"].llInput {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 25px;
+    height: 25px;
+    border: 2px solid var(--main);
+    border-radius: 2px;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+input[type="checkbox"].llInput::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    background-color: var(--main);
+}
+  
+input[type="checkbox"].llInput:checked::before {
+    transform: scale(1);
+}
+
+/* sm style  */
+input[type="checkbox"].llInput.sm {
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--main);
+}

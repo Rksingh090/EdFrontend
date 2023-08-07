@@ -1,0 +1,71 @@
+.profilepage {
+    padding: 0px 25px;
+    font-family: "Poppins", sans-serif;
+}
+
+.profilePagebg {
+    width: 900px;
+    height: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.AffiliateprofilePhoto {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 2px solid black;
+    object-fit: cover;
+    /* overflow: hidden; */
+}
+
+.profileImage img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+
+.photouploader {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.formEditAreaRow {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.formEditAreaColom {
+    font-size: 18px;
+    /* font-weight: 500; */
+}
+
+.formEditAreaColom p {
+    color: gary;
+
+}
+
+.formEditAreaColom input {
+    height: 50px;
+    width: 400px;
+    background-color: transparent;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid lightgray;
+    margin-right: 50px;
+}
+.subitFormBtn{
+   
+    background-color: var(--main);
+    border-radius: 10px;
+    border: 2px solid var(--main);
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: all .5s ease;
+}
+.subitFormBtn:hover{
+    color: var(--main);
+    background-color: white;
+}

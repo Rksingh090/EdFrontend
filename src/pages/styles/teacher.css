@@ -1,0 +1,233 @@
+/* add event form  */
+.addEventContainer {
+    width: 700px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15px;
+    padding: 30px 0;
+}
+
+.addEventContainer>.inputDivs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 7px;
+    width: 80%;
+}
+
+.addEventContainer>div>input,
+.addEventContainer>div>textarea,
+.addEventContainer>div>select {
+    width: 100%;
+    padding: 8px 15px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    outline: none;
+    resize: none;
+}
+
+.addEventContainer>div>label {
+    font-size: 14px;
+    color: gray;
+    font-weight: 500px;
+}
+
+.addeventActionBTNs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin-top: 15px;
+}
+
+.addeventActionBTNs>button {
+    padding: 7px 15px;
+    border-radius: 5px;
+
+}
+
+.addeventActionBTNs>.cancle {
+    background-color: white;
+    color: var(--main);
+    border: 1px solid var(--main);
+}
+
+.addeventActionBTNs>.submit {
+    background-color: var(--main);
+    color: white;
+    border: 1px solid var(--main);
+}
+
+
+/* settings page  */
+.settingActiveMeetings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.settingActiveMeetings>div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.selectInputType,
+.settingSelectType {
+    padding: 8px 20px;
+    min-width: 200px;
+    border: 1px solid #d9d9d9;
+    border-radius: 5px;
+    outline: none;
+}
+
+/* skils - setting page */
+.skillsInputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+}
+
+.skillsInputs>div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+}
+
+.skillsInputs>div>select {
+    outline: none;
+    padding: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #e5e7eb;
+}
+
+.skillsInputs>div>input[type=button] {
+    background-color: var(--main);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.skills {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.skills .skillItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4px 10px;
+    background-color: var(--main);
+    color: white;
+    border-radius: 5px;
+}
+
+.skillExperiance {
+    font-size: 12px;
+    color: rgb(189, 189, 189);
+}
+
+.skillName {
+    font-size: 14px;
+    color: white;
+    font-family: sans-serif;
+    text-transform: capitalize;
+}
+
+/* announcement page  */
+.announcementHeadText {
+    font-size: 22px;
+    font-weight: 500;
+    color: #333;
+    
+}
+.announcementFormHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+}
+
+.announcementFormBody {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 20px;
+    background-color: rgb(229 231 235);
+}
+.announcementFormInputText {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgb(56, 56, 56);
+}
+
+.announcementFormInput {
+    width: 100%;
+    padding: 8px 15px;
+    border: 1px solid #c9c9c9;
+    outline: none;
+    border-radius: 5px;
+    resize: none;
+}
+
+.addNewAssignmentFormBTN {
+    padding: 10px 15px;
+    background-color: white;
+    border-radius: 5px;
+    background-color: rgb(216, 216, 216);
+    font-size: 15px;
+    color: rgb(53, 53, 53);
+}
+.addNewAssignmentFormBTN:hover {
+    background-color: var(--main);
+    color: white;
+}
+
+
+@media only screen and (max-width: 1400px) {
+
+    /* calendar page  */
+
+
+    /* profile page  */
+    .myProfileData {
+        width: 100%;
+    }
+
+
+}
+
+@media only screen and (max-width: 1200px) {
+    .calendarGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar.searchBar {
+        padding: 0;
+    }
+
+}
+
+@media only screen and (max-width: 800px) {
+
+}
+
+@media only screen and (max-width: 600px) {
+
+    /* calendar page  */
+
+
+    .dateEvents {
+        padding: 0;
+    }
+}

@@ -1,0 +1,159 @@
+.adminCoupons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px 25px;
+    background: #EAEEF3;
+    min-height: 100vh;
+}
+
+.tableSearchDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 20px 10px 20px;
+}
+
+.couponCreateDiv {
+    padding: 20px;
+}
+
+.couponCreateDiv > button,
+.couponCreateDiv > a {
+    width: fit-content;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    outline: none;
+    padding: 10px;
+    color: #fff;
+    background-color: var(--main);
+    transition: all .5s ease;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+}
+
+.perEntrySelect {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--poppins);
+}
+.perEntrySelect > select {
+    border: 1px solid #a8a8a8;
+    padding: 0 3px;
+    color: #353535;
+    outline: none;
+}
+.tableSearchContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+.tableSearchContainer > p{
+    font-size: 16px;
+    font-family: var(--poppins);
+}
+.tableSearchContainer > input {
+    font-family: var(--poppins);
+    border: 1px solid #aaaaaa;
+    color: #aaa;
+    outline: none;
+    padding: 7px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+/* coupon table  */
+.tableContainer {
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+.couponTable {
+    width: 100%;
+    padding: 10px 20px;
+    overflow-x: auto;
+}
+.couponTable::-webkit-scrollbar {
+    height: 8px;
+}
+
+
+
+/* coupon form  */
+.addNewCouponForm {
+    padding: 10px 20px;
+    font-family: var(--poppins);
+}
+.createCouponForm {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+
+.customGenerateButton {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 200px);
+}
+
+.generateCouponCodeDiv>button {
+    height: 40px;
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #333;
+    color: #333;
+}
+
+.couponSelectedCourse {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    position: relative;
+}
+
+
+.couponSelectedCourse>p {
+    padding: 5px 10px;
+    font-size: 15px;
+    font-family: sans-serif;
+    background-color: white;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .35);
+}
+
+
+.showSearch {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+    z-index: 545;
+}
+.showSearch > p {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+.showSearch > p:hover {
+    background-color: #E8E8E8;
+}

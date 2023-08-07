@@ -1,0 +1,225 @@
+.aboutUsPage {
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    padding: 50px 0;
+}
+
+.aboutPageGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-content: center;
+    justify-content: center;
+    gap: 20px;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    font-family: var(--poppins);
+    padding: 50px 0;
+}
+
+.aboutGridFirstDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.aboutPageGrid.reverse>.aboutGridFirstDiv {
+    order: 2;
+}
+
+.aboutPageGrid.reverse>.aboutTitleDesc {
+    order: 1;
+}
+
+.aboutTitleDesc {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 20px;
+}
+
+.aboutTitleDesc.colCentered {
+    justify-content: center;
+}
+
+.aboutTitleDesc>h1 {
+    font-size: 60px;
+    font-weight: 600;
+    line-height: 65px;
+}
+
+.aboutTitleDesc>p {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.aboutGoogleMap {
+    height: 400px;
+}
+
+.aboutGoogleMap>iframe {
+    height: 100%;
+    width: 100%;
+}
+
+
+/* term And Cond. Page  */
+.termAndCondPage {
+    padding: 50px 0;
+}
+
+.mainPadding {
+    padding: 40px 0;
+}
+
+.pageContent {
+    max-width: 1400px;
+    margin: auto;
+    font-family: var(--poppins);
+}
+
+.pageMainHeading {
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.pageContent h2 {
+    font-weight: 600;
+    font-size: 26px;
+    margin-top: 15px;
+}
+
+.pageContent p {
+    color: #4b4747;
+    padding: 10px 0px;
+    font-size: 18px;
+}
+
+.pageContent .bold {
+    font-weight: 600;
+}
+
+.pageContent .blockquote {
+    background-color: #F2F2FF;
+    width: 100%;
+    margin: 10px 0;
+    border-left: 2px solid var(--main);
+    padding: 10px;
+}
+
+
+.pageContent .pageUList {
+    padding: 10px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pageContent .pageUList>li {
+    color: #4b4747;
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.pageContent .pageUList>li::marker {
+    content: ">";
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.pageContent span {
+    font-weight: 600;
+    color: #000;
+    font-size: 17px;
+}
+
+
+
+
+/* media query  */
+
+@media only screen and (max-width: 1400px) {
+    .mainPadding {
+        padding: 30px 20px;
+    }
+
+    /* about us page  */
+    .aboutUsPage {
+        padding: 20px;
+        row-gap: 40px;
+    }
+
+    .aboutTitleDesc>h1 {
+        font-size: 40px;
+        line-height: 45px;
+    }
+
+    .aboutTitleDesc>p {
+        font-size: 17px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+
+    /* about page  */
+    .aboutUsPage {
+        padding: 20px;
+        row-gap: 20px;
+    }
+
+    .aboutPageGrid {
+        padding: 10px 0;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .aboutPageGrid.reverse>.aboutGridFirstDiv {
+        order: 1;
+    }
+
+    .aboutPageGrid.reverse>.aboutTitleDesc {
+        order: 2;
+    }
+
+    .aboutTitleDesc>h1 {
+        font-size: 30px;
+        line-height: 35px;
+    }
+
+    .aboutTitleDesc>p {
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+}
+
+@media only screen and (max-width: 500px) {
+    .pageContent h2 {
+        font-size: 24px;
+    }
+
+    .pageContent p {
+        font-size: 18px;
+    }
+
+    .pageContent span {
+        font-size: 16px;
+    }
+
+    .aboutGridFirstDiv {
+        width: 100%;
+        aspect-ratio: 1.2;
+        overflow: hidden;
+    }
+    
+    .aboutGridFirstDiv > div {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+}

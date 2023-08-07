@@ -1,0 +1,482 @@
+/* common styles  */
+
+
+/* lazy loading  */
+.fullSizeLazy {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.fullImgCover{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fullSizeLazy.imgCover > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* date style  */
+.dateDay {
+    text-align: center;
+    width: 70%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+}
+
+
+.dateDay.orginalDay {
+    cursor: pointer;
+}
+
+/* badge styles  */
+.badgeSM {
+    width: min-content;
+    padding: 6px 15px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 500px;
+}
+
+.successBadge {
+    border: 1px solid green;
+    color: green;
+    background-color: rgba(180, 255, 180, 0.548);
+}
+
+.errorBadge {
+    border: 1px solid rgb(255, 69, 69);
+    color: rgb(255, 69, 69);
+    background-color: rgba(255, 172, 172, 0.616);
+}
+
+.warningBadge {
+    border: 1px solid rgb(255, 188, 45);
+    color: rgb(255, 180, 17);
+    background-color: rgba(255, 218, 137, 0.678);
+}
+
+
+/* tab style  */
+.tabMenu {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #CDCFD5;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+}
+
+.tabMenu>p {
+    padding: 10px 20px;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    cursor: pointer;
+}
+
+.tabMenu>p.active {
+    border-color: var(--main);
+}
+
+
+/* profile page  */
+.myProfileData {
+    width: 50%;
+}
+
+.profileSkillsBadges {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+}
+
+/* teacher quiz page  */
+.quizAttmptInfo>.attemptTime {
+    font-size: 14px;
+    color: rgb(153, 153, 153);
+}
+
+.quizAttmptInfo>.quizName {
+    font-size: 17px;
+    color: #333;
+    font-weight: 500;
+}
+
+.quizAttmptInfo>.student {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #222;
+    font-weight: 500;
+}
+
+.quizAttmptInfo>.student>span {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #777;
+    font-weight: 400;
+}
+
+.quizAttemptTD>p {
+    text-align: center;
+}
+
+.quizAttemptTH>p {
+    text-align: center;
+}
+
+/* student quiz attempts page  */
+.quizAttemptTheadRow>th>p {
+    font-size: 15px;
+    color: rgb(51, 51, 51);
+    font-weight: 500;
+}
+
+.quizAttmptInfo>.time {
+    font-size: 14px;
+    color: gray;
+}
+
+.quizAttmptInfo>.title {
+    font-size: 17px;
+    font-weight: 500;
+    color: rgb(41, 41, 41);
+}
+
+.qaShowDetails {
+    padding: 5px 10px;
+    border: 1px solid var(--main);
+    color: var(--main);
+    border-radius: 5px;
+    width: min-content;
+    cursor: pointer;
+    transition: all .8s cubic-bezier(0.075, 0.22, 0.185, 1);
+}
+
+.qaShowDetails:hover {
+    background-color: var(--main);
+    color: white;
+}
+
+/* settings page  */
+.mobileResponsive {
+    width: 70%;
+}
+
+.profileAndCover {
+    position: relative;
+    height: 380px;
+}
+
+.coverPhoto {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.coverUploadBtn {
+    background-color: var(--main);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    padding: 10px;
+    font-family: var(--poppins);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profilePhoto {
+    position: absolute;
+    top: 60%;
+    left: 40px;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(224, 224, 224);
+    transform: translate(0, -50%);
+    border-radius: 9000px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.profilePhoto>img {
+    height: 100%;
+}
+
+.profileUploadIcon {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 27%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.178);
+    cursor: pointer;
+}
+
+.profileUploadIcon:hover {
+    background-color: rgba(0, 0, 0, 0.479);
+}
+
+.profileMenu {
+    position: absolute;
+    top: 82%;
+    left: 40px;
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(59, 59, 59);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.profileMenu>div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px 10px;
+    gap: 10px;
+    color: white;
+    cursor: pointer;
+
+}
+
+.profileMenu>div:hover {
+    background-color: gray;
+}
+
+.coverUploadBtn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.coverDeleteBTN {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(160, 160, 160, 0.5);
+    border-radius: 1000px;
+    cursor: pointer;
+}
+
+/* certificate upload area - setting page */
+.certificateUploadArea {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    border-radius: 10px;
+    height: 220px;
+    background-color: #eff3f7;
+    padding: 10px;
+    gap: 20px;
+    font-family: var(--poppins);
+}
+
+.certificateImageDiv {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #777;
+    background-color: #dbe2e7;
+    overflow: hidden;
+}
+
+.certificateImageDiv>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.certificateUploadMeta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+}
+
+.certificateImageUpload {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--main);
+    padding: 5px 8px;
+    border-radius: 5px;
+    color: white;
+    margin-top: 10px;
+}
+
+.profileMainUpdate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--main);
+    padding: 10px;
+    font-family: var(--poppins);
+    color: white;
+    margin-top: 20px;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+/* skils - setting page */
+.skillsInputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+}
+
+.skillsInputs>div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+}
+
+.skillsInputs>div>select {
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+    outline: none;
+    padding: 0 10px;
+}
+
+.skillsInputs>div>input[type=button] {
+    background-color: var(--main);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.skills {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.skills .skillItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 4px 10px;
+    background-color: var(--main);
+    color: white;
+    border-radius: 5px;
+    ;
+}
+
+.skillExperiance {
+    font-size: 12px;
+    color: rgb(189, 189, 189);
+}
+
+.skillName {
+    font-size: 14px;
+    color: white;
+    font-family: sans-serif;
+    text-transform: capitalize;
+}
+
+
+@media only screen and (max-width: 1600px) {
+
+    /* stetting page  */
+    .mobileResponsive {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+
+    /* calendar page  */
+    .dateDay {
+        width: 80%;
+        height: 80%;
+    }
+
+
+    /* stetting page  */
+    .mobileResponsive {
+        width: 90%;
+    }
+
+
+    /* profile page  */
+    .myProfileData {
+        width: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 1200px) {
+
+    /* calendar page  */
+    .calendarGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar.searchBar {
+        padding: 0;
+    }
+
+    .dateDay {
+        width: 50%;
+        height: 50%;
+    }
+
+}
+
+@media only screen and (max-width: 800px) {
+
+    /* profile page  */
+    .profileSkillsBadges {
+        row-gap: 15px;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+
+    /* calendar page  */
+    .dateDay {
+        width: 70%;
+        height: 70%;
+    }
+
+}
+
+
+@media only screen and (max-width: 500px) {
+    .tablists>p {
+        font-size: 14px;
+    }
+}

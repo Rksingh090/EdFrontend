@@ -1,0 +1,540 @@
+.courseProgressMainPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    font-family: var(--poppins);
+    color: #555;
+}
+
+.courseProgressContainer {
+    width: 80%;
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.CPCourseTitle {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.CPCatSubCat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.courseprogresstab {
+    border-bottom: 2px solid transparent;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #424242;
+}
+
+.courseprogresstab:hover {
+    color: rgb(8, 106, 235);
+}
+
+.courseprogresstab.active {
+    border-bottom: 2px solid var(--main);
+    color: var(--main)
+}
+
+.tabViewHeading {
+    font-weight: 600;
+    color: rgb(10, 8, 8);
+    font-size: 20px;
+}
+
+/* description tab view  */
+.courseDescriptionRQ p,
+.courseDescriptionRQ li {
+    font-size: 18px;
+}
+
+.courseDescriptionRQ h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 5px 0;
+}
+
+.courseDescriptionRQ h3,
+.courseDescriptionRQ h4 {
+    font-weight: 500;
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.courseContentTab {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px 0;
+}
+
+.coursecontentDiv {
+    border: 1px solid rgb(224, 221, 221);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.courseProTopicItem {
+    cursor: pointer;
+}
+
+.courseProTopicItem>div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    color: var(--main);
+    background: rgb(241, 242, 245);
+}
+
+.courseProTopicItem>div h1 {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.courseProItem {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    font-family: var(--poppins);
+    height: 50px;
+    justify-content: space-between;
+    padding: 10px
+}
+
+.courseProItem:hover {
+    background-color: rgba(0, 0, 0, .04)
+}
+
+.courseProItem>div {
+    align-items: center;
+    color: #424242;
+    display: flex;
+    font-size: 16px;
+    font-weight: 500;
+    gap: 10px;
+    line-height: 1.6
+}
+
+.studentrating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.studentrating>img {
+    height: 300px;
+
+}
+
+.studentfedback>p {
+    color: #41454F;
+    font-size: 1rem;
+
+}
+
+.grid5x1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+.grid5x2 {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    gap: 20px 15px;
+}
+
+.grid5x2>div {
+    width: 100%;
+}
+
+.flexcenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* announcement  */
+.announcementTabView {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+}
+
+.announcementItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 5px #c2c2c2d3;
+    padding: 15px;
+}
+
+.announcementMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.announcementMeta>.itemTitle {
+    font-size: 19px;
+    color: #222;
+    font-weight: 500;
+}
+
+.announcementMeta>.itemDate {
+    font-size: 15px;
+    color: #6e6e6e;
+}
+
+/* gradebook  */
+.gradeBookContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0;
+}
+
+.gradebookMain {
+    background-color: white;
+    box-shadow: 1px 1px 6px #c2c2c2d3;
+    padding: 20px 20px;
+    border-radius: 7px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.gradeFinalGrade {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.mainGradeStatus {
+    width: 65px;
+    height: 65px;
+    background: #d81f1f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 500;
+    font-size: 23px;
+}
+
+.gradebookTableHeading {
+    display: grid;
+    grid-template-columns: 5fr 1fr 0.4fr;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.gradebookTableHeading>p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #424242;
+    padding: 0 20px 0 10px;
+}
+
+.gradeItemContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 15px;
+}
+
+.gradeItem {
+    display: grid;
+    grid-template-columns: 5fr 1fr 0.4fr;
+    width: 100%;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 5px #c2c2c2d3;
+    padding: 15px;
+}
+
+
+.gradeItem>div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #424242
+}
+
+.gradebook4 {
+    height: 30px;
+    width: 30px;
+    border: 1px solid red;
+    border-radius: 50%;
+    color: red;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.gradebook4>p {
+    color: red;
+}
+
+.gradeStatus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gradeStatus>p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.gradeStatus>p.pass {
+    color: rgb(0, 255, 98);
+    border: 1px solid rgb(0, 255, 98);
+    background: rgb(224, 255, 236);
+}
+
+.gradeStatus>p.fail {
+    color: red;
+    border: 1px solid red;
+    background: rgb(255, 215, 215);
+}
+
+.gradeStatus>p.pending {
+    color: rgb(255, 136, 0);
+    border: 1px solid rgb(255, 136, 0);
+    background: rgb(255, 230, 183);
+}
+
+.coursebyteacher {
+    border: 1px solid var(--main);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.CPCourseCreator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.CPCourseDP {
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--main);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+.courseTopicHeading>svg {
+    transition: all .4s ease-in-out;
+}
+
+.topicItems {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    overflow: hidden;
+    transition: all .5s cubic-bezier(.17, .68, .27, .84);
+    height: 50px;
+}
+
+.CPCourseDataBorder {
+    border: 1px solid var(--main);
+    border-radius: 5px;
+}
+
+
+.CPCourseEnrollData {
+    padding: 10px 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.CPcoursePrice {
+    font-size: 28px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    color: var(--main);
+}
+
+.CPEnrollBtn {
+    background-color: var(--main);
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+
+.CPenrollmentProp {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.CPExtraDetailsContainer {
+    padding: 20px;
+    border-top: 1px solid var(--main);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.CPCourseOfferContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 15px 20px;
+    border-top: 1px solid var(--main);
+}
+
+.CPExtraDetailItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.CPcourseOffer {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.CPCourseOfferItem {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border: 1px solid var(--main);
+    padding: 10px;
+    border-radius: 5px;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+.CPCourseOfferItem:hover {
+    background-color: var(--main);
+    color: white;
+}
+
+
+
+
+/* course enrolled style  */
+.courseEnrolledProgress {
+    font-family: var(--poppins);
+} 
+
+.CPEFirstContainer {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.CPEHeader {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--main);
+}
+
+/* border-[1px] border-[#f2b64c] flex items-start gap-2 p-2 rounded-md */
+.CourseCompleteInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(242, 182, 76);
+}
+
+.CourseCompleteInfo > svg {
+    color: rgb(242, 182, 76);
+}
+
+.flexRowIconTxt {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+@media only screen and (max-width:1200px) {
+    .grid5x2 {
+        width: 90%;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+}
+@media only screen and (max-width:700px) {
+    .grid5x2 {
+        width: 100%;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    .courseProgressContainer {
+        width: 95%;
+    }
+    .CPCatSubCat {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px 0;
+    }
+}
+

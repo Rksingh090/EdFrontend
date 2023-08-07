@@ -1,0 +1,473 @@
+.allCoursesContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+.mobileFilterToggler {
+    display: flex;
+    flex-direction: row;
+    padding: 0 15px;
+    font-size: 18px;
+    margin: 10px 0;
+    font-family: sans-serif;
+}
+
+.mobileFilterToggler>p {
+    padding: 5px 10px;
+    color: white;
+    background-color: var(--main);
+}
+
+
+.courseInnerDiv {
+    display: grid;
+    width: 90%;
+}
+
+.showRSidebar {
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+.hideRSidebar {
+    grid-template-columns: 1fr 4fr;
+}
+
+.singleCourseContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.singleCourseCard {
+    justify-self: center;
+}
+
+.courseCardContainer {
+    gap: 20px;
+}
+
+.courseCardContainer.listLayout {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.courseCardContainer.cardLayout {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cardLayout.categorySelected {
+    width: 90%;
+}
+
+.cardLayout.notSelected {
+    width: 80%;
+}
+
+
+.allCourseHeadFilter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 10px 0;
+    background-color: white;
+    z-index: 24;
+}
+
+.filtersRow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    gap: 15px;
+}
+
+.filterSelecter {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.filterSelecter>h3 {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.filterSelecter>select,
+.filterSelecter>input,
+.gridViewBTN,
+.resetBTN {
+    height: 45px;
+    padding: 0 15px;
+}
+
+.filterSelecter>select,
+.filterSelecter>input {
+    border: 1px solid #aaa;
+    outline: none;
+    border-radius: 5px;
+}
+
+.filterSelecter>select {
+    min-width: 220px;
+}
+
+.filterSelecter>input {
+    width: 100%;
+    min-width: 300px;
+}
+
+.resetBTN {
+    border-radius: 5px;
+    transition: all .2s ease-in-out;
+    color: rgb(255, 123, 123);
+    border: 1px solid rgb(255, 120, 120);
+}
+
+.resetBTN:hover {
+    color: white;
+    background-color: rgb(255, 172, 172);
+}
+
+.gridViewBTN {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #8f8f8f;
+}
+
+/* single card commont  */
+.courseRating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+    color: var(--main);
+}
+
+.courseFooter>.price,
+.listcourseFooter>.price {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.courseFooter>.cartBtn,
+.listcourseFooter>.cartBtn {
+    padding: 8px 15px;
+    border: 1px solid var(--main);
+    border-radius: 5px;
+    color: var(--main);
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+.courseFooter>.cartBtn.enrolled {
+    background-color: var(--main);
+    color: white;
+}
+
+.courseFooter>.cartBtn:hover,
+.listcourseFooter>.cartBtn:hover {
+    background-color: var(--main);
+    color: white;
+}
+
+/* single course card  */
+.singleCourseCard {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 70px);
+    height: 450px;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgb(202, 202, 202);
+    box-shadow: 1px 1px 3px #0000003a;
+}
+
+.courseCardHeader {
+    height: 100%;
+}
+
+
+.courseBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 15px;
+}
+
+.courseCardTitle {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.courseCardMeta {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.brandLogo {
+    background-color: var(--main);
+    width: 35px;
+    line-height: 35px;
+    aspect-ratio: 1;
+    text-align: center;
+    border-radius: 50px;
+    color: white;
+    font-size: 18px;
+    letter-spacing: 1px;
+    overflow: hidden;
+}
+.brandLogo > img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.brandName {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.courseFooter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 15px;
+    justify-content: space-between;
+    border-top: 1px solid rgb(202, 202, 202);
+}
+
+
+/* list layout course  */
+.listCourseCard {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-auto-flow: row;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 10px #a9a9a9;
+    position: relative;
+    max-width: 80%;
+    height: 250px;
+    width: 100%;
+}
+
+.listCourseThumbnail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.listCourseThumbnail>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.listCourseDetails {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.courseMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.listcourseFooter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* category sidebar  */
+.courseLeftSidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.categoryHeading {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.courseCat {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.singleCategory {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.singleCategory>input[type="checkbox"] {
+    width: 18px;
+    aspect-ratio: 1;
+}
+
+.singleCategory>label {
+    font-size: 18px;
+}
+
+/* course middle */
+.courseMiddle {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* course right sidebar  */
+.courseRightSidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 25px;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.mobileFilterToggler {
+    display: none;
+}
+
+
+
+@media only screen and (max-width: 1400px) {
+    .courseInnerDiv {
+        width: 100%;
+        padding: 0 15px;
+        gap: 20px;
+    }
+
+    .showRSidebar {
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+
+    .hideRSidebar {
+        grid-template-columns: 1fr 3fr;
+    }
+
+    .cardLayout.categorySelected {
+        width: 100%;
+    }
+
+    .cardLayout.notSelected {
+        width: 80%;
+    }
+
+    .courseCardContainer.cardLayout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .listCourseCard {
+        max-width: 100%;
+    }
+
+}
+
+
+@media only screen and (max-width: 800px) {
+    .mobileFilterToggler {
+        display: flex;
+    }
+
+    .showRSidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .hideRSidebar {
+        grid-template-columns: 1fr;
+    }
+
+    .courseCardContainer.cardLayout {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .courseMiddle {
+        order: 3;
+    }
+
+    .courseRightSidebar {
+        order: 2;
+        padding: 0;
+        display: none;
+        height: max-content;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .courseRightSidebar.showMobfilter {
+        display: flex;
+    }
+
+    .cardLayout.categorySelected,
+    .cardLayout.notSelected,
+    .listCourseCard,
+    .singleCourseCard {
+        width: 100%;
+    }
+
+    .courseLeftSidebar {
+        display: none;
+    }
+
+    .courseLeftSidebar.showMobfilter {
+        display: flex;
+    }
+
+    .allCourseHeadFilter {
+        display: none;
+    }
+
+    .allCourseHeadFilter.showMobfilter {
+        display: flex;
+    }
+
+    .listCourseCard {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    
+    .listCourseCard,
+    .singleCourseCard {
+        width: 100%;
+    }
+
+    .courseCardContainer.cardLayout {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+}

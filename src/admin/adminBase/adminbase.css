@@ -1,0 +1,588 @@
+.admin {
+    display: grid;
+    grid-template-rows: 60px 1fr;
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.adminMainSection {
+    display: grid;
+    max-width: 100%;
+    height: 100%;
+    transition: all .5s ease;
+}
+
+.adminMainSection.open {
+    grid-template-columns: 250px 1fr;
+}
+
+.adminMainSection.close {
+    grid-template-columns: 50px 1fr;
+    overflow-y: auto;
+}
+
+.adminSidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.adminSidebar::-webkit-scrollbar-thumb {
+    background-color: rgb(231, 231, 231);
+}
+
+.adminSidebar:hover::-webkit-scrollbar-thumb {
+    background-color: var(--main);
+}
+
+
+.adminContent {
+    overflow-y: auto;
+    padding: 20px 0;
+    background-color: #EAEEF3;
+}
+
+.adminMainSection.open .adminContent {
+    height: calc(100vh - 60px);
+}
+
+.adminMainSection.close .adminContent {
+    min-height: calc(100vh - 60px);
+    overflow-y: hidden;
+    height: max-content;
+}
+
+/* navbar  */
+.adminNavbarGrid {
+    display: grid;
+    box-shadow: 2px 2px 5px #d9d9d9;
+    z-index: 545;
+    background-color: white;
+    transition: all .5s ease;
+}
+
+.adminNavbarGrid.open {
+    grid-template-columns: 250px 1fr;
+}
+
+.adminNavbarGrid.close {
+    grid-template-columns: 50px 1fr;
+}
+
+.adminNavLogo {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.adminNavLogo>img {
+    height: 90%;
+    transition: all .5s ease;
+}
+
+.adminNavbarGrid.close .adminNavLogo>img {
+    display: none;
+}
+
+.adminNavCloseTXT {
+    height: 65%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--main);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-family: var(--poppins);
+}
+
+.adminNavbarGrid.open .adminNavCloseTXT {
+    height: 0;
+}
+
+.adminNavbarMain {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.navMain1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px;
+    height: 100%;
+}
+
+.navMain1>.hmb {
+    cursor: pointer;
+}
+
+.adminNavSearch {
+    height: 70%;
+    background-color: #F4F4F4;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.adminNavSearch>input {
+    font-family: "Poppins", sans-serif;
+    height: 100%;
+    font-size: 16px;
+    padding: 0 5px;
+    font-size: 16px;
+    color: #333;
+    background-color: transparent;
+    outline: none;
+}
+
+.navMain2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 0 30px;
+    height: 70%;
+}
+
+
+.navMain2>svg,
+.adminNavIcon>span,
+.adminNavIcon>svg {
+    cursor: pointer;
+}
+
+.adminNavIcon {
+    position: relative;
+}
+
+.languageSelect>span {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.adminNavProfile {
+    display: flex;
+}
+
+.navProfileBtn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.navProfileBtn>.avatar {
+    height: 40px;
+    aspect-ratio: 1;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.14);
+    border-radius: 545px;
+    overflow: hidden;
+}
+
+.navProfileBtn>.avatar>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* navbar absolute boxes */
+.navAbsBox {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.14);
+}
+
+/* notification box  */
+.navAbsBox.notification {
+    top: 44px;
+    right: 0;
+    width: 400px;
+    min-height: 50px;
+    display: grid;
+    grid-template-rows: 50px minmax(0, 1fr) 50px;
+    font-family: var(--poppins);
+    opacity: 0;
+    transition: all .5s ease;
+    pointer-events: none;
+}
+
+.navAbsBox.notification.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.notificationHead,
+.notificationFooter {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: #F3F7F9;
+}
+
+.notificationHead {
+    padding: 0 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.notificationFooter {
+    justify-content: center;
+    color: #aeaeaa;
+}
+
+.notificationFooter>a:hover {
+    color: var(--main);
+}
+
+.navNotificationArea {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.navNotificationArea::-webkit-scrollbar {
+    width: 2px;
+}
+
+.singleNotification {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 10px;
+    cursor: pointer;
+}
+
+.singleNotification:hover {
+    background-color: #F8FAFA;
+}
+
+.singleNotification:not(:last-child) {
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.singleNotification>.ntfn {
+    font-size: 14px;
+}
+
+.singleNotification>.ntfnTime {
+    font-size: 12px;
+    padding: 2px 5px;
+    background-color: #F3F7F9;
+}
+
+/* language select box - navbar  */
+.navAbsBox.language {
+    top: 45px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    width: 100px;
+    transition: all .5s ease;
+}
+
+.navAbsBox.language.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.navAbsBox.language>p {
+    padding: 7px 10px;
+    font-family: var(--poppins);
+    font-size: 15px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.navAbsBox.language>p:hover {
+    background-color: #F8FAFA;
+}
+
+
+/* admin nav message box   */
+.singleMessage {
+    display: grid;
+    grid-template-columns: minmax(0, 40px) minmax(0, 1fr);
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    gap: 10px;
+}
+
+.singleMessage:not(:last-child) {
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.singleMessage:hover {
+    background-color: #F8FAFA;
+}
+
+.msgProfile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.msgProfile>img {
+    width: 35px;
+    aspect-ratio: 1;
+    border-radius: 54px;
+}
+
+.msgWithSenderTime {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.senderMsg>.sender {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(70, 129, 255);
+}
+
+.senderMsg>.msg {
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.msgWithSenderTime>.msgTime {
+    font-size: 12px;
+    padding: 2px 5px;
+    white-space: nowrap;
+}
+
+/* navbar profile abs box  */
+.navAbsBox.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    top: 43px;
+    right: 0;
+    width: 150px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .5s ease;
+}
+
+.navAbsBox.profile.show {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.navAbsBox.profile>a ,
+.navAbsBox.profile>div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+}
+
+.navAbsBox.profile>div:hover {
+    background-color: #F8FAFA;
+}
+
+.navAbsBox.profile>div>svg {
+    font-size: 15px;
+}
+
+.navAbsBox.profile>div>span {
+    font-size: 14px;
+    font-family: var(--poppins);
+}
+
+
+/* sidebar  */
+.adminSidebar {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 5px #d9d9d9;
+    z-index: 545;
+    transition: all .4s ease;
+    background-color: white;
+}
+
+.adminSidebar.open {
+    height: calc(100vh - 60px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.adminSidebar.close {
+    overflow: visible;
+}
+
+.sidebarAvatar {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.sidebarAvatar>img {
+    width: 80px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 5px;
+    border-radius: 10px;
+    box-shadow: 2px 1px #d9d9d9;
+}
+
+.sidebarAvatar>h2 {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+}
+
+.sidebarAvatar>p {
+    font-size: 13px;
+    color: #5e5e5e;
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+}
+
+.adminSidebarUL {
+    display: flex;
+    flex-direction: column;
+}
+
+.adminSidebarUL>li {
+    position: relative;
+    list-style: none;
+}
+
+.adminSidebarUL>li>button,
+.adminSidebarUL>li>a {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10xp;
+    width: 100%;
+    padding: 15px;
+}
+
+.adminSidebarUL>li>a.active {
+    color: var(--main);
+}
+
+.adminSidebar.open .adminSidebarUL>li>button:hover,
+.adminSidebar.open .adminSidebarUL>li>a:hover {
+    background-color: #f7f7f7;
+    color: var(--main);
+}
+
+.adminSidebar.close .adminSidebarUL>li:hover .sidebarSubmenu,
+.adminSidebar.close .adminSidebarUL>li:hover {
+    background-color: #f0f0f0;
+}
+
+.linkTextIcon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.linkTextIcon>svg {
+    font-size: 22px;
+}
+
+.linkTextIcon>span {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.arrowIOS {
+    font-size: 25px;
+    transition: all .5s ease;
+}
+
+.arrowIOS.active {
+    transform: rotateZ(90deg);
+}
+
+.sidebarSubmenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all .5s ease;
+}
+
+.sidebarSubmenu.open {
+    overflow: hidden;
+    background-color: #f3f3f3;
+}
+
+.sidebarSubmenu.close {
+    overflow: visible;
+    position: absolute;
+    top: 0;
+    left: 50px;
+    height: 240px;
+    display: none;
+}
+
+.sidebarSubmenu.close.showAbsMenu {
+    display: flex;
+}
+
+.sidebarSubmenu.close .submenuLink>a {
+    padding-left: 10px;
+    min-width: 200px;
+}
+
+.submenuLink {
+    width: 100%;
+    height: 60px;
+}
+
+.submenuLink>a {
+    min-height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 50px;
+    font-family: "Poppins", sans-serif;
+}
+
+.submenuLink>a.active {
+    color: var(--main);
+}
+
+.submenuLink:hover {
+    background-color: #F4F4F4;
+    color: var(--main);
+}

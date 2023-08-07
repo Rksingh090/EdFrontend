@@ -1,0 +1,57 @@
+.errorPageContainer {
+    width: 100%;
+    height: 100vh;
+    background-color: #F8F8F8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.errorPage {
+    width: 900px;
+    height: 450px;
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: hidden;
+}
+
+.errorPage .sideOne {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.errorPage .sideOne > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.errorPage .sideTwo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 40px;
+    gap: 10px;
+    font-family: var(--poppins);
+    max-width: 80%;
+}
+
+.sideTwo > .heading {
+    font-size: 30px;
+    font-weight: 700;
+}
+.sideTwo > .subHeading {
+    font-size: 15px;
+    font-weight: 400;
+    color: #888;
+}
+.sideTwo > .homePageBTN {
+    padding: 10px 15px;
+    background-color: var(--main);
+    color: white;
+    margin-top: 40px;
+}
