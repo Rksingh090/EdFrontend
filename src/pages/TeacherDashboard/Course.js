@@ -23,7 +23,6 @@ const Course = () => {
     const perPage = useMemo(() => 10, [])
     const [pageNo, setPageNo] = useState(1);
 
-
     // get all course created by teacher 
     useEffect(() => {
         if (previousTab === openTab) {
@@ -80,7 +79,7 @@ const Course = () => {
                             return (
                                 <div key={course._id} className='courseItem'>
                                     <div className='enrollCourseThumb'>
-                                        <img src={course?.thumbnail || "courseCoverhttps://letslearn-storage.s3.ap-south-1.amazonaws.com/home/courseCover.webp"} alt="" />
+                                        <img src={course?.thumbnail || "https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/courseCover.webp"} alt="" />
                                     </div>
                                     <div className=' pt-6 leading-6 p-3'>
                                         <p className='text-[#5f5f5f] text-[10px] poppinsFF'>{toDateString(course.createdAt)}</p>

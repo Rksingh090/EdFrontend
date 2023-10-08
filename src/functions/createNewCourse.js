@@ -18,7 +18,7 @@ export const createNewCourse = async () => {
             motivation: "",
             target_audience: "",
             materials: "",
-            requirements: ""
+            requirements: []
         },
         course_type: "free",
         title: "New Course",

@@ -198,8 +198,8 @@ const AllRoutes = () => {
       <Route path="/course/:course_id/:course_slug" element={<CourseProgress />} />
 
       {/* course payment page with coupon  */}
-      {/* <Route path="/payment/course/:course_id/:course_name" element={<Protected Component={PaymentCoupon} validRoles={["student"]} />} />
-      <Route path="/payment/status/:tracking_id" element={<Protected Component={PaymentStatus} validRoles={["student"]} />} /> */}
+      <Route path="/payment/course/:course_id/:course_name" element={<Protected Component={PaymentCoupon} validRoles={["student"]} />} />
+      <Route path="/payment/status/:tracking_id" element={<Protected Component={PaymentStatus} validRoles={["student"]} />} />
 
       {/* course content pages  */}
       <Route path="/course/content/:course_id/:course_slug" element={<Protected Component={CourseContent} validRoles={["student"]} />} />
@@ -214,39 +214,36 @@ const AllRoutes = () => {
       {/* <Route path="/class/:class_name" element={<Protected Component={ClassCourses} />} /> */}
 
       {/* course builder and editor  */}
-      {/* <Route path="/teacher/edit-course/:course_id" element={<Protected Component={EditCourseBuilderComponent} validRoles={["teacher", "admin"]} />} /> */}
+      <Route path="/teacher/edit-course/:course_id" element={<Protected Component={EditCourseBuilderComponent} validRoles={["teacher", "admin"]} />} />
 
       {/* teacher panel  */}
-      {/* <Route path="/teacher/course" element={<Protected Component={Course} validRoles={["teacher"]} />} />
+      <Route path="/teacher/course" element={<Protected Component={Course} validRoles={["teacher"]} />} />
       <Route path="/teacher/events" element={<Protected Component={CalendarEvents} validRoles={["teacher"]} />} />
       <Route path="/teacher/quiz" element={<Protected Component={Quiz} validRoles={["teacher"]} />} />
       <Route path="/teacher/quiz/details" element={<Protected Component={QuizDetails} validRoles={["teacher"]} />} />
       <Route path="/teacher/announcement" element={<Protected Component={Announcements} validRoles={["teacher"]} />} />
       <Route path="/teacher/assignment" element={<Protected Component={Assignment} />} />
       <Route path="/teacher/analytics" element={<Protected Component={Analytics} validRoles={["teacher"]} />} />
-      <Route path="/teacher/profile" element={<Protected Component={Myprofile} />} validRoles={["teacher"]} /> */}
+      <Route path="/teacher/profile" element={<Protected Component={Myprofile} />} validRoles={["teacher"]} />
 
       {/* student panel  */}
-      {/* <Route path="/dashboard" element={<Protected Component={Dashboard} validRoles={["student"]} />} />
+      <Route path="/dashboard" element={<Protected Component={Dashboard} validRoles={["student"]} />} />
       <Route path="/student/quiz-attempts" element={<Protected Component={QuizAttempts} validRoles={["student"]} />} />
       <Route path="/student/profile" element={<Protected Component={Myprofile} />} validRoles={["student"]} />
       <Route path="/student/enrolled-courses" element={<Protected Component={EnrolledCourses} validRoles={["student"]} />} />
       <Route path="/student/order-history" element={<Protected Component={OrderHistory} validRoles={["student"]} />} />
-      <Route path="/student/calender" element={<Protected Component={Calender} validRoles={["student"]} />} /> */}
+      <Route path="/student/calender" element={<Protected Component={Calender} validRoles={["student"]} />} />
 
       {/* franchise panel */}
-      {/* <Route path="/franchise/dashboard" element={<Protected Component={FranchiseDashboard} validRoles={["franchise"]} />} />
-      <Route path="/franchise/earning" element={<Protected Component={Earning} validRoles={["franchise"]} />} />
-      <Route path="/franchise/coupon" element={<Protected Component={Coupon} validRoles={["franchise"]} />} /> */}
 
       {/* affilate_dashboard_detail */}
-      {/* <Route path="/affiliate/dashboard" element={<Protected Component={AffilateDashboard} validRoles={["affiliate"]} />} />
+      <Route path="/affiliate/dashboard" element={<Protected Component={AffilateDashboard} validRoles={["affiliate"]} />} />
       <Route path="/affiliate/coupon" element={<Protected Component={AffilateCoupon} validRoles={["affiliate"]} />} />
       <Route path="/affiliate/create-coupon" element={<Protected Component={AffiliateCreateCoupon} validRoles={["affiliate"]} />} />
       <Route path="/affiliate/sales" element={<Protected Component={AffiliateSales} validRoles={["affiliate"]} />} />
       <Route path="/affiliate/student" element={<Protected Component={AffiliateStudent} validRoles={["affiliate"]} />} />
       <Route path="/affiliate/setting" element={<Protected Component={AffiliateSetting} validRoles={["affiliate"]} />} />
-      <Route path="/affiliate/profile" element={<Protected Component={AffiliateProfile} validRoles={["affiliate"]} />} /> */}
+      <Route path="/affiliate/profile" element={<Protected Component={AffiliateProfile} validRoles={["affiliate"]} />} />
 
       {/* bussinessAssociate pages */}
       {/* <Route path="/bussiness/dashboard" element={<Protected Component={BussinessAssDashboard} validRoles={["businessAssociates"]} />} />
@@ -254,6 +251,11 @@ const AllRoutes = () => {
       <Route path="/bussiness/create-coupon" element={<Protected Component={BusinessAssCreateCoupon} validRoles={["businessAssociates"]} />} />
       <Route path="/bussiness/sales" element={<Protected Component={BusinessAssSales} validRoles={["businessAssociates"]} />} />
       <Route path="/bussiness/profile" element={<Protected Component={BusinessAssProfile} validRoles={["businessAssociates"]} />} /> */}
+
+      {/* <Route path="/franchise/dashboard" element={<Protected Component={FranchiseDashboard} validRoles={["franchise"]} />} />
+      <Route path="/franchise/earning" element={<Protected Component={Earning} validRoles={["franchise"]} />} />
+      <Route path="/franchise/coupon" element={<Protected Component={Coupon} validRoles={["franchise"]} />} /> */}
+
 
       {/* franchise rpage */}
       {/* <Route path="/fronchiseOnline/dashboard" element={<Protected Component={BussinessAssDashboard} validRoles={["businessAssociates"]} />} />
@@ -267,14 +269,14 @@ const AllRoutes = () => {
       <Route path="/about" element={<About />} />
 
       {/* careers  */}
-      {/* <Route path="/careers" element={<Careers />} />
+      <Route path="/careers" element={<Careers />} />
       <Route path="/applications" element={<Application />} />
       <Route path="/profile" element={<Profileee />} />
       <Route path="/register/career" element={<Registercarrers />} />
-      <Route path="/login/career" element={<Logincarrers />} /> */}
+      <Route path="/login/career" element={<Logincarrers />} />
 
       {/* admin pannel */}
-      {/* <Route path="/admin/dashboard/" element={<Protected Component={AdminDashboard} validRoles={["admin"]} />} />
+      <Route path="/admin/dashboard/" element={<Protected Component={AdminDashboard} validRoles={["admin"]} />} />
 
       <Route path="/admin/coupon/" element={<Protected Component={AdminCoupon} validRoles={["admin"]} />} />
       <Route path="/admin/coupon/add" element={<Protected Component={AdminAddCoupon} validRoles={["admin"]} />} />
@@ -288,14 +290,14 @@ const AllRoutes = () => {
 
       <Route path="/admin/course" element={<Protected Component={AdminCourse} validRoles={["admin"]} />} />
       <Route path="/admin/course/about/:courseId" element={<Protected Component={AdminAboutCourse} validRoles={["admin"]} />} />
-      <Route path="/admin/course/edit/:course_id" element={<Protected Component={EditCourseBuilderComponent} validRoles={["admin"]} />} /> 
+      <Route path="/admin/course/edit/:course_id" element={<Protected Component={EditCourseBuilderComponent} validRoles={["admin"]} />} />
 
       <Route path="/admin/user-query" element={<Protected Component={AdminUserQuery} validRoles={["admin"]} />} />
       <Route path="/admin/user-query/about/:query_id" element={<Protected Component={AdminAboutQuery} validRoles={["admin"]} />} />
-    */}
+
 
       {/* for testing only  */}
-      {/* <Route path="/admin/course/v2/edit/:course_id" element={<Protected Component={AdminAddCourse} validRoles={["admin"]} />} />
+      <Route path="/admin/course/v2/edit/:course_id" element={<Protected Component={AdminAddCourse} validRoles={["admin"]} />} />
 
 
       <Route path="/admin/affiliate" element={<Protected Component={AdminAffiliate} validRoles={["admin"]} />} />
@@ -303,7 +305,7 @@ const AllRoutes = () => {
       <Route path="/admin/affiliate/edit/:userId" element={<Protected Component={AdminEditAffiliate} validRoles={["admin"]} />} />
       <Route path="/admin/affiliate/about/:affiliateId" element={<Protected Component={AboutAffiliate} validRoles={["admin"]} />} />
 
-      <Route path="/academics/1" element={<Academic1 />} /> */}
+      <Route path="/academics/1" element={<Academic1 />} />
 
 
       <Route path='/maintenance' element={<MaintenancePage />} />
