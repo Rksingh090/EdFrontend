@@ -28,7 +28,7 @@ import AddNewTopic from '../../components/coursebuilder/AddNewTopic';
 import AddNewQuiz from '../../components/coursebuilder/AddNewQuiz';
 import { slugify } from '../../functions/slugify';
 import AssignmentForm from '../../components/coursebuilder/AssignmentForm';
-import { API } from '../../constant';
+import { API, FRONTEND_DOMAIN } from '../../constant';
 import axios from 'axios';
 import QuillToolbar, { formats, modules } from '../../components/utils/EditorToolbar';
 import AddLessonForm from '../../components/coursebuilder/AddLessonForm';
@@ -541,7 +541,9 @@ const EditCourseBuilder = () => {
                                 <div className='flexColInput'>
                                     <label>Course Slug</label>
                                     <input value={courseData.slug} type="text" placeholder='course-slug' disabled className='CBInput' />
-                                    <Link className='text-[var(--main)]' target='_blank' to={`https://letslearn.live/course/${courseData?._id}/${courseData.slug}`}><span className='text-[#818794]'>Permalink</span>: https://letslearn.live/course/{courseData?._id}/{courseData.slug}</Link>
+                                    <Link className='text-[var(--main)]' target='_blank' to={`${FRONTEND_DOMAIN}/course/${courseData?._id}/${courseData.slug}`}>
+                                        <span className='text-[#818794]'>Permalink</span>: {FRONTEND_DOMAIN}/course/{courseData?._id}/{courseData.slug}
+                                    </Link>
                                 </div>
 
                                 <div className='flexColInput'>

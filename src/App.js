@@ -136,6 +136,7 @@ import BusinessAssSales from "./bussinessAssociate/sales/Sales"
 // landing pages 
 import Academic1 from './landingpages/academic1/Academic1';
 import A1RegisterForm from './landingpages/academic1/RegisterForm';
+import CourseContentBase from './pages/coursecontent/CourseContentBase';
 
 
 const EditCourseBuilderComponent = () => {
@@ -202,13 +203,24 @@ const AllRoutes = () => {
       <Route path="/payment/status/:tracking_id" element={<Protected Component={PaymentStatus} validRoles={["student"]} />} />
 
       {/* course content pages  */}
-      <Route path="/course/content/:course_id/:course_slug" element={<Protected Component={CourseContent} validRoles={["student"]} />} />
-      <Route path="/course/:course_id/:course_slug/assignment/:assignment_id" element={<Protected Component={AssignmentSubmission} validRoles={["student"]} />} />
-      <Route path="/course/:course_id/:course_slug/quiz/:quiz_id" element={<Protected Component={NewQuizAttempt} validRoles={["student"]} />} />
-      <Route path="/course/:course_id/:course_slug/quiz/result/:quiz_id" element={<Protected Component={QuizResultPage} validRoles={["student"]} />} />
-      <Route path="/course/:course_id/:course_slug/quiz-attempt/:quiz_attempt_id" element={<Protected Component={QuizAttemptDetails} validRoles={["student"]} />} />
-      <Route path="/course/:course_id/:course_slug/lesson/:lesson_id" element={<Protected Component={LessonPage} validRoles={["student"]} />} />
-      <Route path="/course/:course_id/:course_slug/recordings" element={<Protected Component={AllRecordings} validRoles={["student"]} />} />
+      <Route path='/course/:course_id' element={<Protected Component={CourseContentBase} validRoles={["student"]} />}>
+        {/* <Route path="/course/:course_id/:course_slug/content" element={<Protected Component={CourseContent} validRoles={["student"]} />} />
+        <Route path="/course/:course_id/:course_slug/assignment/:assignment_id" element={<Protected Component={AssignmentSubmission} validRoles={["student"]} />} />
+        <Route path="/course/:course_id/:course_slug/quiz/:quiz_id" element={<Protected Component={NewQuizAttempt} validRoles={["student"]} />} />
+        <Route path="/course/:course_id/:course_slug/quiz/result/:quiz_id" element={<Protected Component={QuizResultPage} validRoles={["student"]} />} />
+        <Route path="/course/:course_id/:course_slug/quiz-attempt/:quiz_attempt_id" element={<Protected Component={QuizAttemptDetails} validRoles={["student"]} />} />
+        <Route path="/course/:course_id/:course_slug/lesson/:lesson_id" element={<Protected Component={LessonPage} validRoles={["student"]} />} />
+        <Route path="/course/:course_id/:course_slug/recordings" element={<Protected Component={AllRecordings} validRoles={["student"]} />} /> */}
+
+        <Route path="/course/:course_id/:course_slug/content" element={<CourseContent />} />
+        <Route path="/course/:course_id/:course_slug/assignment/:assignment_id" element={<AssignmentSubmission />} />
+        <Route path="/course/:course_id/:course_slug/quiz/:quiz_id" element={<NewQuizAttempt />} />
+        <Route path="/course/:course_id/:course_slug/quiz/result/:quiz_id" element={<QuizResultPage />} />
+        <Route path="/course/:course_id/:course_slug/quiz-attempt/:quiz_attempt_id" element={<QuizAttemptDetails />} />
+        <Route path="/course/:course_id/:course_slug/lesson/:lesson_id" element={<LessonPage />} />
+        <Route path="/course/:course_id/:course_slug/recordings" element={<AllRecordings />} />
+
+      </Route>
 
       {/* class  - unused */}
       {/* <Route path="/class/:class_name" element={<Protected Component={ClassCourses} />} /> */}

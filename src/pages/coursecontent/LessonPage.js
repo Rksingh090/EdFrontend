@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import CourseContentBase from './CourseContentBase'
 import axios from 'axios'
 import { API } from '../../constant'
 import { useParams } from 'react-router-dom';
@@ -68,47 +67,45 @@ const LessonPage = () => {
     }, []);
 
     return (
-        <CourseContentBase>
-            <ItemViewWrapper validAccess={enrollmentData.enrollment && enrollmentData.preview_available} >
-                <div className='lessonPage'>
+        <ItemViewWrapper validAccess={enrollmentData.enrollment && enrollmentData.preview_available} >
+            <div className='lessonPage'>
 
-                    <VideoPlayer videoType={lessonData?.video_source_type} url={lessonData?.video_source} />
-                    <div className='lessonAboutAttachment'>
-                        <div className={`oneTab ${currentTab === "about" ? "active" : ""}`} onClick={() => setCurrentTab("about")}>
-                            <AiOutlineInfoCircle size={20} />
-                            <p>Lesson Notes</p>
-                        </div>
-                        {
-                            (lessonData.pdf_attachment && lessonData.pdf_attachment !== "" && lessonData.pdf_attachment?.length > 0) && (
-                                <div className={`oneTab ${currentTab === "attachment" ? "active" : ""}`} onClick={() => setCurrentTab("attachment")}>
-                                    <GrAttachment size={20} />
-                                    <p>PDF Attachment</p>
-                                </div>
-                            )
-                        }
+                <VideoPlayer videoType={lessonData?.video_source_type} url={lessonData?.video_source} />
+                <div className='lessonAboutAttachment'>
+                    <div className={`oneTab ${currentTab === "about" ? "active" : ""}`} onClick={() => setCurrentTab("about")}>
+                        <AiOutlineInfoCircle size={20} />
+                        <p>Lesson Notes</p>
                     </div>
-                    <div className={`tabData lessonAboutSection ${currentTab === "about" ? "active" : ""}`}>
-                        <ReactQuill theme={"bubble"} value={lessonData?.lesson_content} readOnly={true} />
-                    </div>
-                    <div className={`tabData lessonAboutSection ${currentTab === "attachment" ? "active" : ""}`}>
-                        <div className='flex flex-col gap-2 items-start bg-white'>
-                            <Document file={lessonData?.pdf_attachment} onLoadSuccess={(data) => setTotalPdfPage(data.numPages)} className={"pdfViewPage"} >
-                                <Page pageNumber={currentPdfPage} renderTextLayer={false} renderAnnotationLayer={false} canvasBackground='#FFFFFF' />
-                            </Document>
-                            <div className='pdfPageActions w-[595px]'>
-                                <div className='goBackPdf' onClick={() => setCurrentPdfPage(prev => prev === 1 ? prev : prev - 1)}>
-                                    <IoArrowBack size={20} />
-                                </div>
-                                <p>Page {currentPdfPage} of {totalPdfPage} Pages</p>
-                                <div className='goBackPdf' onClick={() => setCurrentPdfPage(prev => prev >= totalPdfPage ? prev : prev + 1)}>
-                                    <IoArrowForward size={20} />
-                                </div>
+                    {
+                        (lessonData.pdf_attachment && lessonData.pdf_attachment !== "" && lessonData.pdf_attachment?.length > 0) && (
+                            <div className={`oneTab ${currentTab === "attachment" ? "active" : ""}`} onClick={() => setCurrentTab("attachment")}>
+                                <GrAttachment size={20} />
+                                <p>PDF Attachment</p>
+                            </div>
+                        )
+                    }
+                </div>
+                <div className={`tabData lessonAboutSection ${currentTab === "about" ? "active" : ""}`}>
+                    <ReactQuill theme={"bubble"} value={lessonData?.lesson_content} readOnly={true} />
+                </div>
+                <div className={`tabData lessonAboutSection ${currentTab === "attachment" ? "active" : ""}`}>
+                    <div className='flex flex-col gap-2 items-start bg-white'>
+                        <Document file={lessonData?.pdf_attachment} onLoadSuccess={(data) => setTotalPdfPage(data.numPages)} className={"pdfViewPage"} >
+                            <Page pageNumber={currentPdfPage} renderTextLayer={false} renderAnnotationLayer={false} canvasBackground='#FFFFFF' />
+                        </Document>
+                        <div className='pdfPageActions w-[595px]'>
+                            <div className='goBackPdf' onClick={() => setCurrentPdfPage(prev => prev === 1 ? prev : prev - 1)}>
+                                <IoArrowBack size={20} />
+                            </div>
+                            <p>Page {currentPdfPage} of {totalPdfPage} Pages</p>
+                            <div className='goBackPdf' onClick={() => setCurrentPdfPage(prev => prev >= totalPdfPage ? prev : prev + 1)}>
+                                <IoArrowForward size={20} />
                             </div>
                         </div>
                     </div>
                 </div>
-            </ItemViewWrapper>
-        </CourseContentBase>
+            </div>
+        </ItemViewWrapper>
     )
 }
 

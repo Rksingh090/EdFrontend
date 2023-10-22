@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import CourseContentBase from './CourseContentBase'
 
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -70,56 +69,52 @@ const AssignmentSubmission = () => {
     }
 
     return (
-        <CourseContentBase>
-            <ItemViewWrapper validAccess={enrollmentData.enrollment && enrollmentData.preview_available} >
-                <div className='assignmentContent'>
-                    <h2 className='assignmentContentTitle'>{assignmentData?.title}</h2>
-                    {
+        <ItemViewWrapper validAccess={enrollmentData.enrollment && enrollmentData.preview_available} >
+            <div className='assignmentContent'>
+                <h2 className='assignmentContentTitle'>{assignmentData?.title}</h2>
+                {
 
-                    }
-                    <h4 className='assignmentSubtitle'>Course Description</h4>
-                    <ReactQuill value={assignmentData?.description} theme={"bubble"} className='reactQuill' readOnly={true} />
+                }
+                <h4 className='assignmentSubtitle'>Course Description</h4>
+                <ReactQuill value={assignmentData?.description} theme={"bubble"} className='reactQuill' readOnly={true} />
 
-                    <h4 className='assignmentSubtitle'>Course PDF</h4>
-                    {
-                        assignmentData?.assignment_pdf && (
-                            <div>
-                                <Document file={assignmentData?.assignment_pdf} onLoadSuccess={(data) => setTotalPdfPage(data.numPages)} className={"pdfViewPage"} >
-                                    <Page pageNumber={currentPdfPage} renderTextLayer={false} renderAnnotationLayer={false} canvasBackground='#FFFFFF' />
-                                </Document>
-                                <div className='pdfPageActions'>
-                                    <div className='goBackPdf' onClick={() => setCurrentPdfPage(prev => prev === 1 ? prev : prev - 1)}>
-                                        <IoArrowBack size={20} />
-                                    </div>
-                                    <p>Page {currentPdfPage} of {totalPdfPage} Pages</p>
-                                    <div className='goBackPdf' onClick={() => setCurrentPdfPage(prev => prev >= totalPdfPage ? prev : prev + 1)}>
-                                        <IoArrowForward size={20} />
-                                    </div>
+                <h4 className='assignmentSubtitle'>Course PDF</h4>
+                {
+                    assignmentData?.assignment_pdf && (
+                        <div>
+                            <Document file={assignmentData?.assignment_pdf} onLoadSuccess={(data) => setTotalPdfPage(data.numPages)} className={"pdfViewPage"} >
+                                <Page pageNumber={currentPdfPage} renderTextLayer={false} renderAnnotationLayer={false} canvasBackground='#FFFFFF' />
+                            </Document>
+                            <div className='pdfPageActions'>
+                                <div className='goBackPdf' onClick={() => setCurrentPdfPage(prev => prev === 1 ? prev : prev - 1)}>
+                                    <IoArrowBack size={20} />
+                                </div>
+                                <p>Page {currentPdfPage} of {totalPdfPage} Pages</p>
+                                <div className='goBackPdf' onClick={() => setCurrentPdfPage(prev => prev >= totalPdfPage ? prev : prev + 1)}>
+                                    <IoArrowForward size={20} />
                                 </div>
                             </div>
-                        )
-                    }
+                        </div>
+                    )
+                }
 
-
-
-                    <div className='assignmentUploadArea'>
-                        <button className='assignmentUploadBTN'>
-                            <AiOutlinePaperClip size={22} />
-                            <span>Upload Assignment</span>
-                        </button>
-                        <textarea
-                            value={assignmentAnswer?.assignment_answer}
-                            onChange={(e) => setAssignmentAnswer(prev => ({ ...prev, assignment_answer: e.target.value }))}
-                            className='assignmentSubmitTextArea' rows="10"
-                            placeholder='Write Here ...'>
-                        </textarea>
-                    </div>
-                    <button className='assignmentSubmitBTN' onClick={submitAssignment}>
-                        <span>Submit Assignment</span>
+                <div className='assignmentUploadArea'>
+                    <button className='assignmentUploadBTN'>
+                        <AiOutlinePaperClip size={22} />
+                        <span>Upload Assignment</span>
                     </button>
+                    <textarea
+                        value={assignmentAnswer?.assignment_answer}
+                        onChange={(e) => setAssignmentAnswer(prev => ({ ...prev, assignment_answer: e.target.value }))}
+                        className='assignmentSubmitTextArea' rows="10"
+                        placeholder='Write Here ...'>
+                    </textarea>
                 </div>
-            </ItemViewWrapper>
-        </CourseContentBase>
+                <button className='assignmentSubmitBTN' onClick={submitAssignment}>
+                    <span>Submit Assignment</span>
+                </button>
+            </div>
+        </ItemViewWrapper>
     )
 }
 

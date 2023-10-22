@@ -92,8 +92,8 @@ const Course = () => {
                                             <div className='flex justify-between pt-8 items-center'>
                                                 <div className='courseActions'>
                                                     <div onClick={() => navigate(`/teacher/edit-course/${course._id}`)}><MdOutlineModeEditOutline /></div>
-                                                    {/* <div onClick={() => deleteCourse(course?._id)} ><AiOutlineDelete /></div> */}
-                                                    <div><AiOutlineDelete /></div>
+                                                    <div onClick={() => deleteCourse(course?._id)} ><AiOutlineDelete /></div>
+                                                    {/* <div><AiOutlineDelete /></div> */}
                                                 </div>
                                             </div>
                                         </div>

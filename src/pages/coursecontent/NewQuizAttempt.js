@@ -227,274 +227,272 @@ const NewQuizAttempt = () => {
     }
 
     return (
-        <CourseContentBase>
-            <ItemViewWrapper validAccess={enrollmentData.enrollment && enrollmentData.preview_available} >
-                <div className='quizstarted'>
-                    {quizStarted === "started" && (
-                        <div className='SingleQuestion'>
-                            <div className='questionMeta'>
-                                <p>Question No: {Number(currQuestion) + 1}/{quizData?.questions.length}</p>
-                                <p>Total Attempted: {totalAttempted}/{quizData?.questions.length}</p>
-                                <div className='flex items-center gap-2'>
-                                    <span>Question Type: </span>
-                                    <span>{getTitle(currQuestionData?.question_type)}</span>
-                                    <IconQuestionType size={25} questionType={currQuestionData?.question_type} />
-                                </div>
+        <ItemViewWrapper validAccess={enrollmentData.enrollment && enrollmentData.preview_available} >
+            <div className='quizstarted'>
+                {quizStarted === "started" && (
+                    <div className='SingleQuestion'>
+                        <div className='questionMeta'>
+                            <p>Question No: {Number(currQuestion) + 1}/{quizData?.questions.length}</p>
+                            <p>Total Attempted: {totalAttempted}/{quizData?.questions.length}</p>
+                            <div className='flex items-center gap-2'>
+                                <span>Question Type: </span>
+                                <span>{getTitle(currQuestionData?.question_type)}</span>
+                                <IconQuestionType size={25} questionType={currQuestionData?.question_type} />
                             </div>
-                            <div className='questionArea'>
+                        </div>
+                        <div className='questionArea'>
 
-                                {currQuestionData?.question_type === "fill_blanks"
-                                    ? (
-                                        <h2 className='questionTitle'>{Number(currQuestion) + 1}. {String(currQuestionData?.fill_blanks?.title).replaceAll("{blank}", " _____ ")}</h2>
-                                    )
-                                    :
-                                    (
-                                        <h2 className='questionTitle'>{Number(currQuestion) + 1}. {currQuestionData?.question_title}</h2>
+                            {currQuestionData?.question_type === "fill_blanks"
+                                ? (
+                                    <h2 className='questionTitle'>{Number(currQuestion) + 1}. {String(currQuestionData?.fill_blanks?.title).replaceAll("{blank}", " _____ ")}</h2>
+                                )
+                                :
+                                (
+                                    <h2 className='questionTitle'>{Number(currQuestion) + 1}. {currQuestionData?.question_title}</h2>
+                                )}
+
+                            {
+                                currQuestionData?.question_img && (
+                                    <div className='singleQuestionImage'>
+                                        <img src={currQuestionData?.question_img} className='singleQuestionImage' alt="" />
+                                    </div>
+                                )
+                            }
+
+                            {/* single_choice question view */}
+                            {currQuestionData?.question_type === "single_choice" && (
+                                <div className='singleChoiceContainer'>
+                                    {currQuestionData.options && currQuestionData.options && (
+                                        currQuestionData.options.map((option, opIdx) => {
+                                            return (
+                                                <div className='singleChoiceSingleOption' key={option?._id}>
+                                                    <input
+                                                        type="radio"
+                                                        onChange={(e) => setSingleAnswer(prev => ({ ...prev, question_answer: e.target.value }))}
+                                                        name={currQuestionData?._id} id={`${currQuestionData?._id}-${opIdx}`} value={option.option_value}
+                                                        className='llInput'
+                                                    />
+                                                    {
+
+                                                        option.option_format === "only_text" && (
+                                                            <label className="singleChoiceOptionLabel" htmlFor={`${currQuestionData?._id}-${opIdx}`}>{option.option_name}</label>
+                                                        )
+                                                    }
+                                                    {
+                                                        option.option_format === "only_image" && (
+                                                            <div className='both_option_format'>
+                                                                <label htmlFor={`${currQuestionData?._id}-${opIdx}`}>
+                                                                    <img src={option.option_image} alt="" />
+                                                                </label>
+                                                            </div>
+                                                        )
+                                                    }
+                                                    {
+                                                        option.option_format === "both" && (
+                                                            <div className='both_option_format'>
+                                                                <label htmlFor={`${currQuestionData?._id}-${opIdx}`}>
+                                                                    <span className="singleChoiceOptionLabel">{option.option_name}</span>
+                                                                    <img src={option.option_image} alt="" />
+                                                                </label>
+                                                            </div>
+                                                        )
+                                                    }
+                                                </div>
+                                            )
+                                        })
                                     )}
 
-                                {
-                                    currQuestionData?.question_img && (
-                                        <div className='singleQuestionImage'>
-                                            <img src={currQuestionData?.question_img} className='singleQuestionImage' alt="" />
-                                        </div>
-                                    )
-                                }
+                                </div>
+                            )}
 
-                                {/* single_choice question view */}
-                                {currQuestionData?.question_type === "single_choice" && (
-                                    <div className='singleChoiceContainer'>
-                                        {currQuestionData.options && currQuestionData.options && (
-                                            currQuestionData.options.map((option, opIdx) => {
-                                                return (
-                                                    <div className='singleChoiceSingleOption' key={option?._id}>
-                                                        <input
-                                                            type="radio"
-                                                            onChange={(e) => setSingleAnswer(prev => ({ ...prev, question_answer: e.target.value }))}
-                                                            name={currQuestionData?._id} id={`${currQuestionData?._id}-${opIdx}`} value={option.option_value}
-                                                            className='llInput'
-                                                        />
-                                                        {
-
-                                                            option.option_format === "only_text" && (
-                                                                <label className="singleChoiceOptionLabel" htmlFor={`${currQuestionData?._id}-${opIdx}`}>{option.option_name}</label>
-                                                            )
-                                                        }
-                                                        {
-                                                            option.option_format === "only_image" && (
-                                                                <div className='both_option_format'>
-                                                                    <label htmlFor={`${currQuestionData?._id}-${opIdx}`}>
-                                                                        <img src={option.option_image} alt="" />
-                                                                    </label>
-                                                                </div>
-                                                            )
-                                                        }
-                                                        {
-                                                            option.option_format === "both" && (
-                                                                <div className='both_option_format'>
-                                                                    <label htmlFor={`${currQuestionData?._id}-${opIdx}`}>
-                                                                        <span className="singleChoiceOptionLabel">{option.option_name}</span>
-                                                                        <img src={option.option_image} alt="" />
-                                                                    </label>
-                                                                </div>
-                                                            )
-                                                        }
-                                                    </div>
-                                                )
-                                            })
-                                        )}
-
+                            {/* true_false question view  */}
+                            {currQuestionData?.question_type === "true_false" && (
+                                <div className='singleChoiceContainer'>
+                                    <div className='trueFalseSingleOption'>
+                                        <input
+                                            type="radio"
+                                            className='llInput'
+                                            id={`${currQuestionData?._id}-true`}
+                                            checked={singleAnswer.question_answer === true}
+                                            onChange={() => setSingleAnswer(prev => ({ ...prev, question_answer: true }))}
+                                            value={true}
+                                        />
+                                        <label htmlFor={`${currQuestionData?._id}-true`}>True</label>
                                     </div>
-                                )}
-
-                                {/* true_false question view  */}
-                                {currQuestionData?.question_type === "true_false" && (
-                                    <div className='singleChoiceContainer'>
-                                        <div className='trueFalseSingleOption'>
-                                            <input
-                                                type="radio"
-                                                className='llInput'
-                                                id={`${currQuestionData?._id}-true`}
-                                                checked={singleAnswer.question_answer === true}
-                                                onChange={() => setSingleAnswer(prev => ({ ...prev, question_answer: true }))}
-                                                value={true}
-                                            />
-                                            <label htmlFor={`${currQuestionData?._id}-true`}>True</label>
-                                        </div>
-                                        <div className='trueFalseSingleOption'>
-                                            <input
-                                                type="radio"
-                                                className='llInput'
-                                                id={`${currQuestionData?._id}-false`}
-                                                checked={singleAnswer.question_answer === false}
-                                                onChange={() => setSingleAnswer(prev => ({ ...prev, question_answer: false }))}
-                                                value={false} />
-                                            <label htmlFor={`${currQuestionData?._id}-false`}>False</label>
-                                        </div>
+                                    <div className='trueFalseSingleOption'>
+                                        <input
+                                            type="radio"
+                                            className='llInput'
+                                            id={`${currQuestionData?._id}-false`}
+                                            checked={singleAnswer.question_answer === false}
+                                            onChange={() => setSingleAnswer(prev => ({ ...prev, question_answer: false }))}
+                                            value={false} />
+                                        <label htmlFor={`${currQuestionData?._id}-false`}>False</label>
                                     </div>
-                                )}
+                                </div>
+                            )}
 
-                                {/* multi_choice question view */}
-                                {currQuestionData?.question_type === "multi_choice" && (
-                                    <div className='singleChoiceContainer'>
-                                        {currQuestionData.options && currQuestionData.options && (
-                                            currQuestionData.options.map((option, opIdx) => {
-                                                return (
-                                                    <div className='singleChoiceSingleOption' key={option?._id}>
-                                                        <input type="checkbox"
-                                                            className='llInput'
-                                                            onChange={handleMultiChoiceSelect}
-                                                            name={currQuestionData?._id}
-                                                            checked={singleAnswer.question_answer?.includes(option.option_value)}
-                                                            id={`${currQuestionData?._id}-${opIdx}`}
-                                                            value={option.option_value} />
-                                                        <label htmlFor={`${currQuestionData?._id}-${opIdx}`}>{option.option_name}</label>
-                                                    </div>
-                                                )
-                                            })
-                                        )}
+                            {/* multi_choice question view */}
+                            {currQuestionData?.question_type === "multi_choice" && (
+                                <div className='singleChoiceContainer'>
+                                    {currQuestionData.options && currQuestionData.options && (
+                                        currQuestionData.options.map((option, opIdx) => {
+                                            return (
+                                                <div className='singleChoiceSingleOption' key={option?._id}>
+                                                    <input type="checkbox"
+                                                        className='llInput'
+                                                        onChange={handleMultiChoiceSelect}
+                                                        name={currQuestionData?._id}
+                                                        checked={singleAnswer.question_answer?.includes(option.option_value)}
+                                                        id={`${currQuestionData?._id}-${opIdx}`}
+                                                        value={option.option_value} />
+                                                    <label htmlFor={`${currQuestionData?._id}-${opIdx}`}>{option.option_name}</label>
+                                                </div>
+                                            )
+                                        })
+                                    )}
 
-                                    </div>
-                                )}
+                                </div>
+                            )}
 
-                                {/* open ended question view  */}
-                                {currQuestionData?.question_type === "open_ended" && (
-                                    <div className='singleChoiceContainer'>
-                                        <textarea rows="5" className='openEndedTextarea' placeholder='type your answer'
-                                            value={singleAnswer.question_answer}
-                                            onChange={(e) => setSingleAnswer(prev => ({ ...prev, question_answer: e.target.value }))}>
-                                        </textarea>
-                                    </div>
-                                )}
+                            {/* open ended question view  */}
+                            {currQuestionData?.question_type === "open_ended" && (
+                                <div className='singleChoiceContainer'>
+                                    <textarea rows="5" className='openEndedTextarea' placeholder='type your answer'
+                                        value={singleAnswer.question_answer}
+                                        onChange={(e) => setSingleAnswer(prev => ({ ...prev, question_answer: e.target.value }))}>
+                                    </textarea>
+                                </div>
+                            )}
 
-                                {/* open ended question view  */}
-                                {currQuestionData?.question_type === "short_answer" && (
-                                    <div className='singleChoiceContainer'>
-                                        <textarea rows="5" className='openEndedTextarea' placeholder='Short Answer'
-                                            value={singleAnswer.question_answer}
-                                            onChange={(e) => setSingleAnswer(prev => ({ ...prev, question_answer: e.target.value }))}>
-                                        </textarea>
-                                    </div>
-                                )}
+                            {/* open ended question view  */}
+                            {currQuestionData?.question_type === "short_answer" && (
+                                <div className='singleChoiceContainer'>
+                                    <textarea rows="5" className='openEndedTextarea' placeholder='Short Answer'
+                                        value={singleAnswer.question_answer}
+                                        onChange={(e) => setSingleAnswer(prev => ({ ...prev, question_answer: e.target.value }))}>
+                                    </textarea>
+                                </div>
+                            )}
 
-                                {/* open ended question view  */}
-                                {currQuestionData?.question_type === "fill_blanks" && (
-                                    <div className='fillBlankChoiceContainer'>
-                                        {
-                                            singleAnswer.question_answer &&
-                                            singleAnswer.question_answer.length > 0 &&
-                                            singleAnswer.question_answer.map((ans, idx) => {
-                                                return (
-                                                    <input type="text"
-                                                        key={idx}
-                                                        value={ans} onChange={(e) => {
-                                                            let allAns = singleAnswer.question_answer;
-                                                            allAns[idx] = e.target.value
-                                                            setSingleAnswer(prev => ({ ...prev, question_answer: allAns }))
-                                                        }}
-                                                    />
-                                                )
-                                            })
+                            {/* open ended question view  */}
+                            {currQuestionData?.question_type === "fill_blanks" && (
+                                <div className='fillBlankChoiceContainer'>
+                                    {
+                                        singleAnswer.question_answer &&
+                                        singleAnswer.question_answer.length > 0 &&
+                                        singleAnswer.question_answer.map((ans, idx) => {
+                                            return (
+                                                <input type="text"
+                                                    key={idx}
+                                                    value={ans} onChange={(e) => {
+                                                        let allAns = singleAnswer.question_answer;
+                                                        allAns[idx] = e.target.value
+                                                        setSingleAnswer(prev => ({ ...prev, question_answer: allAns }))
+                                                    }}
+                                                />
+                                            )
+                                        })
 
-                                        }
-                                    </div>
-                                )}
+                                    }
+                                </div>
+                            )}
 
 
-                                {/* matching question view  */}
-                                {currQuestionData?.question_type === "matching" && (
+                            {/* matching question view  */}
+                            {currQuestionData?.question_type === "matching" && (
 
-                                    <div className='matchingChoiceContainer'>
-                                        <div className="matchingOptionGrid">
-                                            <div className='matchingOptionCol1'>
-                                                {
-                                                    currQuestionData.matching?.option1 &&
-                                                    currQuestionData.matching?.option1.length > 0 &&
-                                                    currQuestionData.matching?.option1.map((op1, opidx) => {
-                                                        return (
-                                                            <div key={opidx}>
-                                                                <span>{opidx + 1}.</span>
-                                                                <span>{op1}</span>
-                                                            </div>
-                                                        )
-                                                    })
-                                                }
-                                            </div>
-                                            <div className='matchingOptionCol2'>
-                                                {
-                                                    currQuestionData.matching?.option2 &&
-                                                    currQuestionData.matching?.option2.length > 0 &&
-                                                    currQuestionData.matching?.option2.map((op2, opidx) => {
-                                                        return (
-                                                            <div key={opidx}>
-                                                                <span>{opidx + 1}.</span>
-                                                                <span>{op2}</span>
-                                                            </div>
-                                                        )
-                                                    })
-                                                }
-                                            </div>
-                                        </div>
-                                        <div className='matchingAnswerInputs'>
-                                            {/*Matching Answer View  */}
+                                <div className='matchingChoiceContainer'>
+                                    <div className="matchingOptionGrid">
+                                        <div className='matchingOptionCol1'>
                                             {
-                                                singleAnswer.question_answer &&
-                                                singleAnswer.question_answer?.length > 0 &&
-                                                singleAnswer.question_answer?.map((uAns, idx) => (
-                                                    <div key={idx}>
-                                                        <input placeholder='eg. 3-4' type="text" className='matchingInput' value={uAns.user_answer} onChange={(e) => handleMatchingAnswer(e, idx)} />
-                                                        {uAns.error ?
-                                                            (<p>{uAns.error}</p>)
-                                                            :
-                                                            (<p>{uAns.build_answer.split("-").join(" - ")}</p>)
-                                                        }
-                                                    </div>
-                                                ))
+                                                currQuestionData.matching?.option1 &&
+                                                currQuestionData.matching?.option1.length > 0 &&
+                                                currQuestionData.matching?.option1.map((op1, opidx) => {
+                                                    return (
+                                                        <div key={opidx}>
+                                                            <span>{opidx + 1}.</span>
+                                                            <span>{op1}</span>
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                        <div className='matchingOptionCol2'>
+                                            {
+                                                currQuestionData.matching?.option2 &&
+                                                currQuestionData.matching?.option2.length > 0 &&
+                                                currQuestionData.matching?.option2.map((op2, opidx) => {
+                                                    return (
+                                                        <div key={opidx}>
+                                                            <span>{opidx + 1}.</span>
+                                                            <span>{op2}</span>
+                                                        </div>
+                                                    )
+                                                })
                                             }
                                         </div>
                                     </div>
-                                )}
+                                    <div className='matchingAnswerInputs'>
+                                        {/*Matching Answer View  */}
+                                        {
+                                            singleAnswer.question_answer &&
+                                            singleAnswer.question_answer?.length > 0 &&
+                                            singleAnswer.question_answer?.map((uAns, idx) => (
+                                                <div key={idx}>
+                                                    <input placeholder='eg. 3-4' type="text" className='matchingInput' value={uAns.user_answer} onChange={(e) => handleMatchingAnswer(e, idx)} />
+                                                    {uAns.error ?
+                                                        (<p>{uAns.error}</p>)
+                                                        :
+                                                        (<p>{uAns.build_answer.split("-").join(" - ")}</p>)
+                                                    }
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
+                                </div>
+                            )}
 
 
-                            </div>
-
-                            <button className='goToNextQuestion' onClick={() => goToNextQuestion()}>Next Questions</button>
                         </div>
-                    )}
 
-                    {/* quiz not started page  */}
-                    {quizStarted === "not_started" && (
-                        <div className='w-full h-full flex justify-center items-center'>
-                            <div className='quizStart'>
-                                <div className='quizStart1'>
-                                    <p>Quiz</p>
-                                    <p className='quizparagraph'>Choose the correct verb:</p>
-                                </div>
-                                <div className='quizparagraph1'>
-                                    <p>Questions: <span>{quizData?.questions.length}</span></p>
-                                    <p>Total Attempted: <span>0/1</span></p>
-                                    <p>Passing Grade <span>({quizData?.passing_mark}%)</span></p>
-                                </div>
-                                <div className='buttonicons'>
-                                    <button className='stratquizbutton' onClick={() => handleStartQuiz()}>Start Quiz</button>
-                                    <button className='stratquizbutton'>Skip Quiz</button>
-                                </div>
+                        <button className='goToNextQuestion' onClick={() => goToNextQuestion()}>Next Questions</button>
+                    </div>
+                )}
+
+                {/* quiz not started page  */}
+                {quizStarted === "not_started" && (
+                    <div className='w-full h-full flex justify-center items-center'>
+                        <div className='quizStart'>
+                            <div className='quizStart1'>
+                                <p>Quiz</p>
+                                <p className='quizparagraph'>Choose the correct verb:</p>
+                            </div>
+                            <div className='quizparagraph1'>
+                                <p>Questions: <span>{quizData?.questions.length}</span></p>
+                                <p>Total Attempted: <span>0/1</span></p>
+                                <p>Passing Grade <span>({quizData?.passing_mark}%)</span></p>
+                            </div>
+                            <div className='buttonicons'>
+                                <button className='stratquizbutton' onClick={() => handleStartQuiz()}>Start Quiz</button>
+                                <button className='stratquizbutton'>Skip Quiz</button>
                             </div>
                         </div>
-                    )}
+                    </div>
+                )}
 
-                    {/* when no question is there in quiz  */}
-                    {quizStarted === "no_questions" && (
-                        <div className='quizInfoText'>No Question Found In this Quiz</div>
-                    )}
+                {/* when no question is there in quiz  */}
+                {quizStarted === "no_questions" && (
+                    <div className='quizInfoText'>No Question Found In this Quiz</div>
+                )}
 
-                    {/* quiz ended  */}
-                    {quizStarted === "ended" && (
-                        <div className='quizInfoText'>Quiz has been successfully Submitted.</div>
-                    )}
+                {/* quiz ended  */}
+                {quizStarted === "ended" && (
+                    <div className='quizInfoText'>Quiz has been successfully Submitted.</div>
+                )}
 
-                </div>
-            </ItemViewWrapper>
-        </CourseContentBase >
+            </div>
+        </ItemViewWrapper>
     )
 }
 

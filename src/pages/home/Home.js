@@ -28,6 +28,7 @@ const Home = () => {
     const [activeTab, setActiveTab] = useState(1);
 
     const [noOfCatShow, setNoOfCatShow] = useState(8);
+
     const ourcourse = useMemo(() => [
         {
             img: "https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/academics.png",

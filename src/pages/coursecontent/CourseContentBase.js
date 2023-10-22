@@ -9,14 +9,14 @@ import { IoVideocamOutline } from 'react-icons/io5';
 
 import IconByItemType from '../../components/utils/IconByItemType';
 
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 
 import axios from 'axios';
 import { API } from '../../constant';
 import { TbLivePhoto } from 'react-icons/tb';
 
 
-const CourseContentBase = ({ children }) => {
+const CourseContentBase = () => {
 
     const navigate = useNavigate();
     const { course_slug, course_id } = useParams();
@@ -189,7 +189,7 @@ const CourseContentBase = ({ children }) => {
                     </div>
                 </div>
                 <div className='mainCourseContentArea'>
-                    {children}
+                    <Outlet />
                 </div>
             </div>
         </div>

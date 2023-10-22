@@ -402,7 +402,7 @@ const CourseProgress = () => {
                                             <div className='CPEFirstContainer'>
                                                 <h1 className='CPEHeader'>Course Progress</h1>
                                                 <input type="range" value={35} min={1} max={100} className='w-full customRangeInput' />
-                                                <Link to={`/course/content/${courseContent?._id}/${course_slug}`} className='CPEnrollBtn'>
+                                                <Link to={`/course/${courseContent?._id}/${course_slug}/content`} className='CPEnrollBtn'>
 
                                                     Continue Learning
                                                 </Link>
@@ -413,7 +413,7 @@ const CourseProgress = () => {
                                                 <div className='flexRowIconTxt'>
                                                     <AiOutlineShoppingCart className='mainColor' size={20} />
                                                     <p>
-                                                       You enrolled in this course on  <span className='mainColor'>{toDateString(enrollData?.enrollment?.start_date)}</span>
+                                                        You enrolled in this course on  <span className='mainColor'>{toDateString(enrollData?.enrollment?.start_date)}</span>
                                                     </p>
                                                 </div>
                                                 <div className='flexRowIconTxt'>
