@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { AiFillCaretDown } from 'react-icons/ai'
 
-const SelectOption = ({ value, onChange, label, options, textField, valueField }) => {
+const SelectOption = ({ value, onChange, label, options, maxHeight, textField, valueField, style, selectStyle }) => {
     const [showCategoryOptions, setShowCategoryOptions] = useState(false)
+    const optionRef = useRef()
 
     const getText = (val) => {
         let getOp = options.find((op) => walk(op, valueField) === value);
@@ -21,9 +22,16 @@ const SelectOption = ({ value, onChange, label, options, textField, valueField }
         return walk(data[strArr[i]], str, i + 1)
     }
 
+    useEffect(() => {
+        if (optionRef && optionRef?.current) {
+            optionRef?.current.scrollIntoView({ behavior: 'instant' });
+        }
+    }, [showCategoryOptions])
+
     return (
-        <button className='customSelect' onBlur={() => setShowCategoryOptions(false)}>
+        <button className='customSelect' style={selectStyle} onBlur={() => setShowCategoryOptions(false)}>
             <div
+                style={style}
                 className='customSelectSelected'
                 onClick={() => setShowCategoryOptions(prev => !prev)}
             >
@@ -31,7 +39,9 @@ const SelectOption = ({ value, onChange, label, options, textField, valueField }
                 <AiFillCaretDown />
             </div>
             {showCategoryOptions &&
-                <div className='customSelectOptions'>
+                <div className='customSelectOptions' style={{
+                    maxHeight: maxHeight || "200px"
+                }}>
                     {
                         options &&
                         options.map((op) => {
@@ -41,9 +51,14 @@ const SelectOption = ({ value, onChange, label, options, textField, valueField }
                                 <p
                                     key={opValue}
                                     className={`option ${opValue === value ? "selected" : ""}`}
+                                    ref={opValue === value ? optionRef : null}
                                     onClick={() => {
                                         setShowCategoryOptions(false)
-                                        onChange && onChange(opValue)
+                                        if (opValue === value) {
+                                            onChange && onChange("")
+                                        } else {
+                                            onChange && onChange(opValue)
+                                        }
                                     }}
                                 >
                                     {text}

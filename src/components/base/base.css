@@ -1,16 +1,37 @@
-.showSidebar {
-    display: flex;
-    width: 350px;
-    background-color: white;
-    height: 100%;
-}
-
+/* base component  */
 .mainBaseContainer {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
+
+/* teacher sidebar  */
+.TeacherBaseMain {
+    /* min-height: 100vh; */
+}
+
+.teacherBaseBody {
+    width: 100%;
+    height: var(--bodyHeight);
+    overflow-y: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebarAndNavGrid {
+    display: grid;
+    background-color: var(--monochrome);
+    grid-template-columns: 300px 1fr;
+}
+
+.showSidebar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--lightBG);
+    height: 100%;
+}
 
 .SidebarHintText {
     padding: 10px 15px;
@@ -23,7 +44,17 @@
     display: flex;
     align-items: center;
     padding: 10px 15px;
+    gap: 12px;
     cursor: pointer;
+}
+
+.sidebarItemLink.active {
+    background-color: var(--main);
+}
+
+.sidebarItemLink.active svg,
+.sidebarItemLink.active span {
+    color: var(--monochrome);
 }
 
 .sidebarItemLink>span {
@@ -42,30 +73,36 @@
 
 .sidebarItemLink:hover svg,
 .sidebarItemLink:hover span {
-    color: white;
+    color: var(--monochrome);
+}
+
+/* sidebar body  */
+.teacherSidebarBody {
+    overflow-y: auto;
 }
 
 @media only screen and (max-width: 800px) {
+    .sidebarAndNavGrid {
+        grid-template-columns: 1fr;
+    }
+
     .showSidebar {
         width: 250px;
-        transition: all .5s ease-in-out;
+        transition: left .5s ease-in-out;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        display: flex;
+        padding-top: 80px;
     }
 
     .showSidebar.deactive {
-        display: flex;
-        position: absolute;
-        top: 0;
         left: -250px;
-        background-color: var(--main);
     }
 
     .showSidebar.active {
-        position: absolute;
-        top: 0;
         left: 0;
-        display: flex;
         overflow-y: auto;
-        height: 100%;
     }
 
     .sidebarItemLink>span {

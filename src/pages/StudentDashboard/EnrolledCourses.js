@@ -34,9 +34,7 @@ const EnrolledCourses = () => {
 
     return (
         <TeacherSidebar>
-
-            <div className='font-[600] text-[20px]'>Enrolled Courses</div>
-            <div>
+            <div className='enrolledCoursePage'>
                 <div className='tabMenu'>
                     <p className={`${openTab === "active" && "active"}`} onClick={() => setOpenTab("active")}>
                         Active Courses ({pending_courses?.filter(course => course.course !== null)?.length || 0})
@@ -61,23 +59,18 @@ const EnrolledCourses = () => {
                                         </div>
                                         <div className='EnrollCourseBody'>
                                             <div>
-                                                <p className='text-[#808080]'>{toDateString(course?.createdAt)}</p>
+                                                <p >{toDateString(course?.createdAt)}</p>
                                                 <h2 title={course?.title} className='EnrollCourseTitle'>{course?.title}</h2>
                                             </div>
 
 
                                             <div className='flex flex-col items-start gap-2'>
-                                                <p className='text-[#808080] '>
-                                                    <span>Class: </span>
-                                                    <span className={`font-[600] text-[#000]`}>
-                                                        {course?.sub_category?.name}
-                                                    </span>
+                                                <p>
+                                                    {course?.sub_category?.name}
                                                 </p>
-                                                <p className='text-[#808080] '>
+                                                <p>
                                                     <span>By: </span>
-                                                    <span className={`font-[600] text-[#000]`}>
-                                                        {course?.created_by?.first_name} {course.created_by?.last_name}
-                                                    </span>
+                                                    {course?.created_by?.first_name} {course.created_by?.last_name}
                                                 </p>
                                             </div>
 

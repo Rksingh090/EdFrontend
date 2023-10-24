@@ -50,7 +50,7 @@ import PaymentStatus from './pages/payment/PaymentStatus';
 // student dashboard 
 import Dashboard from './pages/StudentDashboard/Dashboard';
 import EnrolledCourses from './pages/StudentDashboard/EnrolledCourses';
-import Calender from './pages/StudentDashboard/Calender';
+import Calendar from './pages/StudentDashboard/Calendar';
 import QuizAttempts from './pages/StudentDashboard/QuizAttempts';
 import OrderHistory from './pages/StudentDashboard/OrderHistory';
 
@@ -218,7 +218,7 @@ const AllRoutes = () => {
       <Route path="/student/profile" element={<Protected Component={Myprofile} />} validRoles={["student"]} />
       <Route path="/student/enrolled-courses" element={<Protected Component={EnrolledCourses} validRoles={["student"]} />} />
       <Route path="/student/order-history" element={<Protected Component={OrderHistory} validRoles={["student"]} />} />
-      <Route path="/student/calender" element={<Protected Component={Calender} validRoles={["student"]} />} />
+      <Route path="/student/calendar" element={<Protected Component={Calendar} validRoles={["student"]} />} />
 
       {/* franchise panel */}
 

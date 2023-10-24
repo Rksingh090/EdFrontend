@@ -11,6 +11,7 @@ const CalendarEvents = () => {
 
     const dispatch = useDispatch();
     const { events } = useSelector(state => state.calendar);
+
     const [eventList, setEventsLists] = useState([]);
     const [searchInput, setSearchInput] = useState("");
 

@@ -1,5 +1,7 @@
 .homePageBg {
-    background-color: var(--adminMainBackgroun);
+    background-color: var(--adminMainBackground);
+    padding: 0 20px;
+
 }
 
 

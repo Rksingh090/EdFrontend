@@ -317,7 +317,7 @@ const AddUser = ({ type, role, breadcrumKey, breadcrumbName, onAddUser, onUpdate
                             <div className='flexColInput'>
                                 <label htmlFor='start' >Start Date</label>
                                 <input type="date" className='FormInput' id="start"
-                                    value={userSchema?.education?.start.substring(0, 10)}
+                                    value={userSchema?.education?.start && String(userSchema?.education?.start).substring(0, 10)}
                                     onChange={(e) => setUserSchema(prev => ({
                                         ...prev,
                                         education: {
@@ -330,7 +330,7 @@ const AddUser = ({ type, role, breadcrumKey, breadcrumbName, onAddUser, onUpdate
                             <div className='flexColInput'>
                                 <label htmlFor='end'>End Date</label>
                                 <input type="date" className='FormInput' id="end"
-                                    value={userSchema?.education?.end.substring(0, 10)}
+                                    value={userSchema?.education?.end && String(userSchema?.education?.end).substring(0, 10)}
                                     onChange={(e) => setUserSchema(prev => ({
                                         ...prev,
                                         education: {

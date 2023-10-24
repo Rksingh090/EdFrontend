@@ -1,19 +1,17 @@
-/* common styles  */
-
-
 /* lazy loading  */
 .fullSizeLazy {
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
-.fullImgCover{
+
+.fullImgCover {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.fullSizeLazy.imgCover > img {
+.fullSizeLazy.imgCover>img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -70,10 +68,15 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    border-bottom: 1px solid #CDCFD5;
+    background-color: var(--adminMainBackground);
+    /* border-bottom: 1px solid #CDCFD5; */
     padding: 0;
     margin: 0;
     flex-wrap: wrap;
+}
+
+.tabMenu.whiteBG {
+    background-color: var(--monochrome);
 }
 
 .tabMenu>p {
@@ -81,24 +84,133 @@
     border-bottom: 2px solid transparent;
     margin-bottom: -1px;
     cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.tabMenu>p.flexed {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.tabMenu.sticky {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 4554;
 }
 
 .tabMenu>p.active {
-    border-color: var(--main);
+    color: var(--monochrome);
+    background-color: var(--main);
+    /* border-color: var(--main); */
 }
 
 
 /* profile page  */
-.myProfileData {
-    width: 50%;
+.TSProfilePage {
+    padding: 20px;
 }
+
+.TSProfileHeading {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.TSProfileHeading.mt20 {
+    margin-top: 20px;
+}
+
+.TSProfileMain {
+    width: 100%;
+    border-radius: 10px;
+    background-color: var(--adminMainBackground);
+    display: grid;
+    grid-template-columns: 180px 1fr 2fr;
+    padding: 20px;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.TSProfileImage {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.TSProfileImage>img {
+    width: 70%;
+    object-fit: cover;
+}
+
+
+.TSProfileImage>h4.name {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.TSProfileCData {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 0;
+    gap: 10px;
+}
+
+.TSProfileCData>h4 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+
+.TSProfileSkills {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.TSProfileSkills>.title {
+    font-size: 22px;
+    font-weight: 500;
+}
+
 
 .profileSkillsBadges {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding-top: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
+
+.profileSkillsBadges>.item {
+    background-color: white;
+    font-size: 16px;
+    border-radius: 50px;
+    padding: 8px 20px;
+}
+
+.TSProfileBio {
+    width: 100%;
+    padding: 20px;
+    background-color: var(--adminMainBackground);
+}
+
+.TSProfileBio>p {
+    font-size: 20px;
+}
+
+
 
 /* teacher quiz page  */
 .quizAttmptInfo>.attemptTime {
@@ -427,11 +539,6 @@
         width: 90%;
     }
 
-
-    /* profile page  */
-    .myProfileData {
-        width: 100%;
-    }
 }
 
 

@@ -28,7 +28,7 @@ const AllCourse = () => {
 
 
     // show extra filters  
-    const [showMoreFilter, setShowMoreFilter] = useState(true);
+    const [showMoreFilter, setShowMoreFilter] = useState(false);
 
     // state for sub category
 
@@ -266,8 +266,11 @@ const SingleCourseCard = ({ layout, courseData }) => {
                 </LazyLoad>
             </div>
             <div className='courseBody'>
-                <h2 className='courseCardTitle'>{courseData?.title}</h2>
-                <p>{courseData?.sub_category?.name}</p>
+
+                <div className='courseDetails'>
+                    <h2 className='courseCardTitle'>{courseData?.title}</h2>
+                    <p>{courseData.category.name}, {courseData.sub_category.name}</p>
+                </div>
 
                 <div className='courseCardMeta'>
                     <p className='brandLogo'>
@@ -283,13 +286,14 @@ const SingleCourseCard = ({ layout, courseData }) => {
                                 )
                         }
                     </p>
-                    <div className='brandName'>
-                        <p className='text-[#777] mr-1'> By</p>
-                        <p className='text-[18px] font-[600] capitalize'>
+                    <div className="brandNameAndTag">
+                        <p className='full_name capitalize'>
                             {courseData?.created_by?.first_name + "  " + courseData?.created_by?.last_name}
                         </p>
+                        <p>Instructor</p>
                     </div>
                 </div>
+
             </div>
 
             <div className='courseFooter'>

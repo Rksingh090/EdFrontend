@@ -9,13 +9,9 @@ import { setUser } from '../../reducers/UserReducer';
 import { MdAlternateEmail } from 'react-icons/md'
 import { FiLock } from 'react-icons/fi'
 import { FcGoogle } from 'react-icons/fc'
-import { FaFacebookF } from 'react-icons/fa'
-import { BsTwitter } from 'react-icons/bs'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import { Link, useSearchParams } from 'react-router-dom'
-
-// import ReCAPTCHA from "react-google-recaptcha";
 
 
 const Login = () => {
