@@ -5,9 +5,12 @@
     height: 100%;
 }
 
-.baseBody {
-    min-height: calc(100vh - 300px);
+.mainBaseContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
+
 
 .SidebarHintText {
     padding: 10px 15px;
@@ -65,11 +68,11 @@
         height: 100%;
     }
 
-    .sidebarItemLink > span {
+    .sidebarItemLink>span {
         font-size: 16px;
     }
 
-    .sidebarItemLink > svg {
+    .sidebarItemLink>svg {
         font-size: 20px;
     }
 }

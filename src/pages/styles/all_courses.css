@@ -1,3 +1,7 @@
+.allCoursePage {
+    background-color: var(--adminMainBackgroun);
+}
+
 .allCoursesContainer {
     display: flex;
     flex-direction: column;
@@ -23,51 +27,32 @@
 
 
 .courseInnerDiv {
-    display: grid;
-    width: 90%;
-}
-
-.showRSidebar {
-    grid-template-columns: 1fr 4fr 1fr;
-}
-
-.hideRSidebar {
-    grid-template-columns: 1fr 4fr;
-}
-
-.singleCourseContainer {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-
-.singleCourseCard {
-    justify-self: center;
-}
-
-.courseCardContainer {
-    gap: 20px;
-}
-
-.courseCardContainer.listLayout {
     display: flex;
     flex-direction: column;
     width: 100%;
+    gap: 20px;
+}
+
+
+/* course card grid   */
+.courseCardContainer {
+    gap: 30px;
+    min-height: 700px;
+}
+
+.courseCardContainer.listLayout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    align-content: flex-start;
 }
 
 .courseCardContainer.cardLayout {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    align-content: flex-start;
 }
 
-.cardLayout.categorySelected {
-    width: 90%;
-}
-
-.cardLayout.notSelected {
-    width: 80%;
-}
 
 
 .allCourseHeadFilter {
@@ -76,77 +61,67 @@
     align-items: flex-start;
     width: 100%;
     padding: 10px 0;
-    background-color: white;
     z-index: 24;
+    gap: 20px;
 }
 
-.filtersRow {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    height: 100%;
-    gap: 15px;
-}
-
-.filterSelecter {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.filterSelecter>h3 {
-    font-size: 16px;
-    color: #333;
-    font-weight: 500;
-}
-
-.filterSelecter>select,
-.filterSelecter>input,
-.gridViewBTN,
-.resetBTN {
-    height: 45px;
-    padding: 0 15px;
-}
-
-.filterSelecter>select,
-.filterSelecter>input {
-    border: 1px solid #aaa;
-    outline: none;
-    border-radius: 5px;
-}
-
-.filterSelecter>select {
-    min-width: 220px;
-}
-
-.filterSelecter>input {
+.filterRow1 {
+    height: 50px;
     width: 100%;
-    min-width: 300px;
+    display: grid;
+    grid-template-columns: 1fr 55px 55px;
+    justify-items: flex-start;
+    gap: 20px;
 }
 
-.resetBTN {
+
+.allCourseSearch {
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    background-color: var(--monochrome);
     border-radius: 5px;
-    transition: all .2s ease-in-out;
-    color: rgb(255, 123, 123);
-    border: 1px solid rgb(255, 120, 120);
+    padding: 0 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: var(--adminSmallShadow);
 }
 
-.resetBTN:hover {
-    color: white;
-    background-color: rgb(255, 172, 172);
+
+.allCourseSearch>input {
+    height: 100%;
+    border: none;
+    outline: none;
+    width: 100%;
+    background-color: transparent;
 }
 
 .gridViewBTN {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 100%;
+    aspect-ratio: 1;
     background-color: white;
     border-radius: 5px;
     cursor: pointer;
-    border: 1px solid #8f8f8f;
+    box-shadow: var(--adminSmallShadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-self: flex-end;
 }
 
-/* single card commont  */
+
+/* filter row 2  */
+.filterRow2 {
+    height: 50px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) 150px;
+    gap: 20px;
+}
+
+/* single card course  */
 .courseRating {
     display: flex;
     flex-direction: row;
@@ -183,7 +158,63 @@
     color: white;
 }
 
+.resetBTN {
+    border: 1px solid #ff3535;
+    height: 100%;
+    width: 100%;
+    font-size: 22px;
+    color: #ff3535;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.resetBTN>svg>path {
+    stroke: #ff3535;
+}
+
+/* no course view */
+.noCourseFound {
+    padding: 50px 0;
+    margin: 50px 0;
+    background-color: var(--monochrome);
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: var(--adminSmallShadow);
+}
+
+.noCourseFound>img {
+    height: 80%;
+    object-fit: cover;
+    border-radius: 1000px;
+}
+
+.noCourseText {
+    font-size: 32px;
+    font-weight: 500;
+}
+
 /* single course card  */
+.singleCourseContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.singleCourseCard {
+    justify-self: center;
+}
+
 .singleCourseCard {
     display: grid;
     grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 70px);
@@ -231,7 +262,8 @@
     letter-spacing: 1px;
     overflow: hidden;
 }
-.brandLogo > img {
+
+.brandLogo>img {
     object-fit: cover;
     height: 100%;
     width: 100%;
@@ -256,6 +288,7 @@
 
 /* list layout course  */
 .listCourseCard {
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-auto-flow: row;
@@ -263,8 +296,6 @@
     padding: 10px;
     border-radius: 10px;
     box-shadow: 2px 4px 10px #a9a9a9;
-    position: relative;
-    max-width: 80%;
     height: 250px;
     width: 100%;
 }
@@ -341,12 +372,6 @@
     font-size: 18px;
 }
 
-/* course middle */
-.courseMiddle {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
 
 /* course right sidebar  */
 .courseRightSidebar {
@@ -371,26 +396,6 @@
         gap: 20px;
     }
 
-    .showRSidebar {
-        grid-template-columns: 1fr 3fr 1fr;
-    }
-
-    .hideRSidebar {
-        grid-template-columns: 1fr 3fr;
-    }
-
-    .cardLayout.categorySelected {
-        width: 100%;
-    }
-
-    .cardLayout.notSelected {
-        width: 80%;
-    }
-
-    .courseCardContainer.cardLayout {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
     .listCourseCard {
         max-width: 100%;
     }
@@ -401,22 +406,6 @@
 @media only screen and (max-width: 800px) {
     .mobileFilterToggler {
         display: flex;
-    }
-
-    .showRSidebar {
-        grid-template-columns: 1fr;
-    }
-
-    .hideRSidebar {
-        grid-template-columns: 1fr;
-    }
-
-    .courseCardContainer.cardLayout {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .courseMiddle {
-        order: 3;
     }
 
     .courseRightSidebar {
@@ -461,7 +450,7 @@
 }
 
 @media only screen and (max-width: 500px) {
-    
+
     .listCourseCard,
     .singleCourseCard {
         width: 100%;

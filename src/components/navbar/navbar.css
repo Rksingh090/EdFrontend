@@ -5,9 +5,8 @@
     align-items: center;
     padding: 10px 20px;
     z-index: 150;
-    /* border-bottom: 1px solid #eee; */
     display: grid;
-    grid-template-columns: 2fr 2fr 10fr 1fr;
+    grid-template-columns: 200px 1fr 100px;
 }
 
 .navbarMainContainer {
@@ -24,6 +23,11 @@
 
 .navbarMainContainer.fixedNav {
     position: fixed;
+}
+
+.mainNavLogo {
+    font-size: 24px;
+    font-weight: 500;
 }
 
 .navbarMainContainer.whiteBG {
@@ -324,7 +328,7 @@
 }
 
 .mobileCourseMenu.inactive {
-    left: -100vh;
+    left: -100vw;
 }
 
 .mobileCourseMenu .mobileLevel1Link {
@@ -358,6 +362,7 @@
 .mobileCourseMenu .mobileDropdownLvl2.inactive {
     height: 0;
 }
+
 .mobileCourseMenu .mobileDropdownLvl2.active {
     height: calc(50px * var(--sublinks));
 }
@@ -379,6 +384,7 @@
     flex-direction: row;
     align-items: center;
 }
+
 .mobileDropdownLvl2>.mobLevel2Link>a:hover {
     background-color: rgb(221, 221, 221);
 }
@@ -510,10 +516,16 @@
 }
 
 
+@media only screen and (max-width: 1401px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+}
+
 @media only screen and (max-width: 800px) {
     .navbar {
         padding: 10px;
-        grid-template-columns: 3fr 4fr 1fr 1fr;
+        grid-template-columns: 10fr 120px 80px;
     }
 
     .companyTitle {
@@ -588,7 +600,11 @@
 
     .navbar {
         padding: 10px;
-        grid-template-columns: 3fr 4fr 1.5fr 1.5fr;
+        grid-template-columns: 1fr 70px 60px;
+    }
+
+    .navProfile {
+        padding: 0;
     }
 
     .navProfileMenus {

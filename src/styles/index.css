@@ -12,6 +12,7 @@
     font-weight: 400;
     src: local('Poppins'), url(../assets/fonts/Poppins/Poppins-Regular.ttf) format('truetype');
 }
+
 @font-face {
     font-family: 'Poppins';
     font-weight: 500;
@@ -23,11 +24,13 @@
     font-weight: 600;
     src: local('Poppins'), url(../assets/fonts/Poppins/Poppins-SemiBold.ttf) format('truetype');
 }
+
 @font-face {
     font-family: 'Poppins';
     font-weight: 700;
     src: local('Poppins'), url(../assets/fonts/Poppins/Poppins-Bold.ttf) format('truetype');
 }
+
 @font-face {
     font-family: 'Poppins';
     font-weight: 800;
@@ -38,10 +41,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Poppins";
 }
 
-:root {
-    /* --main: #5c37ff; */
+/* :root {
     --main: #5059cf;
     --secondary: #886dff;
     --lightBG: #bfb1ff;
@@ -50,9 +53,35 @@
     --grayPrimary: #444;
     --graySecondary: #777;
     --adminMainBackgroun: #EAEEF3;
-    --adminSmallShadow: 0 0 10px rgba(0,0,0,.15);
-    --adminLargeShadow: 0 0 20px rgba(0,0,0,.1);
+    --adminSmallShadow: 0 0 10px rgba(0, 0, 0, .15);
+    --adminLargeShadow: 0 0 20px rgba(0, 0, 0, .1);
     --adminColorShadow: 0 0 10px #886dff;
+} */
+
+:root {
+    /* for theme  */
+    --mainFont: "Poppins", sans-serif;
+    --main: #ff39ad;
+    --secondary: #ff92d1;
+    --lightBG: #ffcae9;
+    --optionBG: #ff7bc8;
+    --poppins: "Poppins", sans-serif;
+    --grayPrimary: #444;
+    --graySecondary: #777;
+    --lightGray: #e9e9e9;
+    --adminMainBackgroun: #EAEEF3;
+    --adminSmallShadow: 0 0 10px rgba(0, 0, 0, .15);
+    --adminLargeShadow: 0 0 20px rgba(0, 0, 0, .1);
+    --adminColorShadow: 0 0 10px #886dff;
+    --mainText: #000;
+    --bgText: #000000;
+    --fontXS: 12px;
+    --fontSM: 14px;
+    --fontMD: 16px;
+    --fontLG: 20px;
+    --fontXL: 24px;
+    --monochrome: #fff;
+    --fadeText: #808080;
 }
 
 ::-webkit-scrollbar {
@@ -215,11 +244,13 @@ table.bordered tr:last-child td:last-child {
     align-items: flex-start;
     gap: 5px;
 }
-.infoText.flexed.sm  > div > svg{
+
+.infoText.flexed.sm>div>svg {
     height: 22px;
     width: 14px;
 }
-.infoText.flexed.xs  > div > svg{
+
+.infoText.flexed.xs>div>svg {
     height: 20px;
     width: 14px;
 }
