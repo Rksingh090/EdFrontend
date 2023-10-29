@@ -97,7 +97,10 @@ const AllCourse = () => {
                                 <div>
                                     <BsSearch size={22} />
                                 </div>
-                                <input type="text" placeholder='Search...' />
+                                <input
+                                    type="text"
+                                    placeholder='Search...'
+                                />
                             </div>
                             <div className='gridViewBTN' onClick={() => setShowMoreFilter(prev => !prev)}>
                                 <CiFilter size={28} />
@@ -123,14 +126,17 @@ const AllCourse = () => {
                                     textField={"category.name"}
                                     valueField={"category._id"}
                                 />
-                                <SelectOption
-                                    label={"Subcategory"}
-                                    value={selectedSubCategory}
-                                    onChange={(cId) => setSelectedSubCategory(cId)}
-                                    options={filteredSubCategories}
-                                    textField={"name"}
-                                    valueField={"_id"}
-                                />
+                                {
+                                    selectedCategory &&
+                                    <SelectOption
+                                        label={"Subcategory"}
+                                        value={selectedSubCategory}
+                                        onChange={(cId) => setSelectedSubCategory(cId)}
+                                        options={filteredSubCategories}
+                                        textField={"name"}
+                                        valueField={"_id"}
+                                    />
+                                }
                                 <SelectOption
                                     label={"Language"}
                                     value={selectedLanguage}
@@ -139,13 +145,12 @@ const AllCourse = () => {
                                     textField={""}
                                     valueField={""}
                                 />
+                                {!selectedCategory && <div></div>}
+                                <div></div>
                                 {
                                     (selectedCategory || selectedSubCategory || selectedLanguage) &&
                                     <button className='resetBTN' onClick={resetFilter}>
-                                        <GrPowerReset size={25} />
-                                        <span>
-                                            Reset
-                                        </span>
+                                        Reset
                                     </button>
                                 }
                             </div>

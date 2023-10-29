@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import CourseContentBase from './CourseContentBase'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import { API } from '../../constant';
 import { shuffle } from '../../functions/suffle';
 import { IconQuestionType, getTitle } from '../../components/utils/IconQuestionType';
 import ItemViewWrapper from './ItemViewWrapper';
+import { AiOutlineDoubleRight } from 'react-icons/ai';
 
 const NewQuizAttempt = () => {
 
     const { quiz_id } = useParams();
 
+    const [isLoading, setIsLoading] = useState(false)
+
     const [quizData, setQuizData] = useState();
 
-    const [quizStarted, setQuizStarted] = useState("not_started");
+    const [quizStatus, setQuizStatus] = useState("not_started");
     const [currQuestion, setCurrentQuestion] = useState("not_started");
     const [currQuestionData, setCurrentQuestionData] = useState({});
     const [totalAttempted, setTotalAttempted] = useState(0);
@@ -38,6 +40,8 @@ const NewQuizAttempt = () => {
     useEffect(() => {
         const getQuizData = (quizId) => {
             try {
+                setIsLoading(true)
+
                 axios.get(`${API}/quiz/id/${quizId}`, {
                     headers: {
                         token: localStorage.getItem("token")
@@ -52,6 +56,8 @@ const NewQuizAttempt = () => {
                         if (status === "success") {
                             setQuizData(quiz)
                         }
+                    }).finally(() => {
+                        setIsLoading(false)
                     })
             } catch (error) {
                 console.log(error);
@@ -63,7 +69,7 @@ const NewQuizAttempt = () => {
 
     // set quiz question 
     useEffect(() => {
-        if (quizStarted === "not_started") return;
+        if (quizStatus === "not_started") return;
         if (currQuestion === "not_started") return;
         if (quizData?.questions.length === 0) return;
         if (quizData?.questions.length <= currQuestion) return;
@@ -105,17 +111,17 @@ const NewQuizAttempt = () => {
         if (quizData?.questions.length > 0) {
             setCurrentQuestion(0);
             // set quiz state: started
-            setQuizStarted("started")
+            setQuizStatus("started")
         } else {
             // show no question page on empty question in quiz
-            setQuizStarted("no_questions")
+            setQuizStatus("no_questions")
         }
     }
 
     // go to next question 
     const goToNextQuestion = () => {
         if (currQuestion === quizData?.questions.length - 1) {
-            setQuizStarted("ended")
+            setQuizStatus("ended")
             submitQuizAnswer(singleAnswer);
             return;
         }
@@ -227,9 +233,12 @@ const NewQuizAttempt = () => {
     }
 
     return (
-        <ItemViewWrapper validAccess={enrollmentData.enrollment && enrollmentData.preview_available} >
-            <div className='quizstarted'>
-                {quizStarted === "started" && (
+        <ItemViewWrapper
+            loading={isLoading}
+            validAccess={enrollmentData.enrollment && enrollmentData.preview_available}
+        >
+            <div className='quizStartContainer'>
+                {quizStatus === "started" && (
                     <div className='SingleQuestion'>
                         <div className='questionMeta'>
                             <p>Question No: {Number(currQuestion) + 1}/{quizData?.questions.length}</p>
@@ -461,33 +470,33 @@ const NewQuizAttempt = () => {
                 )}
 
                 {/* quiz not started page  */}
-                {quizStarted === "not_started" && (
-                    <div className='w-full h-full flex justify-center items-center'>
-                        <div className='quizStart'>
-                            <div className='quizStart1'>
-                                <p>Quiz</p>
-                                <p className='quizparagraph'>Choose the correct verb:</p>
-                            </div>
-                            <div className='quizparagraph1'>
-                                <p>Questions: <span>{quizData?.questions.length}</span></p>
-                                <p>Total Attempted: <span>0/1</span></p>
-                                <p>Passing Grade <span>({quizData?.passing_mark}%)</span></p>
-                            </div>
-                            <div className='buttonicons'>
-                                <button className='stratquizbutton' onClick={() => handleStartQuiz()}>Start Quiz</button>
-                                <button className='stratquizbutton'>Skip Quiz</button>
-                            </div>
+                {quizStatus === "not_started" && (
+                    <div className='quizStartPage'>
+                        <div className='quizStartHead'>
+                            <p>Quiz</p>
+                            <p className='quizParagraph'>{quizData?.quiz_title}</p>
                         </div>
+                        <div className='quizStartDetail'>
+                            <p>Questions: <span>{quizData?.questions.length}</span></p>
+                            <p>Total Attempted: <span>0/1</span></p>
+                            <p>Passing Grade: <span>{quizData?.passing_mark}%</span></p>
+                        </div>
+                        <button className='stratQuizBtn' onClick={() => handleStartQuiz()}>
+                            <span>Start Quiz</span>
+                            <div>
+                                <AiOutlineDoubleRight size={18} />
+                            </div>
+                        </button>
                     </div>
                 )}
 
                 {/* when no question is there in quiz  */}
-                {quizStarted === "no_questions" && (
+                {quizStatus === "no_questions" && (
                     <div className='quizInfoText'>No Question Found In this Quiz</div>
                 )}
 
                 {/* quiz ended  */}
-                {quizStarted === "ended" && (
+                {quizStatus === "ended" && (
                     <div className='quizInfoText'>Quiz has been successfully Submitted.</div>
                 )}
 

@@ -1,5 +1,5 @@
 // export const API = "/api/v1";
 
 // export const API = "http://localhost:4000/api/v1";
-export const API = "http://192.168.1.15:4000/api/v1";
+export const API = "http://192.168.1.10:4000/api/v1";
 export const FRONTEND_DOMAIN = "http://localhost:3000"

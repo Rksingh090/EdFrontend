@@ -2,11 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { API } from '../../constant';
-import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 import { IconQuestionType } from '../../components/utils/IconQuestionType';
 import ItemViewWrapper from './ItemViewWrapper';
 
+import { MdOutlineKeyboardBackspace, MdOutlineQuiz } from 'react-icons/md';
+import { IoTimeOutline } from 'react-icons/io5';
+import { BsQuestionSquare } from 'react-icons/bs';
+
+
 const QuizAttemptDetails = () => {
+
+    const [isLoading, setIsLoading] = useState(false)
 
     const [quizData, setQuizData] = useState({});
     const [quizAttemptData, setQuizAttemptData] = useState({});
@@ -18,7 +24,7 @@ const QuizAttemptDetails = () => {
     useEffect(() => {
         const getQuizAttempts = async (quizAttemptId) => {
             try {
-
+                setIsLoading(true)
                 axios.get(`${API}/quiz-attempts/id/${quizAttemptId}`, {
                     headers: {
                         token: localStorage.getItem("token")
@@ -32,6 +38,9 @@ const QuizAttemptDetails = () => {
                             setQuizData(quizMeta)
                         }
                     })
+                    .finally(() => {
+                        setIsLoading(false)
+                    })
             } catch (error) {
                 console.warn(error);
             }
@@ -41,26 +50,32 @@ const QuizAttemptDetails = () => {
     }, [quiz_attempt_id])
 
     return (
-        <ItemViewWrapper validAccess={isValidUser} >
+        <ItemViewWrapper
+            loading={isLoading}
+            validAccess={isValidUser}
+        >
+            <div className='QuizResultPage'>
+                <div className="QuizResultPageHeading">
 
-
-            <div className='w-[85%] py-4'>
-                <div className='courseConentPageQuiz'>
-                    <Link className='courseContentQApage'
+                    <Link
+                        className='courseBackBtn'
                         to={`/course/${course_id}/${course_slug}/quiz/result/${quizData?._id}`}
                     >
-                        <MdOutlineKeyboardBackspace size={22} /> <span>Back</span>
+                        <MdOutlineKeyboardBackspace size={20} />
+                        <span>Back</span>
                     </Link>
-                    <div className='quizPageTitle'>
-                        <p>Quiz</p>
-                        <h2 className='quiz1'>{quizData?.quiz_title}</h2>
+                    <div className='middle'>
+                        <BsQuestionSquare size={18} />
+                        <h2 className='QuizResultPageTitle'>{quizData?.quiz_title}</h2>
                     </div>
-                    <p className='flex flex-row gap-1'>
-                        <span>Quiz Time:</span>
-                        <span>{quizData?.time_limit?.limit}</span>
-                        <span className='capitalize'>{quizData?.time_limit?.limit_type}</span>
+                    <p className='quizDetailsTiming'>
+                        <IoTimeOutline size={20} />
+                        <span className='capitalCase'>{quizData?.time_limit?.limit} {quizData?.time_limit?.limit_type}</span>
                     </p>
-                    <table className="styled-table">
+                </div>
+                <div className="responsiveTable quizDetailsTables">
+
+                    <table className="styled-table desktopSize">
                         <thead>
                             <tr className='quizAttemptTheadRow'>
                                 <th><p>Date</p></th>
@@ -106,7 +121,7 @@ const QuizAttemptDetails = () => {
                         </tbody>
                     </table>
 
-                    <table className="styled-table mt-4">
+                    <table className="styled-table desktopSize">
                         <thead>
                             <tr className='quizAttemptTheadRow'>
                                 <th><p>No</p></th>

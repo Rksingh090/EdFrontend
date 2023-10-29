@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useMemo } from 'react'
 
 import { AiOutlineClockCircle, AiOutlineUp } from 'react-icons/ai';
 import { AiOutlineInfoCircle, AiOutlineMenu } from 'react-icons/ai';
-import { GoPrimitiveDot } from 'react-icons/go';
+import { PiDotOutlineDuotone } from 'react-icons/pi';
 import { MdSlowMotionVideo } from 'react-icons/md';
 import { TbDeviceLandlinePhone, TbEdit, TbUpload } from 'react-icons/tb';
 import { RiDeleteBin6Line } from 'react-icons/ri';
@@ -1598,31 +1598,31 @@ const EditCourseBuilder = () => {
 
                             <div className='p-[20px] flex flex-col text-[#50545d] list-none gap-4'>
                                 <div className='courseUploadTip '>
-                                    <GoPrimitiveDot className='text-[#3e64de]' />
+                                    <PiDotOutlineDuotone className='text-[#3e64de]' />
                                     <p>Set the Course Price option or make it free.</p>
                                 </div>
                                 <div className='courseUploadTip '>
-                                    <GoPrimitiveDot className='text-[#3e64de]' />
+                                    <PiDotOutlineDuotone className='text-[#3e64de]' />
                                     <p>Standard size for the course thumbnail is 700x430.</p>
                                 </div>
                                 <div className='courseUploadTip '>
-                                    <GoPrimitiveDot className='text-[#3e64de]' />
+                                    <PiDotOutlineDuotone className='text-[#3e64de]' />
                                     <p>Video section controls the course overview video.</p>
                                 </div>
                                 <div className='courseUploadTip '>
-                                    <GoPrimitiveDot className='text-[#3e64de]' />
+                                    <PiDotOutlineDuotone className='text-[#3e64de]' />
                                     <p>Course Builder is where you create & organize a course.</p>
                                 </div>
                                 <div className='courseUploadTip '>
-                                    <GoPrimitiveDot className='text-[#3e64de]' />
+                                    <PiDotOutlineDuotone className='text-[#3e64de]' />
                                     <p>Add Topics in the Course Builder section to create lessons, quizzes, and assignments.</p>
                                 </div>
                                 <div className='courseUploadTip '>
-                                    <GoPrimitiveDot className='text-[#3e64de]' />
+                                    <PiDotOutlineDuotone className='text-[#3e64de]' />
                                     <p>Prerequisites refers to the fundamental courses to complete before taking this particular course..</p>
                                 </div>
                                 <div className='courseUploadTip '>
-                                    <GoPrimitiveDot className='text-[#3e64de]' />
+                                    <PiDotOutlineDuotone className='text-[#3e64de]' />
                                     <p className='p-0 m-0'>Information from the Additional Data section shows up on the course single page.</p>
                                 </div>
                             </div>

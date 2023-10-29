@@ -84,8 +84,13 @@
     border-bottom: 2px solid transparent;
     margin-bottom: -1px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
+}
+
+.tabMenu.roundSM {
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .tabMenu>p.flexed {
@@ -115,7 +120,7 @@
 }
 
 .TSProfileHeading {
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -153,7 +158,7 @@
 
 
 .TSProfileImage>h4.name {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -166,7 +171,7 @@
 }
 
 .TSProfileCData>h4 {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -181,7 +186,7 @@
 }
 
 .TSProfileSkills>.title {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -195,7 +200,7 @@
 
 .profileSkillsBadges>.item {
     background-color: white;
-    font-size: 16px;
+    font-size: 12px;
     border-radius: 50px;
     padding: 8px 20px;
 }
@@ -207,14 +212,14 @@
 }
 
 .TSProfileBio>p {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 
 
 /* teacher quiz page  */
 .quizAttmptInfo>.attemptTime {
-    font-size: 14px;
+    font-size: 12px;
     color: rgb(153, 153, 153);
 }
 
@@ -226,14 +231,14 @@
 
 .quizAttmptInfo>.student {
     margin-top: 5px;
-    font-size: 16px;
+    font-size: 12px;
     color: #222;
     font-weight: 500;
 }
 
 .quizAttmptInfo>.student>span {
     margin-top: 5px;
-    font-size: 16px;
+    font-size: 12px;
     color: #777;
     font-weight: 400;
 }
@@ -254,7 +259,7 @@
 }
 
 .quizAttmptInfo>.time {
-    font-size: 14px;
+    font-size: 12px;
     color: gray;
 }
 
@@ -280,125 +285,157 @@
 }
 
 /* settings page  */
-.mobileResponsive {
-    width: 70%;
-}
-
-.profileAndCover {
-    position: relative;
-    height: 380px;
-}
-
-.coverPhoto {
+.TSSettingPage {
     width: 100%;
-    height: 100%;
-    border-radius: 15px;
+    padding: 20px;
 }
 
-.coverUploadBtn {
-    background-color: var(--main);
+
+/* setting page - inputs & input  groups  */
+.STPFormGroup {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: flex-start;
+    padding-top: 30px;
+}
+
+.TwoInputGridGroup {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
-    color: white;
-    padding: 10px;
-    font-family: var(--poppins);
-    border-radius: 5px;
-    cursor: pointer;
+}
+
+.SPTInputGroup {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.SPTInputGroup>.label {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+
+
+/* profile tab - setting page  */
+
+
+.SettingsProfileTab {
+    padding-top: 20px;
+}
+
+
+.SPTProfileUploadContainer {
+    width: 100%;
+    background-color: var(--adminMainBackground);
+    border-radius: 10px;
+    display: grid;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+    grid-template-columns: 230px 1fr;
 }
 
 .profilePhoto {
-    position: absolute;
-    top: 60%;
-    left: 40px;
-    width: 150px;
-    height: 150px;
-    background-color: rgb(224, 224, 224);
-    transform: translate(0, -50%);
-    border-radius: 9000px;
+    padding: 5px;
+    width: 100%;
+    height: 230px;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
+    border-radius: 10px;
 }
 
 .profilePhoto>img {
     height: 100%;
-}
-
-.profileUploadIcon {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 27%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.178);
-    cursor: pointer;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-.profileUploadIcon:hover {
-    background-color: rgba(0, 0, 0, 0.479);
-}
-
-.profileMenu {
-    position: absolute;
-    top: 82%;
-    left: 40px;
-    min-width: 150px;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(59, 59, 59);
+.profileMenuBtns {
     border-radius: 5px;
+    width: 100%;
+    box-shadow: var(--adminSmallShadow);
+    background-color: var(--monochrome);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     overflow: hidden;
 }
 
-.profileMenu>div {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 5px 10px;
-    gap: 10px;
-    color: white;
-    cursor: pointer;
-
-}
-
-.profileMenu>div:hover {
-    background-color: gray;
-}
-
-.coverUploadBtn {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-}
-
-.coverDeleteBTN {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    padding: 10px;
+.actionButton {
+    padding: 10px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(160, 160, 160, 0.5);
-    border-radius: 1000px;
+    transition: all .3s ease;
     cursor: pointer;
 }
 
+.actionButton.upload:hover {
+    color: var(--monochrome);
+    background-color: var(--info);
+}
+
+.actionButton.delete:hover {
+    color: var(--monochrome);
+    background-color: var(--error);
+}
+
+.coverImgDiv {
+    padding: 10px;
+    width: 100%;
+    height: 230px;
+    background-color: white;
+    box-shadow: var(--adminSmallShadow);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.coverImgDiv>img {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.uploadCoverBtn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.coverMenuBtn {
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: var(--adminSmallShadow);
+    background-color: var(--monochrome);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+}
+
 /* certificate upload area - setting page */
+.certificateHeading {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
 .certificateUploadArea {
     display: grid;
     grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
     border-radius: 10px;
     height: 220px;
-    background-color: #eff3f7;
+    background-color: var(--adminMainBackground);
     padding: 10px;
     gap: 20px;
     font-family: var(--poppins);
@@ -455,12 +492,13 @@
     font-family: var(--poppins);
     color: white;
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 16px;
     border-radius: 5px;
 }
 
 /* skils - setting page */
 .skillsInputs {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 15px;
@@ -468,7 +506,7 @@
 
 .skillsInputs>div {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 150px;
     column-gap: 15px;
 }
 
@@ -486,43 +524,85 @@
     cursor: pointer;
 }
 
-.skills {
+.SettingSkills {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    padding: 16px 0;
 }
 
-.skills .skillItem {
+.SettingSkills .SettingSkillItem {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 4px 10px;
-    background-color: var(--main);
+    background-color: var(--adminMainBackground);
     color: white;
     border-radius: 5px;
     ;
 }
 
-.skillExperiance {
+.SettingSkillItem>.skillName {
+    color: rgb(3, 3, 3);
     font-size: 12px;
-    color: rgb(189, 189, 189);
-}
-
-.skillName {
-    font-size: 14px;
-    color: white;
-    font-family: sans-serif;
     text-transform: capitalize;
+    font-family: "Poppins";
+    font-weight: 600;
+}
+
+.SettingSkillItem>.skillExperiance {
+    font-size: 12px;
+    color: rgb(56, 56, 56);
+}
+
+.GrayedInput {
+    width: 100%;
+    background-color: var(--adminMainBackground);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.GrayedInput.verticalExtend {
+    resize: vertical;
 }
 
 
-@media only screen and (max-width: 1600px) {
+/* password tab - settings page  */
+.STPPasswordTab {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+    max-width: 600px;
+    width: 100%;
+}
 
-    /* stetting page  */
-    .mobileResponsive {
-        width: 80%;
-    }
+.STPChangePassword {
+    padding: 10px;
+    background-color: var(--main);
+    color: white;
+    border-radius: 5px;
+}
+
+/* social link tab - settings page  */
+.STPLinkTab {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px 0px;
+    align-items: flex-start;
+    max-width: 600px;
+    width: 100%;
+}
+
+.STPLinkTabHeading {
+    font-size: 18px;
+    font-weight: 500;
 }
 
 @media only screen and (max-width: 1400px) {
@@ -532,13 +612,6 @@
         width: 80%;
         height: 80%;
     }
-
-
-    /* stetting page  */
-    .mobileResponsive {
-        width: 90%;
-    }
-
 }
 
 
@@ -584,6 +657,6 @@
 
 @media only screen and (max-width: 500px) {
     .tablists>p {
-        font-size: 14px;
+        font-size: 12px;
     }
 }

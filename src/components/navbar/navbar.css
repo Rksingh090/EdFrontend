@@ -1,9 +1,8 @@
 .navbar {
     width: 100%;
     max-width: 1400px;
-    height: 80px;
+    height: var(--navbarHeight);
     align-items: center;
-    padding: 10px 20px;
     z-index: 150;
     display: grid;
     grid-template-columns: 200px 1fr 100px;
@@ -26,13 +25,15 @@
 }
 
 .mainNavLogo {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 500;
 }
 
 .navbarMainContainer.whiteBG {
     box-shadow: 0px 0px 10px rgb(0, 0, 0, .2);
     background-color: white;
+    position: relative;
+    z-index: 9000;
 }
 
 .navbarMainContainer.transparentBG {
@@ -71,7 +72,7 @@
 
 .navlinks>li>a,
 .navlinks>li>span {
-    font-size: 20px;
+    font-size: 16px;
     padding: 7px 15px;
     border-radius: 5px;
     cursor: pointer;
@@ -92,20 +93,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 0 0 30px;
     position: relative;
+    height: 60px;
 }
 
 .navAvatarImg {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 60px;
-    height: 60px;
+    height: 80%;
+    aspect-ratio: 1;
     overflow: hidden;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 1px 2px 4px #a9a9a9;
 }
 
 .navAvatarImg>img {
@@ -118,8 +118,8 @@
     position: absolute;
     top: 80px;
     right: 0;
-    width: 700px;
-    min-height: 300px;
+    width: 600px;
+    height: 250px;
     background-color: white;
     display: grid;
     grid-template-columns: minmax(50px, 2fr) minmax(100px, 3fr);
@@ -130,7 +130,8 @@
 .createNewCourseBtn {
     height: 100%;
     width: 100%;
-    background: linear-gradient(318.61deg, #686ae3, #6e2b89 96.92%), #fff;
+    background: linear-gradient(318.61deg, var(--optionBG), var(--main) 96.92%), #fff;
+    /* background: linear-gradient(318.61deg, #686ae3, #6e2b89 96.92%), #fff; */
 }
 
 .newCourseBtn {
@@ -156,13 +157,13 @@
 
 .newCourseBtn>div>h2 {
     color: white;
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 500;
 }
 
 .newCourseBtn>div>p {
     color: white;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .newCourseBtn>div>button,
@@ -198,7 +199,7 @@
 .profileLinks>div>a,
 .profileLinks>div>button {
     padding: 8px 0;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: 500;
     width: min-content;
     white-space: nowrap;
@@ -257,7 +258,7 @@
 }
 
 .mobileNavHeading>.heading {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 
@@ -287,7 +288,7 @@
 .mob-navlinks>li>a {
     padding: 0 20px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 12px;
     color: #222;
     width: 100%;
     height: 100%;
@@ -412,7 +413,7 @@
     background-color: white;
     left: -15px;
     color: black;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 400;
     box-shadow: 2px 2px 5px #0000001f;
     top: 50px;
@@ -511,25 +512,25 @@
     padding: 7px 25px;
     background-color: var(--main);
     color: white;
-    font-size: 20px;
+    font-size: 16px;
     border-radius: 5px;
 }
 
 
-@media only screen and (max-width: 1401px) {
+@media only screen and (max-width: 1440px) {
     .navbar {
-        padding: 10px 20px;
+        padding: 0 20px;
     }
 }
 
 @media only screen and (max-width: 800px) {
     .navbar {
-        padding: 10px;
+        padding: 0 10px;
         grid-template-columns: 10fr 120px 80px;
     }
 
     .companyTitle {
-        font-size: 28px;
+        font-size: 26px;
         font-weight: bold;
     }
 
@@ -580,8 +581,8 @@
     }
 
     .navProfileMenus {
-        right: -20px;
-        width: 450px;
+        height: auto;
+        width: 300px;
         grid-template-columns: minmax(100px, 1fr);
     }
 
@@ -595,11 +596,11 @@
 @media only screen and (max-width: 600px) {
 
     .companyTitle {
-        font-size: 22px;
+        font-size: 16px;
     }
 
     .navbar {
-        padding: 10px;
+        padding: 0 10px;
         grid-template-columns: 1fr 70px 60px;
     }
 
@@ -608,8 +609,8 @@
     }
 
     .navProfileMenus {
-        right: -30px;
-        width: 400px;
+        right: -50px;
+        width: 300px;
         grid-template-columns: minmax(100px, 1fr);
     }
 

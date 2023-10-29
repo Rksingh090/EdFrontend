@@ -7,7 +7,7 @@
 }
 
 .headingText {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -56,7 +56,7 @@
 
 .courseItem .courseTitle {
     display: block;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     font-family: var(--poppins);
     max-height: 1.33em;
@@ -81,7 +81,7 @@
 }
 
 .courseActions>div>svg {
-    font-size: 20px;
+    font-size: 16px;
     color: rgb(82, 82, 82);
 }
 

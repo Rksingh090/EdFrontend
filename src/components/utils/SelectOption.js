@@ -1,12 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AiFillCaretDown } from 'react-icons/ai'
 
-const SelectOption = ({ value, onChange, label, options, maxHeight, textField, valueField, style, selectStyle }) => {
+const SelectOption = ({ classes, value, onChange, label, options, maxHeight, textField, valueField, style, selectStyle }) => {
     const [showCategoryOptions, setShowCategoryOptions] = useState(false)
+
+    const selectRef = useRef()
     const optionRef = useRef()
 
+
     const getText = (val) => {
-        let getOp = options.find((op) => walk(op, valueField) === value);
+        let getOp = options.find((op) => walk(op, valueField) === val);
         const v = walk(getOp, textField);
         return !v ? onChange ? onChange("") : "" : v
     }
@@ -24,16 +27,55 @@ const SelectOption = ({ value, onChange, label, options, maxHeight, textField, v
 
     useEffect(() => {
         if (optionRef && optionRef?.current) {
-            optionRef?.current.scrollIntoView({ behavior: 'instant' });
+            optionRef?.current.scrollIntoView({ behavior: 'instant', block: 'nearest', inline: 'start' });
         }
     }, [showCategoryOptions])
 
+    useEffect(() => {
+        const closeOptions = (event) => {
+            if (selectRef.current.contains(event.target)) {
+                // Click was inside the component, do nothing
+                console.log("inside");
+                return;
+            }
+
+            setShowCategoryOptions(false);
+        };
+
+        // Add an event listener to handle clicks outside of the component
+        document.addEventListener('click', closeOptions);
+
+        // Remove the event listener when the component unmounts
+        return () => {
+            document.removeEventListener('click', closeOptions);
+        };
+    }, []);
+
+
+    const toggleOptions = (event) => {
+        event.stopPropagation(); // Prevent the document click event from immediately closing the options
+        setShowCategoryOptions((prev) => !prev);
+    };
+
+    const handleSelectClick = (event) => {
+        event.stopPropagation(); // Prevent the document click event from immediately closing the options
+        console.log("Clicked");
+        setShowCategoryOptions(true)
+    };
+
     return (
-        <button className='customSelect' style={selectStyle} onBlur={() => setShowCategoryOptions(false)}>
+        <button
+            className={`customSelect ${classes}`}
+            style={selectStyle}
+            onClick={handleSelectClick}
+            ref={selectRef}
+        // onBlur={() => setShowCategoryOptions(false)}
+        // onMouseOutCapture={() => setShowCategoryOptions(false)}
+        >
             <div
                 style={style}
                 className='customSelectSelected'
-                onClick={() => setShowCategoryOptions(prev => !prev)}
+                onClick={toggleOptions}
             >
                 <label>{value ? getText(value) : label}</label>
                 <AiFillCaretDown />
@@ -52,7 +94,8 @@ const SelectOption = ({ value, onChange, label, options, maxHeight, textField, v
                                     key={opValue}
                                     className={`option ${opValue === value ? "selected" : ""}`}
                                     ref={opValue === value ? optionRef : null}
-                                    onClick={() => {
+                                    onClick={(e) => {
+                                        e.stopPropagation()
                                         setShowCategoryOptions(false)
                                         if (opValue === value) {
                                             onChange && onChange("")

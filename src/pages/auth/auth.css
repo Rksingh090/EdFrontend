@@ -55,9 +55,14 @@
     align-items: center;
     width: 100%;
     box-shadow: 1px 1px 8px #d9d9d9;
-    border-radius: 10px;
-    border: .4px solid #e9e9e9;
+    border-radius: 5px;
+    /* border: .4px solid #e9e9e9; */
     position: relative;
+}
+
+.inputDiv.grayed {
+    box-shadow: none;
+    background-color: var(--adminMainBackground);
 }
 
 .inputDiv>svg {
@@ -67,7 +72,7 @@
 
 .inputDiv>input {
     background-color: transparent;
-    font-size: 18px;
+    font-size: 16px;
     border: none;
     outline: none;
     padding: 15px 40px 15px 15px;
@@ -76,8 +81,16 @@
     color: black;
 }
 
+.inputDiv.psm>input {
+    padding: 10px 10px;
+}
+
 .inputDiv>input::placeholder {
     color: rgb(196, 196, 196);
+}
+
+.inputDiv.grayed>input::placeholder {
+    color: rgb(105, 105, 105);
 }
 
 .inputDiv>input:-internal-autofill-selected {
@@ -122,7 +135,7 @@
     border-radius: 10px;
     outline: none;
     border: none;
-    font-size: 22px;
+    font-size: 16px;
     padding: 10px;
 }
 
@@ -161,7 +174,7 @@
 }
 
 .loginButtons>button>span {
-    font-size: 20px;
+    font-size: 16px;
     color: inherit;
 }
 
@@ -231,7 +244,7 @@
     width: 100%;
     padding: 12px 5px;
     outline: none;
-    font-size: 18px;
+    font-size: 16px;
     color: black;
     font-weight: 400;
 }
@@ -255,7 +268,7 @@
 }
 
 .termsCondition>label {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .registerButton {
@@ -279,7 +292,7 @@
 }
 
 .alternateText {
-    font-size: 16px;
+    font-size: 12px;
     color: rgb(122, 122, 122);
     font-weight: 500;
     margin: 15px 0;
@@ -475,7 +488,7 @@
     font-family: var(--poppins);
     color: var(--main);
     font-weight: 600;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .otpVerifyInput {
@@ -501,7 +514,7 @@
 .otpAndResend>p {
     color: var(--main);
     font-family: var(--poppins);
-    font-size: 16px;
+    font-size: 12px;
     cursor: pointer;
 }
 

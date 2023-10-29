@@ -27,7 +27,7 @@
 
 .orderSummary {
     font-family: var(--poppins);
-    font-size: 26px;
+    font-size: 16px;
     color: #111;
     font-weight: 600;
 }
@@ -44,7 +44,7 @@
 
 .itemColBoxHeader {
     font-family: var(--poppins);
-    font-size: 20px;
+    font-size: 16px;
     color: #111;
     font-weight: 600;
     margin-bottom: 10px;
@@ -78,13 +78,14 @@
 
 .itemsColBox>.itemBox>.metaData .title {
     font-family: var(--poppins);
-    font-size: 18px;
+    font-size: 16px;
     color: #111;
     font-weight: 500;
 }
+
 .itemsColBox>.itemBox>.metaData .subTitle {
     font-family: var(--poppins);
-    font-size: 14px;
+    font-size: 12px;
     color: #555;
 }
 
@@ -101,14 +102,14 @@
 .itemsColBox .itemPrice {
     font-family: var(--poppins);
     color: #000;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     display: flex;
     flex-direction: row;
 }
 
 .itemsColBox .itemPrice.discount {
-    font-size: 16px;
+    font-size: 12px;
     color: #686868;
     text-decoration: line-through;
 }
@@ -172,7 +173,7 @@
 }
 
 .paymentSummaryTitle {
-    font-size: 18px;
+    font-size: 16px;
     font-family: var(--poppins);
     color: #333;
     font-weight: 600;
@@ -204,7 +205,7 @@
 .titleWithPrice.bigBoldText {
     color: #111;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 
@@ -237,12 +238,14 @@
 }
 
 .appliedCoupon .title {
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
 }
+
 .appliedCoupon .discount {
     font-size: 13px;
 }
+
 .appliedCoupon .removeCoupon {
     color: var(--main);
     cursor: pointer;
@@ -250,7 +253,7 @@
 
 
 /* transaction status page  */
-.transactionPage{
+.transactionPage {
     width: 100%;
     height: 100vh;
     background-color: #EAEEF3;
@@ -276,6 +279,7 @@
     align-items: center;
     justify-content: center;
 }
+
 .txnStatusLogo.success {
     color: rgb(54, 151, 54);
 }
@@ -287,12 +291,13 @@
 .txnStatusLogo.cancel {
     color: rgb(136, 136, 136);
 }
+
 .txnStatusLogo.aborted {
     color: rgb(137, 229, 206);
 }
 
 .txnStatusHeader {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 500;
     margin: 10px 0;
     font-family: var(--poppins);
@@ -305,7 +310,8 @@
     align-items: center;
     padding: 20px 0;
 }
-.txnDataGrid > .twoColGrid {
+
+.txnDataGrid>.twoColGrid {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -317,16 +323,18 @@
     gap: 20px;
     overflow: hidden;
 }
-.txnDataGrid > .twoColGrid.lastItem {
+
+.txnDataGrid>.twoColGrid.lastItem {
     border: none;
 }
 
-.txnDataGrid > .twoColGrid > strong {
+.txnDataGrid>.twoColGrid>strong {
     color: #333;
     text-overflow: ellipsis;
     max-width: 50%;
 }
-.txnDataGrid > .twoColGrid > p {
+
+.txnDataGrid>.twoColGrid>p {
     color: #111;
     max-width: 50%;
     overflow: hidden;
@@ -343,7 +351,7 @@
     gap: 20px;
 }
 
-.txnPaymentsLink > .gotoHome {
+.txnPaymentsLink>.gotoHome {
     color: var(--main);
     border-bottom: 1px solid var(--main);
     display: flex;
@@ -352,8 +360,9 @@
     gap: 5px;
     padding: 2px 0;
 }
-.txnPaymentsLink > .gotoHome > span {
+
+.txnPaymentsLink>.gotoHome>span {
     line-height: 18px;
-    font-size: 14px;
+    font-size: 12px;
     font-family: var(--poppins);
 }

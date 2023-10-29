@@ -60,14 +60,26 @@
 
 :root {
     /* navbar config  */
-    --navbarWidth: 80px;
-    --bodyHeight: calc(100vh - 80px);
+    --navbarHeight: 65px;
+    --bodyHeight: calc(100vh - var(--navbarHeight));
+
+    /* admin nav config  */
+
+    /* course content nav config  */
+    --courseContentNavHeight: 60px;
+    --courseContentBodyHeight: calc(100vh - var(--courseContentNavHeight));
+
+    /* action colors  */
+    --error: #f11f42;
+    --warning: #d29f1c;
+    --info: rgb(28, 143, 210);
+
 
     /* for theme  */
     --mainFont: "Poppins", sans-serif;
     --main: #ff39ad;
     --secondary: #ff92d1;
-    --lightBG: #ffe1ff;
+    --lightBG: #ffd0e8;
     --optionBG: #ff7bc8;
     --poppins: "Poppins", sans-serif;
     --grayPrimary: #444;
@@ -81,10 +93,10 @@
     --mainText: #000;
     --bgText: #000000;
     --fontXS: 12px;
-    --fontSM: 14px;
-    --fontMD: 16px;
+    --fontSM: 12px;
+    --fontMD: 12px;
     --fontLG: 20px;
-    --fontXL: 24px;
+    --fontXL: 22px;
     --monochrome: #fff;
     --fadeText: #808080;
 
@@ -252,13 +264,13 @@ table.bordered tr:last-child td:last-child {
 }
 
 .infoText.flexed.sm>div>svg {
-    height: 22px;
-    width: 14px;
+    height: 20px;
+    width: 12px;
 }
 
 .infoText.flexed.xs>div>svg {
     height: 20px;
-    width: 14px;
+    width: 12px;
 }
 
 .infoText.xs {
@@ -270,12 +282,26 @@ table.bordered tr:last-child td:last-child {
 }
 
 .infoText.md {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 /* rotate  */
 .rotateZ180deg {
     transform: rotateZ(180deg);
+}
+
+.spin360 {
+    animation: spin360 1s linear infinite normal;
+}
+
+@keyframes spin360 {
+    from {
+        transform: rotateZ(0deg)
+    }
+
+    to {
+        transform: rotateZ(360deg)
+    }
 }
 
 .noNumberStyle::-webkit-inner-spin-button,

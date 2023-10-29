@@ -66,7 +66,7 @@
     border-radius: 5px;
     background-color: var(--grayPrimary);
     font-family: var(--poppins);
-    font-size: 14px;
+    font-size: 12px;
 }
 
 
@@ -155,7 +155,8 @@
 
 /* course info  */
 .courseDescriptionRQ .ql-editor {
-    height: 250px;
+    min-height: 250px;
+    min-height: 400px;
 }
 
 .courseDescriptionRQ .ql-toolbar.ql-snow {
@@ -277,7 +278,7 @@
 }
 
 .CBOneItem>.orderAndTitle>p {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 
@@ -294,7 +295,7 @@
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    padding: 7px 14px;
+    padding: 7px 12px;
     border-radius: 5px;
     border: 1px solid var(--main);
     color: var(--main);
@@ -302,7 +303,7 @@
 }
 
 .CBItemAddBtn>p {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .CBItemAddBtn:hover {
@@ -357,7 +358,7 @@
 .courseSettingMenu>div {
     display: flex;
     align-items: center;
-    font-size: 16px;
+    font-size: 12px;
     padding: 10px;
     gap: 10px;
     cursor: pointer;
@@ -545,7 +546,7 @@
 }
 
 .topicHeading>h2 {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -657,7 +658,7 @@
 }
 
 .quizHeadText {
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 500;
     color: #333;
 }
@@ -696,7 +697,7 @@
     aspect-ratio: 1;
     border-radius: 50px;
     background-color: rgb(214, 214, 214);
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
 }
 
@@ -989,7 +990,7 @@
 }
 
 .advanceSettingH4 {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .gearIcon {
@@ -1001,7 +1002,7 @@
 }
 
 .gearIcon>svg {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .arrowDown {
@@ -1010,7 +1011,7 @@
 }
 
 .arrowDown>svg {
-    font-size: 22px;
+    font-size: 16px;
 }
 
 .advContextMenu {
@@ -1162,7 +1163,7 @@
 }
 
 .trueFasleRadio>div>input {
-    width: 16px;
+    width: 12px;
     aspect-ratio: 1;
 }
 
@@ -1293,7 +1294,7 @@
 }
 
 .imgGrid2>p {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .imgGrid2>button {
@@ -1320,12 +1321,12 @@
 }
 
 .optionFormatRadios>div>input {
-    width: 16px;
+    width: 12px;
     aspect-ratio: 1;
 }
 
 .optionFormatRadios>div>label {
-    font-size: 16px;
+    font-size: 12px;
     color: #303030;
     font-weight: 500;
 }
@@ -1395,7 +1396,7 @@
 
 .assignmentFormHeading {
     font-weight: 500;
-    font-size: 22px;
+    font-size: 16px;
 }
 
 .assignmentFormInput {
@@ -1564,7 +1565,7 @@ textarea.assignmentFormInput {
 
 .infoIconText>svg {
     min-width: 20px;
-    font-size: 16px;
+    font-size: 12px;
     color: rgb(124, 124, 124);
 }
 
@@ -1618,7 +1619,7 @@ textarea.assignmentFormInput {
 
 .lessonFormHeading {
     font-weight: 500;
-    font-size: 22px;
+    font-size: 16px;
 }
 
 .featuredImage {
@@ -1692,7 +1693,7 @@ textarea.assignmentFormInput {
     color: white;
     margin-top: 15px;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .customSelectInput {
@@ -1798,7 +1799,7 @@ textarea.assignmentFormInput {
 }
 
 .playBackTimeGrid>.timeInput>label {
-    font-size: 14px;
+    font-size: 12px;
     padding: 0 5px;
 }
 
@@ -1807,7 +1808,7 @@ textarea.assignmentFormInput {
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    font-size: 16px;
+    font-size: 12px;
     background-color: var(--main);
     color: white;
     padding: 10px;
@@ -1853,7 +1854,7 @@ textarea.assignmentFormInput {
 }
 
 .OneRecordingMeta>h2 {
-    font-size: 16px;
+    font-size: 12px;
     color: var(--main);
     font-weight: 600;
     cursor: pointer;
@@ -1904,7 +1905,7 @@ textarea.assignmentFormInput {
 }
 
 .CBInputGroup>label {
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .CBFormInput {

@@ -21,6 +21,10 @@ import MyReactPlayer from '../../utils/MyReactPlayer';
 
 
 const LessonPage = () => {
+
+    const [isLoading, setIsLoading] = useState(false)
+
+
     const [lessonData, setLessonData] = useState({});
 
     const [currentTab, setCurrentTab] = useState("about")
@@ -39,6 +43,7 @@ const LessonPage = () => {
     useEffect(() => {
         const getLessonData = (lessonId) => {
             try {
+                setIsLoading(true)
                 axios.get(`${API}/lesson/id/${lessonId}`, {
                     headers: {
                         token: localStorage.getItem("token")
@@ -54,6 +59,9 @@ const LessonPage = () => {
                             setLessonData(res.data?.lesson)
                         }
                     })
+                    .finally(() => {
+                        setIsLoading(false)
+                    })
             } catch (error) {
                 console.log(error);
             }
@@ -67,7 +75,10 @@ const LessonPage = () => {
     }, []);
 
     return (
-        <ItemViewWrapper validAccess={enrollmentData.enrollment && enrollmentData.preview_available} >
+        <ItemViewWrapper
+            loading={isLoading}
+            validAccess={enrollmentData.enrollment && enrollmentData.preview_available}
+        >
             <div className='lessonPage'>
 
                 <VideoPlayer videoType={lessonData?.video_source_type} url={lessonData?.video_source} />
@@ -121,6 +132,7 @@ export const VideoPlayer = ({ url, videoType }) => {
                             controls
                             width={"100%"}
                             height={"100%"}
+                            playsinline
                         />
                     </div>
                 )
@@ -136,10 +148,13 @@ export const VideoPlayer = ({ url, videoType }) => {
             {
                 videoType === "external-url" && (
                     <div className='youtubeCustomStyle'>
+                        {/* <MyReactPlayer url={url} /> */}
+
                         <MediaPlayer
                             title="External Video"
                             src={url}
                             controls
+                            playsinline
                         >
                             <MediaOutlet />
                         </MediaPlayer>

@@ -1,25 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import '../styles/coursecontent.css';
 
 import { BsFillCheckCircleFill } from 'react-icons/bs';
-import { VscDeviceCameraVideo } from 'react-icons/vsc';
-import { AiOutlineClose, AiOutlineLeft } from 'react-icons/ai';
-import { AiOutlineUp } from 'react-icons/ai';
-import { IoVideocamOutline } from 'react-icons/io5';
+import { VscDeviceCameraVideo, VscLiveShare } from 'react-icons/vsc';
+import { AiOutlineClose } from 'react-icons/ai';
+import { FiArrowRight } from 'react-icons/fi';
 
 import IconByItemType from '../../components/utils/IconByItemType';
 
-import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 
 import axios from 'axios';
 import { API } from '../../constant';
-import { TbLivePhoto } from 'react-icons/tb';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleCourseContentSidebar } from '../../reducers/AppSettingReducer';
 
 
 const CourseContentBase = () => {
 
-    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const { course_slug, course_id } = useParams();
+
+    const pathname = window.location.pathname;
+
+    const { showCourseContentSidebar } = useSelector(({ appsetting }) => appsetting)
 
     const [courseContent, setCourseContent] = useState({});
     const [isEnrolled, setIsEnrolled] = useState(false)
@@ -65,14 +69,18 @@ const CourseContentBase = () => {
         getCourseBySlug();
     }, [course_slug, course_id])
 
+    const closeCourseContentSidebar = () => {
+        dispatch(toggleCourseContentSidebar())
+    }
+
     return (
-        <div className='courseContentPage'>
+        <div className={`courseContentPage ${showCourseContentSidebar ? "opened" : "collapsed"}`}>
 
 
             {/* side bar  */}
             <div className='courseContentSidebar'>
                 <div className='courseSidebarHeader'>
-                    <h1>Course Content</h1>
+                    <h2>&lt;EduTech /&gt;</h2>
                 </div>
                 <div className='courseTopicsContainer'>
 
@@ -86,54 +94,81 @@ const CourseContentBase = () => {
                                 const items = topic?.items;
 
                                 const totalItems = items?.filter((itemWID) => itemWID.item !== null).length;
-                                const totalHeight = Number(totalItems) * 50;
+                                const totalHeight = Number(totalItems) * 40;
 
                                 return (
-                                    <div className='flex flex-col' key={topic?._id}>
-                                        <div className='courseTopicItem' onClick={() => handleToggleTopics(topicWID?._id)}>
+                                    <div key={topic?._id} className='singleTopicsAndItems'>
+                                        <div
+                                            className={`courseTopicItem ${topicWID.showItems ? "active" : ""}`}
+                                            onClick={() => handleToggleTopics(topicWID?._id)}
+                                        >
                                             <h3 className='title'>{topic?.title}</h3>
                                             <p className='topicMetaContent'>
                                                 <span>0/{totalItems || 0}</span>
-                                                <AiOutlineUp />
                                             </p>
                                         </div>
                                         <div
                                             style={{
-                                                height: !topicWID.showItems ? `${totalHeight}px` : '0px'
+                                                height: topicWID.showItems ? `${totalHeight}px` : '0px'
                                             }}
-                                            className={`courseItems overflow-hidden`}>
-                                            {items
-                                                &&
-                                                items?.length > 0
-                                                && items
+                                            className={`courseItems`}>
+                                            {
+                                                items &&
+                                                items?.length > 0 &&
+                                                items
                                                     .filter((itemWID) => itemWID.item !== null)
                                                     .map((itemWID) => {
                                                         const item = itemWID.item;
                                                         const item_type = itemWID.item_type;
                                                         let title = "";
-                                                        let itemLink = "";
+
+                                                        let itemLink = `/course/${courseContent?._id}/${courseContent?.slug}`;
+                                                        let quizLink = "";
+                                                        let quizAttemptDetailsPage = "";
+
                                                         switch (item_type) {
                                                             case "Quiz":
                                                                 title = item?.quiz_title;
-                                                                itemLink = `/course/${courseContent?._id}/${courseContent?.slug}/quiz/result/${item?._id}`
+                                                                quizLink = itemLink + `/quiz/${item?._id}`
+                                                                quizAttemptDetailsPage = itemLink + `/quiz-attempt/${item?._id}`
+                                                                itemLink += `/quiz/result/${item?._id}`
                                                                 break;
                                                             case "Assignment":
-                                                                itemLink = `/course/${courseContent?._id}/${courseContent?.slug}/assignment/${item?._id}`
+                                                                itemLink += `/assignment/${item?._id}`
                                                                 title = item?.title;
                                                                 break;
                                                             case "Lesson":
-                                                                itemLink = `/course/${courseContent?._id}/${courseContent?.slug}/lesson/${item?._id}`
+                                                                itemLink += `/lesson/${item?._id}`
                                                                 title = item?.title;
                                                                 break;
                                                             default:
                                                                 break;
                                                         }
+
                                                         return (
-                                                            <Link className='courseItemLink' title={title} key={item?._id} to={itemLink}>
-                                                                <IconByItemType type={item_type} video_type={item?.video_source_type || "none"} />
+                                                            <Link
+                                                                key={item?._id}
+                                                                className={`
+                                                                courseItemLink 
+                                                                ${(
+                                                                        pathname === itemLink ||
+                                                                        pathname === quizLink ||
+                                                                        pathname === quizAttemptDetailsPage
+                                                                    ) ? "active" : ""}`}
+                                                                title={title}
+                                                                to={itemLink}
+                                                            >
+                                                                <IconByItemType
+                                                                    type={item_type}
+                                                                    size={16}
+                                                                    video_type={item?.video_source_type || "none"}
+                                                                />
                                                                 <p className='itemLinkTitle'>{title}</p>
                                                                 <p className='itemMetaContent'>
-                                                                    <span className='capitalize'>{item?.time_limit?.limit} {String(item?.time_limit?.limit_type).substring(0, 1)}</span>
+                                                                    <span className='capitalize'>
+                                                                        {item?.time_limit?.limit}
+                                                                        {String(item?.time_limit?.limit_type).substring(0, 1)}
+                                                                    </span>
                                                                     <BsFillCheckCircleFill className='courseicons' />
                                                                 </p>
                                                             </Link>
@@ -151,38 +186,28 @@ const CourseContentBase = () => {
             {/* main content area  */}
             <div>
                 <div className='mainContentArea'>
-                    <div className='contentAreatHeader'>
-                        <div className='contentHeaderBackBTN' onClick={() => navigate(-1)}>
-                            <AiOutlineLeft />
-                        </div>
-                        <p>{courseContent?.title}</p>
+                    <div className='contentHeaderBackBTN' onClick={closeCourseContentSidebar}>
+                        <FiArrowRight size={20} />
                     </div>
                     <div className='contentAreaCourseProgress'>
                         {
                             isEnrolled && (
-                                <Link to={`/course/${course_id}/${course_slug}/recordings`} className='goToRecordingsPage'>
-                                    <VscDeviceCameraVideo size={25} />
+                                <Link to={`/course/${course_id}/${course_slug}/recordings`} className='liveLogin'>
+                                    <VscDeviceCameraVideo size={20} />
                                     <span>Recording</span>
                                 </Link>
                             )
                         }
-                        {
-                            isEnrolled && !courseContent?.ms_team_link && (
-                                <Link to={"https://class.letslearn.live/login"} target='_blank' className='liveLogin'>
-                                    <TbLivePhoto size={25} />
-                                    <span>Login for Live Class</span>
-                                </Link>
-                            )
-                        }
+
                         {
                             isEnrolled && courseContent?.ms_team_link && (
                                 <Link to={courseContent?.ms_team_link} target='_blank' className='liveLogin'>
-                                    <IoVideocamOutline size={25} />
+                                    <VscLiveShare size={20} />
                                     <span>Join Live Class</span>
                                 </Link>
                             )
                         }
-                        <Link className='contentHeaderBackBTN' to={"/student/enrolled-courses"}>
+                        <Link className='courseCloseBtn' to={"/student/enrolled-courses"}>
                             <AiOutlineClose />
                         </Link>
 

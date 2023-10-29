@@ -7,7 +7,7 @@
 
 .displayDataView>button {
     padding: 10px 15px;
-    font-size: 18px;
+    font-size: 16px;
     font-family: var(--poppins);
     border-radius: 100px;
     color: #555;
@@ -63,19 +63,19 @@
 }
 
 .TeacherCard .teacherName {
-    font-size: 22px;
+    font-size: 16px;
     color: #333;
     font-weight: 600;
     font-family: var(--poppins);
 }
 
 .TeacherCard .teacherPText {
-    font-size: 14px;
+    font-size: 12px;
     font-family: var(--poppins);
 }
 
 .TeacherCard .mobileNo {
-    font-size: 16px;
+    font-size: 12px;
     font-family: var(--poppins);
     color: var(--main);
     margin: 10px 0;
@@ -107,7 +107,7 @@
 
 
 .multiInputheading {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--main);
 }
@@ -135,7 +135,7 @@
     padding: 5px 10px;
     background-color: #EAEAEF;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
 }
 
@@ -196,7 +196,7 @@
 .aboutTeacherSkills>p {
     font-weight: 500;
     font-family: var(--poppins);
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .skillItem {
@@ -210,7 +210,7 @@
 .skillItem>p {
     padding: 5px 10px;
     font-family: var(--poppins);
-    font-size: 14px;
+    font-size: 12px;
     background-color: var(--main);
     color: white;
     border-radius: 50px;
@@ -231,8 +231,9 @@
     flex-direction: column;
     gap: 2px;
 }
+
 .teacherCourseSubCat>.sub_cat {
-    font-size: 14px;
+    font-size: 12px;
     font-family: var(--poppins);
     color: #888;
 }

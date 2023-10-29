@@ -1,24 +1,27 @@
 import React from 'react'
-import { BsPatchQuestion } from 'react-icons/bs'
-import { GrNotes } from 'react-icons/gr'
-import { LuPlayCircle } from 'react-icons/lu'
-import { MdOutlineAssignment } from 'react-icons/md'
+import { AiOutlineYoutube } from 'react-icons/ai'
+import { BsQuestionSquare, BsReverseLayoutTextSidebarReverse } from 'react-icons/bs';
+import { LuPlayCircle } from 'react-icons/lu';
+import { CiStickyNote } from 'react-icons/ci';
 
 
-const IconByItemType = ({ type, video_type }) => {
-    return ( 
+const IconByItemType = ({ type, video_type, size }) => {
+    return (
         <div>
             {type === "Quiz" && (
-                <BsPatchQuestion size={20} />
+                <BsQuestionSquare size={size || 18} />
             )}
             {type === "Assignment" && (
-                <MdOutlineAssignment size={20} />
+                <BsReverseLayoutTextSidebarReverse size={size || 18} />
             )}
             {type === "Lesson" && video_type === "none" && (
-                <GrNotes size={20} />
+                <CiStickyNote size={size || 20} />
             )}
-            {type === "Lesson" && video_type !== "none" && (
-                <LuPlayCircle size={20} />
+            {type === "Lesson" && video_type === "html5" && (
+                <LuPlayCircle size={size || 20} />
+            )}
+            {type === "Lesson" && video_type === "youtube" && (
+                <AiOutlineYoutube size={size || 20} />
             )}
 
         </div>

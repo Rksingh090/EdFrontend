@@ -5,6 +5,7 @@ const initialState = {
     show_sidebar: false,
     showNavProfile: false,
     image_uploading: false,
+    showCourseContentSidebar: true,
     image: "",
     dropdown: {
         courseDD: false,
@@ -59,6 +60,9 @@ const announcementReducer = createSlice({
         hideMobileCourseMenu: (state) => {
             state.dropdown.mobileCourseDD = false
         },
+        toggleCourseContentSidebar: (state) => {
+            state.showCourseContentSidebar = !state.showCourseContentSidebar
+        },
     }
 })
 
@@ -67,7 +71,7 @@ export const { toggleSidebar, hideSidebar, toggleFranchiseDD,
     toggleCourseDropdown,
     hideAllNavMenu, showMobileCourseMenu,
     hideMobileCourseMenu,
-    showMobileMenu, hideMobileMenu
+    showMobileMenu, hideMobileMenu, toggleCourseContentSidebar
 } = announcementReducer.actions;
 
 export default announcementReducer.reducer;

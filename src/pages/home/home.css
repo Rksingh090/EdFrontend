@@ -27,7 +27,7 @@
 }
 
 .homeHero-content>p {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 400;
     max-width: 80%;
 }
@@ -127,7 +127,7 @@
 }
 
 .CategoryBoxBottom>.categoryTitle {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -144,7 +144,7 @@
 }
 
 .homeCategoryHeading {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -173,7 +173,7 @@
 }
 
 .teacherCol2>p {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     color: #555;
 }
@@ -191,7 +191,7 @@
     align-items: center;
     gap: 10px;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .teacherCol2Ul>li>svg {

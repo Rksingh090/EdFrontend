@@ -7,8 +7,7 @@ import { toggleSidebar, toggleNavProfile } from '../../reducers/AppSettingReduce
 import { CgMenuRight } from 'react-icons/cg'
 import { AiFillPlusSquare, AiOutlineMenu } from 'react-icons/ai'
 import { MdOutlineArrowForwardIos } from 'react-icons/md'
-import { IoIosArrowBack, IoIosArrowDown, IoIosArrowForward, IoMdClose } from 'react-icons/io'
-   ;
+import { IoMdClose } from 'react-icons/io';
 import { UserLogOut } from '../../reducers/UserReducer';
 
 import { DivOutsideClick } from '../utils/Outsideclick';
@@ -18,10 +17,8 @@ import { addCourse } from '../../reducers/CourseReducer';
 
 const Navbar = ({ showSideMenu, clearScrollSticky }) => {
    const dispatch = useDispatch();
-   const { dropdown: { mobileCourseDD, mobileMenu } } = useSelector(state => state.appsetting);
+   const { dropdown: { mobileMenu } } = useSelector(state => state.appsetting);
    const { user } = useSelector(state => state.user);
-
-   const [currMobileCourseMenu, setCurrMobileCourseMenu] = useState("");
 
    const { loggedIn } = useSelector(state => state.user);
 
@@ -52,10 +49,6 @@ const Navbar = ({ showSideMenu, clearScrollSticky }) => {
 
    const handleHideAllMobileMenu = () => {
       dispatch({ type: "appsetting/hideAllNavMenu" })
-   }
-
-   const toggleMobileCourseMenu = (item) => {
-      setCurrMobileCourseMenu(prev => item === prev ? "" : item);
    }
 
    return (
@@ -155,12 +148,11 @@ const NavProfileMenu = () => {
    return (
       <div className='navProfile'>
 
-         {loggedIn ? (
+         {loggedIn && (
             <div className='navAvatarImg' onClick={() => dispatch(toggleNavProfile())}>
                <img src={user?.dp || "https://img.freepik.com/free-icon/user_318-159711.jpg"} alt="" />
             </div>
-         ) : (<></>)}
-
+         )}
          {showNavProfile && (
             <DivOutsideClick className='navProfileMenus' onOutsideClick={() => showNavProfile === true ? dispatch(hideNavProfile()) : {}}>
 
@@ -212,6 +204,7 @@ const NavProfileMenu = () => {
                      </div>
                   </div>
                )}
+
                {user?.role && user.role === "teacher" && (
                   <div className='profileLinks'>
                      <div>
@@ -221,9 +214,9 @@ const NavProfileMenu = () => {
                         <Link to={"/teacher/quiz"}>Quiz</Link>
                         <Link to={"/teacher/announcement"}>Announcement</Link>
                         <Link to={"/teacher/assignment"}>Assignments</Link>
-                        <Link to={"/teacher/analytics"}>Analytics</Link>
                      </div>
                      <div>
+                        <Link to={"/teacher/analytics"}>Analytics</Link>
                         <Link to={"/teacher/zoom"}>Zoom Meeting</Link>
                         <Link to={"/teacher/withdrawls"}>Withdrawls</Link>
                         <Link to={"/settings"}>Setting</Link>
