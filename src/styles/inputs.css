@@ -1,4 +1,3 @@
-
 .A1RegInputGroup {
     display: flex;
     flex-direction: column;
@@ -18,8 +17,8 @@
 
 .A1RegAreaGroup>label,
 .A1RegInputGroup>label {
-    font-size: 14px;
-    line-height: 14px;
+    font-size: 12px;
+    line-height: 12px;
     color: #555;
     background-color: white;
     position: absolute;
@@ -81,6 +80,7 @@ input[type="radio"].llInput:disabled {
     border: 2px solid #999;
     color: gray;
 }
+
 input[type="radio"].llInput:disabled::before {
     background-color: #999;
 }
@@ -90,6 +90,7 @@ input[type="radio"].llInput.sm {
     width: 20px;
     height: 20px;
 }
+
 input[type="radio"].llInput.sm::before {
     width: 12px;
     height: 12px;
@@ -124,7 +125,7 @@ input[type="checkbox"].llInput::before {
     transition: 120ms transform ease-in-out;
     background-color: var(--main);
 }
-  
+
 input[type="checkbox"].llInput:checked::before {
     transform: scale(1);
 }

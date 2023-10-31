@@ -13,6 +13,9 @@ import ItemViewWrapper from './ItemViewWrapper';
 
 const AssignmentSubmission = () => {
 
+    const [isLoading, setIsLoading] = useState(false)
+
+
     const [currentPdfPage, setCurrentPdfPage] = useState(1)
     const [totalPdfPage, setTotalPdfPage] = useState(1)
     const [assignmentData, setAssignmentData] = useState();
@@ -36,6 +39,7 @@ const AssignmentSubmission = () => {
     useEffect(() => {
         const getAssignmentData = (assignmentId) => {
             try {
+                setIsLoading(true)
                 axios.get(`${API}/assignment/id/${assignmentId}`, {
                     headers: {
                         token: localStorage.getItem("token")
@@ -50,6 +54,9 @@ const AssignmentSubmission = () => {
                         if (status === "success") {
                             setAssignmentData(res.data?.assignment)
                         }
+                    })
+                    .finally(() => {
+                        setIsLoading(false)
                     })
             } catch (error) {
                 console.log(error);
@@ -69,7 +76,10 @@ const AssignmentSubmission = () => {
     }
 
     return (
-        <ItemViewWrapper validAccess={enrollmentData.enrollment && enrollmentData.preview_available} >
+        <ItemViewWrapper
+            loading={isLoading}
+            validAccess={enrollmentData.enrollment && enrollmentData.preview_available}
+        >
             <div className='assignmentContent'>
                 <h2 className='assignmentContentTitle'>{assignmentData?.title}</h2>
                 {

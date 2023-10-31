@@ -8,9 +8,8 @@ const Setting = () => {
 	return (
 		<AffilateBase>
 			<div className='dashboardContainer'>
-			
 
-			
+
 
 			</div>
 		</AffilateBase>

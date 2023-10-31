@@ -1,1309 +1,213 @@
-.headwrap {
-    width: 100%;
-    position: relative;
-    overflow-x: hidden;
-}
-
-.fullWidthCenter {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.homePageBg {
+    background-color: var(--adminMainBackground);
+    padding: 0 20px;
 
 }
 
-.myContentArea {
-    max-width: 1400px;
-}
 
-.allCenter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-
-/* section 1 */
-.mainSection {
-    position: relative;
-    width: 100%;
-    height: 95vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.homeBGImg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-}
-
-.mainSectionTexts {
-    z-index: 20;
-    color: white;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    row-gap: 16px;
-    overflow-x: hidden;
-}
-
-.homeHeadlineh1 {
-    font-size: 50px;
-    font-weight: 500;
-}
-
-.homeHeadlineP {
-    font-size: 24px;
-}
-
-
-.homeBGImg {
-    position: absolute;
-    top: 0px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(.8);
-}
-
-.homeHeadlineh5 {
-    font-size: 25px;
-    font-weight: bold;
-    font-weight: 600;
-    color: rgb(174, 169, 255);
-}
-
-
-.getStartedBTN {
-    background-color: var(--main);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 100px;
-    font-size: 14px;
-    font-family: "Poppins", sans-serif;
-}
-
-.viewCourseBTN {
-    border: .4px solid #ffffff50;
-    background-color: transparent;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 100px;
-    font-size: 14px;
-    font-family: "Poppins", sans-serif;
-}
-
-.onlinecuourse {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
-    margin-top: 40px;
-}
-
-.onlincouyseactive {
-    width: 200px;
-    padding: 40px 30px;
-    background: linear-gradient(272.31deg, rgba(194, 233, 255, 0.05) 0.27%, rgba(217, 217, 217, 0.10) 98.49%);
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(20px);
-    border-radius: 10px;
-    color: #161515;
-    border-radius: 15px 15px 15px 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: all .5s ease;
-    transform-style: preserve-3d;
-    transform-origin: 50% 100%;
-}
-
-.onlincouyseactive:hover {
-    transform: perspective(100px) rotateX(10deg);
-}
-
-.lecturesnum {
-    font-size: 38px;
-    font-weight: 700;
-    color: #eee;
-}
-
-.lecturesnum1 {
-    color: #aaa;
-    font-size: 13px;
-    margin: 0;
-    font-weight: 400;
-    font-family: sans-serif;
-}
-
-
-/* section 2 */
-.homeSection2>.myContentArea {
+/* .home section  */
+.homeHero {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    overflow-x: hidden;
+    grid-template-columns: 3fr 2fr;
+    padding: 50px 0;
+    gap: 50px;
 }
 
-.section2img {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 20px 10px;
-}
-
-.premius {
-    color: #040827;
-    font-family: sans-serif;
-    font-weight: 600;
-    font-size: 30px;
-    margin-bottom: 10px;
-    font-family: var(--poppins);
-}
-
-.learningexp {
-    font-family: var(--poppins);
-    color: #111;
-    font-size: 16px;
-    margin: 0;
-    font-weight: 400;
-}
-
-.quailtyimges {
-    padding: 30px 0px;
-    width: 100%;
-    height: 300px;
-    margin-top: 2px;
-}
-
-.qualityonline {
-    display: flex;
-    padding: 10px 30px;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 10px;
-    position: relative;
-    width: 100%;
-    height: 200px;
-
-}
-
-.imgapermius {
-    height: 230px;
-    width: auto;
-    justify-self: end;
-    position: absolute;
-    bottom: 0;
-    right: -50px;
-}
-
-
-
-.onlinecoursealloff {
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-    font-family: inherit;
-    font-weight: 500;
-    line-height: 1.2;
-    font-size: 27px;
-}
-
-.getstartedfbottom {
-    align-items: center;
-    padding: 10px 20px;
-    color: white;
-    border-radius: 50px;
-    font-size: 16px;
-    font-weight: 600;
-    background: var(--main);
-
-}
-
-.getstartedfbottom:hover {
-    background: transparent;
-    border: 1px solid var(--main);
-    color: var(--main);
-}
-
-
-
-.qualityonline {
-    cursor: pointer;
-    background: url(https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/purpleShade.jpg);
-    background-repeat: round;
-
-}
-
-.section2hover:hover {
-    cursor: pointer;
-    background: url(https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/purpleShade.jpg);
-    background-repeat: round;
-
-}
-
-.section2div2 {
+.homeHero-content {
+    padding: 70px 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 15px 25px;
-    row-gap: 20px;
-}
-
-.section2div2>h2 {
-    color: var(--main);
-    font-size: 18px;
-    line-height: 40px;
-    margin: 0;
-    padding: 0;
-    font-weight: bold;
-    font-family: sans-serif;
-    margin-top: 10px;
-}
-
-.section2div2>h3 {
-    color: #000;
-    font-size: 22px;
-    line-height: 26px;
-    font-weight: bold;
-    font-family: sans-serif;
-    margin-bottom: 20px;
-}
-
-.sction2div2Items {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 20px;
-}
-
-.sction2div2Items>div {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    background-color: #fff;
-    align-items: center;
-    width: 100%;
-    padding: 15px;
-    box-shadow: 2px 2px 5px #d9d9d9;
-}
-
-.sction2div2Items>div>div>p {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-
-/* section 3  */
-.homeSection3 {
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.homeSection3div {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    padding: 15px 20px;
-    gap: 15px;
-    width: 100%;
-    cursor: pointer;
-    background: url(https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/purpleShade.jpg);
-    background-repeat: round;
-    border-radius: 10px;
-    /* filter: brightness(.5); */
-}
-
-.homeSection3div:hover {
-    filter: brightness(1);
-}
-
-
-
-
-.homeSection3div>div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.homeSection3div>div>div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-
-.homeSection3div>div>div>p:first-child {
-    color: rgb(49, 48, 48);
-    font-size: 35px;
-}
-
-.homeSection3div>div>div>p:last-child {
-    color: rgb(27, 26, 26);
-    font-size: 22px;
-}
-
-.homeSection3div>div>svg {
-    color: white;
-    font-size: 50px;
-}
-
-/* section 4  */
-.homeSection4 {
-    overflow-x: hidden;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 0;
-}
-
-.popularCourse {
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(4, minmax(200px, 1fr));
-}
-
-
-.ouronlinecourses {
-    width: 100%;
-    gap: 30px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-.ourcoursetext {
-    display: flex;
-    align-items: center;
-    height: 85px;
-    box-shadow: 0px 0px 10px #d9d9d9;
-    gap: 10px;
-    background-color: #fff;
-    transition: all .4s ease-in-out;
-    animation: widthGrow .8s 1 forwards;
-    animation-delay: var(--delay);
-    overflow: hidden;
-    width: 0;
-}
-
-.ourcoursetext:hover {
-    transform: scale(1.1);
-    background-image: url(https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/whiteShade.png);
-    background-repeat: round;
-}
-
-@keyframes widthGrow {
-    0% {
-        width: 0;
-    }
-
-    100% {
-        padding: 0px 20px;
-        width: 100%;
-    }
-}
-
-.homeCourseCatImg {
-    height: 80%;
-    aspect-ratio: 1;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
-    object-fit: cover;
-    overflow: hidden;
-    border-radius: 500px;
-}
-
-.homeCourseCatImg>img {
-    height: 100%;
-    aspect-ratio: 1;
-}
-
-.ourcoursetext>p {
-    font-weight: 600;
-
-}
-
-.popularCourseItems {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
-
-.popularCourseItems>div {
-    width: 100%;
-    max-width: 300px;
-    background: #fff;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 6px #d9d9d9;
-}
-
-.homeSection4Heading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.homeSection4Heading>h3 {
-    color: var(--main);
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.homeSection4Heading>p {
-    color: #000;
-    font-size: 22px;
-    margin-bottom: 20px;
-    font-style: italic;
-}
-
-/* .flex flex-col justify-center items-center pt-8 { */
-.homeSection5 {
-    padding: 20px 0;
-}
-
-.homeSection5header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 0;
-}
-
-.homeSection5header>h2 {
-    color: var(--main);
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.homeSection5header>p {
-    color: #000;
-    font-size: 22px;
-    font-style: italic;
-
-}
-
-.homesectionbutton {
-    margin-top: 25px;
-}
-
-.homesectionbutton>button {
-    font-family: var(--poppins);
-    font-size: 14px;
-    font-weight: 500;
-    background-color: transparent;
-    color: var(--main);
-    border: 1px solid var(--main);
-    border-radius: 200px;
-    padding: 10px 20px;
-    transition: all 0.6s ease;
-}
-
-.homesectionbutton button:hover {
-    transform: scale(1.2);
-    background-color: var(--main);
-    color: #fff;
-}
-
-/* .grid grid-cols-4 gap-6 pt-8 max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 justify-items-center  */
-.popularCourseCat {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 30px;
-    width: 100%;
-}
-
-.courseCategoryItem {
-    background-color: white;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    box-shadow: 2px 2px 5px #d9d9d9;
-    padding: 40px 0;
     gap: 10px;
 }
 
-/* testimonial section  */
-.testimonialSection {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px 0;
+.homeHero-content>h1 {
+    font-size: 32px;
+    font-weight: 600;
 }
 
-.faculty {
-    max-width: 1400px;
-    margin: auto;
-    cursor: pointer;
-    /* border-bottom: 1px dotted #fff; */
-}
-
-.testimonialMainHead {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.testimonialHeading {
-    color: var(--main);
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.testimonialInfo {
-    font-size: 22px;
-    color: #000;
-}
-
-
-.testimonialData {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 500px;
-    overflow: hidden;
-    width: 100%;
-}
-
-.mainSlider {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    padding: 0 !important;
-}
-
-.singleSlide {
-    display: grid;
-    grid-template-columns: 1.5fr 2fr;
-    gap: 30px;
-    height: 100%;
-    background-color: white;
-    border-radius: 15px !important;
-    overflow: hidden;
-}
-
-.singleSlide:hover {
-    background: url(https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/whiteShade.png);
-    background-size: cover;
-}
-
-.testimonialImgDiv {
-    height: 100%;
-    overflow: hidden;
-    padding: 25px;
-}
-
-.testimonialMainImg {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    border-radius: 15px;
-}
-
-.testimonialDataDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    height: 100%;
-    padding: 25px 0;
-}
-
-.textSlide {
-    padding: 0 10px;
-    font-size: 22px;
-    font-style: "Urbanist", sans-serif;
-}
-
-.slideProfile {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 15px;
-}
-
-.slideTeacherImage {
-    width: 70px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.slideProfileData>h2 {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.slideProfileData>h3 {
+.homeHero-content>p {
     font-size: 16px;
-    color: rgb(158, 158, 158);
-}
-
-/* grid grid-cols-4 pt-8 max-xl:grid-cols-3 max-lg:grid-cols-2 max-lg:gap-y-8 max-md:grid-cols-1 justify-items-center */
-
-.basciplan {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    padding: 20px 0px;
-    justify-items: center;
-    grid-gap: 20px;
-
+    font-weight: 400;
+    max-width: 80%;
 }
 
 
-/* student testimonial */
-.studentTestimonialSection {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-}
-
-.studentTestimonialSection .splide {
-    padding: 0;
-}
-
-.studentTestimonialGrid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 20px;
-    max-width: 1400px;
-}
-
-.studentTestimonialCard {
-    background-color: white;
-    padding: 20px;
-    height: 270px;
-    overflow: hidden;
-}
-
-.studentTestimonialCard:hover {
-    cursor: pointer;
-    background: url(https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/purpleShade.jpg);
-    background-repeat: round;
-}
-
-.courseCategoryItem:hover {
-    cursor: pointer;
-    background: url(https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/purpleShade.jpg);
-    background-repeat: round;
-}
-
-.newsLetter {
-    height: 350px;
-}
-
-.getaccess {
-    width: 100%;
-    height: 400px;
-    margin: auto;
-    padding: 50px 40px;
-    background: no-repeat padding-box #fff;
-    box-shadow: 0 3px 6px #00000029;
-    border-radius: 25px;
-    position: relative;
-    top: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-.getaccess:hover {
-    cursor: pointer;
-    background: url(https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/purpleShade.jpg);
-    background-repeat: round;
-}
-
-.newLetterHeading {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.newLetterHeading>h1 {
-    font-size: 45px;
-    line-height: 50px;
-    letter-spacing: 0;
-    color: #333
-}
-
-.newLetterHeading>p {
-    font-size: 22px;
-}
-
-.freeBatchTxt {
-    background: linear-gradient(87deg, #432aff, #ac53ff);
-    -webkit-text-fill-color: transparent;
-    box-sizing: border-box;
-    -webkit-background-clip: text;
-}
-
-.newsLetterInpDiv {
+.homeCourseSearch {
     height: 60px;
-    display: grid;
-    align-items: center;
-    grid-template-columns: 50px 1fr 50px;
-    padding-left: 8px;
-    width: 420px;
-    border-radius: 50px;
-    gap: 10px;
-    font-weight: 400;
-    color: #212529;
-    background-color: #fff;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.12);
-
-}
-
-.getaccess:hover .newsLetterInpDiv,
-.getaccess:hover .newsLetterInput {
-    background: transparent;
-}
-
-.newsLetterInput {
-    outline: none;
-    padding: 0px 10px;
-    font-size: 18px;
-}
-
-
-.iconsd {
-    height: 70%;
-    aspect-ratio: 1;
-    border-radius: 50px;
-    background: var(--main);
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.droupdownfooter {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    justify-items: center;
-    padding: 30px 0px;
-}
-
-.droupdownfooter li {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-weight: 700;
-    font-size: 17px;
-}
-
-.droupdown {
-    position: relative;
-}
-
-.droupdown1 {
-    position: relative;
-    bottom: -50px;
-    right: 40px
-}
-
-/* footer notes section  */
-.homeFooterNotes {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #136ec9;
-}
-
-.homeFooterTabs {
-    max-width: 1400px;
-    width: 100%;
-    padding-top: 110px;
-}
-
-
-.footerTabBtn {
     display: flex;
     flex-direction: row;
-    gap: 15px;
-    flex-wrap: wrap;
-    list-style: none;
-    font-family: var(--poppins);
-}
-
-.footerTabBtn>li {
-    cursor: pointer;
-    text-align: center;
-    display: flex;
     align-items: center;
     gap: 5px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: white;
-}
-
-.footerTabBtn .active {
-    background: #4495f9;
-}
-
-.footerTabBtn>li:hover {
-    background: #4495f9;
+    background-color: var(--monochrome);
+    border-radius: 60px;
+    padding: 5px;
+    width: 90%;
+    transition: transform .8s ease, box-shadow .2s ease;
+    margin-top: 30px;
+    z-index: 384;
 }
 
 
-.showTab {
-    display: block;
+.homeCourseSearch:has(>input:focus) {
+    box-shadow: 0vh 0vh 70vh 100vh rgba(0, 0, 0, 0.45);
 }
 
-.hideTab {
-    display: none;
+.homeCourseSearch>input {
+    width: 100%;
+    background-color: transparent;
+    outline: none;
+    border: none;
 }
 
-
-.notesGrid {
-    display: grid;
-    grid-template-columns: 2fr 2fr 2fr 2fr;
-    justify-items: flex-start;
-    padding: 30px 0px;
-    gap: 20px 100px;
+.startSearchIcon {
+    /* padding: 5; */
+    padding: 0 10px;
 }
 
-.gridCentered {
+.searchBtn {
+    height: 100%;
+    aspect-ratio: 1;
     display: flex;
+    align-items: center;
     justify-content: center;
+    background-color: var(--optionBG);
+    border-radius: 60px;
+    color: var(--monochrome);
 }
 
-.noteGridColumn {
+
+.homeHeroImage {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.homeHeroImage>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    mix-blend-mode: multiply;
+}
+
+/* category section  */
+.homeSecCategory {
     display: flex;
     flex-direction: column;
+    gap: 20px;
+    padding: 30px 0;
+}
+
+.CategoryBoxes {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.CategoryBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
+    padding: 20px;
+    border-radius: 10px;
     gap: 15px;
 }
 
-.noteHeadingText {
-    font-size: 18px;
-    font-weight: 600;
-    color: white;
-    font-family: var(--poppins);
+
+.CategoryBoxBottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    justify-content: space-between;
 }
 
-.notesContentLink  {
+.CategoryBoxBottom>.categoryTitle {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.CategoryBoxBottom>.rightArrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: var(--optionBG);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.homeCategoryHeading {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* teacher section  */
+.teacherSection {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 20px;
+    /* background-color: white; */
+    padding: 20px;
+    background: linear-gradient(to right bottom, rgba(0, 234, 255, 0.249), rgba(255, 149, 239, 0.288));
+}
+
+.teacherCol2 {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 40px 0;
+}
+
+.teacherCol2>h2 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.teacherCol2>p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #555;
+}
+
+.teacherCol2Ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 10px;
+    list-style: none;
 }
-.notesContentLink > p {
-    font-size: 14px;
-    cursor: pointer;
+
+.teacherCol2Ul>li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.teacherCol2Ul>li>svg {
+    color: var(--optionBG);
+}
+
+.homeReadMoreBtn {
+    background: transparent;
+    border: 2px solid var(--optionBG);
+    color: var(--optionBG);
+    padding: 10px 20px;
+    border-radius: 80px;
+    transition: all .4s ease-in;
+}
+
+.homeReadMoreBtn:hover {
+    background-color: var(--optionBG);
     color: white;
-    font-family: var(--poppins);
-}
-
-.notesContentLink > p:hover {
-    color: #45ffe0;
-}
-
-
-
-@property --num {
-    syntax: "<integer>";
-    initial-value: 0;
-    inherits: false;
-}
-
-.numCounter {
-    --num: var(--ncount);
-    font: 500 40px sans-serif;
-    transition: --num 10s;
-    counter-set: num var(--num);
-    animation: increaseCounter 5s linear 1;
-}
-
-.numCounter::before {
-    content: counter(num);
-}
-
-.numCounter::after {
-    content: "+";
-}
-
-@keyframes increaseCounter {
-    0% {
-        --num: 0;
-    }
-
-    100% {
-        --num: var(--ncount);
-    }
-}
-
-@media only screen and (max-width:1400px) {
-    .mainSectionTexts {
-        padding: 0 100px;
-    }
-
-    .paddFullArea {
-        padding: 0 20px;
-    }
-
-    .homeFooterTabs {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-
-@media only screen and (max-width:1200px) {
-
-    .mainSectionTexts {
-        padding: 0 100px;
-    }
-
-    .testimonialDataDiv .textSlide {
-        font-size: 20px;
-    }
-
-    .popularCourseCat {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    }
-
-    .basciplan {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-}
-
-
-@media only screen and (max-width:1060px) {
-
-    .mainSection {
-        height: 92vh;
-    }
-
-    .mainSectionTexts {
-        padding: 0 100px;
-    }
-
-    .popularCourse {
-        grid-template-columns: repeat(3, minmax(200px, 1fr));
-    }
-
-    .notesGrid {
-        grid-template-columns: 1fr 1fr 1fr;
-        row-gap: 40px;
-    }
-
-    .ouronlinecourses {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        row-gap: 30px;
-    }
-
-    .testimonialDataDiv svg {
-        display: none;
-    }
-
-    .testimonialDataDiv .textSlide {
-        font-size: 18px;
-    }
-
-    .basciplan {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .popularCourseCat {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-
-    .homeSection4 {
-        padding: 10px 20px;
-    }
-}
-
-@media only screen and (max-width: 800px) {
-    .mainSection {
-        height: 92vh;
-    }
-
-    .mainSectionTexts {
-        padding: 0 50px;
-    }
-
-    .popularCourse {
-        grid-template-columns: repeat(2, minmax(200px, 1fr));
-    }
-
-    .testimonialData {
-        flex-direction: column;
-        width: 100%;
-        height: auto;
-    }
-
-    .testimonialData .singleSlide {
-        height: 620px;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1.3fr;
-        gap: 0;
-    }
-
-    .testimonialData .singleSlide>.testimonialImgDiv {
-        padding: 15px;
-    }
-
-    .testimonialData .singleSlide>.testimonialDataDiv {
-        padding: 0 10px;
-        overflow: hidden;
-    }
-
-    .testimonialDataDiv svg {
-        display: none;
-    }
-
-    .testimonialDataDiv .textSlide {
-        font-size: 16px;
-    }
-
-    .testimonialDataDiv .slideProfile {
-        padding: 0 10px;
-    }
-
-    .mainSlider {
-        width: 100%;
-    }
-
-    .slideTeacherImage {
-        width: 50px;
-        height: 50px;
-    }
-
-    .slideProfileData>h2 {
-        font-size: 17px;
-    }
-
-    .slideProfileData>h3 {
-        font-size: 15px;
-    }
-
-    .footerTabBtn {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        justify-items: flex-start;
-    }
-
-    .ouronlinecourses {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        row-gap: 20px;
-    }
-
-    .newsLetter {
-        height: 250px;
-    }
-
-    .getaccess {
-        height: 300px;
-        padding: 20px;
-        width: 100%;
-    }
-
-
-    .newLetterHeading>h1 {
-        font-size: 30px;
-        line-height: 40px;
-    }
-
-    .newLetterHeading>p {
-        font-size: 18px;
-    }
-
-    .newsLetterInpDiv {
-        width: 100%;
-    }
-
-    .newsLetterInpDiv>input {
-        height: 100%;
-        width: 100%;
-    }
-
-    .popularCourseCat {
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 10px;
-    }
-
-    /* section 2 */
-    .homeSection2>.myContentArea {
-        grid-template-columns: 1fr;
-    }
-
-    .homeSection2 .quailtyimges {
-        height: auto;
-        padding: 0;
-    }
-
-    .section2div2.paddFullArea {
-        padding: 0 20px;
-    }
-
-    .quailtyimges {
-        height: 250px;
-    }
-
-    .qualityonline {
-        margin-top: 50px;
-        height: 150px;
-        padding: 10px 20px;
-    }
-
-    .imgapermius {
-        right: -50px;
-        height: 190px;
-        width: auto;
-    }
-
-    .onlinecoursealloff {
-        font-size: 20px;
-    }
-
-    .getstartedfbottom {
-        padding: 8px 10px;
-        font-size: 15px;
-    }
-
-
-}
-
-@media only screen and (max-width:600px) {
-    .mainSection {
-        height: 85vh;
-    }
-
-    .premius {
-        font-size: 20px;
-    }
-
-    .onlinecoursealloff {
-        font-size: 18px;
-    }
-
-    .learningexp {
-        font-size: 14px;
-    }
-
-    .mainSectionTexts {
-        padding: 0 30px;
-    }
-
-    .ouronlinecourses {
-        grid-template-columns: 1fr;
-        row-gap: 20px;
-    }
-
-    .notesGrid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .footerTabBtn {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        justify-items: flex-start;
-    }
-
-}
-
-@media only screen and (max-width: 500px) {
-
-    .mainSection {
-        height: 85vh;
-    }
-
-
-    .homeHeadlineh5 {
-        font-size: 20px;
-    }
-
-    .homeHeadlineh1 {
-        font-size: 28px;
-        line-height: 34px;
-        font-weight: bold;
-    }
-
-    .homeHeadlineP {
-        margin-top: 10px;
-        font-size: 18px !important;
-    }
-
-    .getStartedBTN,
-    .viewCourseBTN {
-        font-size: 15px;
-        transition: transform 0.3s ease;
-    }
-
-    .getStartedBTN:hover {
-        transform: scale(1.2);
-    }
-
-    .homeSection3div {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .homeSection3div {
-        row-gap: 25px;
-    }
-
-    .homeSection3div>div>div>p:first-child {
-        font-size: 20px;
-    }
-
-    .homeSection3div>div>div>p:last-child {
-        font-size: 15px;
-    }
-
-    .popularCourse {
-        grid-template-columns: repeat(1, minmax(200px, 1fr));
-    }
-
-    .basciplan {
-        grid-template-columns: 1fr;
-    }
-
-    .popularCourseCat {
-        grid-template-columns: 1fr;
-    }
-
-    .notesGrid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-@media only screen and (max-width: 400px) {
-   
-    .footerTabBtn {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr);
-        justify-items: flex-start;
-    }
 }

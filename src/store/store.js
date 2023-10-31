@@ -13,14 +13,9 @@ import AdminReducer from '../admin/reducers/AdminReducer';
 import AdminTeacherReducer from '../admin/reducers/TeacherReducer';
 import AdminAffiliateReducer from '../admin/reducers/AffiliateReducer';
 
-import FranchiseCouponReducer from '../franchise/reducers/franchiseCouponReducer'
-;
 import AffiliateCouponReducer from "../affiliate/reducer/affiliateCouponReducer"
 import affiliateSearchReducer from '../affiliate/reducer/affiliateSearchReducer';
 import affiliateDashboardReducer from '../affiliate/reducer/affiliateDashboardReducer';
-import bussinessSearchReducer from '../bussinessAssociate/reducer/bussinessSearchReducer';
-import bussinessDashboardReducer from '../bussinessAssociate/reducer/bussinessDashboardReducer';
-import bussinessCouponReducer from '../bussinessAssociate/reducer/bussinessCouponReducer';
 
 
 
@@ -37,13 +32,9 @@ const rootReducer = combineReducers({
     admin: AdminReducer,
     adminteacher: AdminTeacherReducer,
     adminaffiliate: AdminAffiliateReducer,
-    franchisecoupon: FranchiseCouponReducer,
     affiliatecoupon: AffiliateCouponReducer,
-    affiliateSearch:affiliateSearchReducer,
-    affiliateDashboard:affiliateDashboardReducer,
-    bussinesscoupon: bussinessCouponReducer,
-    bussinessSearch:bussinessSearchReducer,
-    bussinessDashboard:bussinessDashboardReducer,
+    affiliateSearch: affiliateSearchReducer,
+    affiliateDashboard: affiliateDashboardReducer,
 })
 
 export const store = configureStore({

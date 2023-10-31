@@ -52,7 +52,7 @@
 }
 
 .aboutTitleDesc>p {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
 }
 
@@ -89,14 +89,14 @@
 
 .pageContent h2 {
     font-weight: 600;
-    font-size: 26px;
+    font-size: 16px;
     margin-top: 15px;
 }
 
 .pageContent p {
     color: #4b4747;
     padding: 10px 0px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .pageContent .bold {
@@ -122,12 +122,12 @@
 .pageContent .pageUList>li {
     color: #4b4747;
     padding-left: 10px;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .pageContent .pageUList>li::marker {
     content: ">";
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     margin-right: 10px;
 }
@@ -191,7 +191,7 @@
     }
 
     .aboutTitleDesc>p {
-        font-size: 16px;
+        font-size: 12px;
         font-weight: 400;
     }
 
@@ -199,15 +199,15 @@
 
 @media only screen and (max-width: 500px) {
     .pageContent h2 {
-        font-size: 24px;
+        font-size: 16px;
     }
 
     .pageContent p {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .pageContent span {
-        font-size: 16px;
+        font-size: 12px;
     }
 
     .aboutGridFirstDiv {
@@ -215,8 +215,8 @@
         aspect-ratio: 1.2;
         overflow: hidden;
     }
-    
-    .aboutGridFirstDiv > div {
+
+    .aboutGridFirstDiv>div {
         height: 100%;
         width: 100%;
         object-fit: cover;

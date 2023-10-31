@@ -5,13 +5,16 @@ import { API } from '../constant';
 
 export const getAllCourse = createAsyncThunk(
   "course/getAllCourse",
-  async ({ perPage, pageNo, category, subcategory }) => {
+  async ({ perPage, pageNo, language, category, subcategory }) => {
     let apiBasestring = `${API}/course/page/${pageNo}?perPage=${perPage}`;
-    if (category !== undefined && category.length > 0) {
+    if (category && category.length > 0) {
       apiBasestring += `&category=${category}`
-      if (subcategory !== undefined && subcategory.length > 0) {
+      if (subcategory && subcategory.length > 0) {
         apiBasestring += `&subcategory=${subcategory}`
       }
+    }
+    if (language && language.length > 0) {
+      apiBasestring += `&language=${language}`
     }
     const response = await axios.get(apiBasestring, {
       headers: {
@@ -204,12 +207,12 @@ const courseSlice = createSlice({
       state.student.courses = [...action.payload?.completed_courses, ...action.payload.pending_courses]
     })
     builder.addCase(getTeacherCourses.fulfilled, (state, action) => {
-      const {courses, pagination, courseCount, currentCount, totalDocuments} = action.payload;
+      const { courses, pagination, courseCount, currentCount, totalDocuments } = action.payload;
       state.teacher.mycourses = courses;
       state.teacher.pagination = pagination
       state.teacher.totalDocuments = totalDocuments
-      state.teacher.courseCount = courseCount 
-      state.totalCourses = currentCount 
+      state.teacher.courseCount = courseCount
+      state.totalCourses = currentCount
     })
 
     builder.addCase(getTeacherCourseByID.pending, (state, action) => {

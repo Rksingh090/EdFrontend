@@ -20,8 +20,8 @@
     padding: 20px;
 }
 
-.couponCreateDiv > button,
-.couponCreateDiv > a {
+.couponCreateDiv>button,
+.couponCreateDiv>a {
     width: fit-content;
     height: 100%;
     display: flex;
@@ -33,7 +33,7 @@
     color: #fff;
     background-color: var(--main);
     transition: all .5s ease;
-    font-size: 14px;
+    font-size: 12px;
     font-family: "Poppins", sans-serif;
 }
 
@@ -44,29 +44,33 @@
     gap: 10px;
     font-family: var(--poppins);
 }
-.perEntrySelect > select {
+
+.perEntrySelect>select {
     border: 1px solid #a8a8a8;
     padding: 0 3px;
     color: #353535;
     outline: none;
 }
+
 .tableSearchContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10px;
 }
-.tableSearchContainer > p{
-    font-size: 16px;
+
+.tableSearchContainer>p {
+    font-size: 12px;
     font-family: var(--poppins);
 }
-.tableSearchContainer > input {
+
+.tableSearchContainer>input {
     font-family: var(--poppins);
     border: 1px solid #aaaaaa;
     color: #aaa;
     outline: none;
     padding: 7px 10px;
-    font-size: 14px;
+    font-size: 12px;
     border-radius: 5px;
 }
 
@@ -76,11 +80,13 @@
     background-color: white;
     border-radius: 10px;
 }
+
 .couponTable {
     width: 100%;
     padding: 10px 20px;
     overflow-x: auto;
 }
+
 .couponTable::-webkit-scrollbar {
     height: 8px;
 }
@@ -92,6 +98,7 @@
     padding: 10px 20px;
     font-family: var(--poppins);
 }
+
 .createCouponForm {
     background-color: white;
     border-radius: 10px;
@@ -149,11 +156,13 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, .25);
     z-index: 545;
 }
-.showSearch > p {
+
+.showSearch>p {
     width: 100%;
     padding: 10px;
     cursor: pointer;
 }
-.showSearch > p:hover {
+
+.showSearch>p:hover {
     background-color: #E8E8E8;
 }

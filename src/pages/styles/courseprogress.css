@@ -2,23 +2,72 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
     font-family: var(--poppins);
     color: #555;
 }
 
-.courseProgressContainer {
-    width: 80%;
-    padding: 30px 0;
+.courseProgressCol1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+/* thumbnail, title and sub   */
+.courseThumbnailAndMeta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.courseTitleAndCat {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: var(--main);
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 5px;
+    border-radius: 5px;
 }
 
 .CPCourseTitle {
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 600;
+    color: var(--monochrome);
 }
+
+.CPCourseSubTitle {
+    font-size: 14px;
+    color: var(--monochrome);
+}
+
+
+/* play icon  */
+.playIconForVideo {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: var(--main);
+    border-radius: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--monochrome);
+}
+
+
 
 .CPCatSubCat {
     display: flex;
@@ -31,7 +80,7 @@
     border-bottom: 2px solid transparent;
     padding: 10px 15px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
     line-height: 1.6;
     color: #424242;
@@ -49,17 +98,17 @@
 .tabViewHeading {
     font-weight: 600;
     color: rgb(10, 8, 8);
-    font-size: 20px;
+    font-size: 16px;
 }
 
 /* description tab view  */
 .courseDescriptionRQ p,
 .courseDescriptionRQ li {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .courseDescriptionRQ h2 {
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 600;
     margin: 5px 0;
 }
@@ -67,40 +116,51 @@
 .courseDescriptionRQ h3,
 .courseDescriptionRQ h4 {
     font-weight: 500;
-    font-size: 20px;
+    font-size: 16px;
     margin: 5px 0;
 }
+
+
+/* course content tab  */
 
 .courseContentTab {
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding: 15px 0;
+    width: 100%;
 }
 
 .coursecontentDiv {
-    border: 1px solid rgb(224, 221, 221);
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
+    /* background-color: var(--monochrome); */
+    box-shadow: var(--adminSmallShadow);
+    background-color: var(--lightBG);
 }
 
 .courseProTopicItem {
+    background-color: var(--monochrome);
     cursor: pointer;
-}
-
-.courseProTopicItem>div {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 100px 25px;
+    gap: 20px;
+    padding: 15px 10px;
     align-items: center;
-    justify-content: space-between;
-    padding: 15px;
-    color: var(--main);
-    background: rgb(241, 242, 245);
 }
 
-.courseProTopicItem>div h1 {
-    font-weight: 600;
-    font-size: 20px;
+.courseProTopicItem>h2 {
+    font-size: 14px;
 }
+
+.courseProTopicItem>p {
+    font-size: 12px;
+}
+
+.courseProTopicItem>svg {
+    transition: all .4s ease-in-out;
+}
+
 
 .courseProItem {
     align-items: center;
@@ -109,7 +169,7 @@
     font-family: var(--poppins);
     height: 50px;
     justify-content: space-between;
-    padding: 10px
+    padding: 10px;
 }
 
 .courseProItem:hover {
@@ -120,7 +180,7 @@
     align-items: center;
     color: #424242;
     display: flex;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
     gap: 10px;
     line-height: 1.6
@@ -144,24 +204,17 @@
 
 }
 
-.grid5x1 {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-}
 
 
-.grid5x2 {
+.courseProgressContainer {
     width: 100%;
     display: grid;
-    grid-template-columns: 5fr 2fr;
-    gap: 20px 15px;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 20px 20px;
 }
 
-.grid5x2>div {
+.courseProgressContainer>div {
     width: 100%;
 }
 
@@ -229,7 +282,7 @@
 }
 
 .gradeFinalGrade {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -254,7 +307,7 @@
 }
 
 .gradebookTableHeading>p {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 20px;
     color: #424242;
@@ -284,7 +337,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
     line-height: 1.6;
     color: #424242
@@ -366,10 +419,6 @@
 }
 
 
-.courseTopicHeading>svg {
-    transition: all .4s ease-in-out;
-}
-
 .topicItems {
     display: flex;
     flex-direction: column;
@@ -395,7 +444,7 @@
 }
 
 .CPcoursePrice {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 600;
     display: flex;
     flex-direction: row;
@@ -407,7 +456,7 @@
 .CPEnrollBtn {
     background-color: var(--main);
     padding: 10px;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
     width: 100%;
     color: white;
@@ -437,7 +486,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 500;
     padding: 15px 20px;
     border-top: 1px solid var(--main);
@@ -466,6 +515,7 @@
     transition: all .2s ease;
     cursor: pointer;
 }
+
 .CPCourseOfferItem:hover {
     background-color: var(--main);
     color: white;
@@ -477,7 +527,7 @@
 /* course enrolled style  */
 .courseEnrolledProgress {
     font-family: var(--poppins);
-} 
+}
 
 .CPEFirstContainer {
     padding: 10px 20px;
@@ -488,12 +538,11 @@
 }
 
 .CPEHeader {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     color: var(--main);
 }
 
-/* border-[1px] border-[#f2b64c] flex items-start gap-2 p-2 rounded-md */
 .CourseCompleteInfo {
     display: flex;
     flex-direction: row;
@@ -504,7 +553,7 @@
     border: 1px solid rgb(242, 182, 76);
 }
 
-.CourseCompleteInfo > svg {
+.CourseCompleteInfo>svg {
     color: rgb(242, 182, 76);
 }
 
@@ -516,25 +565,23 @@
 }
 
 @media only screen and (max-width:1200px) {
-    .grid5x2 {
-        width: 90%;
-        grid-template-columns: 1fr;
-        justify-items: center;
-    }
-}
-@media only screen and (max-width:700px) {
-    .grid5x2 {
+    .courseProgressContainer {
         width: 100%;
         grid-template-columns: 1fr;
         justify-items: center;
     }
+}
+
+@media only screen and (max-width:700px) {
     .courseProgressContainer {
-        width: 95%;
+        width: 100%;
+        grid-template-columns: 1fr;
+        justify-items: center;
     }
+
     .CPCatSubCat {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px 0;
     }
 }
-

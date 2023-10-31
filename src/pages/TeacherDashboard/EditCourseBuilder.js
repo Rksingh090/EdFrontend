@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useMemo } from 'react'
 
 import { AiOutlineClockCircle, AiOutlineUp } from 'react-icons/ai';
 import { AiOutlineInfoCircle, AiOutlineMenu } from 'react-icons/ai';
-import { GoPrimitiveDot } from 'react-icons/go';
+import { PiDotOutlineDuotone } from 'react-icons/pi';
 import { MdSlowMotionVideo } from 'react-icons/md';
 import { TbDeviceLandlinePhone, TbEdit, TbUpload } from 'react-icons/tb';
 import { RiDeleteBin6Line } from 'react-icons/ri';
@@ -49,8 +49,8 @@ const EditCourseBuilder = () => {
         setQuizUpdateData, setQuizId, createNewTopic,
         setTopicId, setAssignmentId,
         setAssignmentUpdateData, setAssignmentData,
-        // deleteAssignmentById,
-        // deleteQuizById, deleteTopicById,
+        deleteAssignmentById,
+        deleteQuizById, deleteTopicById,
         showLessonForm, setShowLessonForm,
         setTopicUpdateData,
         showTopicForm, setShowTopicForm,
@@ -640,122 +640,119 @@ const EditCourseBuilder = () => {
                             <div className="tableHeading">
                                 <h2 className="heading">Course Builder</h2>
                             </div>
-                            <div className='p-[20px]'>
+                            <div className={'p-[20px] CBBuilder'}>
                                 {/* course builder  */}
-                                <div className={`CBBuilder`}>
+                                {courseData && courseData.topics?.length > 0 && courseData.topics.map((topicWID) => {
+                                    const topic = topicWID.topic;
+                                    return (
 
-                                    {courseData && courseData.topics?.length > 0 && courseData.topics.map((topicWID) => {
-                                        const topic = topicWID.topic;
-                                        return (
-
-                                            <div key={topicWID._id} className='CBTopicContainer'>
-                                                {/* single topic  */}
-                                                <div className='CBTopicItem'>
-                                                    <div className='orderAndTitle'>
-                                                        <AiOutlineMenu size={18} />
-                                                        <p>{topic?.title}</p>
-                                                    </div>
-                                                    <div className='CBTopicActions'>
-                                                        <div className='CBTopicIcon'>
-                                                            <TbEdit size={20} onClick={() => handleUpdateTopic(topic)} />
-                                                        </div>
-                                                        <div
-                                                            onClick={() => {
-                                                                // deleteTopicById(topic._id)
-                                                            }}
-                                                            className='CBTopicIcon'>
-                                                            <RiDeleteBin6Line size={17} />
-                                                        </div>
-                                                        <div className='CBTopicIcon'
-                                                            onClick={() => handleToggleTopicItem(topicWID._id)} >
-                                                            <AiOutlineUp size={17} />
-                                                        </div>
-                                                    </div>
+                                        <div key={topicWID._id} className='CBTopicContainer'>
+                                            {/* single topic  */}
+                                            <div className='CBTopicItem'>
+                                                <div className='orderAndTitle'>
+                                                    <AiOutlineMenu size={18} />
+                                                    <p>{topic?.title}</p>
                                                 </div>
-
-                                                <div className={`${topicWID.showTopicItem ? "flex" : "hidden"} CBItemContainer`}>
-
-                                                    {/* populating items  */}
-                                                    {topic?.items && topic?.items.length > 0 && topic?.items.map((itemWID) => {
-                                                        const itemType = itemWID.item_type;
-                                                        const item = itemWID.item;
-
-                                                        let title = "";
-                                                        switch (itemType) {
-                                                            case "Quiz":
-                                                                title = item?.quiz_title;
-                                                                break;
-                                                            case "Assignment":
-                                                                title = item?.title;
-                                                                break;
-                                                            case "Lesson":
-                                                                title = item?.title;
-                                                                break;
-                                                            default:
-                                                                break;
-                                                        }
-
-                                                        return (
-                                                            <div key={itemWID?._id} className='CBOneItem'>
-                                                                <div className='orderAndTitle'>
-                                                                    <AiOutlineMenu size={16} />
-                                                                    <p>{itemType}: {title}</p>
-                                                                </div>
-                                                                <div className='CBTopicActions'>
-                                                                    <div
-                                                                        onClick={() => {
-                                                                            itemType === "Quiz" ? handleUpdateQuizForm(topic?._id, item)
-                                                                                : itemType === "Assignment" ? handleUpdateAssignmentForm(topic?._id, item)
-                                                                                    : itemType === "Lesson" && handleUpdateLessonForm(topic?._id, item)
-
-                                                                        }}
-                                                                        className='CBTopicIcon'
-                                                                    >
-                                                                        <TbEdit size={20} />
-                                                                    </div>
-                                                                    <div
-                                                                        onClick={() => {
-                                                                            // itemType === "Quiz" ? deleteQuizById(topic?._id, item?._id)
-                                                                            //     :
-                                                                            //     itemType === "Assignment" &&
-                                                                            //     deleteAssignmentById(topic?._id, item?._id)
-                                                                        }}
-                                                                        className='CBTopicIcon'
-                                                                    >
-                                                                        <RiDeleteBin6Line size={17} />
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        )
-                                                    })}
-
-                                                    {/* add new Quiz, Assignment, and Lesson button  */}
-                                                    <div className='CBItemActions'>
-                                                        <button className='CBItemAddBtn' onClick={() => handleNewLessonBtn(topic?._id)}>
-                                                            <FiPlusSquare size={18} />
-                                                            <p>Lesson Notes</p>
-                                                        </button>
-                                                        <button onClick={() => handleNewQuizBtn(topic?._id)} className='CBItemAddBtn'>
-                                                            <FiPlusSquare size={18} />
-                                                            <p>Quiz</p>
-                                                        </button>
-                                                        <button
-                                                            onClick={() => handleNewAssignmentBtn(topic?._id)}
-                                                            className='CBItemAddBtn'>
-                                                            <FiPlusSquare size={18} />
-                                                            <p>Assignments</p>
-                                                        </button>
+                                                <div className='CBTopicActions'>
+                                                    <div className='CBTopicIcon'>
+                                                        <TbEdit size={20} onClick={() => handleUpdateTopic(topic)} />
+                                                    </div>
+                                                    <div
+                                                        onClick={() => {
+                                                            deleteTopicById(topic._id)
+                                                        }}
+                                                        className='CBTopicIcon'>
+                                                        <RiDeleteBin6Line size={17} />
+                                                    </div>
+                                                    <div className='CBTopicIcon'
+                                                        onClick={() => handleToggleTopicItem(topicWID._id)} >
+                                                        <AiOutlineUp size={17} />
                                                     </div>
                                                 </div>
                                             </div>
-                                        )
-                                    })}
 
-                                    <button className='CBAddNewTopic' onClick={() => handleShowAddTopic()}>
-                                        <BsPlusCircle size={25} />
-                                        <p>Add new topic </p>
-                                    </button>
-                                </div>
+                                            <div className={`${topicWID.showTopicItem ? "flex" : "hidden"} CBItemContainer`}>
+
+                                                {/* populating items  */}
+                                                {topic?.items && topic?.items.length > 0 && topic?.items.map((itemWID) => {
+                                                    const itemType = itemWID.item_type;
+                                                    const item = itemWID.item;
+
+                                                    let title = "";
+                                                    switch (itemType) {
+                                                        case "Quiz":
+                                                            title = item?.quiz_title;
+                                                            break;
+                                                        case "Assignment":
+                                                            title = item?.title;
+                                                            break;
+                                                        case "Lesson":
+                                                            title = item?.title;
+                                                            break;
+                                                        default:
+                                                            break;
+                                                    }
+
+                                                    return (
+                                                        <div key={itemWID?._id} className='CBOneItem'>
+                                                            <div className='orderAndTitle'>
+                                                                <AiOutlineMenu size={16} />
+                                                                <p>{itemType}: {title}</p>
+                                                            </div>
+                                                            <div className='CBTopicActions'>
+                                                                <div
+                                                                    onClick={() => {
+                                                                        itemType === "Quiz" ? handleUpdateQuizForm(topic?._id, item)
+                                                                            : itemType === "Assignment" ? handleUpdateAssignmentForm(topic?._id, item)
+                                                                                : itemType === "Lesson" && handleUpdateLessonForm(topic?._id, item)
+
+                                                                    }}
+                                                                    className='CBTopicIcon'
+                                                                >
+                                                                    <TbEdit size={20} />
+                                                                </div>
+                                                                <div
+                                                                    onClick={() => {
+                                                                        itemType === "Quiz" ? deleteQuizById(topic?._id, item?._id)
+                                                                            :
+                                                                            itemType === "Assignment" &&
+                                                                            deleteAssignmentById(topic?._id, item?._id)
+                                                                    }}
+                                                                    className='CBTopicIcon'
+                                                                >
+                                                                    <RiDeleteBin6Line size={17} />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )
+                                                })}
+
+                                                {/* add new Quiz, Assignment, and Lesson button  */}
+                                                <div className='CBItemActions'>
+                                                    <button className='CBItemAddBtn' onClick={() => handleNewLessonBtn(topic?._id)}>
+                                                        <FiPlusSquare size={18} />
+                                                        <p>Lesson Notes</p>
+                                                    </button>
+                                                    <button onClick={() => handleNewQuizBtn(topic?._id)} className='CBItemAddBtn'>
+                                                        <FiPlusSquare size={18} />
+                                                        <p>Quiz</p>
+                                                    </button>
+                                                    <button
+                                                        onClick={() => handleNewAssignmentBtn(topic?._id)}
+                                                        className='CBItemAddBtn'>
+                                                        <FiPlusSquare size={18} />
+                                                        <p>Assignments</p>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+
+                                <button className='CBAddNewTopic' onClick={() => handleShowAddTopic()}>
+                                    <BsPlusCircle size={25} />
+                                    <p>Add new topic </p>
+                                </button>
                             </div>
                         </div>
 
@@ -1601,31 +1598,31 @@ const EditCourseBuilder = () => {
 
                             <div className='p-[20px] flex flex-col text-[#50545d] list-none gap-4'>
                                 <div className='courseUploadTip '>
-                                    <GoPrimitiveDot className='text-[#3e64de]' />
+                                    <PiDotOutlineDuotone className='text-[#3e64de]' />
                                     <p>Set the Course Price option or make it free.</p>
                                 </div>
                                 <div className='courseUploadTip '>
-                                    <GoPrimitiveDot className='text-[#3e64de]' />
+                                    <PiDotOutlineDuotone className='text-[#3e64de]' />
                                     <p>Standard size for the course thumbnail is 700x430.</p>
                                 </div>
                                 <div className='courseUploadTip '>
-                                    <GoPrimitiveDot className='text-[#3e64de]' />
+                                    <PiDotOutlineDuotone className='text-[#3e64de]' />
                                     <p>Video section controls the course overview video.</p>
                                 </div>
                                 <div className='courseUploadTip '>
-                                    <GoPrimitiveDot className='text-[#3e64de]' />
+                                    <PiDotOutlineDuotone className='text-[#3e64de]' />
                                     <p>Course Builder is where you create & organize a course.</p>
                                 </div>
                                 <div className='courseUploadTip '>
-                                    <GoPrimitiveDot className='text-[#3e64de]' />
+                                    <PiDotOutlineDuotone className='text-[#3e64de]' />
                                     <p>Add Topics in the Course Builder section to create lessons, quizzes, and assignments.</p>
                                 </div>
                                 <div className='courseUploadTip '>
-                                    <GoPrimitiveDot className='text-[#3e64de]' />
+                                    <PiDotOutlineDuotone className='text-[#3e64de]' />
                                     <p>Prerequisites refers to the fundamental courses to complete before taking this particular course..</p>
                                 </div>
                                 <div className='courseUploadTip '>
-                                    <GoPrimitiveDot className='text-[#3e64de]' />
+                                    <PiDotOutlineDuotone className='text-[#3e64de]' />
                                     <p className='p-0 m-0'>Information from the Additional Data section shows up on the course single page.</p>
                                 </div>
                             </div>

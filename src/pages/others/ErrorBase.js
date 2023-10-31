@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const ErrorBase = ({img, heading, subheading}) => {
+const ErrorBase = ({ img, heading, subheading }) => {
     return (
         <div className='errorPageContainer'>
             <div className="errorPage">
@@ -11,7 +11,7 @@ const ErrorBase = ({img, heading, subheading}) => {
                 <div className='sideTwo'>
                     <h2 className='heading'>{heading}</h2>
                     <p className='subHeading'>{subheading}</p>
-                    <Link to="/" className='homePageBTN'>Go to Home Page</Link>
+                    <Link to={-1} className='homePageBTN'>Go Back</Link>
                 </div>
             </div>
         </div>

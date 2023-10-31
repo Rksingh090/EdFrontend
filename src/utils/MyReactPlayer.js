@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ReactPlayer from 'react-player'
 
-import { FaPause, FaPlay } from 'react-icons/fa'
+import { HiMiniPlay } from 'react-icons/hi2'
+import { AiOutlinePause } from 'react-icons/ai'
 
 import { FiRotateCw, FiRotateCcw } from 'react-icons/fi'
 import { BsFullscreen, BsFullscreenExit, BsPip, BsVolumeUpFill } from 'react-icons/bs'
 import { IoVolumeMuteSharp } from 'react-icons/io5'
 
 import Duration from './Duration'
+import CustomRangeInput from '../components/utils/CustomRangeInput'
 
 
 const MyReactPlayer = ({ url }) => {
@@ -139,7 +141,7 @@ const MyReactPlayer = ({ url }) => {
         clearTimeouts();
         const timeoutId = setTimeout(() => {
             setShowControls(false);
-        }, 3000);
+        }, 2000);
         timeoutIds.current.push(timeoutId);
     };
 
@@ -162,8 +164,9 @@ const MyReactPlayer = ({ url }) => {
     return (
         <div className='myCustomVideoPlayer'
             onMouseMove={handleMouseMove}
+            onTouchMove={handleMouseMove}
             ref={playerContainerRef}
-            onMouseLeave={() => setShowControls(false)}
+        // onMouseLeave={() => setShowControls(false)}
         >
             <ReactPlayer
                 url={url}
@@ -180,10 +183,13 @@ const MyReactPlayer = ({ url }) => {
                 playbackRate={player.playbackRate}
                 volume={player.volume}
                 muted={player.mute}
+                playsinline={true}
             />
+            {/* controls  */}
             <div className={`bottomControls ${showControls ? "show" : "hide"}`}>
-                <input
-                    className='customRangeInput playerSeekBar'
+
+                <CustomRangeInput
+                    className='playerSeekBar'
                     type='range'
                     min={0}
                     max={0.999999}
@@ -200,9 +206,9 @@ const MyReactPlayer = ({ url }) => {
 
                         {
                             player.playing ? (
-                                <FaPause className={"playerActionBtn"} onClick={toggleVideoPlay} size={22} />
+                                <AiOutlinePause className={"playerActionBtn"} onClick={toggleVideoPlay} size={30} />
                             ) : (
-                                <FaPlay className={"playerActionBtn"} onClick={toggleVideoPlay} size={22} />
+                                <HiMiniPlay className={"playerActionBtn"} onClick={toggleVideoPlay} size={30} />
                             )
                         }
                         <FiRotateCw className={"playerActionBtn"} onClick={seekToNextFrame} size={22} />
@@ -221,7 +227,16 @@ const MyReactPlayer = ({ url }) => {
                         </div>
 
                         <div className='volumButtonWithSlider'>
-                            <input disabled={player?.mute} className='customRangeInput volumeRangeSlider' type='range' min={0} max={1} step='any' value={player.volume} onChange={handleVolumeChange} />
+                            <CustomRangeInput
+                                disabled={player?.mute}
+                                className='volumeRangeSlider'
+                                type='range'
+                                min={0}
+                                max={1}
+                                step='any'
+                                value={player.volume}
+                                onChange={handleVolumeChange}
+                            />
                             {
                                 player.mute ? (
                                     <IoVolumeMuteSharp onClick={handleToggleMute} className='playerActionBtn' size={25} />

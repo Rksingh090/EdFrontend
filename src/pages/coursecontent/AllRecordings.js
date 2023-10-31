@@ -47,7 +47,10 @@ const AllRecordings = () => {
             <div className='OneRecordingPage'>
                 {
                     videoOpened.open && (
-                        <VideoPlayer url={videoOpened?.recording?.video_source} videoType={videoOpened?.recording?.video_source_type} />
+                        <VideoPlayer
+                            url={videoOpened?.recording?.video_source}
+                            videoType={videoOpened?.recording?.video_source_type}
+                        />
                     )
                 }
             </div>

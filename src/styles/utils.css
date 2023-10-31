@@ -1,5 +1,23 @@
+.MaxAreaContainer {
+    max-width: 1440px;
+    width: 100%;
+}
+
+.withX {
+    padding: 0 20px;
+}
+
 .mainColor {
     color: var(--main);
+}
+
+.fadeText {
+    color: var(--fadeText);
+}
+
+/* hide scrollbar  */
+.hideScrollbar::-webkit-scrollbar {
+    display: none;
 }
 
 /* layout utils  */
@@ -59,13 +77,13 @@
 
 .adminBoldMDHeading,
 .adminMDHeading {
-    font-size: 24px;
+    font-size: 16px;
     color: #444;
 }
 
 .adminBoldSMHeading,
 .adminSMHeading {
-    font-size: 18px;
+    font-size: 16px;
     color: #333;
 }
 
@@ -100,7 +118,7 @@
 }
 
 .adminSubtitle.lg {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 
@@ -117,7 +135,7 @@
 }
 
 .PageHeading {
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 500;
     font-family: "Poppins", sans-serif;
     color: #666;
@@ -125,7 +143,7 @@
 
 .Breadcrumb {
     padding: 10px 15px;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 18px;
     font-family: "Poppins", sans-serif;
     display: flex;
@@ -160,7 +178,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 
@@ -172,11 +190,24 @@
 
 
 /* styled table - Striped  */
+.responsiveTable {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.responsiveTable::-webkit-scrollbar {
+    height: 5px;
+}
+
 .styled-table {
     min-width: 400px;
     width: 100%;
     font-family: "Poppins", sans-serif;
-    /* border-collapse: collapse; */
+}
+
+.styled-table.desktopSize {
+    min-width: 1000px;
 }
 
 .styled-table {
@@ -203,7 +234,7 @@
 }
 
 .styled-table>thead>tr>th {
-    font-size: 16px;
+    font-size: 12px;
     padding: 15px 10px;
 }
 
@@ -412,7 +443,7 @@ table.dashboardTable .tableProfileImg>img {
 }
 
 .paginationShown {
-    font-size: 14px;
+    font-size: 12px;
     font-family: var(--poppins);
 }
 
@@ -464,14 +495,14 @@ table.dashboardTable .tableProfileImg>img {
 }
 
 .tableHeading>.heading {
-    font-size: 16px;
+    font-size: 12px;
     font-family: var(--poppins);
     font-weight: 500;
     color: #333;
 }
 
 .tableHeading>.heading.lg {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -482,7 +513,7 @@ table.dashboardTable .tableProfileImg>img {
     border: none;
     border-bottom: 1px solid #333;
     padding-bottom: 5px;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 textarea.FormInput {
@@ -539,7 +570,7 @@ textarea.FormInput {
 
 .flexColInput>.headingLabel,
 .flexColInput>label {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
     color: #777;
 }
@@ -568,9 +599,9 @@ textarea.FormInput {
     gap: 10px;
 }
 
-.flexColImg > .labelText,
-.flexColVideo > .labelText {
-    font-size: 14px;
+.flexColImg>.labelText,
+.flexColVideo>.labelText {
+    font-size: 12px;
     font-weight: 500;
     color: #777;
 }
@@ -655,6 +686,7 @@ textarea.FormInput {
     padding: 10px 0;
     gap: 10px;
 }
+
 .descCol.noBorder,
 .descLine.noBorder {
     border: none;
@@ -667,7 +699,7 @@ textarea.FormInput {
 
 .descCol>b,
 .descLine>b {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
 }
 
@@ -676,7 +708,7 @@ textarea.FormInput {
 .descLine>p,
 .descLine>a {
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px;
     color: var(--main);
     display: flex;
     flex-direction: row;
@@ -709,6 +741,88 @@ textarea.FormInput {
     pointer-events: none;
     cursor: pointer;
 }
+
+/* custom select  */
+.customSelect {
+    width: 100%;
+    height: 100%;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 0 10px;
+    background-color: var(--monochrome);
+    border-radius: 5px;
+    color: #000;
+    box-shadow: var(--adminSmallShadow);
+    cursor: pointer;
+    outline: none;
+    position: relative;
+}
+
+.customSelect.grayed {
+    background-color: var(--adminMainBackground);
+    box-shadow: none;
+}
+
+.customSelect>.customSelectSelected {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.customSelect>.customSelectSelected>label {
+    cursor: pointer;
+    font-size: 12px;
+    word-break: keep-all;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.customSelectOptions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    overflow-y: auto;
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
+    z-index: 7676;
+}
+
+.customSelectOptions::-webkit-scrollbar {
+    width: 5px;
+}
+
+.customSelectOptions>.option {
+    padding: 10px;
+    font-size: 12px;
+    width: 100%;
+    text-align: start;
+    scroll-margin: 100px;
+}
+
+.customSelectOptions>.option.selected {
+    background-color: var(--main);
+    color: var(--monochrome);
+}
+
+.customSelectOptions>.option:not(.selected):hover {
+    background-color: var(--lightGray);
+}
+
+
+.capitalCase {
+    text-transform: capitalize;
+}
+
+
+
 
 
 @media only screen and (max-width: 600px) {

@@ -41,7 +41,7 @@ import Myprofile from './pages/common/Myprofile';
 // courses 
 import AllCourse from './pages/courses/AllCourse';
 import CourseProgress from './pages/courses/CourseProgress';
-import ClassCourses from './pages/courses/ClassCourses';
+// import ClassCourses from './pages/courses/ClassCourses';
 
 // payment flow 
 import PaymentCoupon from './pages/payment/PaymentCoupon';
@@ -50,7 +50,7 @@ import PaymentStatus from './pages/payment/PaymentStatus';
 // student dashboard 
 import Dashboard from './pages/StudentDashboard/Dashboard';
 import EnrolledCourses from './pages/StudentDashboard/EnrolledCourses';
-import Calender from './pages/StudentDashboard/Calender';
+import Calendar from './pages/StudentDashboard/Calendar';
 import QuizAttempts from './pages/StudentDashboard/QuizAttempts';
 import OrderHistory from './pages/StudentDashboard/OrderHistory';
 
@@ -110,11 +110,6 @@ import AssignmentSubmission from './pages/coursecontent/AssignmentSubmission';
 import LessonPage from './pages/coursecontent/LessonPage';
 import AllRecordings from "./pages/coursecontent/AllRecordings";
 
-// franchise 
-import FranchiseDashboard from "./franchise/dashboard/Dashboard"
-import Earning from './franchise/earning/Earning';
-import Coupon from './franchise/coupons/Coupon';
-
 // affiliate
 import AffiliateRegister from "./pages/auth/AffiliateRegister"
 import AffilateDashboard from "./affiliate/dashboard/Dashboard"
@@ -125,17 +120,7 @@ import AffiliateStudent from "./affiliate/student/Student"
 import AffiliateSetting from "./affiliate/setting/Setting";
 import AffiliateProfile from "./affiliate/profile/Profile";
 
-// business associates 
-import BussinessAssDashboard from "./bussinessAssociate/dashboard/Dashboard";
-import BusinessAssCoupon from "./bussinessAssociate/coupon/Coupon"
-import BusinessAssCreateCoupon from "./bussinessAssociate/coupon/CreateCoupon"
-import BusinessAssProfile from "./bussinessAssociate/profile/Profile"
-import BusinessAssSales from "./bussinessAssociate/sales/Sales"
-
-
 // landing pages 
-import Academic1 from './landingpages/academic1/Academic1';
-import A1RegisterForm from './landingpages/academic1/RegisterForm';
 import CourseContentBase from './pages/coursecontent/CourseContentBase';
 
 
@@ -190,10 +175,8 @@ const AllRoutes = () => {
       <Route path="/otp-verify" element={<Protected Component={OtpVerify} reverse={true} />} />
       <Route path="/affiliate/register" element={<Protected reverse={true} Component={AffiliateRegister} />} />
 
-      <Route path="/academics/register" element={<Protected reverse={true} Component={A1RegisterForm} />} />
-
       {/* all courses public  */}
-      <Route path="/courses/all" element={<AllCourse />} />
+      <Route path="/courses" element={<AllCourse />} />
 
       {/* course enroll page - Public  */}
       <Route path="/course/:course_id/:course_slug" element={<CourseProgress />} />
@@ -204,14 +187,6 @@ const AllRoutes = () => {
 
       {/* course content pages  */}
       <Route path='/course/:course_id' element={<Protected Component={CourseContentBase} validRoles={["student"]} />}>
-        {/* <Route path="/course/:course_id/:course_slug/content" element={<Protected Component={CourseContent} validRoles={["student"]} />} />
-        <Route path="/course/:course_id/:course_slug/assignment/:assignment_id" element={<Protected Component={AssignmentSubmission} validRoles={["student"]} />} />
-        <Route path="/course/:course_id/:course_slug/quiz/:quiz_id" element={<Protected Component={NewQuizAttempt} validRoles={["student"]} />} />
-        <Route path="/course/:course_id/:course_slug/quiz/result/:quiz_id" element={<Protected Component={QuizResultPage} validRoles={["student"]} />} />
-        <Route path="/course/:course_id/:course_slug/quiz-attempt/:quiz_attempt_id" element={<Protected Component={QuizAttemptDetails} validRoles={["student"]} />} />
-        <Route path="/course/:course_id/:course_slug/lesson/:lesson_id" element={<Protected Component={LessonPage} validRoles={["student"]} />} />
-        <Route path="/course/:course_id/:course_slug/recordings" element={<Protected Component={AllRecordings} validRoles={["student"]} />} /> */}
-
         <Route path="/course/:course_id/:course_slug/content" element={<CourseContent />} />
         <Route path="/course/:course_id/:course_slug/assignment/:assignment_id" element={<AssignmentSubmission />} />
         <Route path="/course/:course_id/:course_slug/quiz/:quiz_id" element={<NewQuizAttempt />} />
@@ -219,7 +194,6 @@ const AllRoutes = () => {
         <Route path="/course/:course_id/:course_slug/quiz-attempt/:quiz_attempt_id" element={<QuizAttemptDetails />} />
         <Route path="/course/:course_id/:course_slug/lesson/:lesson_id" element={<LessonPage />} />
         <Route path="/course/:course_id/:course_slug/recordings" element={<AllRecordings />} />
-
       </Route>
 
       {/* class  - unused */}
@@ -244,7 +218,7 @@ const AllRoutes = () => {
       <Route path="/student/profile" element={<Protected Component={Myprofile} />} validRoles={["student"]} />
       <Route path="/student/enrolled-courses" element={<Protected Component={EnrolledCourses} validRoles={["student"]} />} />
       <Route path="/student/order-history" element={<Protected Component={OrderHistory} validRoles={["student"]} />} />
-      <Route path="/student/calender" element={<Protected Component={Calender} validRoles={["student"]} />} />
+      <Route path="/student/calendar" element={<Protected Component={Calendar} validRoles={["student"]} />} />
 
       {/* franchise panel */}
 
@@ -256,23 +230,6 @@ const AllRoutes = () => {
       <Route path="/affiliate/student" element={<Protected Component={AffiliateStudent} validRoles={["affiliate"]} />} />
       <Route path="/affiliate/setting" element={<Protected Component={AffiliateSetting} validRoles={["affiliate"]} />} />
       <Route path="/affiliate/profile" element={<Protected Component={AffiliateProfile} validRoles={["affiliate"]} />} />
-
-      {/* bussinessAssociate pages */}
-      {/* <Route path="/bussiness/dashboard" element={<Protected Component={BussinessAssDashboard} validRoles={["businessAssociates"]} />} />
-      <Route path="/bussiness/coupon" element={<Protected Component={BusinessAssCoupon} validRoles={["businessAssociates"]} />} />
-      <Route path="/bussiness/create-coupon" element={<Protected Component={BusinessAssCreateCoupon} validRoles={["businessAssociates"]} />} />
-      <Route path="/bussiness/sales" element={<Protected Component={BusinessAssSales} validRoles={["businessAssociates"]} />} />
-      <Route path="/bussiness/profile" element={<Protected Component={BusinessAssProfile} validRoles={["businessAssociates"]} />} /> */}
-
-      {/* <Route path="/franchise/dashboard" element={<Protected Component={FranchiseDashboard} validRoles={["franchise"]} />} />
-      <Route path="/franchise/earning" element={<Protected Component={Earning} validRoles={["franchise"]} />} />
-      <Route path="/franchise/coupon" element={<Protected Component={Coupon} validRoles={["franchise"]} />} /> */}
-
-
-      {/* franchise rpage */}
-      {/* <Route path="/fronchiseOnline/dashboard" element={<Protected Component={BussinessAssDashboard} validRoles={["businessAssociates"]} />} />
-      <Route path="/fronchiseOnline/earning" element={<Protected Component={BussinessAssEarning} validRoles={["businessAssociates"]} />} />
-      <Route path="/fronchiseOnline/coupon" element={<Protected Component={BusinessAssCoupon} validRoles={["businessAssociates"]} />} /> */}
 
       {/* policy pages */}
       <Route path="/term-and-conditions" element={<Termandcondition />} />
@@ -317,7 +274,6 @@ const AllRoutes = () => {
       <Route path="/admin/affiliate/edit/:userId" element={<Protected Component={AdminEditAffiliate} validRoles={["admin"]} />} />
       <Route path="/admin/affiliate/about/:affiliateId" element={<Protected Component={AboutAffiliate} validRoles={["admin"]} />} />
 
-      <Route path="/academics/1" element={<Academic1 />} />
 
 
       <Route path='/maintenance' element={<MaintenancePage />} />

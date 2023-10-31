@@ -4,7 +4,6 @@ import { BsTelephone } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { FiLock } from 'react-icons/fi';
 import { MdAlternateEmail, MdOutlineShortText } from 'react-icons/md';
-import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { API } from '../../constant';
 import axios from 'axios';
 
@@ -35,29 +34,7 @@ const AffiliateRegister = () => {
     <div className='authContainer'>
       <div className='registerChildContainer'>
 
-        <div className='registerSlider'>
-          <Splide options={{
-            rewind: true,
-            arrows: false,
-            perPage: 1,
-            pagination: false,
-            autoplay: true,
-            interval: 2000,
-            cover: true
-          }}
-            style={{
-              width: "100%",
-              padding: 0
-            }}
-          >
-            <SplideSlide className='registerSlide'>
-              <img alt="img2" src={"https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/affiliate1.jpg"} />
-            </SplideSlide>
-            <SplideSlide className='registerSlide'>
-              <img alt="img2" src={"https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/affiliate2.jpg"} />
-            </SplideSlide>
-          </Splide>
-        </div>
+
 
         <div className='affiliateFormSide2'>
 

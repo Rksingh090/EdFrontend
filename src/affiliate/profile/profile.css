@@ -37,7 +37,7 @@
 }
 
 .formEditAreaColom {
-    font-size: 18px;
+    font-size: 16px;
     /* font-weight: 500; */
 }
 
@@ -55,8 +55,9 @@
     border: 1px solid lightgray;
     margin-right: 50px;
 }
-.subitFormBtn{
-   
+
+.subitFormBtn {
+
     background-color: var(--main);
     border-radius: 10px;
     border: 2px solid var(--main);
@@ -65,7 +66,8 @@
     padding: 10px 20px;
     transition: all .5s ease;
 }
-.subitFormBtn:hover{
+
+.subitFormBtn:hover {
     color: var(--main);
     background-color: white;
 }

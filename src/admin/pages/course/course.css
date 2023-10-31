@@ -57,7 +57,7 @@
 }
 
 .courseCard .cardBody>.headingText {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
@@ -74,7 +74,7 @@
 }
 
 .courseCard .subheadingSBtwn>.subheadingText1 {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
     color: grey;
 }
@@ -89,7 +89,7 @@
 }
 
 .courseCard .cardBody>.additionalData {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
     padding: 5px 0;
     display: flex;
@@ -99,7 +99,7 @@
 }
 
 .courseCard .cardBody>.footerText {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
 }
 
@@ -118,7 +118,7 @@
     height: 200px;
 }
 
-.courseImgDiv > img {
+.courseImgDiv>img {
     object-fit: cover;
     height: 100%;
     width: 100%;

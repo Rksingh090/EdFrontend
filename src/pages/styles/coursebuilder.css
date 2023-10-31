@@ -66,7 +66,7 @@
     border-radius: 5px;
     background-color: var(--grayPrimary);
     font-family: var(--poppins);
-    font-size: 14px;
+    font-size: 12px;
 }
 
 
@@ -97,6 +97,7 @@
     background-color: green;
     color: white;
 }
+
 .courseStatus.warning {
     background-color: rgb(255, 145, 0);
     color: white;
@@ -154,7 +155,8 @@
 
 /* course info  */
 .courseDescriptionRQ .ql-editor {
-    height: 250px;
+    min-height: 250px;
+    min-height: 400px;
 }
 
 .courseDescriptionRQ .ql-toolbar.ql-snow {
@@ -276,7 +278,7 @@
 }
 
 .CBOneItem>.orderAndTitle>p {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 
@@ -293,7 +295,7 @@
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    padding: 7px 14px;
+    padding: 7px 12px;
     border-radius: 5px;
     border: 1px solid var(--main);
     color: var(--main);
@@ -301,7 +303,7 @@
 }
 
 .CBItemAddBtn>p {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .CBItemAddBtn:hover {
@@ -356,7 +358,7 @@
 .courseSettingMenu>div {
     display: flex;
     align-items: center;
-    font-size: 16px;
+    font-size: 12px;
     padding: 10px;
     gap: 10px;
     cursor: pointer;
@@ -544,7 +546,7 @@
 }
 
 .topicHeading>h2 {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -656,7 +658,7 @@
 }
 
 .quizHeadText {
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 500;
     color: #333;
 }
@@ -695,7 +697,7 @@
     aspect-ratio: 1;
     border-radius: 50px;
     background-color: rgb(214, 214, 214);
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
 }
 
@@ -988,7 +990,7 @@
 }
 
 .advanceSettingH4 {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .gearIcon {
@@ -1000,7 +1002,7 @@
 }
 
 .gearIcon>svg {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .arrowDown {
@@ -1009,7 +1011,7 @@
 }
 
 .arrowDown>svg {
-    font-size: 22px;
+    font-size: 16px;
 }
 
 .advContextMenu {
@@ -1161,7 +1163,7 @@
 }
 
 .trueFasleRadio>div>input {
-    width: 16px;
+    width: 12px;
     aspect-ratio: 1;
 }
 
@@ -1292,7 +1294,7 @@
 }
 
 .imgGrid2>p {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .imgGrid2>button {
@@ -1319,12 +1321,12 @@
 }
 
 .optionFormatRadios>div>input {
-    width: 16px;
+    width: 12px;
     aspect-ratio: 1;
 }
 
 .optionFormatRadios>div>label {
-    font-size: 16px;
+    font-size: 12px;
     color: #303030;
     font-weight: 500;
 }
@@ -1394,7 +1396,7 @@
 
 .assignmentFormHeading {
     font-weight: 500;
-    font-size: 22px;
+    font-size: 16px;
 }
 
 .assignmentFormInput {
@@ -1441,6 +1443,8 @@ textarea.assignmentFormInput {
 
 .assignmentReactQuill {
     background-color: white;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 .assignmentReactQuill .ql-editor {
@@ -1561,7 +1565,7 @@ textarea.assignmentFormInput {
 
 .infoIconText>svg {
     min-width: 20px;
-    font-size: 16px;
+    font-size: 12px;
     color: rgb(124, 124, 124);
 }
 
@@ -1605,8 +1609,7 @@ textarea.assignmentFormInput {
 .lessonForm {
     background-color: white;
     width: 700px;
-    max-height: 800px;
-    height: 800px;
+    height: 650px;
     border-radius: 10px;
     display: grid;
     grid-template-rows: 60px 1fr 70px;
@@ -1616,7 +1619,7 @@ textarea.assignmentFormInput {
 
 .lessonFormHeading {
     font-weight: 500;
-    font-size: 22px;
+    font-size: 16px;
 }
 
 .featuredImage {
@@ -1690,7 +1693,7 @@ textarea.assignmentFormInput {
     color: white;
     margin-top: 15px;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .customSelectInput {
@@ -1796,7 +1799,7 @@ textarea.assignmentFormInput {
 }
 
 .playBackTimeGrid>.timeInput>label {
-    font-size: 14px;
+    font-size: 12px;
     padding: 0 5px;
 }
 
@@ -1805,7 +1808,7 @@ textarea.assignmentFormInput {
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    font-size: 16px;
+    font-size: 12px;
     background-color: var(--main);
     color: white;
     padding: 10px;
@@ -1843,14 +1846,15 @@ textarea.assignmentFormInput {
     justify-content: center;
     align-items: center;
 }
+
 .OneRecordingMeta {
     width: 100%;
     height: 100%;
     padding: 10px 5px;
 }
 
-.OneRecordingMeta > h2 {
-    font-size: 16px;
+.OneRecordingMeta>h2 {
+    font-size: 12px;
     color: var(--main);
     font-weight: 600;
     cursor: pointer;
@@ -1858,13 +1862,15 @@ textarea.assignmentFormInput {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.OneRecordingMeta > p {
+
+.OneRecordingMeta>p {
     font-size: 13px;
     color: #222;
     margin-top: 10px;
     text-transform: capitalize;
 }
-.OneRecordingMeta > span {
+
+.OneRecordingMeta>span {
     font-size: 13px;
     color: #222;
 }
@@ -1876,7 +1882,7 @@ textarea.assignmentFormInput {
     background-color: white;
     border-radius: 10px;
     display: grid;
-    grid-template-rows: 80px minmax(0,1fr) 80px;
+    grid-template-rows: 80px minmax(0, 1fr) 80px;
 }
 
 .CBRecordingFormBody {
@@ -1898,9 +1904,10 @@ textarea.assignmentFormInput {
     font-family: var(--poppins);
 }
 
-.CBInputGroup > label {
-    font-size: 16px;
+.CBInputGroup>label {
+    font-size: 12px;
 }
+
 .CBFormInput {
     border: 1px solid #d9d9d9;
     width: 100%;
@@ -1908,7 +1915,7 @@ textarea.assignmentFormInput {
     border-radius: 5px;
     outline: none;
     resize: none;
-} 
+}
 
 @media only screen and (max-width: 800px) {
 
