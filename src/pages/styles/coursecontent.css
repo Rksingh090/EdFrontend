@@ -45,15 +45,20 @@
 }
 
 .courseTopicsContainer::-webkit-scrollbar {
+    transition: all 1s ease;
     width: 5px;
 }
 
+.courseTopicsContainer::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
 .courseTopicsContainer::-webkit-scrollbar-thumb {
-    display: none;
+    background-color: transparent;
 }
 
 .courseTopicsContainer:hover::-webkit-scrollbar-thumb {
-    display: block;
+    background-color: var(--main);
 }
 
 .singleTopicsAndItems {
@@ -172,7 +177,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border-radius: 0 10px 10px 0;
+    border-radius: 0 100px 100px 0;
 }
 
 
@@ -202,6 +207,7 @@
     padding: 0 10px;
 }
 
+
 .courseCloseBtn {
     height: 60%;
     aspect-ratio: 1;
@@ -221,6 +227,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: var(--adminMainBackground);
 }
 
 /* welcome page - course content  */
@@ -231,15 +238,36 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
     font-family: var(--poppins);
-
 }
 
-.courseWelcomPage>h2 {
-    font-size: 30px;
+.courseWelcomWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 50px;
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
+    border-radius: 10px;
+}
+
+.courseContentWelocomePage {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.courseContentWelocomePage>.title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.courseContentWelocomePage>.subtitle {
+    font-size: 20px;
     font-weight: 500;
-    color: #333;
 }
 
 .CCwelcomeIcon {
@@ -269,9 +297,8 @@
 
 .QuizResultPageHeading {
     width: 100%;
-    background-color: var(--adminMainBackground);
-    /* background-color: var(--monochrome); */
-    /* box-shadow: var(--adminSmallShadow); */
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -312,7 +339,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 20px;
     padding: 20px 30px;
     width: 100%;
 }
@@ -365,8 +392,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--adminMainBackground);
-    /* box-shadow: var(--adminSmallShadow); */
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
     padding: 50px;
     min-height: 350px;
     width: 100%;
@@ -425,27 +452,37 @@
 }
 
 /* single question  */
-.SingleQuestion {
+.CCSingleQuestion {
     display: flex;
     flex-direction: column;
     gap: 30px;
-    width: 75%;
+    width: 90%;
     min-height: 100%;
     padding: 20px 0;
 }
 
 .questionTitle {
-    font-size: 25px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 600;
 }
 
 .questionMeta {
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    gap: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.questionType {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 40px;
-    font-size: 16px;
-    font-weight: 500;
+    gap: 10px;
 }
 
 .questionArea {
@@ -496,7 +533,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: flex-start;
-    gap: 30px 20px;
+    gap: 20px;
 }
 
 .singleChoiceSingleOption {
@@ -506,7 +543,6 @@
     background-color: var(--monochrome);
     box-shadow: var(--adminSmallShadow);
     border-radius: 5px;
-    height: 100%;
     cursor: pointer;
 }
 
@@ -579,9 +615,11 @@
 }
 
 .fillBlankChoiceContainer>input {
-    border: 1px solid #d9d9d9;
+    border: none;
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
     border-radius: 5px;
-    padding: 8px 15px;
+    padding: 10px 15px;
     outline: none;
 }
 
@@ -638,50 +676,107 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 80%;
-    padding: 20px 0;
+    width: 100%;
+    padding: 20px;
     gap: 25px;
 }
 
+.CCAssignmentHeading {
+    width: 100%;
+    background-color: var(--monochrome);
+    padding: 10px 15px;
+    box-shadow: var(--adminSmallShadow);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
 .assignmentContentTitle {
-    font-size: 25px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.AssignmentDescriptionGrid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: flex-start;
+    clear: both;
+}
+
+/* first column  */
+.AssignmentSubFirstColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* description box  */
+.CCAssignmentDescriptionBox {
+    width: 100%;
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
+    border-radius: 10px;
+}
+
+.assignmentPageReactQuill {
+    width: 100%;
+}
+
+.assignmentPageReactQuill .ql-editor {
+    padding: 20px;
+}
+
+/* pdf box  */
+.CCAssignmentPDFBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+}
+
+.noPdfGivenByInstructor {
+    width: 100%;
+    max-height: 500px;
+    height: 100%;
 }
 
 
 .assignmentSubtitle {
-    font-family: var(--poppins);
-    font-size: 16px;
-    font-weight: 600;
-    color: #111;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 10px 16px 10px;
+    width: 100%;
 }
 
 .pdfViewPage {
-    border: 1px solid #d9d9d9;
+    overflow: hidden;
 }
 
-.reactQuill {
-    width: 90%;
-}
 
-.reactQuill * {
+.assignmentPageReactQuill * {
     padding: 0;
 }
 
-.reactQuill h2,
-.reactQuill h2 * {
+.assignmentPageReactQuill h2,
+.assignmentPageReactQuill h2 * {
     font-size: 25px;
     margin-bottom: 8px;
 }
 
-.reactQuill h3,
-.reactQuill h3 * {
+.assignmentPageReactQuill h3,
+.assignmentPageReactQuill h3 * {
     font-size: 16px;
     margin-bottom: 5px;
 }
 
-.reactQuill p,
-.reactQuill li {
+.assignmentPageReactQuill p,
+.assignmentPageReactQuill li {
     font-size: 16px;
 }
 
@@ -695,28 +790,33 @@
 }
 
 .assignmentSubmitTextArea {
-    padding: 10px;
-    border-radius: 5px;
-    width: 70%;
-    border: 1px solid #a0a0a0;
+    width: 100%;
+    border-radius: 10px;
     outline: none;
-    resize: none;
+    border: none;
+    /* resize: none; */
+    padding: 10px;
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
 }
 
 .assignmentUploadBTN {
     padding: 8px 10px;
     border-radius: 5px;
     font-size: 16px;
-    background-color: var(--main);
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    background-color: #777;
+    transition: all .5s ease;
+    color: var(--main);
 }
 
 .assignmentUploadBTN:hover {
     background-color: var(--main);
+    color: var(--monochrome);
 }
 
 .assignmentSubmitBTN {
@@ -729,11 +829,11 @@
 
 .assignmentUploadBTN>span {
     font-size: 16px;
-    color: white;
+    color: inherit;
 }
 
 .assignmentUploadBTN>svg {
-    color: white;
+    color: inherit;
 }
 
 /* lesson page style  */
@@ -746,14 +846,12 @@
 
 .lessonAboutAttachment {
     width: 100%;
-    height: 55px;
-    background-color: white;
+    height: 45px;
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
     display: flex;
     align-items: center;
-    /* justify-content: center; */
-    gap: 10px;
     font-family: var(--poppins);
-    border-bottom: 0.5px solid #AFAFAF;
 }
 
 .lessonAboutAttachment .oneTab {
@@ -763,18 +861,17 @@
     flex-direction: row;
     align-items: center;
     gap: 5px;
-    border-bottom: 2px solid transparent;
     cursor: pointer;
     transition: all .5s ease;
 }
 
 .lessonAboutAttachment .oneTab.active {
-    border-bottom: 2px solid var(--main);
-    color: var(--main);
+    background-color: var(--main);
+    color: var(--monochrome);
 }
 
 .lessonAboutAttachment .oneTab.active svg path {
-    stroke: var(--main);
+    stroke: var(--monochrome);
     transition: all .5s ease;
 }
 
@@ -788,8 +885,20 @@
 }
 
 .lessonAboutSection {
-    padding: 0 40px;
+    padding: 10px;
 }
+
+.lessonAboutContainer {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
+    border-radius: 10px;
+    padding: 10px;
+    overflow: hidden;
+}
+
 
 /* video player  */
 .mainVideoPlayerContainer {
@@ -885,7 +994,6 @@
     display: grid;
     gap: 10px;
     padding: 10px;
-    background-color: white;
     overflow-y: auto;
     overflow-x: hidden;
     transition: all .5s ease-in-out;
@@ -903,6 +1011,7 @@
 .CCRecordingContainer .CBOneRecording {
     transition: all .5s ease-in-out;
     height: 80px;
+    cursor: pointer;
 }
 
 .CCRecordingContainer.opened .CBOneRecording {
@@ -959,4 +1068,97 @@
     width: 100%;
     overflow: hidden;
     transition: all .5s ease-in-out;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    /* course context close button padding  */
+    .mainContentArea {
+        padding-right: 30px;
+    }
+
+
+    .AssignmentDescriptionGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .AssignmentSubFirstColumn {
+        order: 2;
+    }
+
+    .CCAssignmentPDFBox {
+        order: 1;
+    }
+
+    /* lesson pdf and notes section  */
+    .lessonAboutSection {
+        padding: 20px 10px;
+    }
+
+    .liveLogin.joinClass {
+        display: none;
+    }
+
+
+    /* quiz attempts result or quiz start page  */
+    .CourseResultAndStart {
+        padding: 20px 10px;
+    }
+
+    .QuizStartBtnAndTitle {
+        padding: 10px;
+    }
+
+    .startQuizBtn {
+        font-size: 14px;
+        padding: 7px;
+        order: 3;
+    }
+
+    .quizPageTitle>svg {
+        height: 20px;
+    }
+
+    .quizPageTitle>h2 {
+        font-size: 14px;
+    }
+
+    .quizQuestionHeadings {
+        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* quiz start page  */
+    .quizStartContainer {
+        padding: 20px;
+    }
+
+    .quizStartPage {
+        padding: 30px;
+    }
+
+
+    /* actual quiz and question page  */
+    .CCSingleQuestion {
+        width: 100%;
+    }
+
+    .questionMeta {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .questionTitle {
+        font-size: 18px;
+    }
+
+    .fillBlankChoiceContainer,
+    .singleChoiceContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .QuizResultPage {
+        padding: 20px 15px;
+    }
 }

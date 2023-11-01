@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllMonthEvents } from '../../reducers/CalendarReducers';
 import '../styles/student.css';
 import SelectOption from '../../components/utils/SelectOption';
+import IconByItemType from '../../components/utils/IconByItemType';
 
 const Calendar = () => {
 	const dispatch = useDispatch();
@@ -205,11 +206,8 @@ const Calendar = () => {
 										) : (
 											<p
 												onClick={() => handleDateSelect(date)}
-												className={`dateDay orginalDay 
-											${selectedDate._id === date._id ? "selectedDate" : ""}
-											${date.events?.length > 0 ? "eventDay" : ""}
-											${date._id === currentDate ? "currentDate" : ""}
-											`}>
+												className={`dateDay orginalDay ${selectedDate._id === date._id ? "selectedDate" : ""} ${date.events?.length > 0 ? "eventDay" : ""} ${date._id === currentDate ? "currentDate" : ""}`}
+											>
 												{date.day}
 											</p>
 										)}
@@ -230,17 +228,18 @@ const Calendar = () => {
 							</div>
 						</div>
 						{eventList.length > 0 &&
-							eventList.filter(date => date.day !== "_" && date.events?.length > 0)
+							eventList
+								.filter(date => date.day !== "_" && date.events?.length > 0)
 								.map((date) => {
 									return (
 										<div className='dateEvents' key={date._id}>
-											<h2>Date: {date._id}</h2>
+											<h2>Date: {new Date(date._id).toLocaleDateString()}</h2>
 											<div className='eventData'>
 												{
 													date.events.map((ev, ev_idx) => (
-														<div key={ev_idx}>
+														<div key={ev_idx} title={ev.event_type} >
 															<p>{ev.event_name}</p>
-															<p>{ev.event_type}</p>
+															<p><IconByItemType type={ev.event_type} /></p>
 														</div>
 													))
 												}

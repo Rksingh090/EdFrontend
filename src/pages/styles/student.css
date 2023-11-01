@@ -2,6 +2,7 @@
 
 .SCalendarPage {
     padding: 20px;
+    background-color: var(--adminMainBackground);
 }
 
 .showDetails {
@@ -24,6 +25,7 @@
 .calendarWeekAndDate {
     justify-content: flex-start;
     border: 1px solid #dadada;
+    background-color: var(--monochrome);
 }
 
 .detailsTD:hover {
@@ -62,7 +64,6 @@
     color: white;
 }
 
-
 .currentDate.eventDay {
     background-color: pink;
 }
@@ -70,30 +71,25 @@
 .calendar.searchBar {
     width: 100%;
     column-gap: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
+    display: grid;
+    grid-template-columns: 1fr 100px;
 }
 
 .calendar.searchBar>.searchDiv {
-    max-width: 600px;
-    width: 500px;
-    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: var(--adminSmallShadow);
 }
 
 .searchDiv>input {
     width: 100%;
-    color: var(--main);
-    border: 1px solid var(--main);
+    background-color: var(--monochrome);
+    border: none;
     outline: none;
-    padding: 8px 15px;
+    padding: 10px 15px;
     border-radius: 5px;
 }
 
-.searchDiv>input::placeholder {
-    color: var(--main);
-}
 
 .addEventsBTN>button {
     padding: 10px;
@@ -134,19 +130,21 @@
     align-items: center;
     width: 100%;
     row-gap: 15px;
-    overflow-x: auto;
 }
 
 .dateEvents {
     display: flex;
     flex-direction: column;
     width: 100%;
-
+    background-color: var(--monochrome);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: var(--adminSmallShadow);
 }
 
 .dateEvents>h2 {
-    background-color: var(--secondary);
-    color: rgb(255, 255, 255);
+    background-color: var(--main);
+    color: var(--monochrome);
     padding: 10px;
 }
 
@@ -163,13 +161,15 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 5px 10px;
+    padding: 10px;
 }
 
 
 
 /* dashboard page  */
 .StudentDashboardPage {
+    background-color: var(--adminMainBackground);
+    min-height: 100%;
     padding: 20px;
 }
 
@@ -178,7 +178,8 @@
     grid-template-columns: 3fr 1fr;
     gap: 20px;
     padding: 20px;
-    background-color: var(--adminMainBackground);
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
     border-radius: 10px;
     margin: 20px 0;
 }
@@ -246,7 +247,8 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    background-color: var(--adminMainBackground);
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
 }
 
 .dashboardStatusBox>.count {
@@ -262,8 +264,9 @@
 
 /* enrolled course  */
 .enrolledCoursePage {
+    background-color: var(--adminMainBackground);
     padding: 20px;
-    min-height: 100%;
+    height: 100%;
 }
 
 .studentCourseSection {
@@ -352,6 +355,8 @@
 /* quiz attempts details  */
 .SQuizAttemptPage {
     padding: 20px;
+    background-color: var(--adminMainBackground);
+    height: 100%;
 }
 
 .SQuizAttemptHeading {

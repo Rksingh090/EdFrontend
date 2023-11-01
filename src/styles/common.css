@@ -69,7 +69,6 @@
     align-items: center;
     width: 100%;
     background-color: var(--adminMainBackground);
-    /* border-bottom: 1px solid #CDCFD5; */
     padding: 0;
     margin: 0;
     flex-wrap: wrap;
@@ -91,6 +90,10 @@
 .tabMenu.roundSM {
     border-radius: 5px;
     overflow: hidden;
+}
+
+.tabMenu.withShadow {
+    box-shadow: var(--adminSmallShadow);
 }
 
 .tabMenu>p.flexed {
@@ -116,6 +119,8 @@
 
 /* profile page  */
 .TSProfilePage {
+    min-height: 100%;
+    background-color: var(--adminMainBackground);
     padding: 20px;
 }
 
@@ -132,7 +137,8 @@
 .TSProfileMain {
     width: 100%;
     border-radius: 10px;
-    background-color: var(--adminMainBackground);
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
     display: grid;
     grid-template-columns: 180px 1fr 2fr;
     padding: 20px;
@@ -199,7 +205,7 @@
 }
 
 .profileSkillsBadges>.item {
-    background-color: white;
+    background-color: var(--adminMainBackground);
     font-size: 12px;
     border-radius: 50px;
     padding: 8px 20px;
@@ -208,7 +214,9 @@
 .TSProfileBio {
     width: 100%;
     padding: 20px;
-    background-color: var(--adminMainBackground);
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
+    border-radius: 10px;
 }
 
 .TSProfileBio>p {
@@ -286,6 +294,7 @@
 
 /* settings page  */
 .TSSettingPage {
+    background-color: var(--adminMainBackground);
     width: 100%;
     padding: 20px;
 }
@@ -327,13 +336,15 @@
 
 
 .SettingsProfileTab {
+
     padding-top: 20px;
 }
 
 
 .SPTProfileUploadContainer {
     width: 100%;
-    background-color: var(--adminMainBackground);
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
     border-radius: 10px;
     display: grid;
     align-items: center;
@@ -347,8 +358,8 @@
     width: 100%;
     height: 230px;
     overflow: hidden;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--adminMainBackground);
+    /* box-shadow: var(--adminSmallShadow); */
     border-radius: 10px;
 }
 
@@ -362,8 +373,7 @@
 .profileMenuBtns {
     border-radius: 5px;
     width: 100%;
-    box-shadow: var(--adminSmallShadow);
-    background-color: var(--monochrome);
+    background-color: var(--adminMainBackground);
     display: grid;
     grid-template-columns: 1fr 1fr;
     overflow: hidden;
@@ -392,8 +402,8 @@
     padding: 10px;
     width: 100%;
     height: 230px;
-    background-color: white;
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--adminMainBackground);
+    /* box-shadow: var(--adminSmallShadow); */
     border-radius: 10px;
     overflow: hidden;
 }
@@ -415,8 +425,7 @@
 .coverMenuBtn {
     width: 200px;
     border-radius: 5px;
-    box-shadow: var(--adminSmallShadow);
-    background-color: var(--monochrome);
+    background-color: var(--adminMainBackground);
     display: grid;
     grid-template-columns: 1fr 1fr;
     overflow: hidden;
@@ -435,10 +444,10 @@
     grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
     border-radius: 10px;
     height: 220px;
-    background-color: var(--adminMainBackground);
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
     padding: 10px;
     gap: 20px;
-    font-family: var(--poppins);
 }
 
 .certificateImageDiv {
@@ -537,10 +546,9 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 4px 10px;
-    background-color: var(--adminMainBackground);
-    color: white;
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
     border-radius: 5px;
-    ;
 }
 
 .SettingSkillItem>.skillName {
@@ -558,12 +566,14 @@
 
 .GrayedInput {
     width: 100%;
-    background-color: var(--adminMainBackground);
+    background-color: var(--monochrome);
+    box-shadow: var(--adminSmallShadow);
     border-radius: 5px;
     border: none;
     outline: none;
     padding: 10px;
     font-size: 14px;
+    resize: none;
 }
 
 .GrayedInput.verticalExtend {
@@ -605,33 +615,7 @@
     font-weight: 500;
 }
 
-@media only screen and (max-width: 1400px) {
 
-    /* calendar page  */
-    .dateDay {
-        width: 80%;
-        height: 80%;
-    }
-}
-
-
-@media only screen and (max-width: 1200px) {
-
-    /* calendar page  */
-    .calendarGrid {
-        grid-template-columns: 1fr;
-    }
-
-    .calendar.searchBar {
-        padding: 0;
-    }
-
-    .dateDay {
-        width: 50%;
-        height: 50%;
-    }
-
-}
 
 @media only screen and (max-width: 800px) {
 
@@ -642,16 +626,6 @@
         flex-direction: column;
         align-items: flex-start;
     }
-}
-
-@media only screen and (max-width: 600px) {
-
-    /* calendar page  */
-    .dateDay {
-        width: 70%;
-        height: 70%;
-    }
-
 }
 
 

@@ -35,7 +35,7 @@ const EnrolledCourses = () => {
     return (
         <TeacherSidebar>
             <div className='enrolledCoursePage'>
-                <div className='tabMenu'>
+                <div className='tabMenu whiteBG roundSM withShadow'>
                     <p className={`${openTab === "active" && "active"}`} onClick={() => setOpenTab("active")}>
                         Active Courses ({pending_courses?.filter(course => course.course !== null)?.length || 0})
                     </p>

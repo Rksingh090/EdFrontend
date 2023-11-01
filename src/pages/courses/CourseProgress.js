@@ -39,7 +39,7 @@ const CourseProgress = () => {
     const { student: { course_qattempts } } = useSelector((state) => state.quizattempts);
     const { course_announcement } = useSelector((state) => state.announcement);
 
-    const [progressValue, setProgressValue] = useState(1);
+    const [progressValue, setProgressValue] = useState(.4);
 
     // tab index 
     const [tabIndex, setTabIndex] = useState("description");
@@ -151,7 +151,7 @@ const CourseProgress = () => {
                         </div>
 
                         {/* tabmenu  */}
-                        <div className='tabMenu'>
+                        <div className='tabMenu whiteBG withShadow roundSM'>
                             <p className={`flex-fill ${tabIndex === "description" && "active"}`} onClick={() => setTabIndex("description")}>Description</p>
                             <p className={`${tabIndex === 1 && "active"}`} onClick={() => setTabIndex(1)}>{enrollData.isEnrolled ? "Course Content" : "Course Demo"}</p>
                             {
@@ -159,8 +159,6 @@ const CourseProgress = () => {
                                     <>
                                         <p className={`flex-fill ${tabIndex === 2 && "active"}`} onClick={() => setTabIndex(2)}>Reviews</p>
                                         <p className={`${tabIndex === 3 && "active"}`} onClick={() => setTabIndex(3)}>Announcements</p>
-                                        <p className={`${tabIndex === 4 && "active"}`} onClick={() => setTabIndex(4)}>Gradebook</p>
-                                        <p className={`${tabIndex === 5 && "active"}`} onClick={() => setTabIndex(5)}>Resources</p>
                                     </>
                                 )
                             }
@@ -169,8 +167,8 @@ const CourseProgress = () => {
 
                         {/* course content tab  */}
                         {tabIndex === "description" && (
-                            <div>
-                                <ReactQuill value={courseContent?.description} readOnly={true} theme="bubble" className="courseDescriptionRQ" />
+                            <div className='courseDescriptionRQ whiteBGQuillDesc'>
+                                <ReactQuill value={courseContent?.description} readOnly={true} theme="bubble" />
                             </div>
                         )}
 
@@ -255,24 +253,15 @@ const CourseProgress = () => {
 
                         {/* tab 2: rating and review  */}
                         {tabIndex === 2 &&
-                            <div className={`courseContent`}>
-                                <div className='toggletab pt-7'>
-                                    <h1>Student Ratings & Reviews</h1>
-                                </div>
-
-                                <div className='studentrating'>
-                                    <img src="https://miro.medium.com/v2/resize:fit:1400/1*MgBfT1nf_4B1cwhj0IV_7w.png" alt="" />
-                                    <div className='studentfedback'>
-                                        <p>No Review Yet</p>
-                                    </div>
-                                </div>
+                            <div className={`reviewsTab`}>
+                                <h2>No Review Yet</h2>
                             </div>
                         }
 
                         {/* announcement's */}
                         {tabIndex === 3 &&
                             <div className={`courseContent `}>
-                                <div className='toggletab announcementTabView pt-7'>
+                                <div className='toggletab announcementTabView'>
                                     {
                                         course_announcement &&
                                         course_announcement.length > 0 &&
@@ -306,91 +295,21 @@ const CourseProgress = () => {
                                         })
                                     }
 
+                                    {
+                                        course_announcement &&
+                                        course_announcement.length === 0 && (
+
+                                            <div className={`reviewsTab`}>
+                                                <h2>No Announcement Yet</h2>
+                                            </div>
+                                        )
+                                    }
+
                                 </div>
                             </div>
                         }
 
-                        {/* gradebook  */}
-                        {tabIndex === 4
-                            &&
-                            <div className={`courseContent`}>
-                                <div className='gradeBookContainer'>
-                                    <div className='gradebookMain'>
-                                        <p className='mainGradeStatus'>F</p>
-                                        <div>
-                                            <p className='gradeFinalGrade'>Final Grade</p>
-                                            <p>4.0 out of <span className='spanin'>5.0</span> </p>
-                                        </div>
-                                    </div>
 
-                                    <div className='gradebookTableHeading mt-4'>
-                                        <p>Title</p>
-                                        <p>Total Grade</p>
-                                        <p>Result</p>
-                                    </div>
-
-                                    <div className='gradeItemContainer'>
-                                        {
-                                            course_qattempts &&
-                                            course_qattempts.length > 0 &&
-                                            course_qattempts.map((attempt) => {
-                                                let grade = (attempt.obtained_mark * 5) / attempt.total_marks;
-                                                return (
-                                                    <div className='gradeItem' key={attempt?._id}>
-                                                        <div>
-                                                            <AiOutlineQuestionCircle size={20} />
-                                                            <p>{attempt?.quiz_id?.quiz_title}</p>
-                                                        </div>
-                                                        <div>
-                                                            <p>
-                                                                {String(grade).length > 4
-                                                                    ?
-                                                                    String(grade).substring(0, 4)
-                                                                    :
-                                                                    String(grade)
-                                                                } out of 5
-                                                            </p>
-                                                        </div>
-                                                        <div className='gradeStatus'>
-                                                            {
-                                                                attempt?.passing_status === "pass" && (
-                                                                    <p className='pass' title="Pass">P</p>
-                                                                )
-                                                            }
-                                                            {
-                                                                attempt?.passing_status === "pending" && (
-                                                                    <p className='pending' title="Pending">?</p>
-                                                                )
-                                                            }
-                                                            {
-                                                                attempt?.passing_status === "fail" && (
-                                                                    <p className='fail' title="Fail">F</p>
-                                                                )
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                </div>
-                            </div>
-                        }
-
-                        {/* resources  */}
-                        {
-                            tabIndex === 5 &&
-                            <div className={`courseContent`}>
-                                <div className='toggletab pt-7'>
-                                    <div className='studentrating'>
-                                        <img src="https://miro.medium.com/v2/resize:fit:1400/1*MgBfT1nf_4B1cwhj0IV_7w.png" alt="" />
-                                        <div className='studentfedback'>
-                                            <p>No Attachment Found</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        }
                     </div>
 
 

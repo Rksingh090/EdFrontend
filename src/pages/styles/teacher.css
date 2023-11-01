@@ -195,29 +195,3 @@
     background-color: var(--main);
     color: white;
 }
-
-
-@media only screen and (max-width: 1400px) {}
-
-@media only screen and (max-width: 1200px) {
-    .calendarGrid {
-        grid-template-columns: 1fr;
-    }
-
-    .calendar.searchBar {
-        padding: 0;
-    }
-
-}
-
-@media only screen and (max-width: 800px) {}
-
-@media only screen and (max-width: 600px) {
-
-    /* calendar page  */
-
-
-    .dateEvents {
-        padding: 0;
-    }
-}

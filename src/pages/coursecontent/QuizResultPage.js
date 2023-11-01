@@ -5,8 +5,11 @@ import { Link, useParams } from 'react-router-dom';
 import ItemViewWrapper from './ItemViewWrapper';
 
 import { BsQuestionSquare } from 'react-icons/bs';
+import { toDateString } from '../../functions/dateformate';
 
 const QuizResultPage = () => {
+	const { quiz_id, course_id, course_slug } = useParams();
+
 	const [quizData, setQuizData] = useState([]);
 	const [quizAttempts, setQuizAttempts] = useState([]);
 
@@ -20,7 +23,6 @@ const QuizResultPage = () => {
 		preview_available: false
 	})
 
-	const { quiz_id, course_id, course_slug } = useParams();
 
 
 	// get quiz attempts by id 
@@ -113,7 +115,7 @@ const QuizResultPage = () => {
 					<p>Questions: {Number(quizData?.totalQuestions) > 9 ? 10 : quizData?.totalQuestions}</p>
 					<p>Quiz Time: {quizData?.time_limit?.limit} <span className='capitalize'>{quizData?.time_limit?.limit_type}</span></p>
 					<p>Total Marks: {quizData?.total_marks}</p>
-					<p>Passing Marks: {quizData?.passing_mark}%</p>
+					<p>Passing Grade: {quizData?.passing_mark}%</p>
 				</div>
 
 				{quizAttempts && quizAttempts.length === 0 && (
@@ -126,11 +128,12 @@ const QuizResultPage = () => {
 						<table className="styled-table desktopSize">
 							<thead>
 								<tr className='quizAttemptTheadRow'>
-									<th><p>Quiz Info</p></th>
-									<th><p>Question</p></th>
+									<th><p>Attempted On</p></th>
+									{/* <th><p>Quiz Info</p></th> */}
+									{/* <th><p>Question</p></th>
 									<th><p>Total Marks</p></th>
 									<th><p>Correct Answer</p></th>
-									<th><p>Incorrect Answer</p></th>
+									<th><p>Incorrect Answer</p></th> */}
 									<th><p>Earned Marks	</p></th>
 									<th><p>Result</p></th>
 									<th><p>Details</p></th>
@@ -140,17 +143,18 @@ const QuizResultPage = () => {
 								{quizAttempts && quizAttempts.length > 0 && quizAttempts.map((qattmpt) => {
 									return (
 										<tr key={qattmpt._id}>
-											<td>
+											<td><p className='capitalCase'>{toDateString(qattmpt?.createdAt, true, true, true)}</p></td>
+											{/* <td>
 												<div className='quizAttmptInfo'>
 													<h3 className='attemptTime'>{new Date(qattmpt?.createdAt).toDateString()}</h3>
 													<h2 className='quizName'>{qattmpt?.quiz_id?.quiz_title}</h2>
 												</div>
-											</td>
-											<td><p className='pl-3'>{qattmpt?.total_questions}</p></td>
+											</td> */}
+											{/* <td><p className='pl-3'>{qattmpt?.total_questions}</p></td>
 											<td><p className='pl-3'>{qattmpt?.total_marks}</p></td>
 											<td><p className='pl-3'>{qattmpt?.total_correct || 0}</p></td>
-											<td><p className='pl-3'>{qattmpt?.total_incorrect || 0}</p></td>
-											<td><p className='pl-3'>{qattmpt?.obtained_mark}</p></td>
+											<td><p className='pl-3'>{qattmpt?.total_incorrect || 0}</p></td> */}
+											<td><p className='pl-3'>{Number(qattmpt?.obtained_mark).toFixed(2)}</p></td>
 											<td className={`text-center qaStatus`}>
 												{qattmpt?.passing_status === "pass" ?
 													<p className='badgeSM successBadge'>pass</p>

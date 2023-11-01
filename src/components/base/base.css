@@ -9,11 +9,12 @@
 /* teacher sidebar  */
 .TeacherBaseMain {
     /* min-height: 100vh; */
+    height: var(--bodyHeight);
 }
 
 .teacherBaseBody {
     width: 100%;
-    height: var(--bodyHeight);
+    height: 100%;
     overflow-y: hidden;
     display: flex;
     justify-content: center;
@@ -29,8 +30,10 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: var(--lightBG);
+    background-color: var(--monochrome);
     height: 100%;
+    box-shadow: var(--adminSmallShadow);
+    z-index: 10;
 }
 
 .SidebarHintText {
@@ -78,7 +81,24 @@
 
 /* sidebar body  */
 .teacherSidebarBody {
+    overflow: hidden;
+}
+
+.teacherSidebarBody>div {
+    height: 100%;
+    min-height: 100%;
     overflow-y: auto;
+}
+
+.teacherSidebarBody>div::-webkit-scrollbar {
+    display: none;
+}
+
+@media only screen and (max-width: 1440px) {
+
+    .teacherSidebarBody>div::-webkit-scrollbar {
+        display: block;
+    }
 }
 
 @media only screen and (max-width: 800px) {

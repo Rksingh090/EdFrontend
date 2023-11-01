@@ -56,13 +56,20 @@
     width: 100%;
     box-shadow: 1px 1px 8px #d9d9d9;
     border-radius: 5px;
-    /* border: .4px solid #e9e9e9; */
     position: relative;
 }
 
 .inputDiv.grayed {
     box-shadow: none;
     background-color: var(--adminMainBackground);
+}
+
+.inputDiv.whiteBG {
+    background-color: var(--monochrome);
+}
+
+.inputDiv.withShadow {
+    box-shadow: var(--adminSmallShadow);
 }
 
 .inputDiv>svg {
@@ -81,8 +88,8 @@
     color: black;
 }
 
-.inputDiv.psm>input {
-    padding: 10px 10px;
+.inputDiv.nopad>input {
+    padding: 10px 0;
 }
 
 .inputDiv>input::placeholder {

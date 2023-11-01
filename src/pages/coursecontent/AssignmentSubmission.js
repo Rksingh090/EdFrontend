@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
+import { throttle } from "lodash"
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { API } from '../../constant';
@@ -10,15 +11,25 @@ import { IoArrowBack, IoArrowForward } from 'react-icons/io5';
 
 import { Document, Page, pdfjs } from "react-pdf";
 import ItemViewWrapper from './ItemViewWrapper';
+import IconByItemType from '../../components/utils/IconByItemType';
+import { useSelector } from 'react-redux';
 
 const AssignmentSubmission = () => {
+    const { assignment_id } = useParams()
+    const { showCourseContentSidebar } = useSelector(state => state.appsetting)
 
+    // loading for assignment data 
     const [isLoading, setIsLoading] = useState(false)
 
+    // for resizing pdf 
+    const pdfWrapper = useRef(null);
 
+    // padf page track 
     const [currentPdfPage, setCurrentPdfPage] = useState(1)
     const [totalPdfPage, setTotalPdfPage] = useState(1)
     const [assignmentData, setAssignmentData] = useState();
+
+    const [initialWidth, setInitialWidth] = useState(400);
 
     const [enrollmentData, setEnrollmentData] = useState({
         enrollment: false,
@@ -33,7 +44,21 @@ const AssignmentSubmission = () => {
     });
 
 
-    const { assignment_id } = useParams()
+    useEffect(() => {
+        const setPdfSize = () => {
+            if (pdfWrapper && pdfWrapper?.current) {
+                throttle(() => {
+                    setInitialWidth(pdfWrapper?.current?.getBoundingClientRect()?.width);
+                }, 1000)
+            }
+        };
+        setPdfSize();
+        window.addEventListener('resize', setPdfSize);
+        return () => {
+            window.removeEventListener('resize', setPdfSize);
+        };
+    }, [showCourseContentSidebar]);
+
 
     // get assignment details 
     useEffect(() => {
@@ -81,48 +106,94 @@ const AssignmentSubmission = () => {
             validAccess={enrollmentData.enrollment && enrollmentData.preview_available}
         >
             <div className='assignmentContent'>
-                <h2 className='assignmentContentTitle'>{assignmentData?.title}</h2>
-                {
+                <div className='CCAssignmentHeading'>
+                    <IconByItemType type={"assignment"} size={22} />
+                    <h2 className='assignmentContentTitle'>{assignmentData?.title}</h2>
+                </div>
 
-                }
-                <h4 className='assignmentSubtitle'>Course Description</h4>
-                <ReactQuill value={assignmentData?.description} theme={"bubble"} className='reactQuill' readOnly={true} />
+                {/* pdf and description */}
+                <div className='AssignmentDescriptionGrid'>
 
-                <h4 className='assignmentSubtitle'>Course PDF</h4>
-                {
-                    assignmentData?.assignment_pdf && (
-                        <div>
-                            <Document file={assignmentData?.assignment_pdf} onLoadSuccess={(data) => setTotalPdfPage(data.numPages)} className={"pdfViewPage"} >
-                                <Page pageNumber={currentPdfPage} renderTextLayer={false} renderAnnotationLayer={false} canvasBackground='#FFFFFF' />
+
+                    <div className='AssignmentSubFirstColumn'>
+
+                        {assignmentData?.description &&
+                            String(assignmentData?.description).trim().length > 20 && (
+                                <div className='CCAssignmentDescriptionBox'>
+                                    <h4 className='assignmentSubtitle'>Assignment Description</h4>
+                                    <ReactQuill value={assignmentData?.description} theme={"bubble"} className='assignmentPageReactQuill' readOnly={true} />
+                                </div>
+                            )}
+
+                        <div className='assignmentUploadArea'>
+                            <textarea
+                                onChange={(e) => {
+                                    setAssignmentAnswer((prev) => ({ ...prev, assignment_answer: e.target.value }))
+                                }}
+                                className='assignmentSubmitTextArea'
+                                rows="15"
+                                placeholder='Write Here ...'
+                            >
+                                {assignmentAnswer?.assignment_answer}
+                            </textarea>
+                            <button className='assignmentUploadBTN'>
+                                <AiOutlinePaperClip size={22} />
+                                <span>Upload Assignment</span>
+                            </button>
+                            <button className='assignmentSubmitBTN' onClick={submitAssignment}>
+                                <span>Submit Assignment</span>
+                            </button>
+                        </div>
+
+                    </div>
+
+                    {assignmentData?.assignment_pdf && (
+                        <div className='CCAssignmentPDFBox pdfWrapper' ref={pdfWrapper} >
+                            <h4 className='assignmentSubtitle' >Assignment Help PDF</h4>
+
+                            <Document
+                                file={assignmentData?.assignment_pdf}
+                                onLoad={console.log}
+                                onLoadSuccess={(data) => {
+                                    setTotalPdfPage(data.numPages)
+                                }}
+                                className={"pdfViewPage"}
+                            >
+                                <Page
+                                    width={initialWidth}
+                                    pageNumber={currentPdfPage}
+                                    renderTextLayer={false}
+                                    renderAnnotationLayer={false}
+                                    canvasBackground='#FFFFFF'
+                                />
                             </Document>
-                            <div className='pdfPageActions'>
-                                <div className='goBackPdf' onClick={() => setCurrentPdfPage(prev => prev === 1 ? prev : prev - 1)}>
+                            {currentPdfPage > 1 && (
+                                <div className='goPrevPdfBTN' onClick={() => setCurrentPdfPage(prev => prev === 1 ? prev : prev - 1)}>
                                     <IoArrowBack size={20} />
                                 </div>
-                                <p>Page {currentPdfPage} of {totalPdfPage} Pages</p>
-                                <div className='goBackPdf' onClick={() => setCurrentPdfPage(prev => prev >= totalPdfPage ? prev : prev + 1)}>
+                            )}
+                            {totalPdfPage > 1 && (
+                                <div className='pdfPageActions'>
+                                    <p>Page {currentPdfPage} of {totalPdfPage} Pages</p>
+                                </div>
+                            )}
+                            {currentPdfPage < totalPdfPage && (
+                                <div className='goNextPdfBTN' onClick={() => setCurrentPdfPage(prev => prev >= totalPdfPage ? prev : prev + 1)}>
                                     <IoArrowForward size={20} />
                                 </div>
-                            </div>
+                            )}
                         </div>
-                    )
-                }
+                    )}
+                    {!assignmentData?.assignment_pdf && (
+                        <div className='pdfWrapper noPdfGivenByInstructor'>
+                            <h2>No PDF given by instructor.</h2>
+                        </div>
+                    )}
 
-                <div className='assignmentUploadArea'>
-                    <button className='assignmentUploadBTN'>
-                        <AiOutlinePaperClip size={22} />
-                        <span>Upload Assignment</span>
-                    </button>
-                    <textarea
-                        value={assignmentAnswer?.assignment_answer}
-                        onChange={(e) => setAssignmentAnswer(prev => ({ ...prev, assignment_answer: e.target.value }))}
-                        className='assignmentSubmitTextArea' rows="10"
-                        placeholder='Write Here ...'>
-                    </textarea>
                 </div>
-                <button className='assignmentSubmitBTN' onClick={submitAssignment}>
-                    <span>Submit Assignment</span>
-                </button>
+
+
+
             </div>
         </ItemViewWrapper>
     )

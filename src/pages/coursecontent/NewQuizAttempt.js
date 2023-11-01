@@ -15,6 +15,12 @@ const NewQuizAttempt = () => {
 
     const [quizData, setQuizData] = useState();
 
+    const [quizTime, setQuizTime] = useState({
+        hour: 0,
+        minute: 1,
+        second: 0
+    })
+
     const [quizStatus, setQuizStatus] = useState("not_started");
     const [currQuestion, setCurrentQuestion] = useState("not_started");
     const [currQuestionData, setCurrentQuestionData] = useState({});
@@ -55,6 +61,15 @@ const NewQuizAttempt = () => {
                         })
                         if (status === "success") {
                             setQuizData(quiz)
+                            let timingInMinute = quiz?.time_limit?.limit;
+                            let h = Math.floor(timingInMinute / 60);
+                            timingInMinute = timingInMinute % 60
+                            setQuizTime({
+                                hour: h,
+                                minute: timingInMinute,
+                                second: 0
+                            })
+
                         }
                     }).finally(() => {
                         setIsLoading(false)
@@ -121,10 +136,17 @@ const NewQuizAttempt = () => {
     // go to next question 
     const goToNextQuestion = () => {
         if (currQuestion === quizData?.questions.length - 1) {
-            setQuizStatus("ended")
-            submitQuizAnswer(singleAnswer);
+            setAllAnswers((prev) => {
+                submitQuizAnswer(prev, singleAnswer);
+                return prev;
+            })
             return;
         }
+
+        setAllAnswers(prev => {
+            console.log(prev);
+            return prev;
+        })
 
         setAllAnswers(prev => ([
             ...prev,
@@ -139,12 +161,14 @@ const NewQuizAttempt = () => {
     }
 
     // submit quiz answer 
-    const submitQuizAnswer = (lastAnswer) => {
+    const submitQuizAnswer = (answers, lastAnswer) => {
         try {
-            const totalAnswers = [
-                ...allAnswers,
-                lastAnswer
-            ];
+            console.log(answers);
+            let totalAnswers = [...answers];
+            if (lastAnswer != undefined) {
+                console.log(lastAnswer);
+                totalAnswers = [...answers, lastAnswer]
+            }
             axios.post(`${API}/quiz-attempts/quiz/${quizData?._id}`, { answers: totalAnswers },
                 {
                     headers: {
@@ -156,7 +180,9 @@ const NewQuizAttempt = () => {
                     if (status === "success") {
                         console.log("quiz submitted successfully");
                     }
-                });
+                }).finally(() => {
+                    setQuizStatus("ended")
+                })
         } catch (error) {
             console.warn(error);
         }
@@ -232,6 +258,50 @@ const NewQuizAttempt = () => {
         }))
     }
 
+    // time interval for quiz 
+    useEffect(() => {
+        let a;
+        if (quizStatus !== "started") return;
+        a = setInterval(() => {
+            setQuizTime((prev) => {
+                let reducedHour = prev.hour
+                let reducedMinute = prev.minute
+                let reducedSecond = prev.second - 1;
+
+                if (reducedSecond < 0) {
+                    if (reducedHour === 0 && reducedMinute === 0) {
+                        console.log("submit quiz");
+                        setAllAnswers((prev) => {
+                            submitQuizAnswer(prev)
+                            return prev;
+                        })
+                        clearInterval(a)
+                        return {
+                            hour: 0,
+                            minute: 0,
+                            second: 0
+                        }
+                    } else {
+                        reducedMinute -= 1
+                        reducedSecond = 59
+                    }
+                }
+
+                if (reducedMinute < 0) {
+                    reducedHour -= 1;
+                    reducedMinute = 59
+                }
+                return {
+                    hour: reducedHour,
+                    minute: reducedMinute,
+                    second: reducedSecond
+                }
+            })
+        }, 1000)
+
+        return () => clearInterval(a)
+    }, [quizStatus])
+
     return (
         <ItemViewWrapper
             loading={isLoading}
@@ -239,15 +309,16 @@ const NewQuizAttempt = () => {
         >
             <div className='quizStartContainer'>
                 {quizStatus === "started" && (
-                    <div className='SingleQuestion'>
+                    <div className='CCSingleQuestion'>
                         <div className='questionMeta'>
                             <p>Question No: {Number(currQuestion) + 1}/{quizData?.questions.length}</p>
-                            <p>Total Attempted: {totalAttempted}/{quizData?.questions.length}</p>
-                            <div className='flex items-center gap-2'>
+                            {/* <p>Total Attempted: {totalAttempted}/{quizData?.questions.length}</p> */}
+                            <div className='questionType'>
                                 <span>Question Type: </span>
                                 <span>{getTitle(currQuestionData?.question_type)}</span>
                                 <IconQuestionType size={25} questionType={currQuestionData?.question_type} />
                             </div>
+                            <p>Time: {quizTime?.hour} Hour {quizTime?.minute} Minute {quizTime?.second} Second</p>
                         </div>
                         <div className='questionArea'>
 
@@ -317,7 +388,7 @@ const NewQuizAttempt = () => {
                             {/* true_false question view  */}
                             {currQuestionData?.question_type === "true_false" && (
                                 <div className='singleChoiceContainer'>
-                                    <div className='trueFalseSingleOption'>
+                                    <div className='singleChoiceSingleOption'>
                                         <input
                                             type="radio"
                                             className='llInput'
@@ -328,7 +399,7 @@ const NewQuizAttempt = () => {
                                         />
                                         <label htmlFor={`${currQuestionData?._id}-true`}>True</label>
                                     </div>
-                                    <div className='trueFalseSingleOption'>
+                                    <div className='singleChoiceSingleOption'>
                                         <input
                                             type="radio"
                                             className='llInput'
@@ -394,6 +465,7 @@ const NewQuizAttempt = () => {
                                             return (
                                                 <input type="text"
                                                     key={idx}
+                                                    placeholder='your answer...'
                                                     value={ans} onChange={(e) => {
                                                         let allAns = singleAnswer.question_answer;
                                                         allAns[idx] = e.target.value

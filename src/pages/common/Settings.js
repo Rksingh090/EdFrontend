@@ -31,7 +31,7 @@ const Settings = () => {
         <TeacherSidebar>
             <div className="TSSettingPage">
                 <div className={`${checked ? "" : ""}`}>
-                    <div className='tabMenu roundSM'>
+                    <div className='tabMenu whiteBG withShadow roundSM'>
                         <p className={showTab === "profile" ? "active" : ""} onClick={() => setShowTab("profile")}>Profile</p>
                         <p className={showTab === "password" ? "active" : ""} onClick={() => setShowTab("password")}>Password</p>
                         <p className={showTab === "social" ? "active" : ""} onClick={() => setShowTab("social")}>Social Profile</p>
@@ -63,23 +63,23 @@ const Settings = () => {
                     {showTab === "social" &&
                         <div className='STPLinkTab'>
                             <h1 className='STPLinkTabHeading'>Social Profile Link</h1>
-                            <div className='inputDiv grayed psm'>
+                            <div className='inputDiv whiteBG withShadow nopad'>
                                 <BsPerson size={20} />
                                 <input type="text" placeholder='https://portfolio.com' className='w-[500px] gap-8 outline-none border-[1px] border-gray-300 p-2 rounded-md' />
                             </div>
-                            <div className="inputDiv grayed psm">
+                            <div className="inputDiv whiteBG withShadow nopad">
                                 <CiFacebook size={22} />
                                 <input type="text" placeholder='https://facebook.com' className='w-[500px] gap-8 outline-none border-[1px] border-gray-300 p-2 rounded-md' />
                             </div>
-                            <div className='inputDiv grayed psm'>
+                            <div className='inputDiv whiteBG withShadow nopad'>
                                 <RiTwitterXFill size={18} />
                                 <input type="text" placeholder='https://x.com' className='w-[500px] gap-8 outline-none border-[1px] border-gray-300 p-2 rounded-md' />
                             </div>
-                            <div className='inputDiv grayed psm'>
+                            <div className='inputDiv whiteBG withShadow nopad'>
                                 <CiLinkedin size={22} />
                                 <input type="text" placeholder='https://linkedin.com' className='w-[500px] gap-8 outline-none border-[1px] border-gray-300 p-2 rounded-md' />
                             </div>
-                            <div className='inputDiv grayed psm'>
+                            <div className='inputDiv whiteBG withShadow nopad'>
                                 <FiGithub size={18} />
                                 <input type="text" placeholder='https://github.com' className='w-[500px] gap-8 outline-none border-[1px] border-gray-300 p-2 rounded-md' />
                             </div>
@@ -114,7 +114,6 @@ const ProfileTab = () => {
         const { name, value } = e.target;
         let f = {};
         f[name] = value;
-        console.log(f);
 
         setUserData({
             ...userData,
@@ -310,7 +309,6 @@ const ProfileTab = () => {
                         <div>
                             <SelectOption
                                 label={"Select Level"}
-                                classes={"grayed"}
                                 options={[
                                     {
                                         name: "Begginer",
@@ -350,11 +348,12 @@ const ProfileTab = () => {
                 <div className='SPTInputGroup'>
                     <label htmlFor="bioraphy" className='label'>Biography</label>
                     <textarea
-                        name="biography"
+                        name="bio"
                         value={userData?.bio || ""}
                         onChange={handleChange}
                         rows="10"
-                        className='GrayedInput verticalExtend'></textarea>
+                        className='GrayedInput'
+                    ></textarea>
                 </div>
 
 

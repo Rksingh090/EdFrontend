@@ -128,8 +128,8 @@ const QuizAttempts = () => {
 					/>
 				</div>
 
-				<div className='w-full'>
-					<table className="styled-table striped">
+				<div className='responsiveTable'>
+					<table className="styled-table striped desktopSize">
 						<thead>
 							<tr>
 								<th>Quiz Info</th>

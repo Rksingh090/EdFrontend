@@ -1001,22 +1001,19 @@ const EditCourseBuilder = () => {
                                     {landscape === "landscape" &&
                                         <>
                                             <div>
-                                                <img src="https://eict.iitr.ac.in/wp-content/uploads/Slide1-1024x724.jpg" alt="" className='rounded-xl ' />
+                                                <img src="https://eict.iitr.ac.in/wp-content/uploads/Slide1-1024x724.jpg" alt="" />
                                             </div>
                                             <div>
-                                                <img src="https://study.iitm.ac.in/diploma/assets/img/certificates/cert_2.jpg" alt="" className='rounded-xl ' />
+                                                <img src="https://study.iitm.ac.in/diploma/assets/img/certificates/cert_2.jpg" alt="" />
                                             </div>
                                             <div>
-                                                <img src="https://priyadogra.com/wp-content/uploads/2021/05/iit-madras-certificate.jpg" alt="" className='rounded-xl ' />
+                                                <img src="https://priyadogra.com/wp-content/uploads/2021/05/iit-madras-certificate.jpg" alt="" />
                                             </div>
                                             <div>
-                                                <img src="https://cxl-web-prod-uploads.s3.amazonaws.com/public/filestore-uploads/70cd701c5836d1e7318e7fc167f16d21ee06dcd7.jpg" alt="" className='rounded-xl ' />
+                                                <img src="https://cxl-web-prod-uploads.s3.amazonaws.com/public/filestore-uploads/70cd701c5836d1e7318e7fc167f16d21ee06dcd7.jpg" alt="" />
                                             </div>
                                             <div>
-                                                <img src="https://iitb.emeritus.org/iitb-certificate-program-in-machine-learning-and-ai-with-python/images/iitb-mlaip-certificate.jpg" alt="" className='rounded-xl ' />
-                                            </div>
-                                            <div>
-                                                <img src="https://d1vwxdpzbgdqj.cloudfront.net/assets/iit-bombay/iit-bombay-certificate-9133074af465692ee4899ec4bb5f6b27e3ebd77cd8a1abcfec733bab088fbbb4.jpg" alt="" className='rounded-xl ' />
+                                                <img src="https://iitb.emeritus.org/iitb-certificate-program-in-machine-learning-and-ai-with-python/images/iitb-mlaip-certificate.jpg" alt="" />
                                             </div>
                                         </>
                                     }
@@ -1024,14 +1021,13 @@ const EditCourseBuilder = () => {
                                     {landscape === "portrait" &&
                                         <>
                                             <div>
-                                                <img src="https://intellipaat.com/course-image/2021/05/Certificate_Intellipaat_IIT-Roorkee-BIG.png" alt="" className='rounded-xl ' />
-
+                                                <img src="https://intellipaat.com/course-image/2021/05/Certificate_Intellipaat_IIT-Roorkee-BIG.png" alt="" />
                                             </div>
                                             <div>
-                                                <img src="https://www.classcentral.com/report/wp-content/uploads/2022/02/freecodecamp-certificate.png" alt="" className='rounded-xl ' />
+                                                <img src="https://www.classcentral.com/report/wp-content/uploads/2022/02/freecodecamp-certificate.png" alt="" />
                                             </div>
                                             <div>
-                                                <img src="https://study.iitm.ac.in/ds/assets/img/academics/cert_2.jpg" alt="" className='rounded-xl ' />
+                                                <img src="https://study.iitm.ac.in/ds/assets/img/academics/cert_2.jpg" alt="" />
                                             </div>
                                         </>
                                     }

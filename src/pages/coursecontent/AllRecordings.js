@@ -62,7 +62,18 @@ const AllRecordings = () => {
                     allRecordings &&
                     allRecordings.length > 0 &&
                     allRecordings.map((recordingItem) => (
-                        <button title={recordingItem?.title} onClick={() => setVideoOpened(prev => ({ ...prev, recording: recordingItem, open: true }))} key={recordingItem?._id} className="CBOneRecording">
+                        <div
+                            key={recordingItem?._id}
+                            title={recordingItem?.title}
+                            onClick={() => {
+                                if (videoOpened.recording._id === recordingItem?._id) {
+                                    setVideoOpened(prev => ({ ...prev, open: false }))
+                                } else {
+                                    setVideoOpened(prev => ({ ...prev, recording: recordingItem, open: true }))
+                                }
+                            }}
+                            className="CBOneRecording"
+                        >
                             <div className='RecordingFileIcon'>
                                 <MdSlowMotionVideo />
                             </div>
@@ -70,7 +81,7 @@ const AllRecordings = () => {
                                 <h2 >{recordingItem?.title}</h2>
                                 <p>Class Date: {toDateString(recordingItem?.class_date)}</p>
                             </div>
-                        </button>
+                        </div>
                     ))
                 }
             </div>

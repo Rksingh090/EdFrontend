@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 import { API } from '../../constant'
 import { useParams } from 'react-router-dom';
 
 import ReactQuill from "react-quill";
+import { throttle } from 'lodash';
 
 import 'vidstack/styles/defaults.css';
 
@@ -18,26 +19,35 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import { IoArrowBack, IoArrowForward } from 'react-icons/io5';
 import ItemViewWrapper from './ItemViewWrapper';
 import MyReactPlayer from '../../utils/MyReactPlayer';
+import { useSelector } from 'react-redux';
 
 
 const LessonPage = () => {
 
-    const [isLoading, setIsLoading] = useState(false)
+    const { lesson_id } = useParams();
+    const { showCourseContentSidebar } = useSelector(state => state.appsetting)
 
+
+    // pdf  ref, initialWidth 
+    const pdfWrapper = useRef(null);
+    const [initialWidth, setInitialWidth] = useState(400);
+
+    // loading state 
+    const [isLoading, setIsLoading] = useState(false)
 
     const [lessonData, setLessonData] = useState({});
 
+    // current tab view 
     const [currentTab, setCurrentTab] = useState("about")
 
     const [currentPdfPage, setCurrentPdfPage] = useState(1)
-    const [totalPdfPage, setTotalPdfPage] = useState(0);
+    const [totalPdfPage, setTotalPdfPage] = useState(1);
 
     const [enrollmentData, setEnrollmentData] = useState({
         enrollment: false,
         preview_available: true
     })
 
-    const { lesson_id } = useParams();
 
     // get lesson data by id 
     useEffect(() => {
@@ -74,6 +84,25 @@ const LessonPage = () => {
         pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.js`;
     }, []);
 
+    useEffect(() => {
+        const setPdfSize = () => {
+            if (pdfWrapper && pdfWrapper?.current) {
+                throttle(() => {
+                    setInitialWidth(pdfWrapper?.current?.getBoundingClientRect()?.width);
+                }, 1000)
+            }
+        };
+        setPdfSize();
+        window.addEventListener('resize', setPdfSize);
+        return () => {
+            window.removeEventListener('resize', setPdfSize);
+        };
+    }, [showCourseContentSidebar]);
+
+    useEffect(() => {
+        setCurrentTab("about")
+    }, [])
+
     return (
         <ItemViewWrapper
             loading={isLoading}
@@ -97,22 +126,40 @@ const LessonPage = () => {
                     }
                 </div>
                 <div className={`tabData lessonAboutSection ${currentTab === "about" ? "active" : ""}`}>
-                    <ReactQuill theme={"bubble"} value={lessonData?.lesson_content} readOnly={true} />
+                    <div className='lessonAboutContainer'>
+                        <ReactQuill theme={"bubble"} value={lessonData?.lesson_content} readOnly={true} />
+                    </div>
                 </div>
                 <div className={`tabData lessonAboutSection ${currentTab === "attachment" ? "active" : ""}`}>
-                    <div className='flex flex-col gap-2 items-start bg-white'>
-                        <Document file={lessonData?.pdf_attachment} onLoadSuccess={(data) => setTotalPdfPage(data.numPages)} className={"pdfViewPage"} >
-                            <Page pageNumber={currentPdfPage} renderTextLayer={false} renderAnnotationLayer={false} canvasBackground='#FFFFFF' />
+                    <div className='lessonAboutContainer pdfWrapper' ref={pdfWrapper}>
+                        <Document
+                            file={lessonData?.pdf_attachment}
+                            onLoadSuccess={(data) => setTotalPdfPage(data.numPages)}
+                            className={"pdfViewPage"}
+                        >
+                            <Page
+                                width={initialWidth}
+                                pageNumber={currentPdfPage}
+                                renderTextLayer={false}
+                                renderAnnotationLayer={false}
+                                canvasBackground='#FFFFFF'
+                            />
                         </Document>
-                        <div className='pdfPageActions w-[595px]'>
-                            <div className='goBackPdf' onClick={() => setCurrentPdfPage(prev => prev === 1 ? prev : prev - 1)}>
+                        {currentPdfPage > 1 && (
+                            <div className='goPrevPdfBTN' onClick={() => setCurrentPdfPage(prev => prev === 1 ? prev : prev - 1)}>
                                 <IoArrowBack size={20} />
                             </div>
-                            <p>Page {currentPdfPage} of {totalPdfPage} Pages</p>
-                            <div className='goBackPdf' onClick={() => setCurrentPdfPage(prev => prev >= totalPdfPage ? prev : prev + 1)}>
+                        )}
+                        {totalPdfPage > 1 && (
+                            <div className='pdfPageActions'>
+                                <p>Page {currentPdfPage} of {totalPdfPage} Pages</p>
+                            </div>
+                        )}
+                        {currentPdfPage < totalPdfPage && (
+                            <div className='goNextPdfBTN' onClick={() => setCurrentPdfPage(prev => prev >= totalPdfPage ? prev : prev + 1)}>
                                 <IoArrowForward size={20} />
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>

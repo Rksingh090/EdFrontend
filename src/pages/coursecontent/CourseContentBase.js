@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/coursecontent.css';
 
 import { BsFillCheckCircleFill } from 'react-icons/bs';
@@ -192,7 +192,7 @@ const CourseContentBase = () => {
                     <div className='contentAreaCourseProgress'>
                         {
                             isEnrolled && (
-                                <Link to={`/course/${course_id}/${course_slug}/recordings`} className='liveLogin'>
+                                <Link to={`/course/${course_id}/${course_slug}/recordings`} className='liveLogin recording'>
                                     <VscDeviceCameraVideo size={20} />
                                     <span>Recording</span>
                                 </Link>
@@ -201,7 +201,7 @@ const CourseContentBase = () => {
 
                         {
                             isEnrolled && courseContent?.ms_team_link && (
-                                <Link to={courseContent?.ms_team_link} target='_blank' className='liveLogin'>
+                                <Link to={courseContent?.ms_team_link} target='_blank' className='liveLogin joinClass'>
                                     <VscLiveShare size={20} />
                                     <span>Join Live Class</span>
                                 </Link>
@@ -214,7 +214,7 @@ const CourseContentBase = () => {
                     </div>
                 </div>
                 <div className='mainCourseContentArea'>
-                    <Outlet />
+                    <Outlet context={courseContent} />
                 </div>
             </div>
         </div>
