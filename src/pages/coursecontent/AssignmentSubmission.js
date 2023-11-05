@@ -127,6 +127,7 @@ const AssignmentSubmission = () => {
 
                         <div className='assignmentUploadArea'>
                             <textarea
+                                value={assignmentAnswer?.assignment_answer}
                                 onChange={(e) => {
                                     setAssignmentAnswer((prev) => ({ ...prev, assignment_answer: e.target.value }))
                                 }}
@@ -134,7 +135,6 @@ const AssignmentSubmission = () => {
                                 rows="15"
                                 placeholder='Write Here ...'
                             >
-                                {assignmentAnswer?.assignment_answer}
                             </textarea>
                             <button className='assignmentUploadBTN'>
                                 <AiOutlinePaperClip size={22} />

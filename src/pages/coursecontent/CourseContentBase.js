@@ -4,7 +4,7 @@ import '../styles/coursecontent.css';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 import { VscDeviceCameraVideo, VscLiveShare } from 'react-icons/vsc';
 import { AiOutlineClose } from 'react-icons/ai';
-import { FiArrowRight } from 'react-icons/fi';
+import { MdMenuOpen } from 'react-icons/md';
 
 import IconByItemType from '../../components/utils/IconByItemType';
 
@@ -80,7 +80,11 @@ const CourseContentBase = () => {
             {/* side bar  */}
             <div className='courseContentSidebar'>
                 <div className='courseSidebarHeader'>
+                    <div className='box transparent'></div>
                     <h2>&lt;EduTech /&gt;</h2>
+                    <div className='box CCSidebarClose' onClick={closeCourseContentSidebar}>
+                        <AiOutlineClose size={16} />
+                    </div>
                 </div>
                 <div className='courseTopicsContainer'>
 
@@ -187,7 +191,7 @@ const CourseContentBase = () => {
             <div>
                 <div className='mainContentArea'>
                     <div className='contentHeaderBackBTN' onClick={closeCourseContentSidebar}>
-                        <FiArrowRight size={20} />
+                        <MdMenuOpen size={22} />
                     </div>
                     <div className='contentAreaCourseProgress'>
                         {

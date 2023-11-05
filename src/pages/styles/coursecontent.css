@@ -2,16 +2,18 @@
     display: grid;
     grid-template-columns: 300px minmax(0, 1fr);
     height: 100vh;
-    transition: all .5s ease;
+    transition: all .3s cubic-bezier(0.86, 0.12, 0.15, 0.92);
+    position: relative;
 }
 
 .courseContentPage.collapsed {
     grid-template-columns: 0 minmax(0, 1fr);
 }
 
+
 .courseContentPage>div {
-    transition: all .5s ease;
     overflow: hidden;
+    transition: all .3s cubic-bezier(0.86, 0.12, 0.15, 0.92);
     display: grid;
     grid-template-rows: var(--courseContentNavHeight) 1fr;
 }
@@ -23,14 +25,31 @@
     height: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     font-family: var(--poppins);
+    padding: 0 10px;
 }
 
 .courseSidebarHeader>h2 {
     font-weight: 600;
     font-size: 20px;
+}
+
+.courseSidebarHeader>.box {
+    height: 30px;
+    width: 30px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.CCSidebarClose {
+    opacity: 0;
+    background-color: var(--adminMainBackground);
+    cursor: pointer;
+    pointer-events: none;
 }
 
 /* course topics and sub topics item sidebar  */
@@ -159,7 +178,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-right: 10px;
+    padding: 0 10px;
 }
 
 .contentAreatHeader {
@@ -170,14 +189,14 @@
 }
 
 .contentHeaderBackBTN {
-    width: 50px;
-    height: 80%;
+    height: 60%;
+    aspect-ratio: 1;
     background: var(--monochrome);
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border-radius: 0 100px 100px 0;
+    border-radius: 5px;
 }
 
 
@@ -526,6 +545,7 @@
 
 .courseContentSidebar {
     border-right: 1px solid #d9d9d9;
+    z-index: 1000;
 }
 
 /* single choice container & option  */
@@ -794,7 +814,7 @@
     border-radius: 10px;
     outline: none;
     border: none;
-    /* resize: none; */
+    font-size: 13px;
     padding: 10px;
     background-color: var(--monochrome);
     box-shadow: var(--adminSmallShadow);
@@ -1072,11 +1092,40 @@
 
 
 @media only screen and (max-width: 600px) {
+    .CCSidebarClose {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .courseContentPage {
+        position: relative;
+        grid-template-columns: 1fr;
+    }
+
+    .courseContentPage.collapsed {
+        grid-template-columns: 1fr;
+    }
+
+    .courseContentSidebar {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 300px;
+        background-color: var(--monochrome);
+    }
+
+    .courseContentPage.collapsed>.courseContentSidebar {
+        transform: translateX(-300px);
+    }
+
 
     /* course context close button padding  */
     .mainContentArea {
         padding-right: 30px;
     }
+
+
 
 
     .AssignmentDescriptionGrid {
@@ -1161,4 +1210,7 @@
     .QuizResultPage {
         padding: 20px 15px;
     }
+
+
+
 }
