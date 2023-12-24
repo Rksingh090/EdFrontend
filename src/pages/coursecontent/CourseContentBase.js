@@ -8,12 +8,12 @@ import { MdMenuOpen } from 'react-icons/md';
 
 import IconByItemType from '../../components/utils/IconByItemType';
 
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 
 import axios from 'axios';
 import { API } from '../../constant';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleCourseContentSidebar } from '../../reducers/AppSettingReducer';
+import { hideCourseContentSidebar, toggleCourseContentSidebar } from '../../reducers/AppSettingReducer';
 
 
 const CourseContentBase = () => {
@@ -21,7 +21,7 @@ const CourseContentBase = () => {
     const dispatch = useDispatch();
     const { course_slug, course_id } = useParams();
 
-    const pathname = window.location.pathname;
+    const { pathname } = useLocation();
 
     const { showCourseContentSidebar } = useSelector(({ appsetting }) => appsetting)
 
@@ -73,9 +73,15 @@ const CourseContentBase = () => {
         dispatch(toggleCourseContentSidebar())
     }
 
+    useEffect(() => {
+        if (window.innerWidth < 600) {
+            dispatch(hideCourseContentSidebar())
+        }
+    }, [pathname, dispatch])
+
+
     return (
         <div className={`courseContentPage ${showCourseContentSidebar ? "opened" : "collapsed"}`}>
-
 
             {/* side bar  */}
             <div className='courseContentSidebar'>

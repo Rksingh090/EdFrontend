@@ -122,6 +122,7 @@ import AffiliateProfile from "./affiliate/profile/Profile";
 
 // landing pages 
 import CourseContentBase from './pages/coursecontent/CourseContentBase';
+import DNDTest from './DNDTest';
 
 
 const EditCourseBuilderComponent = () => {
@@ -167,6 +168,7 @@ const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/test" element={<DNDTest />} />
       <Route path="/register" element={<Protected Component={Register} reverse={true} />} />
       <Route path="/login" element={<Protected Component={Login} reverse={true} />} />
       <Route path="/logout" element={<Protected Component={Logout} />} />
@@ -213,7 +215,7 @@ const AllRoutes = () => {
       <Route path="/teacher/profile" element={<Protected Component={Myprofile} />} validRoles={["teacher"]} />
 
       {/* student panel  */}
-      <Route path="/dashboard" element={<Protected Component={Dashboard} validRoles={["student"]} />} />
+      <Route path="/student/dashboard" element={<Protected Component={Dashboard} validRoles={["student"]} />} />
       <Route path="/student/quiz-attempts" element={<Protected Component={QuizAttempts} validRoles={["student"]} />} />
       <Route path="/student/profile" element={<Protected Component={Myprofile} />} validRoles={["student"]} />
       <Route path="/student/enrolled-courses" element={<Protected Component={EnrolledCourses} validRoles={["student"]} />} />

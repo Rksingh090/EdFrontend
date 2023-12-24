@@ -67,6 +67,7 @@
 
     /* course content nav config  */
     --courseContentNavHeight: 60px;
+    --courseContentSidebarWidth: 300px;
     --courseContentBodyHeight: calc(100vh - var(--courseContentNavHeight));
 
     /* action colors  */

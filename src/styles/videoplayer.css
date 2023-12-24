@@ -45,6 +45,7 @@
     background-color: var(--main);
     border-radius: 5px;
     z-index: 67;
+    pointer-events: none;
 }
 
 .customRangeInput {
@@ -57,6 +58,7 @@
     margin: 0 auto;
     outline: 0;
     position: relative;
+    cursor: pointer;
 }
 
 .customRangeInput::-webkit-slider-thumb {
@@ -86,10 +88,12 @@
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    width: auto;
+    width: 150px;
 }
 
 .volumeRangeSlider {
-    width: 150px;
+    width: 100%;
 }
 
 .playerDuration {
@@ -102,6 +106,26 @@
     justify-content: center;
 }
 
+.playerMiddleScreen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50px;
+    width: 140px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.playerMiddleScreen.hide {
+    display: none;
+}
+
+
+/* player bottom controlls  */
 .playerFooterScreen {
     display: flex;
     flex-direction: row;
@@ -118,7 +142,6 @@
 
 .playbackRateFixer {
     position: relative;
-
 }
 
 .playbackRateFixer>.selectedPlayback {
@@ -151,7 +174,39 @@
     background-color: #EFEFEF;
 }
 
+.playerControllActionBtn {
+    color: white;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
 .playerActionBtn {
     color: white;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+}
+
+.playerSeekBtn {
+    height: 20px;
+    width: 20px;
+    color: white;
+}
+
+@media only screen and (max-width: 600px) {
+    .playerActionBtn {
+        width: 30px;
+        height: 30px;
+    }
+
+    .playerSeekBtn {
+        width: 18px;
+        height: 18px;
+    }
+
+    .volumButtonWithSlider {
+        display: none;
+    }
+
 }

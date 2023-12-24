@@ -59,7 +59,7 @@ const Course = () => {
 
     return (
         <TeacherSidebar>
-            <div className='coursePage'>
+            <div className='teacherCoursesPage'>
                 <div className='myCourseHeading'>
                     <h1 className='headingText'>My Courses</h1>
                     <button className='createNewCourseBTN' onClick={handleCreateNewCourse}>Create New Course</button>
@@ -115,7 +115,6 @@ const Course = () => {
 
             </div>
         </TeacherSidebar>
-
     )
 }
 

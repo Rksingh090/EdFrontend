@@ -185,7 +185,7 @@ const NavProfileMenu = () => {
                {user?.role && user.role === "student" && (
                   <div className='profileLinks'>
                      <div>
-                        <Link to={"/dashboard"}>Dashboard</Link>
+                        <Link to={"/student/dashboard"}>Dashboard</Link>
                         <Link to={"/student/profile"}>My Profile</Link>
                         <Link to={"/student/enrolled-courses/"}>Enrolled Courses</Link>
                         <Link to={"/student/wishlist"}>Wishlist</Link>
@@ -200,7 +200,9 @@ const NavProfileMenu = () => {
                         <button type='button' onClick={(e) => {
                            dispatch(UserLogOut())
                            navigate("/login");
-                        }}>Logout</button>
+                        }}>
+                           Logout
+                        </button>
                      </div>
                   </div>
                )}

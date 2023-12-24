@@ -24,6 +24,9 @@ const IconByItemType = ({ type, video_type, size }) => {
             {item_type === "lesson" && video_type === "youtube" && (
                 <AiOutlineYoutube size={size || 20} />
             )}
+            {item_type === "lesson" && video_type === "external-url" && (
+                <LuPlayCircle size={size || 20} />
+            )}
             {item_type === "other" && (
                 <BsDashLg size={size || 20} />
             )}

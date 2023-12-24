@@ -1,6 +1,6 @@
 .courseContentPage {
     display: grid;
-    grid-template-columns: 300px minmax(0, 1fr);
+    grid-template-columns: var(--courseContentSidebarWidth) minmax(0, 1fr);
     height: 100vh;
     transition: all .3s cubic-bezier(0.86, 0.12, 0.15, 0.92);
     position: relative;
@@ -544,7 +544,7 @@
 }
 
 .courseContentSidebar {
-    border-right: 1px solid #d9d9d9;
+    box-shadow: var(--adminSmallShadow);
     z-index: 1000;
 }
 
@@ -928,7 +928,7 @@
 
 .youtubeCustomStyle {
     width: 100%;
-    aspect-ratio: 1.9;
+    aspect-ratio: 2;
 }
 
 .youtubeCustomStyle iframe {

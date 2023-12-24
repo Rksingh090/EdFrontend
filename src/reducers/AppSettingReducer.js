@@ -63,6 +63,9 @@ const announcementReducer = createSlice({
         toggleCourseContentSidebar: (state) => {
             state.showCourseContentSidebar = !state.showCourseContentSidebar
         },
+        hideCourseContentSidebar: (state) => {
+            state.showCourseContentSidebar = false
+        },
     }
 })
 
@@ -71,7 +74,8 @@ export const { toggleSidebar, hideSidebar, toggleFranchiseDD,
     toggleCourseDropdown,
     hideAllNavMenu, showMobileCourseMenu,
     hideMobileCourseMenu,
-    showMobileMenu, hideMobileMenu, toggleCourseContentSidebar
+    showMobileMenu, hideMobileMenu, toggleCourseContentSidebar,
+    hideCourseContentSidebar
 } = announcementReducer.actions;
 
 export default announcementReducer.reducer;

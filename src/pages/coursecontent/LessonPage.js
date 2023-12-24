@@ -8,7 +8,6 @@ import { throttle } from 'lodash';
 
 import 'vidstack/styles/defaults.css';
 
-import { MediaOutlet, MediaPlayer } from '@vidstack/react';
 import ReactPlayer from 'react-player'
 
 import { AiOutlineInfoCircle } from 'react-icons/ai';
@@ -195,16 +194,15 @@ export const VideoPlayer = ({ url, videoType }) => {
             {
                 videoType === "external-url" && (
                     <div className='youtubeCustomStyle'>
-                        {/* <MyReactPlayer url={url} /> */}
-
-                        <MediaPlayer
+                        <MyReactPlayer url={url} />
+                        {/* <MediaPlayer
                             title="External Video"
                             src={url}
                             controls
                             playsinline
                         >
                             <MediaOutlet />
-                        </MediaPlayer>
+                        </MediaPlayer> */}
                     </div>
                 )
             }

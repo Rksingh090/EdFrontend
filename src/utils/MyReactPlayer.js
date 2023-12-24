@@ -17,6 +17,10 @@ const MyReactPlayer = ({ url }) => {
     const playerRef = useRef();
     const [showControls, setShowControls] = useState(false)
 
+    const [playsInLine, setPlaysInline] = useState(getPlayInLine())
+    const [showOtherOptions, setShowOtherOptions] = useState(false);
+
+
     const [player, setPlayer] = useState({
         playing: false,
         played: 0,
@@ -28,23 +32,36 @@ const MyReactPlayer = ({ url }) => {
         mute: false
     })
 
-    const toggleVideoPlay = () => {
+    function getPlayInLine() {
+        if (navigator.platform === "iPhone") {
+            return false;
+        }
+        return true;
+    }
+
+    const toggleVideoPlay = (e) => {
+        e.stopPropagation()
         setPlayer(prev => ({ ...prev, playing: !prev.playing }))
     }
 
-    const handleSeekMouseDown = () => {
+    const handleSeekMouseDown = (e) => {
+        e.stopPropagation()
         setPlayer(prev => ({ ...prev, seeking: true }))
     }
 
     const handleSeekChange = (e) => {
+        e.stopPropagation()
         setPlayer(prev => ({ ...prev, played: parseFloat(e.target.value) }))
     }
     const handleSeekMouseUp = (e) => {
+        e.preventDefault()
         setPlayer(prev => ({ ...prev, seeking: false }))
         playerRef.current?.seekTo(parseFloat(e.target.value))
     }
 
-    const seekToPrevFrame = () => {
+    const seekToPrevFrame = (e) => {
+        e.stopPropagation()
+
         let oneSecFrac = 1 / player.duration;
         let nextFrameFrac = player.played - (oneSecFrac * 10);
         if (nextFrameFrac >= 0.0001) {
@@ -57,7 +74,8 @@ const MyReactPlayer = ({ url }) => {
     }
 
 
-    const seekToNextFrame = () => {
+    const seekToNextFrame = (e) => {
+        e.stopPropagation()
         let oneSecFrac = 1 / player.duration;
         let nextFrameFrac = player.played + (oneSecFrac * 10);
         if (nextFrameFrac <= 1) {
@@ -73,7 +91,7 @@ const MyReactPlayer = ({ url }) => {
         setPlayer(prev => ({ ...prev, duration: duration }))
     }
 
-    const handleProgress = state => {
+    const handleProgress = (state) => {
         if (!player.seeking) {
             setPlayer(prev => ({ ...prev, played: state.played }))
         }
@@ -94,16 +112,17 @@ const MyReactPlayer = ({ url }) => {
     }
 
     const handleVolumeChange = (e) => {
+        e.stopPropagation()
+        e.preventDefault()
         setPlayer(prev => ({ ...prev, volume: parseFloat(e.target.value) }))
     }
-
 
     const playerContainerRef = useRef()
     const [isFullScreen, setIsFullScreen] = useState(false);
 
     const handleToggleFullScreen = () => {
-        playerContainerRef.current?.requestFullscreen();
         if (!isFullScreen) {
+            setPlaysInline(false)
             if (playerContainerRef.current.requestFullscreen) {
                 playerContainerRef.current.requestFullscreen().catch((err) => { })
             } else if (playerContainerRef.current.mozRequestFullScreen) { // Firefox
@@ -115,6 +134,7 @@ const MyReactPlayer = ({ url }) => {
             }
             setIsFullScreen(true);
         } else {
+            setPlaysInline(true)
             if (document.exitFullscreen) {
                 document?.exitFullscreen().catch((err) => { })
             } else if (document.mozCancelFullScreen) { // Firefox
@@ -150,7 +170,6 @@ const MyReactPlayer = ({ url }) => {
         timeoutIds.current = [];
     };
 
-    const [showOtherOptions, setShowOtherOptions] = useState(false);
 
     const handleChangePlayBack = (playbackRate) => {
         setShowOtherOptions(false)
@@ -161,33 +180,59 @@ const MyReactPlayer = ({ url }) => {
         setPlayer(prev => ({ ...prev, mute: !prev.mute }))
     }
 
+    const checkAndToggleVideo = (e) => {
+        setPlayer(prev => ({ ...prev, playing: !prev.playing }))
+    }
+
     return (
         <div className='myCustomVideoPlayer'
             onMouseMove={handleMouseMove}
             onTouchMove={handleMouseMove}
             ref={playerContainerRef}
-        // onMouseLeave={() => setShowControls(false)}
         >
-            <ReactPlayer
-                url={url}
-                width={"100%"}
-                height={"100%"}
-                ref={playerRef}
-                playing={player?.playing}
-                onDuration={handleDuration}
-                onProgress={handleProgress}
-                loop={false}
-                onEnablePIP={handleEnablePIP}
-                onDisablePIP={handleDisablePIP}
-                pip={player.pip}
-                playbackRate={player.playbackRate}
-                volume={player.volume}
-                muted={player.mute}
-                playsinline={true}
-            />
-            {/* controls  */}
-            <div className={`bottomControls ${showControls ? "show" : "hide"}`}>
+            <div
+                style={{
+                    width: "100%",
+                    height: "100%",
+                    overflow: "hidden"
+                }}
+                onClick={checkAndToggleVideo}
+            >
 
+                <ReactPlayer
+                    url={url}
+                    width={"100%"}
+                    height={"100%"}
+                    ref={playerRef}
+                    playing={player?.playing}
+                    onDuration={handleDuration}
+                    onProgress={handleProgress}
+                    loop={false}
+                    // onEnablePIP={handleEnablePIP}
+                    // onDisablePIP={handleDisablePIP}
+                    pip={player.pip}
+                    playbackRate={player.playbackRate}
+                    volume={player.volume}
+                    muted={player.mute}
+                    playsinline={playsInLine}
+                />
+            </div>
+
+            <div className={`playerMiddleScreen ${showControls ? "show" : "hide"}`}>
+                {playsInLine && (
+                    <FiRotateCcw className={"playerSeekBtn"} onClick={seekToPrevFrame} />
+                )}
+                {player.playing ? (
+                    <AiOutlinePause className={"playerActionBtn"} onClick={toggleVideoPlay} />
+                ) : (
+                    <HiMiniPlay className={"playerActionBtn"} onClick={toggleVideoPlay} />
+                )}
+                {playsInLine && (
+                    <FiRotateCw className={"playerSeekBtn"} onClick={seekToNextFrame} />
+                )}
+            </div>
+
+            <div className={`bottomControls ${showControls ? playsInLine ? "show" : "hide" : "hide"}`}>
                 <CustomRangeInput
                     className='playerSeekBar'
                     type='range'
@@ -198,20 +243,13 @@ const MyReactPlayer = ({ url }) => {
                     onMouseDown={handleSeekMouseDown}
                     onChange={handleSeekChange}
                     onMouseUp={handleSeekMouseUp}
+                    onClick={e => e.stopPropagation()}
                 />
 
-                <div className='playerFooterScreen'>
-                    <div className='flexRowGap5'>
-                        <FiRotateCcw className={"playerActionBtn"} onClick={seekToPrevFrame} size={22} />
 
-                        {
-                            player.playing ? (
-                                <AiOutlinePause className={"playerActionBtn"} onClick={toggleVideoPlay} size={30} />
-                            ) : (
-                                <HiMiniPlay className={"playerActionBtn"} onClick={toggleVideoPlay} size={30} />
-                            )
-                        }
-                        <FiRotateCw className={"playerActionBtn"} onClick={seekToNextFrame} size={22} />
+
+                <div className={`playerFooterScreen`}>
+                    <div className='flexRowGap5'>
 
                         <div className='playbackRateFixer'>
                             <span className='selectedPlayback' onClick={() => setShowOtherOptions(prev => !prev)}>{player.playbackRate}x</span>
@@ -236,15 +274,14 @@ const MyReactPlayer = ({ url }) => {
                                 step='any'
                                 value={player.volume}
                                 onChange={handleVolumeChange}
+                                onMouseDown={e => e.stopPropagation()}
+                                onMouseUp={e => e.stopPropagation()}
                             />
-                            {
-                                player.mute ? (
-                                    <IoVolumeMuteSharp onClick={handleToggleMute} className='playerActionBtn' size={25} />
-
-                                ) : (
-                                    <BsVolumeUpFill onClick={handleToggleMute} className='playerActionBtn' size={25} />
-                                )
-                            }
+                            {player.mute ? (
+                                <IoVolumeMuteSharp onClick={handleToggleMute} className='playerActionBtn' size={25} />
+                            ) : (
+                                <BsVolumeUpFill onClick={handleToggleMute} className='playerActionBtn' size={25} />
+                            )}
                         </div>
 
                     </div>
@@ -255,12 +292,12 @@ const MyReactPlayer = ({ url }) => {
                             <span className='text-white'>/</span>
                             <Duration className={"text-white"} seconds={player?.duration} />
                         </div>
-                        <BsPip className='playerActionBtn' size={22} onClick={handleTogglePIP} />
+                        <BsPip className='playerControllActionBtn' size={22} onClick={handleTogglePIP} />
                         {
                             isFullScreen ? (
-                                <BsFullscreenExit className='playerActionBtn' size={18} onClick={handleToggleFullScreen} />
+                                <BsFullscreenExit className='playerControllActionBtn' size={18} onClick={handleToggleFullScreen} />
                             ) : (
-                                <BsFullscreen className='playerActionBtn' size={18} onClick={handleToggleFullScreen} />
+                                <BsFullscreen className='playerControllActionBtn' size={18} onClick={handleToggleFullScreen} />
                             )
                         }
                     </div>

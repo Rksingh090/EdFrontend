@@ -2300,11 +2300,6 @@
     "@typescript-eslint/types" "5.59.9"
     eslint-visitor-keys "^3.3.0"
 
-"@vidstack/react@^0.5.6":
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/@vidstack/react/-/react-0.5.6.tgz#cd058a32661a20eb6c087bca61b68a8a7f0ffe62"
-  integrity sha512-BOdPaSEQc1zxfksVEj0gA29Kvj1LaOVDObNP3EyPs2cMj/TJsQASdELzNphCNzwSN9Zw+MtW4dTP0p5cBPnzPw==
-
 "@webassemblyjs/ast@1.11.6", "@webassemblyjs/ast@^1.11.5":
   version "1.11.6"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.11.6.tgz#db046555d3c413f8966ca50a95176a0e2c642e24"
