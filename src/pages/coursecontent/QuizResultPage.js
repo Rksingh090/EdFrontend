@@ -106,7 +106,7 @@ const QuizResultPage = () => {
 				<div className="QuizStartBtnAndTitle">
 					<Link className='startQuizBtn' to={`/course/${course_id}/${course_slug}/quiz/${quizData?._id}`}>Start Quiz</Link>
 					<div className='quizPageTitle'>
-						<BsQuestionSquare size={22} />
+						<BsQuestionSquare size={16} />
 						<h2 className='quiz1'>{quizData?.quiz_title}</h2>
 					</div>
 					<div></div>

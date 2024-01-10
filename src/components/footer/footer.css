@@ -1,14 +1,15 @@
 .footerContainer {
     width: 100%;
     margin-top: auto;
-    background-color: var(--main);
+    background-color: var(--bg-muted);
+    color: var(--text-subtle);
+    border-top: 1px solid var(--border-muted);
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: var(--mainFont);
-    color: var(--bgText);
+    font-family: var(--poppins);
     font-size: var(--fontMD);
     font-weight: 500;
 }

@@ -165,6 +165,7 @@ const AssignmentSubmission = () => {
                                     renderTextLayer={false}
                                     renderAnnotationLayer={false}
                                     canvasBackground='#FFFFFF'
+                                    className='pdfViewCanvasContainer'
                                 />
                             </Document>
                             {currentPdfPage > 1 && (

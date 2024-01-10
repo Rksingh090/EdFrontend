@@ -79,15 +79,24 @@ const CourseContentBase = () => {
         }
     }, [pathname, dispatch])
 
+    const toggleTheme = () => {
+        const b = document.getElementsByTagName("body")[0];
+        if(b.getAttribute("data-theme") === "dark"){
+            b.setAttribute("data-theme", "light")
+        }else{      
+            b.setAttribute("data-theme", "dark")
+        }
+    }
+
 
     return (
         <div className={`courseContentPage ${showCourseContentSidebar ? "opened" : "collapsed"}`}>
 
             {/* side bar  */}
-            <div className='courseContentSidebar'>
+            <div className='courseContentSidebar courseContentPageGrid'>
                 <div className='courseSidebarHeader'>
                     <div className='box transparent'></div>
-                    <h2>&lt;EduTech /&gt;</h2>
+                    <h2 onClick={toggleTheme}>&lt;EduTech /&gt;</h2>
                     <div className='box CCSidebarClose' onClick={closeCourseContentSidebar}>
                         <AiOutlineClose size={16} />
                     </div>
@@ -194,7 +203,7 @@ const CourseContentBase = () => {
             </div>
 
             {/* main content area  */}
-            <div>
+            <div className='courseContentPageGrid'>
                 <div className='mainContentArea'>
                     <div className='contentHeaderBackBTN' onClick={closeCourseContentSidebar}>
                         <MdMenuOpen size={22} />

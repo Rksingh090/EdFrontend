@@ -14,6 +14,7 @@ const Home = () => {
 
     const { categories } = useSelector(({ category }) => category);
 
+
     return (
         <Base bodyClass={"flexCenter homePageBg"}>
             <div className='MaxAreaContainer'>

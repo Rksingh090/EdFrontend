@@ -4,6 +4,7 @@
     height: 100vh;
     transition: all .3s cubic-bezier(0.86, 0.12, 0.15, 0.92);
     position: relative;
+    background-color: var(--bg);
 }
 
 .courseContentPage.collapsed {
@@ -11,11 +12,14 @@
 }
 
 
-.courseContentPage>div {
+/* .courseContentPage>div { */
+.courseContentPageGrid {
     overflow: hidden;
     transition: all .3s cubic-bezier(0.86, 0.12, 0.15, 0.92);
     display: grid;
     grid-template-rows: var(--courseContentNavHeight) 1fr;
+    background-color: var(--bg-muted);
+    border-right: 1px solid var(--border-muted);
 }
 
 
@@ -47,7 +51,7 @@
 
 .CCSidebarClose {
     opacity: 0;
-    background-color: var(--adminMainBackground);
+    background-color: var(--bg-emphasis);
     cursor: pointer;
     pointer-events: none;
 }
@@ -81,7 +85,7 @@
 }
 
 .singleTopicsAndItems {
-    background-color: #EEE;
+    border-bottom: .1px solid var(--border-muted);
 }
 
 .courseTopicItem {
@@ -91,16 +95,15 @@
     justify-content: space-between;
     width: 100%;
     padding: 10px;
-    background-color: var(--monochrome);
     cursor: pointer;
-    border-bottom: .1px solid #EEE;
     transition: all .2s ease;
     z-index: 788;
     position: relative;
+    background-color: var(--bg-muted);
 }
 
 .courseTopicItem.active {
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-emphasis);
 }
 
 
@@ -130,7 +133,7 @@
     flex-direction: column;
     overflow: hidden;
     transition: all .5s cubic-bezier(.17, .68, .27, .84);
-    background-color: var(--adminMainBackground);
+    background-color: var(--bg-muted);
 }
 
 
@@ -145,11 +148,11 @@
 }
 
 .courseItemLink.active {
-    background-color: var(--lightBG);
+    background-color: var(--bg-emphasis);
 }
 
 .courseItemLink:hover {
-    background-color: rgba(0, 0, 0, .04);
+    background-color: var(--bg-subtle);
 }
 
 .courseItemLink .itemLinkTitle {
@@ -173,8 +176,8 @@
 
 
 .mainContentArea {
-    background: var(--main);
-    color: white;
+    background: var(--bg-muted);
+    color: var(--text);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -191,7 +194,7 @@
 .contentHeaderBackBTN {
     height: 60%;
     aspect-ratio: 1;
-    background: var(--monochrome);
+    background: var(--bg-emphasis);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -214,8 +217,8 @@
 
 .contentAreaCourseProgress .liveLogin {
     height: 60%;
-    background: var(--monochrome);
-    color: var(--main);
+    background: var(--bg-emphasis);
+    color: var(--text);
     border-radius: 100px;
     font-weight: 500;
     font-size: 14px;
@@ -231,8 +234,8 @@
     height: 60%;
     aspect-ratio: 1;
     border-radius: 550px;
-    background-color: var(--monochrome);
-    color: var(--main);
+    background-color: var(--bg-emphasis);
+    color: var(--text);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -246,7 +249,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: var(--adminMainBackground);
+    background-color: var(--bg);
 }
 
 /* welcome page - course content  */
@@ -370,8 +373,9 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
+    /* box-shadow: var(--adminSmallShadow); */
     padding: 5px;
     border-radius: 5px;
 }
@@ -384,7 +388,7 @@
 }
 
 .quizPageTitle>h2 {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
 }
 
@@ -393,8 +397,9 @@
     grid-template-columns: repeat(4, minmax(20px, 1fr));
     width: 100%;
     font-weight: 400;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
+    /* box-shadow: var(--adminSmallShadow); */
     padding: 10px;
     border-radius: 5px;
 }
@@ -433,10 +438,10 @@
 
 .startQuizBtn {
     padding: 8px 10px;
-    background-color: var(--main);
+    background-color: var(--bg-emphasis);
     border-radius: 5px;
-    color: white;
-    font-size: 16px;
+    color: var(--text-emphasis);
+    font-size: 14px;
 }
 
 
@@ -544,7 +549,7 @@
 }
 
 .courseContentSidebar {
-    box-shadow: var(--adminSmallShadow);
+    /* box-shadow: var(--adminSmallShadow); */
     z-index: 1000;
 }
 
@@ -703,9 +708,10 @@
 
 .CCAssignmentHeading {
     width: 100%;
-    background-color: var(--monochrome);
+    background-color: var(--bg-subtle);
+    /* border: 1px solid var(--border-subtle); */
     padding: 10px 15px;
-    box-shadow: var(--adminSmallShadow);
+    /* box-shadow: var(--adminSmallShadow); */
     border-radius: 5px;
     display: flex;
     flex-direction: row;
@@ -758,6 +764,9 @@
     flex-direction: column;
     width: 100%;
     overflow: hidden;
+    background-color: var(--bg-muted);
+    color: var(--text);
+    border: 1px solid var(--border-muted);
 }
 
 .noPdfGivenByInstructor {
@@ -776,6 +785,11 @@
 
 .pdfViewPage {
     overflow: hidden;
+}
+
+.pdfViewCanvasContainer,
+.pdfViewCanvasContainer>canvas {
+    mix-blend-mode: difference;
 }
 
 
@@ -814,10 +828,12 @@
     border-radius: 10px;
     outline: none;
     border: none;
-    font-size: 13px;
+    font-size: 14px;
     padding: 10px;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    color: var(--text);
+    border: 1px solid var(--border-muted);
+    /* box-shadow: var(--adminSmallShadow); */
 }
 
 .assignmentUploadBTN {

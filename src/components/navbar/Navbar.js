@@ -51,6 +51,15 @@ const Navbar = ({ showSideMenu, clearScrollSticky }) => {
       dispatch({ type: "appsetting/hideAllNavMenu" })
    }
 
+   const toggleTheme = () => {
+      const b = document.getElementsByTagName("body")[0];
+      if(b.getAttribute("data-theme") === "dark"){
+          b.setAttribute("data-theme", "light")
+      }else{      
+          b.setAttribute("data-theme", "dark")
+      }
+  }
+
    return (
       <div className={`navbarMainContainer ${clearScrollSticky === true ? `fixedNav ${isSticky ? "whiteBG" : "transparentBG"}` : `whiteBG ${isSticky ? "sticky top-0 left-0" : ""}`}`}>
          <div className='navbar'>
@@ -60,7 +69,7 @@ const Navbar = ({ showSideMenu, clearScrollSticky }) => {
                      <AiOutlineMenu size={28} />
                   </div>
                }
-               <Link to={"/"} className='mainNavLogo'>
+               <Link to={"#"} className='mainNavLogo' onClick={toggleTheme}>
                   &lt;EduTech /&gt;
                </Link>
             </div>

@@ -6,7 +6,7 @@
     height: 100%;
     min-height: var(--bodyHeight);
     font-family: var(--poppins);
-    background-color: var(--adminMainBackground);
+    background-color: var(--bg);
 }
 
 .courseProgressCol1 {
@@ -25,7 +25,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, .3);
+    /* box-shadow: 2px 2px 10px rgba(0, 0, 0, .3); */
 }
 
 .courseTitleAndCat {
@@ -43,12 +43,12 @@
 .CPCourseTitle {
     font-size: 16px;
     font-weight: 600;
-    color: var(--monochrome);
+    color: rgb(237, 237, 237);
 }
 
 .CPCourseSubTitle {
     font-size: 14px;
-    color: var(--monochrome);
+    color: rgb(238, 238, 238);
 }
 
 
@@ -136,15 +136,15 @@
 .coursecontentDiv {
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: var(--adminSmallShadow);
-    background-color: transparent;
+    /* box-shadow: var(--adminSmallShadow); */
+    border: 1px solid var(--border-subtle);
 }
 
 .courseProTopicItem {
-    background-color: var(--monochrome);
+    background-color: var(--bg-subtle);
     cursor: pointer;
     display: grid;
-    grid-template-columns: 1fr 100px 25px;
+    grid-template-columns: 1fr 55px 25px;
     gap: 20px;
     padding: 15px 10px;
     align-items: center;
@@ -174,7 +174,7 @@
 }
 
 .courseProItem:hover {
-    background-color: rgba(0, 0, 0, .04)
+    background-color: var(--bg-muted);
 }
 
 .courseProItem>div {
@@ -397,8 +397,9 @@
 
 .coursebyteacher {
     padding: 10px;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-subtle);
+    /* box-shadow: var(--adminSmallShadow); */
+    border: 1px solid var(--border-subtle);
     border-radius: 5px;
 }
 
@@ -431,8 +432,9 @@
 }
 
 .CPCourseDataBorder {
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+    /* box-shadow: var(--adminSmallShadow); */
     border-radius: 10px;
 }
 
@@ -479,7 +481,7 @@
 
 .CPExtraDetailsContainer {
     padding: 20px;
-    border-top: 1px solid var(--main);
+    border-top: 1px solid var(--border-muted);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -527,8 +529,9 @@
 /* tabmenus - tab  */
 .whiteBGQuillDesc {
     width: 100%;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
+    /* box-shadow: var(--adminSmallShadow); */
     border-radius: 10px;
 }
 

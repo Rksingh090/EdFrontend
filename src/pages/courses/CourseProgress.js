@@ -151,7 +151,7 @@ const CourseProgress = () => {
                         </div>
 
                         {/* tabmenu  */}
-                        <div className='tabMenu whiteBG withShadow roundSM'>
+                        <div className='tabMenu whiteBG roundSM'>
                             <p className={`flex-fill ${tabIndex === "description" && "active"}`} onClick={() => setTabIndex("description")}>Description</p>
                             <p className={`${tabIndex === 1 && "active"}`} onClick={() => setTabIndex(1)}>{enrollData.isEnrolled ? "Course Content" : "Course Demo"}</p>
                             {
@@ -332,10 +332,10 @@ const CourseProgress = () => {
 
                                             Continue Learning
                                         </Link>
-                                        <div className='CourseCompleteInfo'>
+                                        {/* <div className='CourseCompleteInfo'>
                                             <AiOutlineExclamationCircle size={25} />
                                             <p>Complete all lessons to mark this course as complete</p>
-                                        </div>
+                                        </div> */}
                                         <div className='flexRowIconTxt'>
                                             <AiOutlineShoppingCart className='mainColor' size={20} />
                                             <p>
@@ -450,7 +450,7 @@ const CourseProgress = () => {
                         </div>
 
                         <div className='coursebyteacher'>
-                            <h1 className='font-[500] text-[#333] text-[16px]'>Course By</h1>
+                            <h2 className='fadeText'>Course By</h2>
                             <div className='CPCourseCreator pt-3'>
                                 <div className='CPCourseDP'>
                                     {courseContent?.created_by?.dp ? (

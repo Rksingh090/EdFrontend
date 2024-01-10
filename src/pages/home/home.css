@@ -1,5 +1,5 @@
 .homePageBg {
-    background-color: var(--adminMainBackground);
+    background-color: var(--bg);
     padding: 0 20px;
 
 }
@@ -39,7 +39,8 @@
     flex-direction: row;
     align-items: center;
     gap: 5px;
-    background-color: var(--monochrome);
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
     border-radius: 60px;
     padding: 5px;
     width: 90%;
@@ -50,7 +51,7 @@
 
 
 .homeCourseSearch:has(>input:focus) {
-    box-shadow: 0vh 0vh 70vh 100vh rgba(0, 0, 0, 0.45);
+    /* box-shadow: 0vh 0vh 70vh 100vh rgba(0, 0, 0, 0.45); */
 }
 
 .homeCourseSearch>input {
@@ -73,9 +74,11 @@
     justify-content: center;
     background-color: var(--optionBG);
     border-radius: 60px;
-    color: var(--monochrome);
+    color: var(--white);
 }
-
+.searchBtn > svg {
+    fill: #fff;
+}
 
 .homeHeroImage {
     width: 100%;
@@ -110,8 +113,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-subtle);
+    /* box-shadow: var(--adminSmallShadow); */
     padding: 20px;
     border-radius: 10px;
     gap: 15px;
@@ -139,8 +142,9 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    color: var(--optionBG);
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-emphasis);
+    /* color: var(--optionBG);
+    background-color: rgba(0, 0, 0, 0.1); */
 }
 
 .homeCategoryHeading {
@@ -156,7 +160,7 @@
     gap: 20px;
     /* background-color: white; */
     padding: 20px;
-    background: linear-gradient(to right bottom, rgba(0, 234, 255, 0.249), rgba(255, 149, 239, 0.288));
+    /* background: linear-gradient(to right bottom, rgba(0, 234, 255, 0.249), rgba(255, 149, 239, 0.288)); */
 }
 
 .teacherCol2 {

@@ -37,12 +37,7 @@
     src: local('Poppins'), url(../assets/fonts/Poppins/Poppins-ExtraBold.ttf) format('truetype');
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins";
-}
+
 
 /* :root {
     --main: #5059cf;
@@ -75,17 +70,17 @@
     --warning: #d29f1c;
     --info: rgb(28, 143, 210);
 
+    --poppins: "Poppins", sans-serif;
 
     /* for theme  */
-    --mainFont: "Poppins", sans-serif;
     --main: #ff39ad;
     --secondary: #ff92d1;
     --lightBG: #ffd0e8;
     --optionBG: #ff7bc8;
-    --poppins: "Poppins", sans-serif;
     --grayPrimary: #444;
     --graySecondary: #777;
     --lightGray: #e9e9e9;
+
     --adminMainBackground: #EAEEF3;
     --adminSmallShadow: 0 0 10px rgba(0, 0, 0, .15);
     --adminMDShadow: 0 0 15px rgba(0, 0, 0, .2);
@@ -93,14 +88,105 @@
     --adminColorShadow: 0 0 10px #ffabff;
     --mainText: #000;
     --bgText: #000000;
-    --fontXS: 12px;
-    --fontSM: 12px;
-    --fontMD: 12px;
-    --fontLG: 20px;
-    --fontXL: 22px;
     --monochrome: #fff;
     --fadeText: #808080;
 
+    --fontXS: 10px;
+    --fontSM: 12px;
+    --fontMD: 14px;
+    --fontLG: 18px;
+    --fontXL: 22px;
+
+    --bg-emphasis: #e5e7eb;
+    --bg: #fff;
+    --bg-subtle: #f3f4f6;
+    --bg-muted: #f9fafb;
+    --bg-inverted: #0f0f0f;
+    --bg-info: #f6f9fe;
+    --bg-success: #e4fbe9;
+    --bg-attention: #fcefd9;
+    --bg-error: hsla(3, 66, 93, 1);
+    --bg-dark-error: #772522;
+    --border-emphasis: #9ca3b0;
+    --border: #d1d5db;
+    --border-subtle: #e5e7eb;
+    --border-booker: #e5e7eb;
+    --border-muted: #f3f4f6;
+    --border-error: #aa2f27;
+    --text-emphasis: #384252;
+    --text: #384252;
+    --text-subtle: #6b7280;
+    --text-muted: #9ca3b0;
+    --text-inverted: #fff;
+    --text-info: #253883;
+    --text-success: #285231;
+    --text-attention: #74331b;
+    --text-error: #772522;
+    --brand: #111827;
+    --brand-emphasis: #0f0f0f;
+    --brand-text: #fff;
+    --bg-backdrop: #0002;
+}
+
+
+[data-theme="dark"] {
+
+    /* for theme  */
+    --main: #9539ff;
+    --secondary: #cc92ff;
+    --lightBG: #ffd0e8;
+    --optionBG: #7d1fb4;
+    --grayPrimary: #444;
+    --graySecondary: #777;
+    --lightGray: #e9e9e9;
+
+    --adminMainBackground: #EAEEF3;
+    --adminSmallShadow: 0 0 10px rgba(0, 0, 0, .15);
+    --adminMDShadow: 0 0 15px rgba(0, 0, 0, .2);
+    --adminLargeShadow: 0 0 20px rgba(0, 0, 0, .1);
+    --adminColorShadow: 0 0 10px #ffabff;
+    --mainText: #000;
+    --bgText: #000000;
+    --monochrome: #1a1a1a;
+    --fadeText: #808080;
+
+    --bg-emphasis: #525252;
+    --bg: #1a1a1a;
+    --bg-subtle: #2e2e2e;
+    --bg-muted: #1f1f1f;
+    --bg-inverted: #f3f4f6;
+    --bg-info: #253883;
+    --bg-success: #285231;
+    --bg-attention: #74331b;
+    --bg-error: #772522;
+    --bg-dark-error: #772522;
+    --border-emphasis: #757575;
+    --border: #575757;
+    --border-subtle: #383838;
+    --border-booker: #383838;
+    --border-muted: #2e2e2e;
+    --border-error: #aa2f27;
+    --text-emphasis: #fcfcfd;
+    --text: #d6d6d6;
+    --text-subtle: #a6a6a6;
+    --text-muted: #575757;
+    --text-inverted: #1a1a1a;
+    --text-info: #dee9fc;
+    --text-success: #e4fbe9;
+    --text-attention: #fcefd9;
+    --text-error: #f9e3e1;
+    --brand: #fff;
+    --brand-emphasis: #9ca3b0;
+    --brand-text: #000;
+    --bg-backdrop: #fff2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    color: var(--text);
 }
 
 ::-webkit-scrollbar {

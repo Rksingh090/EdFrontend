@@ -44,15 +44,13 @@
 }
 
 .successBadge {
-    border: 1px solid green;
-    color: green;
-    background-color: rgba(180, 255, 180, 0.548);
+    color: white;
+    background-color: rgb(28, 123, 28);
 }
 
 .errorBadge {
-    border: 1px solid rgb(255, 69, 69);
-    color: rgb(255, 69, 69);
-    background-color: rgba(255, 172, 172, 0.616);
+    color: white;
+    background-color: rgb(128, 34, 34);
 }
 
 .warningBadge {
@@ -68,15 +66,16 @@
     justify-content: flex-start;
     align-items: center;
     width: 100%;
-    background-color: var(--adminMainBackground);
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
     padding: 0;
     margin: 0;
     flex-wrap: wrap;
 }
 
-.tabMenu.whiteBG {
+/* .tabMenu.whiteBG {
     background-color: var(--monochrome);
-}
+} */
 
 .tabMenu>p {
     padding: 10px 20px;
@@ -111,8 +110,8 @@
 }
 
 .tabMenu>p.active {
-    color: var(--monochrome);
-    background-color: var(--main);
+    color: var(--text);
+    background-color: var(--bg-muted);
     /* border-color: var(--main); */
 }
 
@@ -261,8 +260,9 @@
 
 /* student quiz attempts page  */
 .quizAttemptTheadRow>th>p {
-    font-size: 15px;
-    color: rgb(51, 51, 51);
+    font-size: 16px;
+    letter-spacing: .5px;
+    color: var(--text-emphasis);
     font-weight: 500;
 }
 
