@@ -423,10 +423,11 @@ table.dashboardTable .tableProfileImg>img {
 }
 
 .quillSeparation>.ql-formats {
-    background-color: #eaeaea;
+    background-color: var(--bg-subtle);
     padding: 5px;
     border-radius: 5px;
 }
+
 
 
 /* pagination  */
@@ -495,14 +496,14 @@ table.dashboardTable .tableProfileImg>img {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px dotted #8d8d8d;
+    border-bottom: 1px dotted var(--bg-subtle);
 }
 
 .tableHeading>.heading {
     font-size: 16px;
     font-family: var(--poppins);
     font-weight: 500;
-    color: #333;
+    color: var(--text);
 }
 
 .tableHeading>.heading.lg {
@@ -576,7 +577,7 @@ textarea.FormInput {
 .flexColInput>label {
     font-size: 12px;
     font-weight: 500;
-    color: #777;
+    color: var(--text-subtle);
 }
 
 /* form create button  */
@@ -753,7 +754,7 @@ textarea.FormInput {
     font-size: 12px;
     font-weight: 500;
     padding: 0 10px;
-    background-color: var(--bg-subtle);
+    background-color: var(--bg-muted);
     border-radius: 5px;
     color: var(--text);
     border: 1px solid var(--border-subtle);
@@ -866,6 +867,19 @@ textarea.FormInput {
     right: 10px;
 }
 
+/* text color  */
+.textMuted {
+    color: var(--text-muted);
+}
+.textMuted.fill{
+    fill: var(--text-muted);
+}
+.textSubtle {
+    color: var(--text-subtle);
+}
+.textSubtle.fill{
+    fill: var(--text-subtle);
+}
 
 
 

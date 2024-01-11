@@ -3,6 +3,8 @@ import React, { createContext, useContext, useState } from 'react'
 import { API } from '../constant';
 import { useDispatch } from 'react-redux';
 import { updateCourseByData } from '../reducers/CourseReducer';
+import useKeybinds from '../hooks/useKeyBinds';
+import { toggleTheme } from '../reducers/AppSettingReducer';
 
 const newCourseCtx = createContext();
 
@@ -28,6 +30,17 @@ const CourseBuilderProvider = ({ children }) => {
 
    // show recording form 
    const [showRecordingForm, setShowRecordingForm] = useState(false);
+
+   const cmds = [
+      {
+         cmd: ["Alt", "x"],
+         short: "Alt + x",
+         func: () => dispatch(toggleTheme()),
+         description: "Description for This keybind",
+      }
+   ];
+
+   useKeybinds(cmds);
 
    // course data 
    const [courseData, setCourseData] = useState({
@@ -945,7 +958,7 @@ const CourseBuilderProvider = ({ children }) => {
          course: "",
          description: "",
          title: "",
-         video_source:"", 
+         video_source: "",
          video_source_title: "",
          video_source_type: ""
       })

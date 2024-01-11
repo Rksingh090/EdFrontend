@@ -8,7 +8,7 @@ const Switch = ({ value, onChange, className, title }) => {
         setChecked(value)
     }, [value])
     return (
-        <div title={title} className={`switch ${className} ${checked ? "active" : "inactive"} cursor-pointer`} onClick={() => {
+        <div title={title} className={`switch ${className ? className : ""} ${checked ? "active" : "inactive"} cursor-pointer`} onClick={() => {
             onChange(!checked)
         }}>
             <div className={`switchBall`}></div>

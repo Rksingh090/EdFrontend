@@ -65,7 +65,7 @@ const Course = () => {
                     <button className='createNewCourseBTN' onClick={handleCreateNewCourse}>Create New Course</button>
                 </div>
 
-                <div className='tabMenu'>
+                <div className='tabMenu roundSM'>
                     <p className={`${openTab === "publish" ? "active" : ""}`} onClick={() => setOpenTab("publish")}>Publish ({courseCount?.publish})</p>
                     <p className={`${openTab === "pending" ? "active" : ""}`} onClick={() => setOpenTab("pending")}>Pending ({courseCount?.pending})</p>
                     <p className={`${openTab === "draft" ? "active" : ""}`} onClick={() => setOpenTab("draft")}>Draft ({courseCount?.draft})</p>

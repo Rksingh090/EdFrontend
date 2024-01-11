@@ -221,6 +221,11 @@
     align-items: center;
 }
 
+.flexAIC {
+    display: flex;
+    align-items: center;
+}
+
 /* announcement  */
 .announcementTabView {
     display: flex;

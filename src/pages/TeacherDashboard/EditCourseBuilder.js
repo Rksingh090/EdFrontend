@@ -36,6 +36,8 @@ import { uploadImage } from '../../functions/uploader';
 import EditCourseHeader from '../../components/coursebuilder/EditCourseHeader';
 import AddRecording from '../../components/coursebuilder/AddRecording';
 import { formatBytes } from '../../functions/formatebyte';
+import SelectOption from '../../components/utils/SelectOption';
+import useKeybinds from '../../hooks/useKeyBinds';
 
 const EditCourseBuilder = () => {
     const { course_id } = useParams();
@@ -500,6 +502,8 @@ const EditCourseBuilder = () => {
     }, [courseData?._id])
 
 
+    
+
     return (
         <div>
             {/* back submit and cancle  */}
@@ -594,14 +598,14 @@ const EditCourseBuilder = () => {
                                                         thumbnailImgRef.current?.click()
                                                     }}
                                                     className='thumbnailUploadImg'>
-                                                    <TbUpload size={20} />
-                                                    <span>
+                                                    <TbUpload size={18} />
+                                                    <p>
                                                         {
                                                             courseData?.thumbnail
                                                                 ? "Upload Image"
                                                                 : "Change Image"
                                                         }
-                                                    </span>
+                                                    </p>
                                                 </button>
                                             </div>
                                         </div>
@@ -612,23 +616,38 @@ const EditCourseBuilder = () => {
                                     <div className={`flexColImg`}>
                                         <p className='labelText'>Upload Preview Video</p>
                                         <div className='VideoThumbnailContainer'>
-                                            <p className='text-[#50545d] font-[600] text-[16px]'>Drag & Drop Your Video</p>
-                                            <p className='text-[#50545d] font-[600] text-[16px]'>File Format: .mp4</p>
+                                            <p>Drag & Drop Your Video</p>
+                                            <p>File Format: .mp4</p>
                                             <p>or</p>
                                             <input type="file" ref={videoInputRef} name="file" accept='video/*' hidden />
-                                            <button onClick={handleVideoFile} className='bg-gray-200 text-[#35ff] px-[10px] hover:bg-[#35ff] py-1 hover:text-[#fff] rounded-md flex gap-2 items-center cursor-pointer'> Browse File</button>
+                                            <button onClick={handleVideoFile} className='browseFileBTN'> Browse File</button>
                                         </div>
                                     </div>
 
                                     <div className='flexColInput'>
                                         <label>Course Video Type</label>
-                                        <select className='w-[100%] outline-none border-[1px] border-gray-400 p-2 py-2  flex items-start rounded-md hover:border-[1px] focus:border-[#5656b6]'>
+                                        <SelectOption
+                                            label={"Select Video Type"}
+                                            options={[
+                                                { val: "html5", text: "HTML 5 (mp4)" },
+                                                { val: "youtube", text: "Youtube" },
+                                                { val: "vimeo", text: "Vimeo" },
+                                                { val: "embeded", text: "Embeded" },
+                                                { val: "external-url", text: "External URL" },
+                                            ]}
+                                            textField={"text"}
+                                            valueField={"val"}
+                                            style={{
+                                                height: "40px"
+                                            }}
+                                        />
+                                        {/* <select className='w-[100%] outline-none border-[1px] border-gray-400 p-2 py-2  flex items-start rounded-md hover:border-[1px] focus:border-[#5656b6]'>
                                             <option value="html5">HTML 5 (mp4)</option>
                                             <option value="youtube">Youtube</option>
                                             <option value="vimeo">Vimeo</option>
                                             <option value="embeded">Embeded</option>
                                             <option value="external-url">External URL</option>
-                                        </select>
+                                        </select> */}
                                     </div>
                                 </div>
 
@@ -803,11 +822,11 @@ const EditCourseBuilder = () => {
                         {/* microsoft team  */}
                         <div className="tableContainer dashboard">
                             <div className="tableHeading">
-                                <h2 className="heading">Microsoft Team Link</h2>
+                                <h2 className="heading">Live Class Link</h2>
                             </div>
                             <div className='p-[20px]'>
                                 <input type="text" className='CBInput'
-                                    placeholder='Paste Microsoft Team Link Here...'
+                                    placeholder='Paste Live Class Link Here...'
                                     value={courseData?.ms_team_link}
                                     onChange={(e) => setCourseData(prev => ({
                                         ...prev,
@@ -826,13 +845,13 @@ const EditCourseBuilder = () => {
 
                                 <div className='courseSettingContainer'>
                                     <div className='courseSettingMenu'>
-                                        <div className={`${courseMenu === "general" && "bg-white"}`} onClick={() => setCourseMenu("general")}>
+                                        <div className={`${courseMenu === "general" ? "selectedTab" : ""}`} onClick={() => setCourseMenu("general")}>
                                             <IoSettingsOutline size={22} />
-                                            <p className='text-[#50545d] text-[18px] font-[500] '>General</p>
+                                            <p>General</p>
                                         </div>
-                                        <div className={`${courseMenu === "content" && "bg-white px-4 "}`} onClick={() => setCourseMenu("content")}>
+                                        <div className={`${courseMenu === "content" ? "selectedTab" : ""}`} onClick={() => setCourseMenu("content")}>
                                             <AiOutlineClockCircle size={22} />
-                                            <p className='text-[#50545d] text-[18px] font-[500] '>Content Drip</p>
+                                            <p>Content Drip</p>
                                         </div>
 
                                     </div>
@@ -842,35 +861,46 @@ const EditCourseBuilder = () => {
 
 
                                             <div className='gridTwoByThree'>
-                                                <h1 className='text-[#50545d] font-[600] '>Difficulty Level</h1>
+                                                <h4>Difficulty Level</h4>
                                                 <div>
-                                                    <select
-                                                        onChange={(e) => setCourseData(data => {
+                                                    <SelectOption
+                                                        style={{
+                                                            height: "40px"
+                                                        }}
+                                                        label={"Select Levels"}
+                                                        onChange={(val) => setCourseData(data => {
                                                             return {
                                                                 ...data,
                                                                 setting: {
                                                                     ...data.setting,
-                                                                    difficulty_level: e.target.value
+                                                                    difficulty_level: val
                                                                 }
                                                             }
                                                         })}
+                                                        options={[
+                                                            { val: "begginner", text: "Beginner" },
+                                                            { val: "intermediate", text: "Intermediate" },
+                                                            { val: "expert", text: "Expert" }
+                                                        ]}
+                                                        textField={"text"}
+                                                        valueField={"val"}
+                                                    />
+                                                    {/* <select
                                                         name="cars" id="cars" className='w-full outline-none border-[1px] border-gray-500 p-2 flex items-start rounded-md hover:border-[1px] hover:border-[#5151d1]'>
                                                         <option disabled>Select Levels</option>
                                                         <option value="begginner">Beginner</option>
                                                         <option value="intermediate">Intermediate</option>
                                                         <option value="expert">Expert</option>
-                                                    </select>
-                                                    <h1 className='flex items-center gap-x-2 text-[#50545d]'>
-                                                        <div className='w-[20px]'>
-                                                            <AiOutlineInfoCircle size={18} />
-                                                        </div>
-                                                        Course difficulty level
-                                                    </h1>
+                                                    </select> */}
+                                                    <p className='flexAIC gap1'>
+                                                        <AiOutlineInfoCircle size={18} className='textMuted fill' />
+                                                        <span className='textMuted'>Course difficulty level</span>
+                                                    </p>
                                                 </div>
                                             </div>
 
                                             <div className='gridTwoByThree'>
-                                                <h1 className='text-[#50545d] font-[600] '>Enrolment Expiration</h1>
+                                                <h4>Enrolment Expiration</h4>
                                                 <div>
                                                     <input value={courseData?.setting?.expiration}
                                                         onChange={(e) => setCourseData(data => {
@@ -882,36 +912,44 @@ const EditCourseBuilder = () => {
                                                                 }
                                                             }
                                                         })}
-                                                        type="number" className='w-full outline-none border-[1px] border-gray-500 p-2 flex items-start rounded-md hover:border-[1px] hover:border-[#5151d1] placeholder:text-gray-600' />
-                                                    <h1 className='flex gap-x-2 text-[#50545d]'>
-                                                        <div className='w-[20px]'>
-                                                            <AiOutlineInfoCircle size={18} />
-                                                        </div>
-                                                        Student's enrolment will be removed after this number of days. Set 0 for lifetime enrolment.
-                                                    </h1>
+                                                        type="number"
+                                                        className="GrayedInput"
+                                                    />
+                                                    <p className='flex gap1 textMuted '>
+                                                        <span className='w-[20px]'>
+                                                            <AiOutlineInfoCircle size={18} className='textMuted fill' />
+                                                        </span>
+                                                        <span className='m-[-2px] textMuted'>
+                                                            Student's enrolment will be removed after this number of days. Set 0 for lifetime enrolment.
+                                                        </span>
+                                                    </p>
                                                 </div>
                                             </div>
 
 
 
                                             <div className='gridTwoByThree'>
-                                                <h1 className='text-[#50545d] font-[600] '>Q&A</h1>
+                                                <h4>Q&A</h4>
                                                 <div>
-                                                    <Switch value={courseData?.setting?.qna} onChange={(check) => setCourseData(data => {
-                                                        return {
-                                                            ...data,
-                                                            setting: {
-                                                                ...data.setting,
-                                                                qna: check
+                                                    <Switch
+                                                        value={courseData?.setting?.qna}
+                                                        onChange={(check) => setCourseData(data => {
+                                                            return {
+                                                                ...data,
+                                                                setting: {
+                                                                    ...data.setting,
+                                                                    qna: check
+                                                                }
                                                             }
-                                                        }
-                                                    })} />
-                                                    <h1 className='flex gap-x-2 text-[#50545d]'>
-                                                        <div className='w-[20px]'>
-                                                            <AiOutlineInfoCircle size={18} />
-                                                        </div>
-                                                        Number of students that can enrol in this course. Set 0 for no limits.
-                                                    </h1>
+                                                        })} />
+                                                    <p className='flex gap1'>
+                                                        <span className='w-[20px]'>
+                                                            <AiOutlineInfoCircle className='textMuted fill' size={18} />
+                                                        </span>
+                                                        <span className='m-[-2px] textMuted'>
+                                                            Number of students that can enrol in this course. Set 0 for no limits.
+                                                        </span>
+                                                    </p>
 
                                                 </div>
                                             </div>
@@ -982,17 +1020,15 @@ const EditCourseBuilder = () => {
                         <div className="tableContainer dashboard">
                             <div className="tableHeading">
                                 <h2 className="heading">Certificate Setting</h2>
-                                <div className='flex items-center justify-center gap-6 text-[#000]'>
-                                    <div className='flex items-center p-1 rounded-lg bg-[#e6ebee]'>
-                                        <button className={`flex items-center gap-2 p-2 rounded-md px-4 ${landscape === "landscape" ? "bg-[#ffffff] shadow-md" : "bg-transparent"}`} onClick={toggleLandscape}>
-                                            <TbDeviceLandlinePhone />
-                                            <p>Landscape</p>
-                                        </button>
-                                        <button className={`flex items-center gap-2 p-2 rounded-md px-4 ${landscape === "portrait" ? "bg-[#ffffff] shadow-md" : "bg-transparent"}`} onClick={toggleLandscape}>
-                                            <TbDeviceLandlinePhone />
-                                            <p>Portrait</p>
-                                        </button>
-                                    </div>
+                                <div className='CertificateChangeBTNS'>
+                                    <button className={`changeBTN ${landscape === "landscape" ? "active" : ""}`} onClick={toggleLandscape}>
+                                        <TbDeviceLandlinePhone />
+                                        <p>Landscape</p>
+                                    </button>
+                                    <button className={`changeBTN ${landscape === "portrait" ? "active" : ""}`} onClick={toggleLandscape}>
+                                        <TbDeviceLandlinePhone />
+                                        <p>Portrait</p>
+                                    </button>
                                 </div>
                             </div>
                             <div className='p-[20px]'>
@@ -1306,28 +1342,36 @@ const EditCourseBuilder = () => {
                                 {/* choose category  */}
                                 <div className='flexColInput'>
                                     <label>Choose a category</label>
-                                    <select
+                                    <SelectOption
+                                        selectStyle={{
+                                            height: "40px",
+                                            zIndex: 2000
+                                        }}
+                                        label={"Select Category"}
+                                        onChange={(val) => setCourseData(data => { return { ...data, category: val } })}
+                                        options={categories}
+                                        textField={"category.name"}
+                                        valueField={"category._id"}
                                         value={courseData?.category}
-                                        onChange={(e) => setCourseData(data => { return { ...data, category: e.target.value } })}
-                                        name="cars" id="cars"
-                                        className='CBInput'>
-                                        <option value={""} disabled>Select Category</option>
-                                        {
-                                            categories && categories?.length > 0 && categories.map((cat) => {
-                                                return (
-                                                    <option key={cat?.category?._id} value={cat?.category._id}>{cat?.category?.name}</option>
-                                                )
-                                            })
-                                        }
-                                    </select>
+                                    />
                                 </div>
 
                                 {/* choose subcategory  */}
                                 <div className='flexColInput'>
                                     <label>Choose a subcategory</label>
-                                    <select
+                                    <SelectOption
+                                        selectStyle={{
+                                            height: "40px"
+                                        }}
+                                        label={"Select Sub-Category"}
+                                        onChange={(val) => setCourseData(data => { return { ...data, sub_category: val } })}
+                                        options={subCategory}
+                                        textField={"name"}
+                                        valueField={"_id"}
                                         value={courseData?.sub_category}
-                                        onChange={(e) => setCourseData(data => { return { ...data, sub_category: e.target.value } })}
+                                    />
+                                    {/* <select
+                                        value={courseData?.sub_category}
                                         className='CBInput'>
                                         <option value={""} disabled>Select Class</option>
                                         {subCategory && subCategory?.length > 0 && subCategory.map((subCat) => {
@@ -1335,15 +1379,31 @@ const EditCourseBuilder = () => {
                                                 <option key={subCat?._id} value={subCat?._id}>{subCat?.name}</option>
                                             )
                                         })}
-                                    </select>
+                                    </select> */}
                                 </div>
 
 
                                 {/* choose language  */}
                                 <div className='flexColInput'>
                                     <label>Choose Language</label>
-                                    <select
+                                    <SelectOption
+                                        selectStyle={{
+                                            height: "40px"
+                                        }}
+                                        label={"Select Language"}
+                                        onChange={(e) => setCourseData(data => { return { ...data, course_language: e.target.value } })}
+                                        options={[
+                                            { val: "hinglish", text: "Hinglish" },
+                                            { val: "english", text: "English" },
+                                            { val: "hindi", text: "Hindi" },
+                                        ]}
+                                        textField={"text"}
+                                        valueField={"val"}
                                         value={courseData?.course_language}
+                                    />
+                                    {/*                                     
+                                    <select
+                                        value={courseData?.course_language} 
                                         onChange={(e) => setCourseData(data => { return { ...data, course_language: e.target.value } })}
                                         name="cars" id="cars"
                                         className='CBInput'>
@@ -1351,7 +1411,7 @@ const EditCourseBuilder = () => {
                                         <option value="hinglish">Hinglish</option>
                                         <option value="english">English</option>
                                         <option value="hindi">Hindi</option>
-                                    </select>
+                                    </select> */}
                                 </div>
 
                             </div>
@@ -1371,7 +1431,7 @@ const EditCourseBuilder = () => {
                                             <label>Start Time</label>
                                             <input
                                                 type="text"
-                                                className='w-full outline-none border-[1px] border-gray-500 p-2 flex items-start rounded-md hover:border-[1px] hover:border-[#5151d1] placeholder:text-gray-600'
+                                                className='GrayedInput'
                                                 placeholder='HH:MM AM/PM (Please Enter time in this formate)'
                                                 value={courseData?.batch?.batch_timing?.start}
                                                 onChange={(e) => setCourseData(data => ({
@@ -1398,7 +1458,7 @@ const EditCourseBuilder = () => {
                                             <input
                                                 type="text"
                                                 placeholder='HH:MM AM/PM (Please Enter time in this formate)'
-                                                className='w-full outline-none border-[1px] border-gray-500 p-2 flex items-start rounded-md hover:border-[1px] hover:border-[#5151d1] placeholder:text-gray-600'
+                                                className='GrayedInput'
                                                 value={courseData?.batch?.batch_timing?.end}
                                                 onChange={(e) => setCourseData(data => ({
                                                     ...data,

@@ -5,6 +5,7 @@ import { API } from '../../constant';
 const Protected = ({ Component, reverse, validRoles }) => {
 
     const [showComponent, setShowComponent] = useState(false);
+    console.log("protected redendered");
 
     useEffect(() => {
         const checkLogin = () => {
@@ -43,7 +44,7 @@ const Protected = ({ Component, reverse, validRoles }) => {
                 })
         }
         checkLogin();
-    }, [reverse, validRoles])
+    }, []);
 
     return (
         <div>

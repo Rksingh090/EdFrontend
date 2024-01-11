@@ -107,7 +107,7 @@ const TeacherSidebar = ({ children, showMenu, style }) => {
             icon: <BsGear />,
             text: "Settings"
         },
-    ], [])
+    ], []);
 
     return (
         <div className="TeacherBaseMain">

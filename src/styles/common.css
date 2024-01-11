@@ -79,8 +79,6 @@
 
 .tabMenu>p {
     padding: 10px 20px;
-    border-bottom: 2px solid transparent;
-    margin-bottom: -1px;
     cursor: pointer;
     font-size: 12px;
     font-weight: 500;
@@ -576,7 +574,7 @@
 .GrayedInput {
     width: 100%;
     background-color: var(--bg-muted);
-    border: 1px solid var(--border-muted);
+    border: 1px solid var(--border-subtle);
     border-radius: 5px;
     outline: none;
     padding: 10px;

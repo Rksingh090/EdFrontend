@@ -1,7 +1,8 @@
 /* utils  */
 .CBInput {
     padding: 10px;
-    border: 1px solid #777;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-muted);
     border-radius: 5px;
     outline: none;
     width: 100%;
@@ -9,7 +10,7 @@
 }
 
 .CBInput:focus {
-    border-color: var(--main);
+    border-color: var(--border-subtle);
 }
 
 .CBContainerBody {
@@ -36,8 +37,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(5, 5, 5, .2);
+    background-color: var(--bg-muted);
+    border-bottom: 1px solid var(--border-subtle);
     z-index: 5445;
     height: 70px;
     position: sticky;
@@ -64,9 +65,13 @@
     color: white;
     padding: 8px 12px;
     border-radius: 5px;
-    background-color: var(--grayPrimary);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
     font-family: var(--poppins);
     font-size: 12px;
+}
+.CBBackBtn:hover{
+    background-color: var(--bg-subtle);
 }
 
 
@@ -79,8 +84,8 @@
 
 .submitCourse {
     background-color: var(--main);
-    color: white;
-    border: 1px solid var(--main);
+    color: var(--text);
+    border: 1px solid var(--border);
 }
 
 .previewCourse {
@@ -112,7 +117,7 @@
     justify-content: center;
     align-items: center;
     font-family: var(--poppins);
-    background-color: #EAEEF3;
+    background-color: var(--bg);
 }
 
 .courseBuilderMainContainer {
@@ -159,13 +164,12 @@
 }
 
 .courseDescriptionRQ .ql-toolbar.ql-snow {
-    border: 1px solid #555;
-    border-bottom: 1px solid #aaa;
+    border: 1px solid var(--border-subtle);
     border-radius: 10px 10px 0 0;
 }
 
 .courseDescriptionRQ .ql-container.ql-snow {
-    border: 1px solid #555;
+    border: 1px solid  var(--border-subtle);
     border-top: none;
     border-radius: 0 0 10px 10px;
 }
@@ -185,7 +189,7 @@
 
 .CBTopicContainer {
     width: 100%;
-    border: 1px solid #CCC;
+    border: 1px solid var(--border-subtle);
     border-radius: 5px;
     overflow: hidden;
 }
@@ -196,7 +200,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    background-color: #F4F6F9;
+    background-color: var(--bg-subtle);
+    /* border: 1px solid var(--border-subtle); */
 }
 
 .CBTopicItem>.orderAndTitle {
@@ -229,12 +234,12 @@
     aspect-ratio: 1;
     border-radius: 500px;
     cursor: pointer;
+    color: var(--text);
 }
 
 .CBTopicIcon:hover {
-    background-color: rgb(234, 249, 255);
-    border: 1px solid #DDD;
-    color: var(--main);
+    background-color: var(--bg-emphasis);
+    border: 1px solid var(--border-emphasis);
 }
 
 .CBAddNewTopic {
@@ -264,7 +269,8 @@
     align-items: center;
     justify-content: space-between;
     border-radius: 5px;
-    border: 1px solid #CCC;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
     padding: 8px;
 }
 
@@ -341,17 +347,20 @@
 .courseSettingContainer {
     display: grid;
     grid-template-columns: 1fr 4fr;
-    border-radius: 10px;
     align-items: flex-start;
-    border: 1px solid #aaa;
     overflow: hidden;
 }
 
 .courseSettingMenu {
     width: 100%;
     height: 100%;
-    background-color: rgb(237, 241, 245);
-    box-shadow: 1px -1px 4px #5e5e5e8c;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 10px;
+    border-right: 1px solid var(--border-subtle);
+    /* background-color: rgb(237, 241, 245); */
+    /* box-shadow: 1px -1px 4px #5e5e5e8c; */
 }
 
 .courseSettingMenu>div {
@@ -360,7 +369,13 @@
     font-size: 12px;
     padding: 10px;
     gap: 10px;
+    border-radius: 4px;
     cursor: pointer;
+    border: 1px solid transparent;
+}
+.courseSettingMenu>div.selectedTab {
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
 }
 
 .courseSettingGeneral {
@@ -449,7 +464,7 @@
 
 .courseSubscriptionInput {
     width: 100%;
-    border: 1px solid #444;
+    border: 1px solid var(--border-subtle);
     border-radius: 5px;
     padding: 5px 10px;
 }
@@ -461,25 +476,40 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    border: 2px dashed var(--main);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
     border-radius: 10px;
     padding: 20px;
     height: 250px;
     overflow: hidden;
 }
+.VideoThumbnailContainer > p{
+    color: var(--text-subtle);
+}
 
+.browseFileBTN {
+    border: 1px solid var(--border-subtle);
+    padding: 6px;
+    color: var(--text-subtle);
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.browseFileBTN:hover {
+    background-color: var(--bg-subtle);
+}
 
 .CBThumbnailContainer {
     width: 100%;
     height: 250px;
-    background-color: #eff3f7;
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 20px;
     margin-bottom: 10px;
     border-radius: 10px;
     padding: 10px;
-    overflow: hidden;
+    overflow: hidden; 
 }
 
 .courseThumbnailImg {
@@ -490,8 +520,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #dbe2e7;
-    color: #777;
+    background-color: var(--bg-subtle);
+    color: var(--text);
 }
 
 .courseThumbnailImg>img {
@@ -514,10 +544,12 @@
     align-items: center;
     gap: 10px;
     margin-top: 10px;
-    padding: 5px 8px;
+    padding: 8px 12px;
+    font-size: 14px;
     border-radius: 5px;
-    background-color: var(--main);
-    color: white;
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-emphasis);
 }
 
 /* topic form  */
@@ -632,8 +664,9 @@
 .quizForm {
     max-height: 750px;
     min-height: 350px;
-    background-color: white;
-    width: 600px;
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
+    width: 750px;
     border-radius: 10px;
     display: grid;
     grid-template-rows: 130px 1fr 80px;
@@ -658,8 +691,8 @@
 
 .quizHeadText {
     font-size: 16px;
-    font-weight: 500;
-    color: #333;
+    font-weight: 400;
+    color: var(--text-emphasis);
 }
 
 .quizProgress {
@@ -679,31 +712,35 @@
 
 .quizProgressLine {
     display: grid;
-    grid-template-columns: 25px 1fr 25px 1fr 25px;
+    grid-template-columns: 30px 1fr 30px 1fr 30px;
     align-items: center;
     max-width: 95%;
     width: 95%;
 }
 
 .quizLine {
-    height: 4px;
+    height: 5px;
     width: 100%;
-    background-color: rgb(216, 216, 216);
+    background-color: var(--bg-subtle);
+    /* border: .1px solid var(--border); */
 }
 
 .quizNumber {
     width: 100%;
     aspect-ratio: 1;
     border-radius: 50px;
-    background-color: rgb(214, 214, 214);
-    font-size: 12px;
-    text-align: center;
+    background-color: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
 }
 
 .quizNumber.fillLine,
 .quizLine.fillLine {
     background-color: var(--main);
-    color: white;
 }
 
 
@@ -713,7 +750,9 @@
     height: 100%;
     width: 100%;
     overflow-y: auto;
-    background-color: rgb(227, 232, 236);
+    background-color: var(--bg-muted);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .centerBody {
@@ -795,13 +834,14 @@
     font-family: var(--poppins);
     font-size: 15px;
     font-weight: 500;
-    color: rgb(56, 56, 56);
+    color: var(--text-subtle);
 }
 
 .quizFormInput {
     width: 100%;
     padding: 8px 15px;
-    border: 1px solid #c9c9c9;
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
     outline: none;
     border-radius: 5px;
     resize: none;
@@ -824,27 +864,26 @@
     grid-template-columns: 40px 2fr 50px 120px 40px 40px;
     align-items: center;
     padding: 8px 5px;
-    background-color: white;
     border-radius: 5px;
-    border: 1px solid #aaa;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
 }
 
 .quizAddQuestionBtn {
     display: flex;
     flex-direction: row;
-    border: 1px solid var(--main);
-    color: white;
-    padding: 8px 10px;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-emphasis);
+    padding: 12px 10px;
     border-radius: 5px;
     align-items: center;
     gap: 10px;
     margin-top: 15px;
-    background-color: var(--secondary);
+    background-color: var(--bg-muted);
 }
 
 .quizAddQuestionBtn:hover {
-    color: white;
-    background-color: var(--main);
+    background-color: var(--bg-emphasis);
 }
 
 .dragBtn {
@@ -1346,8 +1385,35 @@
     padding: 6px 15px;
     border-radius: 5px;
     background-color: var(--main);
-    color: white;
+    color: var(--text-emphasis);
 }
+
+.CertificateChangeBTNS {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.changeBTN {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+.changeBTN.active {
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+}
+
+
+
+
+
 
 .courseBuilderCertificates {
     max-height: 600px;

@@ -123,7 +123,10 @@ import AffiliateProfile from "./affiliate/profile/Profile";
 // landing pages 
 import CourseContentBase from './pages/coursecontent/CourseContentBase';
 import DNDTest from './DNDTest';
-import { setTheme } from './reducers/AppSettingReducer';
+import { setTheme, toggleTheme } from './reducers/AppSettingReducer';
+import useKeybinds from './hooks/useKeyBinds';
+
+
 
 
 const EditCourseBuilderComponent = () => {
@@ -150,6 +153,8 @@ const App = () => {
     dispatch(getAllSubCategory())
   }, [dispatch])
 
+
+
   return (
     <BrowserRouter>
       <AllRoutes />
@@ -165,6 +170,7 @@ const AllRoutes = () => {
     dispatch({ type: "appsetting/hideAllNavMenu" })
   }, [location, dispatch])
 
+  
 
   useEffect(() => {
     const mqListener = (e) => {
@@ -174,11 +180,11 @@ const AllRoutes = () => {
         dispatch(setTheme("dark"));
       } else if (selectTheme === "user" && activeTheme === "light") {
         dispatch(setTheme("light"));
-      }else {
+      } else {
         localStorage.setItem("selectTheme", "system");
-        if(e.matches){
+        if (e.matches) {
           dispatch(setTheme("dark"));
-        }else{
+        } else {
           dispatch(setTheme("light"));
         }
       }

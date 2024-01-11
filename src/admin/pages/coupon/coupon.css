@@ -77,8 +77,10 @@
 /* coupon table  */
 .tableContainer {
     width: 100%;
-    background-color: white;
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
     border-radius: 10px;
+    color: var(--text);
 }
 
 .couponTable {

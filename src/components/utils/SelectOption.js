@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AiFillCaretDown } from 'react-icons/ai'
 
-const SelectOption = ({ classes, value, onChange, label, options, maxHeight, textField, valueField, style, selectStyle }) => {
+const SelectOption = ({ 
+    classes, value, onChange, label, options, 
+    maxHeight, textField, valueField, style, selectStyle,
+    optionClass
+ }) => {
     const [showCategoryOptions, setShowCategoryOptions] = useState(false)
 
     const selectRef = useRef()
@@ -33,12 +37,9 @@ const SelectOption = ({ classes, value, onChange, label, options, maxHeight, tex
 
     useEffect(() => {
         const closeOptions = (event) => {
-            if (selectRef.current.contains(event.target)) {
-                // Click was inside the component, do nothing
-                console.log("inside");
+            if (selectRef.current && selectRef.current.contains(event.target)) {
                 return;
             }
-
             setShowCategoryOptions(false);
         };
 
@@ -49,23 +50,24 @@ const SelectOption = ({ classes, value, onChange, label, options, maxHeight, tex
         return () => {
             document.removeEventListener('click', closeOptions);
         };
-    }, []);
+    }, [selectRef]);
 
 
     const toggleOptions = (event) => {
-        event.stopPropagation(); // Prevent the document click event from immediately closing the options
+        // Prevent the document click event from immediately closing the options
+        // event.stopPropagation(); 
         setShowCategoryOptions((prev) => !prev);
     };
 
     const handleSelectClick = (event) => {
-        event.stopPropagation(); // Prevent the document click event from immediately closing the options
+        // Prevent the document click event from immediately closing the options
+        // event.stopPropagation(); 
         console.log("Clicked");
-        setShowCategoryOptions(true)
     };
 
     return (
         <button
-            className={`customSelect ${classes}`}
+            className={`customSelect ${classes ? classes : ""}`}
             style={selectStyle}
             onClick={handleSelectClick}
             ref={selectRef}
@@ -87,12 +89,13 @@ const SelectOption = ({ classes, value, onChange, label, options, maxHeight, tex
                     {
                         options &&
                         options.map((op) => {
-                            const text = walk(op, textField)
-                            const opValue = walk(op, valueField)
+                            const text = walk(op, textField);
+                            const opValue = walk(op, valueField);
+                            
                             return (
                                 <p
                                     key={opValue}
-                                    className={`option ${opValue === value ? "selected" : ""}`}
+                                    className={`option ${optionClass ? optionClass : ""} ${opValue === value ? "selected" : ""}`}
                                     ref={opValue === value ? optionRef : null}
                                     onClick={(e) => {
                                         e.stopPropagation()
@@ -100,7 +103,7 @@ const SelectOption = ({ classes, value, onChange, label, options, maxHeight, tex
                                         if (opValue === value) {
                                             onChange && onChange("")
                                         } else {
-                                            onChange && onChange(opValue)
+                                            onChange && onChange(opValue ?? "")
                                         }
                                     }}
                                 >
