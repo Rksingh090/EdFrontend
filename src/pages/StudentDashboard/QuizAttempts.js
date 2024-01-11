@@ -156,8 +156,8 @@ const QuizAttempts = () => {
 										<td>{qattmpt?.total_correct || 0}</td>
 										<td>{qattmpt?.total_incorrect || 0}</td>
 										<td>{qattmpt?.obtained_mark}</td>
-										<td className={`qaStatus ${qattmpt?.passing_status === "pass" ? "pass" :
-											qattmpt?.passing_status === "fail" ? "fail" :
+										<td className={`capitalize qaStatus ${qattmpt?.passing_status === "pass" ? "pass" :
+											qattmpt?.passing_status === "fail" ? "Fail" :
 												"pending"
 											}`}><p>{qattmpt?.passing_status}</p></td>
 										<td className='detailsTD'><p className='qaShowDetails'>Details</p></td>

@@ -29,7 +29,7 @@ const TeacherSidebar = ({ children, showMenu, style }) => {
 
     const studentMenu = useMemo(() => [
         {
-            link: "/dashboard",
+            link: "/student/dashboard",
             icon: <RxDashboard />,
             text: "Dashboard"
         },
@@ -48,11 +48,7 @@ const TeacherSidebar = ({ children, showMenu, style }) => {
             icon: <AiOutlineBuild />,
             text: "Quiz Attempts"
         },
-        {
-            link: "/student/assignments",
-            icon: <MdOutlineAssignment />,
-            text: "Assignments"
-        },
+
         {
             link: "/student/calendar",
             icon: <HiOutlineCalendar />,

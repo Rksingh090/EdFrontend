@@ -10,9 +10,9 @@ import { MdAlternateEmail } from 'react-icons/md'
 import { FiLock } from 'react-icons/fi'
 import { FcGoogle } from 'react-icons/fc'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { CiDark } from "react-icons/ci";
 
 import { Link, useSearchParams } from 'react-router-dom'
-
 
 const Login = () => {
 
@@ -59,7 +59,7 @@ const Login = () => {
                 alert("Login Failed: " + err.response.data?.message)
             })
     }
-
+  
 
     return (
         <div className='authContainer'>
@@ -70,14 +70,14 @@ const Login = () => {
                         <div className="inputIcon">
                             <MdAlternateEmail size={20} />
                         </div>
-                        <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" placeholder='Email Address' />
+                        <input autoComplete="one-time-code" value={email} onChange={(e) => setEmail(e.target.value)} type="text" placeholder='Email Address' />
                     </div>
 
                     <div className='inputDiv'>
                         <div className="inputIcon">
                             <FiLock size={20} />
                         </div>
-                        <input type={showPassword ? 'text' : 'password'} onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' />
+                        <input autoComplete="one-time-code" type={showPassword ? 'text' : 'password'} onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' />
                         <span className='passwordEyeBtn' onClick={togglePasswordVisibility}>
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </span>
@@ -94,10 +94,10 @@ const Login = () => {
                     </button>
                 </div>
                 <div className='goToLoginText gap-x-2 w-full flex items-center justify-center'>
-                    <p className='text-[18px] text-[#808080]'>
+                    <p className='text-[18px]'>
                         Don't have a account?
                     </p>
-                    <Link to={"/register"} className="text-[18px] text-[var(--main)] font-[500]">Register Here!</Link>
+                    <Link to={"/register"} className="text-[18px] text-[var(--main)]">Register Here!</Link>
                 </div>
             </form>
         </div>

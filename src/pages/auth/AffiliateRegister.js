@@ -86,10 +86,10 @@ const AffiliateRegister = () => {
 
 
           <div className='goToLoginText gap-2 w-full flex items-center justify-center'>
-            <p className='text-[18px] text-[#808080]'>
+            <p>
               Go to
             </p>
-            <Link to="/" className='text-[var(--main)] font-[500] text-[18px]'>Home !</Link>
+            <Link to="/" className='text-[var(--main)] text-[18px]'>Home !</Link>
 
           </div>
 

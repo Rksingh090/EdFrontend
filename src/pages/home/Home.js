@@ -30,7 +30,7 @@ const Home = () => {
                             <div className='startSearchIcon'>
                                 <BsSearch size={22} />
                             </div>
-                            <input type="text" name='search' placeholder='Search Course' />
+                            <input type="text" autoComplete="one-time-code" placeholder='Search Course' />
                             <button className='searchBtn'>
                                 <BsArrowRight size={22} />
                             </button>

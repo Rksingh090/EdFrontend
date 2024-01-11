@@ -92,7 +92,7 @@
 }
 
 .tabMenu.withShadow {
-    box-shadow: var(--adminSmallShadow);
+    /* box-shadow: var(--adminSmallShadow); */
 }
 
 .tabMenu>p.flexed {
@@ -110,16 +110,15 @@
 }
 
 .tabMenu>p.active {
-    color: var(--text);
-    background-color: var(--bg-muted);
-    /* border-color: var(--main); */
+    color: var(--text-emphasis);
+    background-color: var(--bg);
 }
 
 
 /* profile page  */
 .TSProfilePage {
     min-height: 100%;
-    background-color: var(--adminMainBackground);
+    background-color: var(--bg);
     padding: 20px;
 }
 
@@ -136,8 +135,8 @@
 .TSProfileMain {
     width: 100%;
     border-radius: 10px;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
     display: grid;
     grid-template-columns: 180px 1fr 2fr;
     padding: 20px;
@@ -204,7 +203,9 @@
 }
 
 .profileSkillsBadges>.item {
-    background-color: var(--adminMainBackground);
+    background-color: var(--bg-subtle);
+    color: var(--text);
+    border: 1px solid var(--border-subtle);
     font-size: 12px;
     border-radius: 50px;
     padding: 8px 20px;
@@ -213,13 +214,14 @@
 .TSProfileBio {
     width: 100%;
     padding: 20px;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
     border-radius: 10px;
 }
 
 .TSProfileBio>p {
     font-size: 16px;
+    white-space: break-spaces;
 }
 
 
@@ -268,33 +270,35 @@
 
 .quizAttmptInfo>.time {
     font-size: 12px;
-    color: gray;
+    color: var(--text-subtle);
 }
 
 .quizAttmptInfo>.title {
     font-size: 17px;
     font-weight: 500;
-    color: rgb(41, 41, 41);
+    color: var(--text);
 }
-
+ 
 .qaShowDetails {
     padding: 5px 10px;
-    border: 1px solid var(--main);
-    color: var(--main);
     border-radius: 5px;
     width: min-content;
     cursor: pointer;
     transition: all .8s cubic-bezier(0.075, 0.22, 0.185, 1);
+    background-color: var(--bg-subtle);
+    color: var(--text);
+    border: 1px solid var(--border);
 }
 
 .qaShowDetails:hover {
-    background-color: var(--main);
-    color: white;
+    background-color: var(--bg-emphasis);
+    color: var(--text);
+    border: 1px solid var(--border);
 }
 
 /* settings page  */
 .TSSettingPage {
-    background-color: var(--adminMainBackground);
+    background-color: var(--bg);
     width: 100%;
     padding: 20px;
 }
@@ -343,8 +347,8 @@
 
 .SPTProfileUploadContainer {
     width: 100%;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
     border-radius: 10px;
     display: grid;
     align-items: center;
@@ -358,8 +362,8 @@
     width: 100%;
     height: 230px;
     overflow: hidden;
-    background-color: var(--adminMainBackground);
-    /* box-shadow: var(--adminSmallShadow); */
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
     border-radius: 10px;
 }
 
@@ -373,7 +377,8 @@
 .profileMenuBtns {
     border-radius: 5px;
     width: 100%;
-    background-color: var(--adminMainBackground);
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
     display: grid;
     grid-template-columns: 1fr 1fr;
     overflow: hidden;
@@ -402,8 +407,8 @@
     padding: 10px;
     width: 100%;
     height: 230px;
-    background-color: var(--adminMainBackground);
-    /* box-shadow: var(--adminSmallShadow); */
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
     border-radius: 10px;
     overflow: hidden;
 }
@@ -420,6 +425,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+   
 }
 
 .coverMenuBtn {
@@ -429,6 +435,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     overflow: hidden;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
 }
 
 /* certificate upload area - setting page */
@@ -444,8 +452,8 @@
     grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
     border-radius: 10px;
     height: 220px;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
     padding: 10px;
     gap: 20px;
 }
@@ -484,10 +492,11 @@
     flex-direction: row;
     align-items: center;
     gap: 10px;
-    background-color: var(--main);
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
     padding: 5px 8px;
     border-radius: 5px;
-    color: white;
+    color: var(--text-emphasis);
     margin-top: 10px;
 }
 
@@ -537,6 +546,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     padding: 16px 0;
 }
@@ -546,30 +556,28 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 4px 10px;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
     border-radius: 5px;
 }
 
 .SettingSkillItem>.skillName {
-    color: rgb(3, 3, 3);
+    color: var(--text-emphasis);
     font-size: 12px;
     text-transform: capitalize;
-    font-family: "Poppins";
     font-weight: 600;
 }
 
 .SettingSkillItem>.skillExperiance {
     font-size: 12px;
-    color: rgb(56, 56, 56);
+    color: var(--text-subtle);
 }
 
 .GrayedInput {
     width: 100%;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
     border-radius: 5px;
-    border: none;
     outline: none;
     padding: 10px;
     font-size: 14px;
@@ -620,17 +628,76 @@
 @media only screen and (max-width: 800px) {
 
     /* profile page  */
-    .profileSkillsBadges {
-        row-gap: 15px;
-        flex-wrap: wrap;
-        flex-direction: column;
-        align-items: flex-start;
-    }
+   
 }
 
 
 @media only screen and (max-width: 500px) {
+    .SPTProfileUploadContainer {
+        grid-template-columns: 1fr;
+    }
     .tablists>p {
         font-size: 12px;
+    }
+
+    .TSProfileMain {
+        grid-template-columns: 1fr 1fr;
+
+    }
+    .TSProfileImage {
+        height: 107px;
+    }
+    .TSProfileImage>img {
+        height: 60%;
+        object-fit: contain;
+    }
+    .TSProfileSkills {
+        grid-column: 1/4;
+    }
+    .profileSkillsBadges {
+        width: 100%;
+        row-gap: 15px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+    .profilePhoto>img {
+        object-fit: contain;
+    }
+    .profilePhoto {
+        order: 1;
+    }
+    .profileMenuBtns {
+        order: 2;
+    }
+    .coverImgDiv {
+        order: 3;
+    }
+    .uploadCoverBtn {
+        order: 4;
+    }
+    .TwoInputGridGroup {
+        grid-template-columns: 1fr;
+    }
+    .skillsInputs {
+        grid-template-columns: 2fr 1fr;
+    }
+    .skillsInputs>div {
+        grid-template-columns: 1fr 60px;
+    }
+    .certificateUploadArea {
+        height: 160px;
+        grid-template-columns: 1fr 1fr;
+    }
+    .certificateUploadMeta>.heading {
+        font-size: 14px;
+        font-weight: 500px;
+        color: var(--text);
+    }
+    .certificateUploadMeta>.subheading {
+        font-size: 12px;
+        color: var(--text-subtle);
+    }
+    .certificateImageUpload  {
+        font-size: 14px;
     }
 }

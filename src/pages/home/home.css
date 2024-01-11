@@ -76,7 +76,8 @@
     border-radius: 60px;
     color: var(--white);
 }
-.searchBtn > svg {
+
+.searchBtn>svg {
     fill: #fff;
 }
 
@@ -91,7 +92,7 @@
     height: 100%;
     object-fit: cover;
     overflow: hidden;
-    mix-blend-mode: multiply;
+    /* mix-blend-mode: multiply; */
 }
 
 /* category section  */
@@ -179,7 +180,7 @@
 .teacherCol2>p {
     font-size: 16px;
     font-weight: 400;
-    color: #555;
+    color: var(--text-subtle);
 }
 
 .teacherCol2Ul {
@@ -203,15 +204,39 @@
 }
 
 .homeReadMoreBtn {
-    background: transparent;
-    border: 2px solid var(--optionBG);
-    color: var(--optionBG);
+    background: var(--bg-muted);
+    border: 1px solid var(--bg-emphasis);
+    color: var(--text);
     padding: 10px 20px;
     border-radius: 80px;
     transition: all .4s ease-in;
 }
 
 .homeReadMoreBtn:hover {
-    background-color: var(--optionBG);
+    background-color: var(--bg-subtle);
     color: white;
+}
+
+@media only screen and (max-width: 500px) {
+
+    .homeHero,
+    .teacherSection,
+    .CategoryBoxes {
+        grid-template-columns: 1fr;
+    }
+
+    .homeHero {
+        padding: 20px 0;
+    }
+
+    .homeHero-content {
+        padding: 20px 0;
+    }
+
+    .teacherSection>.teacherCol1 {
+        display: none;
+    }
+    .teacherSection>.teacherCol2 {
+        padding: 20px 0;
+    }
 }

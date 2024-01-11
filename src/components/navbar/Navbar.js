@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './navbar.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { toggleSidebar, toggleNavProfile } from '../../reducers/AppSettingReducer'
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { toggleSidebar, toggleNavProfile, setTheme, toggleTheme } from '../../reducers/AppSettingReducer'
 
 import { CgMenuRight } from 'react-icons/cg'
 import { AiFillPlusSquare, AiOutlineMenu } from 'react-icons/ai'
@@ -51,13 +51,8 @@ const Navbar = ({ showSideMenu, clearScrollSticky }) => {
       dispatch({ type: "appsetting/hideAllNavMenu" })
    }
 
-   const toggleTheme = () => {
-      const b = document.getElementsByTagName("body")[0];
-      if(b.getAttribute("data-theme") === "dark"){
-          b.setAttribute("data-theme", "light")
-      }else{      
-          b.setAttribute("data-theme", "dark")
-      }
+   const toggleThemeFn = () => {
+      dispatch(toggleTheme());
   }
 
    return (
@@ -69,7 +64,7 @@ const Navbar = ({ showSideMenu, clearScrollSticky }) => {
                      <AiOutlineMenu size={28} />
                   </div>
                }
-               <Link to={"#"} className='mainNavLogo' onClick={toggleTheme}>
+               <Link to={"#"} className='mainNavLogo' onClick={toggleThemeFn}>
                   &lt;EduTech /&gt;
                </Link>
             </div>
@@ -153,15 +148,16 @@ const NavProfileMenu = () => {
       }
    }
 
+   let toProfilelink = user.role === "student" ? "/student/profile" : "/teacher/profile";
 
    return (
-      <div className='navProfile'>
-
+      <NavLink to={toProfilelink} className='navProfile'>
          {loggedIn && (
             <div className='navAvatarImg' onClick={() => dispatch(toggleNavProfile())}>
                <img src={user?.dp || "https://img.freepik.com/free-icon/user_318-159711.jpg"} alt="" />
             </div>
          )}
+         {/* 
          {showNavProfile && (
             <DivOutsideClick className='navProfileMenus' onOutsideClick={() => showNavProfile === true ? dispatch(hideNavProfile()) : {}}>
 
@@ -241,8 +237,8 @@ const NavProfileMenu = () => {
                )}
 
             </DivOutsideClick>
-         )}
-      </div>
+         )} */}
+      </NavLink>
    )
 }
 

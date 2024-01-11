@@ -851,7 +851,8 @@ textarea.FormInput {
     height: 40px;
     border-radius: 440px;
     cursor: pointer;
-    background-color: var(--adminMainBackground);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
     display: flex;
     justify-content: center;
     align-items: center;

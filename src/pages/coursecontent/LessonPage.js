@@ -142,6 +142,7 @@ const LessonPage = () => {
                                 renderTextLayer={false}
                                 renderAnnotationLayer={false}
                                 canvasBackground='#FFFFFF'
+                                className='pdfPageCanvasContainer'
                             />
                         </Document>
                         {currentPdfPage > 1 && (

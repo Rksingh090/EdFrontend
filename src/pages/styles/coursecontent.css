@@ -432,8 +432,8 @@
     padding: 50px;
     width: 400px;
     border-radius: 10px;
-    background: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
 }
 
 .startQuizBtn {
@@ -465,8 +465,9 @@
 }
 
 .stratQuizBtn {
-    color: var(--monochrome);
-    background-color: var(--main);
+    color: var(--text);
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg);
     padding: 8px 12px;
     border-radius: 5px;
     font-size: 14px;
@@ -496,8 +497,8 @@
     gap: 20px;
     font-size: 16px;
     font-weight: 500;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
     padding: 10px;
     border-radius: 5px;
 }
@@ -530,21 +531,23 @@
 
 
 .goToNextQuestion {
-    padding: 8px 15px;
+    padding: 10px 15px;
     font-size: 16px;
-    font-weight: 500;
-    color: white;
-    background-color: var(--main);
+    border-radius: 1000px;
+    color: var(--text);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-emphasis);
     align-self: flex-start;
 }
 
 .quizInfoText {
     font-size: 18px;
     font-weight: 500;
-    color: var(--main);
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
-    padding: 20px;
+    color: var(--text-emphasis);
+    text-align: center;
+    background-color: var(--bg);
+    border: 1px solid var(--border-subtle);
+    padding: 50px 20px;
     border-radius: 5px;
 }
 
@@ -565,8 +568,8 @@
     display: grid;
     grid-template-columns: minmax(0, 40px) minmax(0, 1fr);
     align-items: center;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
     border-radius: 5px;
     cursor: pointer;
 }
@@ -641,8 +644,8 @@
 
 .fillBlankChoiceContainer>input {
     border: none;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
     border-radius: 5px;
     padding: 10px 15px;
     outline: none;
@@ -745,8 +748,9 @@
 /* description box  */
 .CCAssignmentDescriptionBox {
     width: 100%;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    color: var(--text);
+    border: 1px solid var(--border-muted);
     border-radius: 10px;
 }
 
@@ -833,26 +837,24 @@
     background-color: var(--bg-muted);
     color: var(--text);
     border: 1px solid var(--border-muted);
-    /* box-shadow: var(--adminSmallShadow); */
 }
 
 .assignmentUploadBTN {
     padding: 8px 10px;
     border-radius: 5px;
-    font-size: 16px;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    font-weight: 400;
+    background-color: var(--bg-muted);
+    color: var(--text);
+    border: 1px solid var(--border-muted);
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 10px;
     transition: all .5s ease;
-    color: var(--main);
 }
 
 .assignmentUploadBTN:hover {
-    background-color: var(--main);
-    color: var(--monochrome);
+    background-color: var(--bg-emphasis);
 }
 
 .assignmentSubmitBTN {
@@ -864,7 +866,7 @@
 }
 
 .assignmentUploadBTN>span {
-    font-size: 16px;
+    font-size: 14px;
     color: inherit;
 }
 
@@ -883,8 +885,9 @@
 .lessonAboutAttachment {
     width: 100%;
     height: 45px;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    color: var(--text);
+    border: 1px solid var(--border-muted);
     display: flex;
     align-items: center;
     font-family: var(--poppins);
@@ -901,13 +904,16 @@
     transition: all .5s ease;
 }
 
+.lessonAboutAttachment .oneTab svg path {
+    stroke: var(--text);
+}
+
 .lessonAboutAttachment .oneTab.active {
-    background-color: var(--main);
-    color: var(--monochrome);
+    background-color: var(--bg);
 }
 
 .lessonAboutAttachment .oneTab.active svg path {
-    stroke: var(--monochrome);
+    stroke: var(--text);
     transition: all .5s ease;
 }
 
@@ -928,11 +934,23 @@
     display: flex;
     flex-direction: column;
     align-self: center;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    color: var(--text);
+    border: 1px solid var(--border-muted);
     border-radius: 10px;
     padding: 10px;
     overflow: hidden;
+}
+
+.pdfPageCanvasContainer {
+    mix-blend-mode: difference;
+}
+[data-theme="dark"] .pdfPageCanvasContainer {
+    mix-blend-mode: screen;
+}
+
+.pdfPageCanvasContainer>canvas {
+    mix-blend-mode: difference;
 }
 
 

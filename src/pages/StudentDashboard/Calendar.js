@@ -200,7 +200,7 @@ const Calendar = () => {
 								let currentDate = new Date(Date.now()).toISOString().slice(0, 10);
 
 								return (
-									<div key={idx} className={`calendarDate w-full  border border-gray-200 flex justify-center items-center`}>
+									<div key={idx} className={`calendarDate`}>
 										{date.day === "_" ? (
 											<p className='dateDay'></p>
 										) : (

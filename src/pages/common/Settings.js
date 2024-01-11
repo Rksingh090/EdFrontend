@@ -371,8 +371,8 @@ const ProfileTab = () => {
                             )}
                         </div>
                         <div className='certificateUploadMeta'>
-                            <p className='font-[600]'>Size: 700x430 pixels</p>
-                            <p>File Support: jpg, .jpeg,. gif, or .png.</p>
+                            <p className='heading'>Size: 700x430 pixels</p>
+                            <p className='subheading'>File Support: jpg, .jpeg,. gif, or .png.</p>
                             <input type="file" ref={certificateImageRef} onChange={handleCertificateUploadImg} name="profilePhoto" hidden={true} accept="image/png, image/gif, image/jpeg, image/jpg" />
                             <button className='certificateImageUpload' onClick={handleCertificateUpload}>
                                 <TbFileCertificate className='text-[20px]' />

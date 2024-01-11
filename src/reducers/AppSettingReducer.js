@@ -7,6 +7,7 @@ const initialState = {
     image_uploading: false,
     showCourseContentSidebar: true,
     image: "",
+    themeMode: "light",
     dropdown: {
         courseDD: false,
         bePartnerDD: false,
@@ -15,15 +16,33 @@ const initialState = {
     }
 }
 
-const announcementReducer = createSlice({
+const appsetting = createSlice({
     name: 'appsetting',
     initialState,
     reducers: {
+        setTheme: (state, {payload}) => {
+            const b = document.getElementsByTagName("body")[0];
+            state.themeMode = payload;
+            localStorage.setItem("themeMode", payload);
+            b.setAttribute("data-theme", payload);
+        },
+        toggleTheme: (state) => {
+            const b = document.getElementsByTagName("body")[0];
+            if(state.themeMode === "dark"){
+                state.themeMode = "light"
+                localStorage.setItem("themeMode", "light");
+                b.setAttribute("data-theme", "light");
+            }else{
+                state.themeMode = "dark"
+                localStorage.setItem("themeMode", "dark");
+                b.setAttribute("data-theme", "dark");
+            }
+        },
         toggleSidebar: (state) => {
-            state.show_sidebar = !state.show_sidebar
+            state.show_sidebar = !state.show_sidebar;
         },
         hideSidebar: (state) => {
-            state.show_sidebar = false
+            state.show_sidebar = false;
         },
         toggleNavProfile: (state) => {
             state.showNavProfile = !state.showNavProfile
@@ -75,7 +94,8 @@ export const { toggleSidebar, hideSidebar, toggleFranchiseDD,
     hideAllNavMenu, showMobileCourseMenu,
     hideMobileCourseMenu,
     showMobileMenu, hideMobileMenu, toggleCourseContentSidebar,
-    hideCourseContentSidebar
-} = announcementReducer.actions;
+    hideCourseContentSidebar, setTheme, toggleTheme
+} = appsetting.actions;
 
-export default announcementReducer.reducer;
+
+export default appsetting.reducer;

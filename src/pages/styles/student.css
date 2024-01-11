@@ -2,7 +2,7 @@
 
 .SCalendarPage {
     padding: 20px;
-    background-color: var(--adminMainBackground);
+    background-color: var(--bg);
 }
 
 .showDetails {
@@ -24,22 +24,19 @@
 
 .calendarWeekAndDate {
     justify-content: flex-start;
-    border: 1px solid #dadada;
-    background-color: var(--monochrome);
+    border: .05px solid var(--border-subtle);
+    background-color: var(--bg-subtle);
 }
 
-.detailsTD:hover {
-    background-color: white;
-}
 
 .dayHeader {
     text-align: center;
     padding: 15px 0;
-    background-color: rgb(221, 221, 221);
-    color: black;
+    background-color: var(--bg-emphasis);
+    color: var(--text-emphasis);
     font-size: 16px;
 }
-
+/* w-full  border border-gray-200 flex justify-center items-center */
 .calendarDate {
     aspect-ratio: 1;
 }
@@ -78,7 +75,8 @@
 .calendar.searchBar>.searchDiv {
     max-width: 500px;
     width: 100%;
-    box-shadow: var(--adminSmallShadow);
+    border: 1px solid var(--border-subtle);
+    border-radius: 5px;
 }
 
 .searchDiv>input {
@@ -119,8 +117,8 @@
 .filterResetBTN>button {
     height: 100%;
     padding: 0 10px;
-    background-color: rgb(238, 98, 121);
-    color: white;
+    background-color: var(--bg-error);
+    color: var(--text-error);
     border-radius: 5px;
 }
 
@@ -136,15 +134,15 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    background-color: var(--monochrome);
+    background-color: var(--bg-muted);
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: var(--adminSmallShadow);
+    border: 1px solid var(--border-muted);
 }
 
 .dateEvents>h2 {
-    background-color: var(--main);
-    color: var(--monochrome);
+    background-color: var(--bg-subtle);
+    color: var(--text);
     padding: 10px;
 }
 
@@ -168,8 +166,7 @@
 
 /* dashboard page  */
 .StudentDashboardPage {
-    background-color: var(--adminMainBackground);
-    min-height: 100%;
+    background-color: var(--bg);
     padding: 20px;
 }
 
@@ -178,8 +175,8 @@
     grid-template-columns: 3fr 1fr;
     gap: 20px;
     padding: 20px;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
     border-radius: 10px;
     margin: 20px 0;
 }
@@ -247,8 +244,8 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
-    background-color: var(--monochrome);
-    box-shadow: var(--adminSmallShadow);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
 }
 
 .dashboardStatusBox>.count {
@@ -264,7 +261,7 @@
 
 /* enrolled course  */
 .enrolledCoursePage {
-    background-color: var(--adminMainBackground);
+    background-color: var(--bg);
     padding: 20px;
     height: 100%;
 }
@@ -280,9 +277,8 @@
 .StudentCourseItem {
     width: 100%;
     height: 350px;
-    background-color: #FFF;
-    box-shadow: var(--adminMDShadow);
-    /* background-color: var(--adminMainBackground); */
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
     display: grid;
     grid-template-rows: 2fr 2fr;
     border-radius: 10px;
@@ -310,11 +306,25 @@
     align-items: flex-start;
     padding: 10px;
     overflow: hidden;
+    border-top: 1px solid var(--border-muted);
 }
 
 .EnrollCourseBody>div {
     width: 100%;
     overflow: hidden;
+}
+
+.EnrollCourseBody>div .EC_date {
+    font-size: 14px;
+    color: var(--text-subtle);
+}
+.EnrollCourseBody>div .EC_sub_cat {
+    color: var(--text-subtle);
+    font-size: 12px;
+}
+.EnrollCourseBody>div .EC_cat {
+    color: var(--text-emphasis);
+    font-size: 14px;
 }
 
 .EnrollCourseTitle {
@@ -355,7 +365,7 @@
 /* quiz attempts details  */
 .SQuizAttemptPage {
     padding: 20px;
-    background-color: var(--adminMainBackground);
+    background-color: var(--bg);
     height: 100%;
 }
 
@@ -392,5 +402,8 @@
 
     .dateEvents {
         padding: 0;
+    }
+    .StudentCourseItem {
+        height: 450px;
     }
 }

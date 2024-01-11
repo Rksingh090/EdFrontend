@@ -157,12 +157,12 @@ const QuizResultPage = () => {
 											<td><p className='pl-3'>{Number(qattmpt?.obtained_mark).toFixed(2)}</p></td>
 											<td className={`text-center qaStatus`}>
 												{qattmpt?.passing_status === "pass" ?
-													<p className='badgeSM successBadge'>pass</p>
+													<p className='badgeSM successBadge'>Pass</p>
 													:
 													qattmpt?.passing_status === "fail"
-														? <p className='badgeSM errorBadge'>fail</p>
+														? <p className='badgeSM errorBadge'>Fail</p>
 														:
-														<p className='badgeSM warningBadge'>pending</p>
+														<p className='badgeSM warningBadge'>Pending</p>
 												}
 											</td>
 											<td className="detailsTD">

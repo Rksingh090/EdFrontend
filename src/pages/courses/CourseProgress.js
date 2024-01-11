@@ -141,19 +141,20 @@ const CourseProgress = () => {
                     <div className='courseProgressCol1'>
                         <div className='courseThumbnailAndMeta'>
                             <div className='courseTitleAndCat'>
-                                <h1 className='CPCourseTitle'>{courseContent?.title}</h1>
-                                <h3 className='CPCourseSubTitle'>{courseContent?.category?.name}, {courseContent?.sub_category?.name}</h3>
+                                <p className='CPCourseTitle'>{courseContent?.title}, </p>
+                                <p className='CPCourseSubTitle'>{courseContent?.category?.name}, {courseContent?.sub_category?.name}</p>
                             </div>
-                            <div className="playIconForVideo">
+                            {/* <div className="playIconForVideo">
                                 <BsFillPlayFill size={25} />
-                            </div>
-                            <img src={courseContent?.thumbnail || "https://letslearn-storage.s3.ap-south-1.amazonaws.com/image/front-view-1686118474450.webp"} alt="" className='object-cover' />
+                            </div> */}
+                            
+                            <img  src={courseContent?.thumbnail || "https://letslearn-storage.s3.ap-south-1.amazonaws.com/image/front-view-1686118474450.webp"} alt="" className="CPCourseHeroImg" />
                         </div>
 
                         {/* tabmenu  */}
                         <div className='tabMenu whiteBG roundSM'>
                             <p className={`flex-fill ${tabIndex === "description" && "active"}`} onClick={() => setTabIndex("description")}>Description</p>
-                            <p className={`${tabIndex === 1 && "active"}`} onClick={() => setTabIndex(1)}>{enrollData.isEnrolled ? "Course Content" : "Course Demo"}</p>
+                            <p className={`${tabIndex === 1 ? "active" : ""}`} onClick={() => setTabIndex(1)}>{enrollData.isEnrolled ? "Course Content" : "Course Demo"}</p>
                             {
                                 enrollData?.isEnrolled && (
                                     <>
@@ -426,7 +427,7 @@ const CourseProgress = () => {
                                         </p>
                                     </div>
 
-                                    <div className='CPCourseOfferContainer'>
+                                    {/* <div className='CPCourseOfferContainer'>
                                         <h2>Offers Available</h2>
                                         <div className='CPcourseOffer'>
                                             {
@@ -444,7 +445,7 @@ const CourseProgress = () => {
                                                     })
                                             }
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             )}
                         </div>

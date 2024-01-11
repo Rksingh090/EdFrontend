@@ -59,16 +59,16 @@ const EnrolledCourses = () => {
                                         </div>
                                         <div className='EnrollCourseBody'>
                                             <div>
-                                                <p >{toDateString(course?.createdAt)}</p>
+                                                <p className='EC_date'>{toDateString(course?.createdAt)}</p>
                                                 <h2 title={course?.title} className='EnrollCourseTitle'>{course?.title}</h2>
                                             </div>
 
 
                                             <div className='flex flex-col items-start gap-2'>
-                                                <p>
+                                                <p className='EC_sub_cat'>
                                                     {course?.sub_category?.name}
                                                 </p>
-                                                <p>
+                                                <p className='EC_cat'>
                                                     <span>By: </span>
                                                     {course?.created_by?.first_name} {course.created_by?.last_name}
                                                 </p>

@@ -108,13 +108,13 @@ const QuizAttemptDetails = () => {
                                 <td className={`text-center qaStatus`}>
                                     {
                                         quizAttemptData?.passing_status === "pass" ?
-                                            <p className="badgeSM successBadge">pass</p>
+                                            <p className="badgeSM successBadge">Pass</p>
                                             :
                                             quizAttemptData?.passing_status === "fail"
                                                 ?
-                                                <p className='badgeSM errorBadge'>fail</p>
+                                                <p className='badgeSM errorBadge'>Fail</p>
                                                 :
-                                                <p className="badgeSM warningBadge">pending</p>
+                                                <p className="badgeSM warningBadge">Pending</p>
                                     }
                                 </td>
                             </tr>
