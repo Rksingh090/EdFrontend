@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import AdminBase from '../../adminBase/AdminBase'
+
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { API } from '../../../constant'
@@ -58,7 +58,6 @@ const AboutTeacher = () => {
     }, [teacherId, pageNo])
 
     return (
-        <AdminBase>
             <div className='aboutTeacherPage'>
                 <div className="headingBar">
                     <h2 className='PageHeading'>Teachers</h2>
@@ -201,7 +200,6 @@ const AboutTeacher = () => {
                     </div>
                 </div>
             </div>
-        </AdminBase>
     )
 }
 

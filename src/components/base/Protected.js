@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { API } from '../../constant';
+import { Outlet } from 'react-router-dom';
 
-const Protected = ({ Component, reverse, validRoles }) => {
+const Protected = ({ reverse, validRoles }) => {
 
     const [showComponent, setShowComponent] = useState(false);
     console.log("protected redendered");
@@ -48,7 +49,7 @@ const Protected = ({ Component, reverse, validRoles }) => {
 
     return (
         <div>
-            {showComponent && <Component />}
+            {showComponent && <Outlet />}
         </div>
     )
 }

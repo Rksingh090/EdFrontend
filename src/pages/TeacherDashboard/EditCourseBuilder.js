@@ -546,7 +546,7 @@ const EditCourseBuilder = () => {
                                     <label>Course Slug</label>
                                     <input value={courseData.slug} type="text" placeholder='course-slug' disabled className='CBInput' />
                                     <Link className='text-[var(--main)]' target='_blank' to={`${FRONTEND_DOMAIN}/course/${courseData?._id}/${courseData.slug}`}>
-                                        <span className='text-[#818794]'>Permalink</span>: {FRONTEND_DOMAIN}/course/{courseData?._id}/{courseData.slug}
+                                        <span className='textSubtle'>Permalink</span>: {FRONTEND_DOMAIN}/course/{courseData?._id}/{courseData.slug}
                                     </Link>
                                 </div>
 

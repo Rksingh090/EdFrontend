@@ -46,12 +46,12 @@
     width: 90%;
     transition: transform .8s ease, box-shadow .2s ease;
     margin-top: 30px;
-    z-index: 384;
+    z-index: 384878;
 }
 
 
 .homeCourseSearch:has(>input:focus) {
-    /* box-shadow: 0vh 0vh 70vh 100vh rgba(0, 0, 0, 0.45); */
+    box-shadow: 0vh 0vh 70vh 100vh rgba(0, 0, 0, 0.45);
 }
 
 .homeCourseSearch>input {

@@ -29,7 +29,7 @@ import { BsFillPlayFill } from 'react-icons/bs';
 import CustomRangeInput from '../../components/utils/CustomRangeInput';
 
 
-const CourseProgress = () => {
+const CourseDetails = () => {
     const dispatch = useDispatch();
     const { course_slug, course_id } = useParams();
 
@@ -477,4 +477,4 @@ const CourseProgress = () => {
     )
 }
 
-export default CourseProgress
+export default CourseDetails

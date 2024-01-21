@@ -5,7 +5,7 @@ import { BsFillPeopleFill } from 'react-icons/bs';
 import { AiTwotoneBell } from 'react-icons/ai';
 import { BiCloudUpload } from 'react-icons/bi';
 
-const Profileee = () => {
+const Profile = () => {
     const [tabstate, setTabState] = useState(1);
 
     return (
@@ -1197,4 +1197,4 @@ Reference Email *</label>
     )
 }
 
-export default Profileee
+export default Profile

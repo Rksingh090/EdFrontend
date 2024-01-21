@@ -29,15 +29,17 @@
     height: 100%;
     aspect-ratio: 1;
     border-radius: 50px;
-    background-color: var(--bg-muted);
+    background-color: var(--main);
 }
 
 .switch.inactive {
+    border: 1px solid var(--border-subtle);
     background-color: var(--bg-subtle);
 }
 
 .switch.active {
-    background-color: var(--main);
+    background-color: var(--lightBG);
+    border: 1px solid var(--main);
 }
 
 .switch.inactive>.switchBall {

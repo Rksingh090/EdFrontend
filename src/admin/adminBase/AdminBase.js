@@ -5,10 +5,10 @@ import AdminNavbar from './Navbar';
 import './adminbase.css';
 
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 
-const AdminBase = ({ children }) => {
+const AdminBase = () => {
   const navigate = useNavigate();
 
   const [isUserValid, setIsUserValid] = useState(false);
@@ -35,7 +35,7 @@ const AdminBase = ({ children }) => {
               <div className={`adminMainSection ${sidebarOpen ? "open" : "close"}`}>
                 <Sidebar />
                 <div className='adminContent'>
-                  {children}
+                  <Outlet />
                 </div>
               </div>
             </>

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import "./teachers.css";
-import AdminBase from '../../adminBase/AdminBase';
 import Breadcrumb from '../../../utils/Breadcrumb';
 
 
@@ -26,7 +25,6 @@ const Teachers = () => {
 	}, [dispatch, perPage, pageNo])
 
 	return (
-		<AdminBase>
 			<div className='adminCoupons'>
 				<div className="headingBar">
 					<h2 className='PageHeading'>Teachers</h2>
@@ -52,7 +50,6 @@ const Teachers = () => {
 				}
 
 			</div>
-		</AdminBase>
 	)
 }
 

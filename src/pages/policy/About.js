@@ -4,7 +4,7 @@ import Base from '../../components/base/Base';
 
 const About = () => {
     return (
-        <Base>
+        <Base bodyClass={"homePageBg"}>
 
         </Base>
     )

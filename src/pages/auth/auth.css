@@ -206,8 +206,8 @@
     border-radius: 20px;
     overflow: hidden;
     padding: 20px 40px;
-    box-shadow: 2px 2px 10px #d9d9d9;
-    background-color: white;
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
 }
 
 .registerChildContainer::-webkit-scrollbar {
@@ -233,9 +233,9 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: .5px solid #f0f0f0;
+    border: .5px solid var(--border-subtle);
     border-radius: 5px;
-    box-shadow: 1px 1px 10px #d9d9d973;
+    background-color: var(--bg-muted);
 }
 
 .rInputDiv>svg {
@@ -247,7 +247,8 @@
     padding: 12px 5px;
     outline: none;
     font-size: 16px;
-    color: black;
+    color: var(--text);
+    background-color: var(--bg-muted);
     font-weight: 400;
 }
 
