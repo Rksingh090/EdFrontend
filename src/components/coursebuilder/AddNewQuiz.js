@@ -89,18 +89,33 @@ const AddNewQuiz = ({ quizVisibility }) => {
                         <h2 className='quizHeadText'>Quiz</h2>
                         <div className='quizProgress'>
                             <div className='quizProgressText'>
-                                <div>Quiz Info</div>
+                                <div style={{ textAlign: "left" }}>Quiz Info</div>
                                 <div></div>
                                 <div style={{ textAlign: "center" }}>Questions</div>
                                 <div></div>
                                 <div style={{ textAlign: "right" }}>Setting</div>
                             </div>
                             <div className='quizProgressLine'>
-                                <div className={`quizNumber ${(quizPage >= 1 || quizPage === "addQue") && "fillLine"}`}>1</div>
+                                <div
+                                    className={`quizNumber ${(quizPage >= 1 || quizPage === "addQue") && "fillLine"}`}
+                                    onClick={() => setQuizPage(1)}
+                                >
+                                    1
+                                </div>
                                 <div className={`quizLine ${(quizPage >= 2 || quizPage === "addQue") && "fillLine"}`}></div>
-                                <div className={`quizNumber ${(quizPage >= 2 || quizPage === "addQue") && "fillLine"}`}>2</div>
+                                <div
+                                    className={`quizNumber ${(quizPage >= 2 || quizPage === "addQue") && "fillLine"}`}
+                                    onClick={() => setQuizPage(2)}
+                                >
+                                    2
+                                </div>
                                 <div className={`quizLine ${quizPage >= 3 && "fillLine"}`}></div>
-                                <div className={`quizNumber ${quizPage >= 3 && "fillLine"}`}>3</div>
+                                <div
+                                    className={`quizNumber ${quizPage >= 3 && "fillLine"}`}
+                                    onClick={() => setQuizPage(3)}
+                                >
+                                    3
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -126,7 +141,7 @@ const AddNewQuiz = ({ quizVisibility }) => {
                                 </div>
                                 <div className="qfpInputDiv">
                                     <p>Enable Course Preview</p>
-                                    <Switch value={quizData.preview_available} onChange={(value) => setQuizData((prev) => ({...prev, preview_available: value}))} />
+                                    <Switch value={quizData.preview_available} onChange={(value) => setQuizData((prev) => ({ ...prev, preview_available: value }))} />
                                 </div>
                             </div>
                         )}
@@ -268,7 +283,12 @@ const AddNewQuiz = ({ quizVisibility }) => {
                                     <div className='quizFeedbackMode'>
                                         <div className="feedbackRadio" onClick={() => setQuizData({ ...quizData, feedback_mode: "default" })}>
                                             <div>
-                                                <input type="radio" name='quizFeedback' checked={quizData.feedback_mode === "default"} readOnly />
+                                                <input type="radio"
+                                                    name='quizFeedback'
+                                                    checked={quizData.feedback_mode === "default"}
+                                                    className="llInput sm"
+                                                    readOnly
+                                                />
                                             </div>
                                             <p>Default</p>
                                             <div></div>
@@ -276,7 +296,12 @@ const AddNewQuiz = ({ quizVisibility }) => {
                                         </div>
                                         <div className="feedbackRadio" onClick={() => setQuizData({ ...quizData, feedback_mode: "reveal_mode" })}>
                                             <div>
-                                                <input type="radio" name='quizFeedback' checked={quizData.feedback_mode === "reveal_mode"} readOnly />
+                                                <input type="radio"
+                                                    name='quizFeedback'
+                                                    checked={quizData.feedback_mode === "reveal_mode"}
+                                                    className="llInput sm"
+                                                    readOnly
+                                                />
                                             </div>
                                             <p>Reveal Mode</p>
                                             <div></div>
@@ -284,7 +309,12 @@ const AddNewQuiz = ({ quizVisibility }) => {
                                         </div>
                                         <div className="feedbackRadio" onClick={() => setQuizData({ ...quizData, feedback_mode: "retry_mode" })}>
                                             <div>
-                                                <input type="radio" name='quizFeedback' checked={quizData.feedback_mode === "retry_mode"} readOnly />
+                                                <input type="radio"
+                                                    name='quizFeedback'
+                                                    checked={quizData.feedback_mode === "retry_mode"}
+                                                    className="llInput sm"
+                                                    readOnly
+                                                />
                                             </div>
                                             <p>Retry Mode</p>
                                             <div></div>

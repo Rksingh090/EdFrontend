@@ -340,7 +340,7 @@ table.bordered tr:last-child td:last-child {
 
 .infoText {
     font-weight: 400;
-    color: rgb(139, 139, 139);
+    color: var(--text-subtle);
 }
 
 .infoText.flexed {
@@ -361,11 +361,11 @@ table.bordered tr:last-child td:last-child {
 }
 
 .infoText.xs {
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .infoText.sm {
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .infoText.md {

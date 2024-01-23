@@ -113,7 +113,7 @@ const AssignmentForm = ({ showAssignment }) => {
 							</button>
 						</div>
 
-						<div className='assignmentQuilTool'>
+						<div className='assignmentQuilTool assignmentReactQuillContainer'>
 							<QuillToolbar hasSeparation={true} />
 							<ReactQuill
 								modules={memoModules}

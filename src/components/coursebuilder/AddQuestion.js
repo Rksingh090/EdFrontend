@@ -10,6 +10,7 @@ import { BiImage, BiImageAdd } from "react-icons/bi";
 import { slugify } from "../../functions/slugify";
 import { MdOutlineDeleteOutline, MdOutlineModeEditOutline } from "react-icons/md";
 import { uploadImage } from "../../functions/uploader";
+import SelectOption from "../utils/SelectOption";
 
 // add question form 
 const AddQuestion = () => {
@@ -214,11 +215,11 @@ const AddQuestion = () => {
             }))
         }
     }
-    
+
     const handleUploadQuestionImg = async (e) => {
         const file = e.target.files[0];
         if (!file) return;
-    
+
         const { imgUrl } = await uploadImage(file, "question-image", 700, 400);
 
         setQuestionData(prev => ({
@@ -252,7 +253,36 @@ const AddQuestion = () => {
             <div className='quiz90p col'>
                 <p className='quizFormInputText'>Select your question type</p>
                 {/* question type  */}
-                <select className='quizInput' value={questionData.question_type} onChange={(e) => setQuestionData(data => { return { ...data, question_type: e.target.value } })}>
+                <SelectOption
+                    label={"Question Type"}
+                    options={[
+                        { text: "True/False", value: "true_false" },
+                        { text: "Single Choice", value: "single_choice" },
+                        { text: "Multi Choice", value: "multi_choice" },
+                        { text: "Open Ended", value: "open_ended" },
+                        { text: "Matching", value: "matching" },
+                        { text: "Ordering", value: "ordering" },
+                        { text: "Short Answer", value: "short_answer" },
+                        { text: "Image", value: "image" },
+                        { text: "Fill in the Blanks", value: "fill_blanks" },
+                    ]}
+                    value={questionData.question_type}
+                    valueField={"value"}
+                    textField={"text"}
+                    selectStyle={{
+                        minHeight: "40px"
+                    }}
+                    onChange={(value) =>
+                        setQuestionData(data => ({
+                            ...data,
+                            question_type: value
+                        }))
+                    }
+                    maxHeight={"400px"}
+                />
+                {/* <select className='quizInput' value={questionData.question_type} 
+                onChange={(e) => setQuestionData(data => { return { ...data, question_type: e.target.value } })}
+                >
                     <option disabled>Question Type</option>
                     <option value="true_false">True/False</option>
                     <option value="single_choice">Single Choice</option>
@@ -263,7 +293,7 @@ const AddQuestion = () => {
                     <option value="short_answer">Short Answer</option>
                     <option value="fill_blanks">Fill in the Blanks</option>
                     <option value="image">Image</option>
-                </select>
+                </select> */}
             </div>
 
             <div className="questionImageUpload">
@@ -289,7 +319,7 @@ const AddQuestion = () => {
                         <p>File Support: .jpg, .jpeg, .gif, or .png</p>
                         <input ref={questionImageRef} type="file" hidden={true} onChange={handleUploadQuestionImg} />
                         <button onClick={() => questionImageRef.current && questionImageRef.current?.click()}>
-                            <BiImage size={22} />
+                            <BiImage size={18} />
                             <span>Upload Image</span>
                         </button>
                     </div>
@@ -345,14 +375,28 @@ const AddQuestion = () => {
                             <div>
                                 <div onClick={() => setQuestionData(data => { return { ...data, true_false_answer: true } })}>
                                     <p>True</p>
-                                    <input type="radio" value={true} checked={questionData.true_false_answer === true} name="true_false" readOnly />
+                                    <input
+                                        type="radio"
+                                        name="true_false"
+                                        value={true}
+                                        checked={questionData.true_false_answer === true}
+                                        className="llInput sm"
+                                        readOnly
+                                    />
                                     <div className='dragTrueFalseOption'>
                                         <HiOutlineBars2 size={24} />
                                     </div>
                                 </div>
                                 <div onClick={() => setQuestionData(data => { return { ...data, true_false_answer: false } })}>
                                     <p>False</p>
-                                    <input type="radio" name="true_false" value={false} checked={questionData.true_false_answer === false} readOnly />
+                                    <input
+                                        type="radio"
+                                        name="true_false"
+                                        value={false}
+                                        checked={questionData.true_false_answer === false}
+                                        className="llInput sm"
+                                        readOnly
+                                    />
                                     <div className='dragTrueFalseOption'>
                                         <HiOutlineBars2 size={24} />
                                     </div>

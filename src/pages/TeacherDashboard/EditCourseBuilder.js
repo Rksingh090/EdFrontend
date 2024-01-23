@@ -37,7 +37,6 @@ import EditCourseHeader from '../../components/coursebuilder/EditCourseHeader';
 import AddRecording from '../../components/coursebuilder/AddRecording';
 import { formatBytes } from '../../functions/formatebyte';
 import SelectOption from '../../components/utils/SelectOption';
-import useKeybinds from '../../hooks/useKeyBinds';
 
 const EditCourseBuilder = () => {
     const { course_id } = useParams();

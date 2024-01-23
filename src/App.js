@@ -345,6 +345,20 @@ const router = createBrowserRouter([
         ]
     },
     {
+        path: "/payment",
+        element: <Protected validRoles={["student"]} />,
+        children: [
+            {
+                path: "/payment/course/:course_id/:course_name",
+                element: <PaymentCoupon />,
+            },
+            {
+                path: "/payment/status/:tracking_id",
+                element: <PaymentStatus />,
+            },
+        ]
+    },
+    {
         path: "/affiliate",
         element: <Protected validRoles={["affiliate"]} />,
         children: [
@@ -472,6 +486,9 @@ const router = createBrowserRouter([
     }
 ]);
 
+//   {/* course payment page with coupon  */}
+//   <Route path="/payment/course/:course_id/:course_name" element={<Protected Component={PaymentCoupon} validRoles={["student"]} />} />
+//   <Route path="/payment/status/:tracking_id" element={<Protected Component={PaymentStatus} validRoles={["student"]} />} />
 
 
 

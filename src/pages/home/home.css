@@ -214,7 +214,7 @@
 
 .homeReadMoreBtn:hover {
     background-color: var(--bg-subtle);
-    color: white;
+    color: var(--text-emphasis);
 }
 
 @media only screen and (max-width: 500px) {

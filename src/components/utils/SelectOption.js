@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { AiFillCaretDown } from 'react-icons/ai'
 
-const SelectOption = ({ 
-    classes, value, onChange, label, options, 
+const SelectOption = ({
+    classes, value, onChange, label, options,
     maxHeight, textField, valueField, style, selectStyle,
+    iconField,
     optionClass
- }) => {
+}) => {
     const [showCategoryOptions, setShowCategoryOptions] = useState(false)
 
     const selectRef = useRef()
@@ -91,7 +92,9 @@ const SelectOption = ({
                         options.map((op) => {
                             const text = walk(op, textField);
                             const opValue = walk(op, valueField);
-                            
+
+                            const icon = iconField ? walk(op, iconField) : null;
+
                             return (
                                 <p
                                     key={opValue}
@@ -107,7 +110,7 @@ const SelectOption = ({
                                         }
                                     }}
                                 >
-                                    {text}
+                                    {icon && icon} <span>{text ? text : ""}</span>
                                 </p>
                             )
                         })

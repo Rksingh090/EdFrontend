@@ -27,7 +27,10 @@ const appsetting = createSlice({
             b.setAttribute("data-theme", payload);
         },
         toggleTheme: (state) => {
+            console.log("ToggleTheme");
             const b = document.getElementsByTagName("body")[0];
+            
+            localStorage.setItem("selectTheme", "user");
             if(state.themeMode === "dark"){
                 state.themeMode = "light"
                 localStorage.setItem("themeMode", "light");

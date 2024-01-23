@@ -18,6 +18,7 @@ import Switch from '../utils/Switch';
 import ProgressBar from '../utils/ProgressBar';
 import axios from 'axios';
 import { API } from '../../constant';
+import SelectOption from '../utils/SelectOption';
 
 
 const AddLessonForm = ({ showLesson }) => {
@@ -153,7 +154,7 @@ const AddLessonForm = ({ showLesson }) => {
 
 						<div className='assignButton'>
 							<p className="quizFormInputText" htmlFor="">Lesson Note</p>
-							<div className='w-full bg-white'>
+							<div className='w-full assignmentReactQuillContainer'>
 								<QuillToolbar hasSeparation={true} />
 								<ReactQuill theme={"snow"}
 									value={lessonData?.lesson_content}
@@ -207,7 +208,7 @@ const AddLessonForm = ({ showLesson }) => {
 
 						<div className='assignButton'>
 							<p className="quizFormInputText">Video Source</p>
-							<div className='customSelectInput'>
+							{/* <div className='customSelectInput'>
 								<div className='fixedSelectIcon'>
 									{lessonData.video_source_type === "html5" && (
 										<ImHtmlFive size={20} />
@@ -247,7 +248,35 @@ const AddLessonForm = ({ showLesson }) => {
 									<option value="embeded">Embeded</option>
 									<option value="shortcode">Shortcode</option>
 								</select>
-							</div>
+							</div> */}
+
+							<SelectOption 
+								iconField={"icon"}
+								valueField={"value"}
+								textField={"text"}
+								options={[
+									{value:"html5", text: "HTML 5", icon: <ImHtmlFive size={16} /> },
+									{value:"external-url", text: "External URL", icon: <BiLink size={16} /> },
+									{value:"youtube", text: "Youtube", icon: <AiOutlineYoutube size={16} /> },
+									{value:"vimeo", text: "Vimeo", icon: <RiVimeoLine size={16} /> },
+									{value:"embeded", text: "Embdeded", icon: <BsCodeSlash size={16} /> },
+									{value:"shortcode", text: "Shortcdoe", icon: <TfiShortcode size={16} /> },
+								]}
+								onChange={(value) => {
+									setLessonData(prev => ({
+										...prev,
+										video_source: "",
+										video_source_type: value
+									}))
+								}}
+								label={"Select Video Source"}
+								value={lessonData?.video_source_type}
+								style={{
+									minHeight: "40px"
+								}}
+								optionClass={"flexRowCenter gap1"}
+								maxHeight={"200px"}
+							/>
 
 							{videoUploading && (
 								<ProgressBar progress={progressPercent} />

@@ -558,7 +558,7 @@
     width: 600px;
     display: grid;
     grid-template-rows: 70px 1fr 70px;
-    background-color: white;
+    background-color: var(--bg-muted);
     border-radius: 15px;
     overflow: hidden;
 }
@@ -586,8 +586,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgb(232, 237, 241);
+    background-color: var(--bg-muted);
     overflow-y: auto;
+    border-top: 1px solid var(--border-muted);
+    border-bottom: 1px solid var(--border-muted);
 }
 
 .topicBodyWidthGuider {
@@ -606,7 +608,8 @@
 
 .topicBodyWidthGuider>div>input,
 .topicBodyWidthGuider>div>textarea {
-    border: 1px solid #d9d9d9;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-subtle);
     width: 100%;
     padding: 10px;
     border-radius: 5px;
@@ -647,17 +650,19 @@
 
 .topicFooterWidthGuider>.btn {
     padding: 6px 15px;
-    border: 1px solid var(--main);
-    border-radius: 7px;
+    border-radius: 4px;
 }
 
 .topicFooterWidthGuider>.btn.cusSubmit {
-    background-color: var(--main);
-    color: white;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-subtle);
+    color: var(--text);
 }
 
 .topicFooterWidthGuider>.btn.cusCancle {
-    color: var(--main);
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-muted);
+    color: var(--text);
 }
 
 /* course builder quiz form  */
@@ -736,11 +741,13 @@
     align-items: center;
     justify-content: center;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .quizNumber.fillLine,
 .quizLine.fillLine {
     background-color: var(--main);
+    color: #fff;
 }
 
 
@@ -834,7 +841,7 @@
     font-family: var(--poppins);
     font-size: 15px;
     font-weight: 500;
-    color: var(--text-subtle);
+    color: var(--text);
 }
 
 .quizFormInput {
@@ -940,7 +947,8 @@
 
 .quizInput {
     padding: 8px 10px;
-    border: 1px solid rgb(190, 190, 190);
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-muted);
     outline: none;
     border-radius: 5px;
 }
@@ -967,8 +975,8 @@
 
 .feedbackRadio {
     border-radius: 5px;
-    border: 1px solid #cecece;
-    background-color: white;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-subtle);
     width: 100%;
     display: grid;
     grid-template-columns: 40px 1fr;
@@ -1010,7 +1018,8 @@
 }
 
 .advanceMenu {
-    background-color: white;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-subtle);
     width: 100%;
     display: grid;
     grid-template-columns: 50px 1fr 40px;
@@ -1035,8 +1044,8 @@
     width: 40px;
     aspect-ratio: 1;
     border-radius: 50px;
-    background-color: var(--lightBG);
-    color: var(--main);
+    background-color: var(--bg-emphasis);
+    color: var(--text);
 }
 
 .gearIcon>svg {
@@ -1057,11 +1066,12 @@
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    background-color: white;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
     border-radius: 5px;
     gap: 25px;
     overflow: hidden;
-    transition: all .4s ease;
+    transition: all .5s ease-in-out;
     padding: 0 20px;
 }
 
@@ -1142,7 +1152,7 @@
     align-items: center;
     gap: 20px;
 }
-
+ 
 .questionImageUpload {
     width: 90%;
     display: flex;
@@ -1179,7 +1189,8 @@
     align-items: center;
     width: 100%;
     gap: 15px;
-    background-color: var(--optionBG);
+    background-color: var(--bg-subtle);
+    border-top: 1px solid var(--border-subtle);
     padding: 20px 0;
 }
 
@@ -1191,13 +1202,14 @@
 }
 
 .trueFasleRadio>div>div {
-    background-color: white;
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
     padding: 8px 10px;
     display: grid;
     grid-template-columns: 1fr auto 25px;
     align-items: center;
     gap: 5px;
-    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 .trueFasleRadio>div>input {
@@ -1218,7 +1230,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: var(--optionBG);
+    background-color: var(--bg-subtle);
     padding-bottom: 15px;
 }
 
@@ -1246,7 +1258,8 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 10px 15px;
-    background-color: white;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
     width: 100%;
 }
 
@@ -1268,7 +1281,6 @@
 }
 
 .optionInputs {
-    border-top: 1px solid #ccc;
     padding-top: 15px;
     width: 100%;
     display: flex;
@@ -1284,7 +1296,8 @@
 
 .answerTitle {
     padding: 8px 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-muted);
     border-radius: 5px;
     outline: none;
 }
@@ -1292,7 +1305,8 @@
 .imageOptionUpload {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: white;
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
     padding: 10px 15px;
     gap: 15px;
     border-radius: 5px;
@@ -1312,8 +1326,8 @@
     align-items: center;
     gap: 5px;
     justify-content: center;
-    background-color: rgb(216, 224, 230);
-    color: #9c9c9c;
+    background-color: var(--bg-subtle);
+    color: var(--text);
     border-radius: 5px;
     width: 100%;
     height: 100%;
@@ -1338,11 +1352,12 @@
 .imgGrid2>button {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: normal;
     gap: 5px;
-    background-color: var(--main);
-    color: white;
+    background-color: var(--bg-subtle);
+    color: var(--text);
     padding: 6px 10px;
+    font-size: 14px;
     border-radius: 5px;
 }
 
@@ -1448,8 +1463,8 @@
 
 /* assignment form  */
 .assignmentform {
-    background-color: white;
-    width: 650px;
+    background-color: var(--bg-muted);
+    width: 750px;
     max-height: 750px;
     height: 750px;
     border-radius: 10px;
@@ -1464,9 +1479,11 @@
     font-size: 16px;
 }
 
+textarea.assignmentFormInput,
 .assignmentFormInput {
     padding: 8px 15px;
-    border: 1px solid #c9c9c9;
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
     outline: none;
     border-radius: 5px;
     width: 100%;
@@ -1502,12 +1519,13 @@ textarea.assignmentFormInput {
 
 
 .assignmentQuilTool {
-    background-color: white;
+    background-color: var(--bg-muted);
+    color: var(--text);
 
 }
 
 .assignmentReactQuill {
-    background-color: white;
+    background-color: var(--bg-muted);
     max-height: 400px;
     overflow-y: auto;
 }
@@ -1515,7 +1533,19 @@ textarea.assignmentFormInput {
 .assignmentReactQuill .ql-editor {
     min-height: 200px;
 }
+.assignmentReactQuillContainer {
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+}
+.assignmentReactQuillContainer .ql-toolbar.ql-snow,
+.assignmentReactQuill .ql-container.ql-snow {
+    border: none;
+}
 
+.assignmentReactQuill .ql-container.ql-snow {
+    border-top: 1px solid var(--border-subtle);
+}
 .uploadPDFs {
     display: flex;
     flex-direction: row;
@@ -1612,7 +1642,7 @@ textarea.assignmentFormInput {
 }
 
 .contentDrip {
-    background-color: rgb(201, 214, 226);
+    background-color: var(--bg-subtle);
 }
 
 .unlocking {
@@ -1648,7 +1678,8 @@ textarea.assignmentFormInput {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #d9d9d9;
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
     cursor: pointer;
 }
 
@@ -1672,7 +1703,7 @@ textarea.assignmentFormInput {
 /* lesson form  */
 
 .lessonForm {
-    background-color: white;
+    background-color: var(--bg-muted);
     width: 700px;
     height: 650px;
     border-radius: 10px;
@@ -1688,10 +1719,10 @@ textarea.assignmentFormInput {
 }
 
 .featuredImage {
-    background-color: white;
+    background-color: var(--bg-muted);
     width: 100%;
     height: 200px;
-    border: 1px solid #c9c9c9;
+    border: 1px solid var(--border-subtle);
     border-radius: 10px;
     display: grid;
     grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
@@ -1701,12 +1732,13 @@ textarea.assignmentFormInput {
 .placeholderImg {
     width: 100%;
     height: 100%;
-    background-color: #EFF1F6;
+    background-color: var(--bg-subtle);
+    color: var(--text-emphasis);
+    border: 1px solid var(--border-subtle);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: gray;
     gap: 10px;
 }
 
@@ -1766,8 +1798,8 @@ textarea.assignmentFormInput {
     flex-direction: row;
     align-items: flex-start;
     width: 100%;
-    background-color: white;
-    border: 1px solid #c9c9c9;
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
     position: relative;
     border-radius: 5px;
     overflow: hidden;
@@ -1825,10 +1857,10 @@ textarea.assignmentFormInput {
 .videoSource>input,
 .videoSource>textarea {
     width: 100%;
-    background-color: white;
+    background-color: var(--bg-muted);
     padding: 10px;
     outline: none;
-    border: 1px solid #c9c9c9;
+    border: 1px solid var(--border-subtle);
     border-radius: 5px;
     transition: all .4s ease;
 }
@@ -1859,7 +1891,8 @@ textarea.assignmentFormInput {
     width: 100%;
     padding: 10px;
     outline: none;
-    border: 1px solid #c9c9c9;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--bg-muted);
     border-radius: 5px;
 }
 
