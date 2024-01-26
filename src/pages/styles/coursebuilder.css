@@ -68,9 +68,10 @@
     background-color: var(--bg-muted);
     border: 1px solid var(--border-subtle);
     font-family: var(--poppins);
-    font-size: 12px;
+    font-size: 18px;
 }
-.CBBackBtn:hover{
+
+.CBBackBtn:hover {
     background-color: var(--bg-subtle);
 }
 
@@ -169,7 +170,7 @@
 }
 
 .courseDescriptionRQ .ql-container.ql-snow {
-    border: 1px solid  var(--border-subtle);
+    border: 1px solid var(--border-subtle);
     border-top: none;
     border-radius: 0 0 10px 10px;
 }
@@ -373,6 +374,7 @@
     cursor: pointer;
     border: 1px solid transparent;
 }
+
 .courseSettingMenu>div.selectedTab {
     background-color: var(--bg-subtle);
     border: 1px solid var(--border-subtle);
@@ -483,7 +485,8 @@
     height: 250px;
     overflow: hidden;
 }
-.VideoThumbnailContainer > p{
+
+.VideoThumbnailContainer>p {
     color: var(--text-subtle);
 }
 
@@ -494,6 +497,7 @@
     border-radius: 5px;
     margin-top: 5px;
 }
+
 .browseFileBTN:hover {
     background-color: var(--bg-subtle);
 }
@@ -509,7 +513,7 @@
     margin-bottom: 10px;
     border-radius: 10px;
     padding: 10px;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .courseThumbnailImg {
@@ -1152,7 +1156,7 @@
     align-items: center;
     gap: 20px;
 }
- 
+
 .questionImageUpload {
     width: 90%;
     display: flex;
@@ -1270,7 +1274,7 @@
 }
 
 .optionAction {
-    color: #3d3d3d;
+    color: var(--text);
 }
 
 .addAndOptionBTN {
@@ -1380,7 +1384,7 @@
 
 .optionFormatRadios>div>label {
     font-size: 12px;
-    color: #303030;
+    color: var(--text-emphasis);
     font-weight: 500;
 }
 
@@ -1420,12 +1424,16 @@
     border-radius: 5px;
     border: 1px solid transparent;
 }
+
 .changeBTN.active {
     background-color: var(--bg-subtle);
     border: 1px solid var(--border-subtle);
 }
 
-
+.CBCourseLink .CBCourseLinkSpan{
+    color: var(--main);
+    word-break: break-word;
+}
 
 
 
@@ -1533,11 +1541,13 @@ textarea.assignmentFormInput {
 .assignmentReactQuill .ql-editor {
     min-height: 200px;
 }
+
 .assignmentReactQuillContainer {
     overflow: hidden;
     border: 1px solid var(--border-subtle);
     border-radius: 4px;
 }
+
 .assignmentReactQuillContainer .ql-toolbar.ql-snow,
 .assignmentReactQuill .ql-container.ql-snow {
     border: none;
@@ -1546,6 +1556,7 @@ textarea.assignmentFormInput {
 .assignmentReactQuill .ql-container.ql-snow {
     border-top: 1px solid var(--border-subtle);
 }
+
 .uploadPDFs {
     display: flex;
     flex-direction: row;
@@ -1661,14 +1672,18 @@ textarea.assignmentFormInput {
 .infoIconText>svg {
     min-width: 20px;
     font-size: 12px;
-    color: rgb(124, 124, 124);
+    color: var(--text);
 }
 
 .infoIconText>p {
     margin-top: -2px;
     font-size: 15px;
-    font-family: sans-serif;
-    color: rgb(124, 124, 124);
+    color: var(--text);
+}
+.infoIconText.muted > p,
+.infoIconText.muted > svg{
+    fill: var(--text-muted);
+    color: var(--text-muted);
 }
 
 .closeAssignmentFormBtn {
@@ -2015,11 +2030,44 @@ textarea.assignmentFormInput {
     resize: none;
 }
 
-@media only screen and (max-width: 800px) {
+.CBContentDrip {
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.CBContentDripEnable {
+    color: var(--text);
+    padding: 0 10px;
+}
+.ContentDripRadioButtons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.CBContentDripRadio{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.CBContentDripRadio>input {
+    flex: none;
+}
+input[type="radio"].llInput:disabled + label {
+    color: var(--text-muted);
+}
+
+.CBContentDripRadio>label {
+    flex-wrap: wrap;
+    color: var(--text);
+}
+
+@media only screen and (max-width: 600px) {
 
     .courseBuilderMainContainer {
         max-width: 100%;
         grid-template-columns: 1fr;
+        padding: 15px;
     }
 
     .courseBuilderDiv1 {
@@ -2028,8 +2076,19 @@ textarea.assignmentFormInput {
 
     /* course setting  */
     .courseSettingContainer {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
     }
+    
+    .courseSettingMenu {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid var(--border-subtle);
+        padding-bottom: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
 
     /* assignmentheader */
 
@@ -2040,11 +2099,29 @@ textarea.assignmentFormInput {
         padding: 20px 10px;
     }
 
-}
-
-@media only screen and (max-width: 600px) {
     .CBThumbnailContainer {
         grid-template-rows: minmax(0, 1fr);
         grid-template-columns: minmax(0, 1fr);
+    }
+    
+    .CourseBuilderHeader {
+        overflow: hidden;
+    }
+    
+    .submitCourse,
+    .previewCourse,
+    .CBStatusBtn,
+    .CBBackBtn {
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    .gridTwoByThree, .gridTwoByThreeNS {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 0;
+    }
+    .CBContentDrip {
+        padding: 20px 0;
     }
 }

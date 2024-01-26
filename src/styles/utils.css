@@ -51,6 +51,9 @@
     gap: 15px;
 }
 
+.my1 {
+    margin: 5px 0;
+}
 
 /* heading styles  */
 
@@ -926,5 +929,12 @@ textarea.FormInput {
     /* styled table for mobile  */
     .styled-table.desktopSize {
         min-width: 800px;
+    }
+    .tableHeading>.heading {
+        font-size: 14px;
+    }
+    .changeBTN {
+        padding: 5px;
+        font-size: 12px;
     }
 }

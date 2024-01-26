@@ -184,7 +184,7 @@ const PaymentCoupon = () => {
                                 )
                             }
 
-                            <hr className='w-full' />
+                            <hr className='hrFullWithSubtle' />
 
                             <div className='pricingCalculation'>
                                 <h3 className='paymentSummaryTitle'>Payment Summary</h3>
@@ -209,7 +209,7 @@ const PaymentCoupon = () => {
                                     <span className='priceWithRupee'>-<MdCurrencyRupee /><span>{couponData?.discount}</span></span>
                                 </div>
 
-                                <hr className='w-full mt-2 mb-1' />
+                                <hr className='hrFullWithSubtle my1' />
                                 <div className='titleWithPrice bigBoldText'>
                                     <p className="priceType">Total</p>
                                     <span className='priceWithRupee'><MdCurrencyRupee /><span>{String(Number(oneCourse?.discount_price) - Number(couponData.discount))}</span></span>

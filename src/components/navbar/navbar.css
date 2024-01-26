@@ -5,6 +5,7 @@
     align-items: center;
     z-index: 150;
     display: grid;
+    gap: 10px;
     grid-template-columns: 200px 1fr 100px;
 }
 
@@ -16,30 +17,20 @@
     align-items: center;
     justify-content: center;
     z-index: 100;
-    transition: all .3s ease-in-out;
-    z-index: 4545;
+    transition: all .8s ease-in-out;
+    z-index: 500;
+    background-color: var(--bg-muted);
+    border-bottom: 1px solid var(--border-muted);
 }
-
-.navbarMainContainer.fixedNav {
-    position: fixed;
+.navbarMainContainer.navSticky {
+    position: sticky;
+    background-color: var(--bg-backdrop);
+    backdrop-filter: blur(4px);
 }
 
 .mainNavLogo {
     font-size: 22px;
     font-weight: 500;
-}
-
-.navbarMainContainer.whiteBG {
-    /* box-shadow: 0px 0px 10px rgb(0, 0, 0, .2); */
-    background-color: var(--bg-muted);
-    border-bottom: 1px solid var(--border-muted);
-    position: relative;
-    z-index: 9000;
-    margin-bottom: -1px; 
-}
-
-.navbarMainContainer.transparentBG {
-    background-color: transparent;
 }
 
 
@@ -96,14 +87,14 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 60px;
+    height: 45px;
 }
 
 .navAvatarImg {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80%;
+    height: 100%;
     aspect-ratio: 1;
     overflow: hidden;
     border-radius: 50px;
@@ -224,6 +215,10 @@
     display: none;
 }
 
+.menuBtn > div > svg > path {
+    fill: #fff;
+}
+
 .companyTitle {
     color: var(--main);
 }
@@ -251,7 +246,7 @@
 .mobileNavHeading {
     width: 100%;
     background-color: var(--bg);
-    height: 65px;
+    height: 66px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -524,7 +519,7 @@
 @media only screen and (max-width: 800px) {
     .navbar {
         padding: 0 10px;
-        grid-template-columns: 10fr 120px 80px;
+        grid-template-columns: 10fr 45px 45px;
     }
 
     .companyTitle {
@@ -552,9 +547,13 @@
 
     .menuBtn>div {
         background-color: var(--main);
-        padding: 10px;
-        color: white;
-        border-radius: 3px;
+        color: var(--text-inverted);
+        border-radius: 55px;
+        height: 45px;
+        aspect-ratio: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .mobileMenu {
@@ -584,11 +583,6 @@
         grid-template-columns: minmax(100px, 1fr);
     }
 
-    .navAvatarImg {
-        width: 60px;
-        height: 60px;
-    }
-
 }
 
 @media only screen and (max-width: 600px) {
@@ -610,11 +604,6 @@
         right: -50px;
         width: 300px;
         grid-template-columns: minmax(100px, 1fr);
-    }
-
-    .navAvatarImg {
-        width: 50px;
-        height: 50px;
     }
 
     .menuBtn>div {

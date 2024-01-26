@@ -60,8 +60,9 @@
     cursor: help;
 }
 
+.quizQueType>svg >path,
 .quizQueType>svg {
-    color: white;
+    color: #fff;
     height: 70%;
     width: 70%;
 }

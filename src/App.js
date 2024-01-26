@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 // context providers
 import CourseBuilderProvider from './context/CourseBuilderProvider';
@@ -66,10 +66,11 @@ import ErrorPage from './pages/others/ErrorPage';
 
 // career 
 import Registercarrers from './pages/careers/Registercarrers';
+import Logincarrers from './pages/careers/Logincarrers';
+
 import Careers from './pages/careers/Careers';
 import Application from './pages/careers/Application';
 import Profile from './pages/careers/Profile';
-import Logincarrers from './pages/careers/Logincarrers';
 
 // admin pages
 import AdminDashboard from './admin/dashboard/Dashboard';
@@ -122,7 +123,6 @@ import AffiliateProfile from "./affiliate/profile/Profile";
 
 // landing pages 
 import CourseContentBase from './pages/coursecontent/CourseContentBase';
-import DNDTest from './DNDTest';
 import { setTheme, toggleTheme } from './reducers/AppSettingReducer';
 import useKeybinds from './hooks/useKeyBinds';
 import AdminBase from './admin/adminBase/AdminBase';
@@ -486,15 +486,12 @@ const router = createBrowserRouter([
     }
 ]);
 
-//   {/* course payment page with coupon  */}
-//   <Route path="/payment/course/:course_id/:course_name" element={<Protected Component={PaymentCoupon} validRoles={["student"]} />} />
-//   <Route path="/payment/status/:tracking_id" element={<Protected Component={PaymentStatus} validRoles={["student"]} />} />
-
 
 
 
 const App = () => {
     const dispatch = useDispatch();
+    
 
     useEffect(() => {
         let tokenVal = localStorage.getItem("token");
@@ -508,11 +505,18 @@ const App = () => {
         dispatch(getAllSubCategory())
     }, [dispatch])
 
-    // const location = useLocation();
+    // const pathname = window.location.pathname;
 
     useEffect(() => {
-        dispatch({ type: "appsetting/hideAllNavMenu" })
+        router.subscribe(() => {
+            dispatch({ type: "appsetting/hideAllNavMenu" })
+        });
+
+        return () => {
+            router.dispose();
+        };
     }, [dispatch]);
+    
 
     useKeybinds([
         {
@@ -545,125 +549,10 @@ const App = () => {
     }, [dispatch]);
 
     return (
+        
         <RouterProvider router={router} />
     )
 }
 
 
-export default App
-// <Routes>
-//   <Route path="/" element={<Home />} />
-//   <Route path="/test" element={<DNDTest />} />
-//   <Route path="/register" element={<Protected Component={Register} reverse={true} />} />
-//   <Route path="/login" element={<Protected Component={Login} reverse={true} />} />
-//   <Route path="/logout" element={<Protected Component={Logout} />} />
-//   <Route path="/forgot-password" element={<Protected Component={ForgotPassword} reverse={true} />} />
-//   <Route path="/otp-verify" element={<Protected Component={OtpVerify} reverse={true} />} />
-//   <Route path="/affiliate/register" element={<Protected reverse={true} Component={AffiliateRegister} />} />
-//   <Route path="/settings" element={<Protected Component={Settings} />} />
-
-//   {/* all courses public  */}
-//   <Route path="/courses" element={<AllCourse />} />
-
-//   {/* course enroll page - Public  */}
-//   <Route path="/course/:course_id/:course_slug" element={<CourseDetails />} />
-
-//   {/* course payment page with coupon  */}
-//   <Route path="/payment/course/:course_id/:course_name" element={<Protected Component={PaymentCoupon} validRoles={["student"]} />} />
-//   <Route path="/payment/status/:tracking_id" element={<Protected Component={PaymentStatus} validRoles={["student"]} />} />
-
-//   {/* course content pages  */}
-//   <Route path='/course/:course_id' element={<Protected Component={CourseContentBase} validRoles={["student"]} />}>
-//     <Route path="/course/:course_id/:course_slug/content" element={<CourseContent />} />
-//     <Route path="/course/:course_id/:course_slug/assignment/:assignment_id" element={<AssignmentSubmission />} />
-//     <Route path="/course/:course_id/:course_slug/quiz/:quiz_id" element={<NewQuizAttempt />} />
-//     <Route path="/course/:course_id/:course_slug/quiz/result/:quiz_id" element={<QuizResultPage />} />
-//     <Route path="/course/:course_id/:course_slug/quiz-attempt/:quiz_attempt_id" element={<QuizAttemptDetails />} />
-//     <Route path="/course/:course_id/:course_slug/lesson/:lesson_id" element={<LessonPage />} />
-//     <Route path="/course/:course_id/:course_slug/recordings" element={<AllRecordings />} />
-//   </Route>
-
-//   {/* class  - unused */}
-//   {/* <Route path="/class/:class_name" element={<Protected Component={ClassCourses} />} /> */}
-
-//   {/* course builder and editor  */}
-//   <Route path="/teacher/edit-course/:course_id" element={<Protected Component={EditCourseBuilderComponent} validRoles={["teacher", "admin"]} />} />
-
-//   {/* teacher panel  */}
-//   <Route path="/teacher/course" element={<Protected Component={Course} validRoles={["teacher"]} />} />
-//   <Route path="/teacher/events" element={<Protected Component={CalendarEvents} validRoles={["teacher"]} />} />
-//   <Route path="/teacher/quiz" element={<Protected Component={Quiz} validRoles={["teacher"]} />} />
-//   <Route path="/teacher/quiz/details" element={<Protected Component={QuizDetails} validRoles={["teacher"]} />} />
-//   <Route path="/teacher/announcement" element={<Protected Component={Announcements} validRoles={["teacher"]} />} />
-//   <Route path="/teacher/assignment" element={<Protected Component={Assignment} />} />
-//   <Route path="/teacher/analytics" element={<Protected Component={Analytics} validRoles={["teacher"]} />} />
-//   <Route path="/teacher/profile" element={<Protected Component={Myprofile} />} validRoles={["teacher"]} />
-
-//   {/* student panel  */}
-//   <Route path="/student/dashboard" element={<Protected Component={Dashboard} validRoles={["student"]} />} />
-//   <Route path="/student/quiz-attempts" element={<Protected Component={QuizAttempts} validRoles={["student"]} />} />
-//   <Route path="/student/profile" element={<Protected Component={Myprofile} />} validRoles={["student"]} />
-//   <Route path="/student/enrolled-courses" element={<Protected Component={EnrolledCourses} validRoles={["student"]} />} />
-//   <Route path="/student/order-history" element={<Protected Component={OrderHistory} validRoles={["student"]} />} />
-//   <Route path="/student/calendar" element={<Protected Component={Calendar} validRoles={["student"]} />} />
-
-//   {/* franchise panel */}
-
-//   {/* affilate_dashboard_detail */}
-//   <Route path="/affiliate/dashboard" element={<Protected Component={AffilateDashboard} validRoles={["affiliate"]} />} />
-//   <Route path="/affiliate/coupon" element={<Protected Component={AffilateCoupon} validRoles={["affiliate"]} />} />
-//   <Route path="/affiliate/create-coupon" element={<Protected Component={AffiliateCreateCoupon} validRoles={["affiliate"]} />} />
-//   <Route path="/affiliate/sales" element={<Protected Component={AffiliateSales} validRoles={["affiliate"]} />} />
-//   <Route path="/affiliate/student" element={<Protected Component={AffiliateStudent} validRoles={["affiliate"]} />} />
-//   <Route path="/affiliate/setting" element={<Protected Component={AffiliateSetting} validRoles={["affiliate"]} />} />
-//   <Route path="/affiliate/profile" element={<Protected Component={AffiliateProfile} validRoles={["affiliate"]} />} />
-
-//   {/* policy pages */}
-//   <Route path="/term-and-conditions" element={<Termandcondition />} />
-//   <Route path="/privacy" element={<Privacy />} />
-//   <Route path="/refund" element={<Refund />} />
-//   <Route path="/about" element={<About />} />
-
-//   {/* careers  */}
-//   <Route path="/careers" element={<Careers />} />
-//   <Route path="/applications" element={<Application />} />
-//   <Route path="/profile" element={<Profile />} />
-//   <Route path="/register/career" element={<Registercarrers />} />
-//   <Route path="/login/career" element={<Logincarrers />} />
-
-//   {/* admin pannel */}
-//   <Route path="/admin/dashboard/" element={<Protected Component={AdminDashboard} validRoles={["admin"]} />} />
-
-//   <Route path="/admin/coupon/" element={<Protected Component={AdminCoupon} validRoles={["admin"]} />} />
-//   <Route path="/admin/coupon/add" element={<Protected Component={AdminAddCoupon} validRoles={["admin"]} />} />
-
-//   <Route path="/admin/teachers" element={<Protected Component={AdminTeachers} validRoles={["admin"]} />} />
-//   <Route path="/admin/teacher/add" element={<Protected Component={AdminTeacherAdd} validRoles={["admin"]} />} />
-//   <Route path="/admin/teacher/edit/:userId" element={<Protected Component={AdminTeacherEdit} validRoles={["admin"]} />} />
-//   <Route path="/admin/teacher/about/:teacherId" element={<Protected Component={AboutTeacher} validRoles={["admin"]} />} />
-
-//   <Route path="/admin/student" element={<Protected Component={AdminStudent} validRoles={["admin"]} />} />
-
-//   <Route path="/admin/course" element={<Protected Component={AdminCourse} validRoles={["admin"]} />} />
-//   <Route path="/admin/course/about/:courseId" element={<Protected Component={AdminAboutCourse} validRoles={["admin"]} />} />
-//   <Route path="/admin/course/edit/:course_id" element={<Protected Component={EditCourseBuilderComponent} validRoles={["admin"]} />} />
-
-//   <Route path="/admin/user-query" element={<Protected Component={AdminUserQuery} validRoles={["admin"]} />} />
-//   <Route path="/admin/user-query/about/:query_id" element={<Protected Component={AdminAboutQuery} validRoles={["admin"]} />} />
-
-
-//   {/* for testing only  */}
-//   <Route path="/admin/course/v2/edit/:course_id" element={<Protected Component={AdminAddCourse} validRoles={["admin"]} />} />
-
-
-//   <Route path="/admin/affiliate" element={<Protected Component={AdminAffiliate} validRoles={["admin"]} />} />
-//   <Route path="/admin/affiliate/add" element={<Protected Component={AdminAddAffiliate} validRoles={["admin"]} />} />
-//   <Route path="/admin/affiliate/edit/:userId" element={<Protected Component={AdminEditAffiliate} validRoles={["admin"]} />} />
-//   <Route path="/admin/affiliate/about/:affiliateId" element={<Protected Component={AboutAffiliate} validRoles={["admin"]} />} />
-
-
-
-//   <Route path='/maintenance' element={<MaintenancePage />} />
-//   <Route path='*' element={<ErrorPage />} />
-
-// </Routes>
+export default App;

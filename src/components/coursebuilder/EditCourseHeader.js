@@ -25,8 +25,8 @@ const EditCourseHeader = () => {
                 {
                     user?.role === "teacher" && (
                         <Link to={"/teacher/course"} className='CBBackBtn'>
-                            <MdOutlineArrowBack size={20} />
-                            <span className='text-[18px] font-[500]'>Back</span>
+                            <MdOutlineArrowBack />
+                            <span>Back</span>
                         </Link>
                     )
                 }

@@ -1,5 +1,5 @@
 .paymentPage {
-    background-color: #F8F8F8;
+    background-color: var(--bg);
 }
 
 .paymentCouponPage {
@@ -28,7 +28,7 @@
 .orderSummary {
     font-family: var(--poppins);
     font-size: 16px;
-    color: #111;
+    color: var(--text-emphasis);
     font-weight: 600;
 }
 
@@ -36,16 +36,16 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: white;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
     padding: 15px 20px;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .itemColBoxHeader {
     font-family: var(--poppins);
     font-size: 16px;
-    color: #111;
+    color: var(--text);
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -79,14 +79,14 @@
 .itemsColBox>.itemBox>.metaData .title {
     font-family: var(--poppins);
     font-size: 16px;
-    color: #111;
+    color: var(--text-emphasis);
     font-weight: 500;
 }
 
 .itemsColBox>.itemBox>.metaData .subTitle {
     font-family: var(--poppins);
     font-size: 12px;
-    color: #555;
+    color: var(--text-subtle);
 }
 
 .itemsColBox .price {
@@ -117,8 +117,8 @@
 .couponPriceArea {
     width: 100%;
     min-height: 200px;
-    background-color: white;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
     border-radius: 20px;
     padding: 20px;
     display: flex;
@@ -134,27 +134,29 @@
 
 .couponPriceArea .couponFind {
     width: 100%;
-    border: 1px solid #d9d9d9;
+    border: 1px solid var(--border-subtle);
     border-radius: 8px;
     height: 50px;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 120px);
     align-items: center;
+    background-color: var(--bg);
 }
 
 .couponPriceArea .couponFind input {
     height: 100%;
-    background-color: transparent;
     padding: 0 10px;
     outline: none;
     border: none;
-    border-right: 1px solid #d9d9d9;
+    background-color: transparent;
+    border-right: 1px solid var(--border-subtle);
 }
 
 .couponPriceArea .couponFind .findArea {
     text-align: center;
     cursor: pointer;
-    color: var(--main);
+    color: var(--text-emphasis);
+    background-color: var(--bg-subtle);
     height: 100%;
     display: flex;
     justify-content: center;
@@ -162,7 +164,7 @@
 }
 
 .couponPriceArea .pricingCalculation {
-    border: 1px solid #d9d9d9;
+    border: 1px solid var(--border-subtle);
     border-radius: 8px;
     padding: 10px;
     display: flex;
@@ -175,7 +177,7 @@
 .paymentSummaryTitle {
     font-size: 16px;
     font-family: var(--poppins);
-    color: #333;
+    color: var(--text);
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -230,7 +232,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid #d9d9d9;
+    border: 1px solid var(--border-subtle);
     padding: 10px;
     border-radius: 10px;
     width: 100%;

@@ -438,7 +438,7 @@ const NewQuizAttempt = () => {
                             {/* open ended question view  */}
                             {currQuestionData?.question_type === "open_ended" && (
                                 <div className='singleChoiceContainer'>
-                                    <textarea rows="5" className='openEndedTextarea' placeholder='type your answer'
+                                    <textarea className='openEndedTextarea' placeholder='type your answer'
                                         value={singleAnswer.question_answer}
                                         onChange={(e) => setSingleAnswer(prev => ({ ...prev, question_answer: e.target.value }))}>
                                     </textarea>
@@ -448,7 +448,7 @@ const NewQuizAttempt = () => {
                             {/* open ended question view  */}
                             {currQuestionData?.question_type === "short_answer" && (
                                 <div className='singleChoiceContainer'>
-                                    <textarea rows="5" className='openEndedTextarea' placeholder='Short Answer'
+                                    <textarea className='openEndedTextarea' placeholder='Short Answer'
                                         value={singleAnswer.question_answer}
                                         onChange={(e) => setSingleAnswer(prev => ({ ...prev, question_answer: e.target.value }))}>
                                     </textarea>

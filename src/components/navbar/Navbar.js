@@ -15,7 +15,7 @@ import { hideNavProfile } from '../../reducers/AppSettingReducer'
 import { createNewCourse } from '../../functions/createNewCourse';
 import { addCourse } from '../../reducers/CourseReducer';
 
-const Navbar = ({ showSideMenu, clearScrollSticky }) => {
+const Navbar = ({ showSideMenu }) => {
    const dispatch = useDispatch();
    const { dropdown: { mobileMenu } } = useSelector(state => state.appsetting);
    const { user } = useSelector(state => state.user);
@@ -26,25 +26,6 @@ const Navbar = ({ showSideMenu, clearScrollSticky }) => {
       dispatch(toggleSidebar())
    }
 
-   const [isSticky, setIsSticky] = useState(true);
-
-   useEffect(() => {
-      const handleScroll = () => {
-         setIsSticky(window.pageYOffset > 80);
-      };
-
-      window.addEventListener('scroll', handleScroll);
-
-      return () => {
-         window.removeEventListener('scroll', handleScroll);
-      };
-   }, []);
-
-   useEffect(() => {
-      if (clearScrollSticky && clearScrollSticky === true) {
-         setIsSticky(false)
-      }
-   }, [clearScrollSticky])
 
 
    const handleHideAllMobileMenu = () => {
@@ -56,7 +37,7 @@ const Navbar = ({ showSideMenu, clearScrollSticky }) => {
   }
 
    return (
-      <div className={`navbarMainContainer ${clearScrollSticky === true ? `fixedNav ${isSticky ? "whiteBG" : "transparentBG"}` : `whiteBG ${isSticky ? "sticky top-0 left-0" : ""}`}`}>
+      <div className={`navbarMainContainer`}>
          <div className='navbar'>
             <div className='flex items-center gap-3'>
                {showSideMenu &&

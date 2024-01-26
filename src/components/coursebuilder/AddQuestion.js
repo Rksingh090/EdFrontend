@@ -433,14 +433,25 @@ const AddQuestion = () => {
                                                 <p>{option?.option_name}</p>
                                                 <div>
                                                     {questionData.question_type === "single_choice" && (
-                                                        <input type="radio" onClick={() => handleChangeOptionAnswer(option)} value={option?.option_value} checked={questionData?.single_answer === option?.option_value} name="true_false" readOnly />
+                                                        <input
+                                                            type="radio"
+                                                            onClick={() => handleChangeOptionAnswer(option)}
+                                                            value={option?.option_value}
+                                                            checked={questionData?.single_answer === option?.option_value}
+                                                            name="true_false"
+                                                            className="llInput sm"
+                                                            readOnly
+                                                        />
                                                     )}
                                                     {questionData.question_type === "multi_choice" && (
-                                                        <input type="checkbox" onClick={(e) => handleMultiChoiceCheck(e)}
+                                                        <input
+                                                            type="checkbox"
+                                                            onClick={(e) => handleMultiChoiceCheck(e)}
                                                             value={option?.option_value}
                                                             checked={questionData?.multi_answer?.answer.includes(option?.option_value)}
-                                                            name="true_false" readOnly
-
+                                                            name="true_false"
+                                                            className="llInput sm"
+                                                            readOnly
                                                         />
                                                     )}
                                                     <div className='optionAction'>
@@ -516,15 +527,15 @@ const AddQuestion = () => {
                                             <p className="quizFormInputText">Display format for options</p>
                                             <div className="optionFormatRadios">
                                                 <div>
-                                                    <input type="radio" checked={oneOption.option_format === "only_text"} onChange={(e) => setOneOption(data => { return { ...data, option_format: e.target.value } })} name="option_formate" id="only_text" value="only_text" />
+                                                    <input type="radio" checked={oneOption.option_format === "only_text"} onChange={(e) => setOneOption(data => { return { ...data, option_format: e.target.value } })} name="option_formate" id="only_text" value="only_text" className="llInput sm" />
                                                     <label htmlFor="only_text">Only text</label>
                                                 </div>
                                                 <div>
-                                                    <input type="radio" checked={oneOption.option_format === "only_image"} onChange={(e) => setOneOption(data => { return { ...data, option_format: e.target.value } })} value="only_image" id="only_image" name="option_formate" />
+                                                    <input type="radio" checked={oneOption.option_format === "only_image"} onChange={(e) => setOneOption(data => { return { ...data, option_format: e.target.value } })} value="only_image" id="only_image" name="option_formate" className="llInput sm" />
                                                     <label htmlFor="only_image">Only Image</label>
                                                 </div>
                                                 <div>
-                                                    <input type="radio" checked={oneOption.option_format === "both"} onChange={(e) => setOneOption(data => { return { ...data, option_format: e.target.value } })} value="both" id="both" name="option_formate" />
+                                                    <input type="radio" checked={oneOption.option_format === "both"} onChange={(e) => setOneOption(data => { return { ...data, option_format: e.target.value } })} value="both" id="both" name="option_formate" className="llInput sm" />
                                                     <label htmlFor="both">Text & Image both</label>
                                                 </div>
                                             </div>

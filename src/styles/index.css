@@ -56,19 +56,20 @@
 :root {
     /* navbar config  */
     --navbarHeight: 65px;
-    --bodyHeight: calc(100vh - var(--navbarHeight));
+    --bodyHeight: calc(100vh - var(--navbarHeight) - 1px);
 
     /* admin nav config  */
 
     /* course content nav config  */
     --courseContentNavHeight: 60px;
-    --courseContentSidebarWidth: 300px;
+    --courseContentSidebarWidth: 350px;
     --courseContentBodyHeight: calc(100vh - var(--courseContentNavHeight));
 
     /* action colors  */
     --error: #f11f42;
     --warning: #d29f1c;
     --info: rgb(28, 143, 210);
+    --success: rgb(28, 210, 28);
 
     --poppins: "Poppins", sans-serif;
 
@@ -104,6 +105,8 @@
     --bg-inverted: #0f0f0f;
     --bg-info: #f6f9fe;
     --bg-success: #e4fbe9;
+    --bg-warning: #faf9ba;
+
     --bg-attention: #fcefd9;
     --bg-error: rgb(255, 225, 223);
     --bg-dark-error: #772522;
@@ -120,6 +123,8 @@
     --text-inverted: #fff;
     --text-info: #253883;
     --text-success: #285231;
+    --text-warning: #524f28;
+
     --text-attention: #74331b;
     --text-error: #772522;
     --brand: #111827;
@@ -157,6 +162,7 @@
     --bg-inverted: #f3f4f6;
     --bg-info: #253883;
     --bg-success: #285231;
+    --bg-warning: #716c1a;
     --bg-attention: #74331b;
     --bg-error: #772522;
     --bg-dark-error: #772522;
@@ -172,13 +178,14 @@
     --text-muted: #575757;
     --text-inverted: #1a1a1a;
     --text-info: #dee9fc;
+    --text-warning: #fcfade;
     --text-success: #e4fbe9;
     --text-attention: #fcefd9;
     --text-error: #f9e3e1;
     --brand: #fff;
     --brand-emphasis: #9ca3b0;
     --brand-text: #000;
-    --bg-backdrop: #fff2;
+    --bg-backdrop: #fff1;
 }
 
 * {
@@ -186,8 +193,9 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-    color: var(--text);
+    color: var(--text-emphasis);
 }
+
 
 ::-webkit-scrollbar {
     width: 10px;

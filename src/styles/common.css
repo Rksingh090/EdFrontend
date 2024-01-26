@@ -44,19 +44,18 @@
 }
 
 .successBadge {
-    color: white;
-    background-color: rgb(28, 123, 28);
+    color: var(--text-success);
+    background-color: var(--bg-success);
 }
 
 .errorBadge {
-    color: white;
-    background-color: rgb(128, 34, 34);
+    color: var(--text-error);
+    background-color: var(--bg-error);
 }
 
 .warningBadge {
-    border: 1px solid rgb(255, 188, 45);
-    color: rgb(255, 180, 17);
-    background-color: rgba(255, 218, 137, 0.678);
+    color: var(--text-warning);
+    background-color: var(--bg-warning);
 }
 
 
@@ -621,13 +620,13 @@
     font-weight: 500;
 }
 
-
-
-@media only screen and (max-width: 800px) {
-
-    /* profile page  */
-   
+.hrFullWithSubtle {
+    width: 100%;
+    border-color: var(--bg-subtle);
+    color: var(--bg-subtle);
+    background-color: var(--bg-subtle);
 }
+
 
 
 @media only screen and (max-width: 500px) {

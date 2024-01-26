@@ -501,7 +501,7 @@ const EditCourseBuilder = () => {
     }, [courseData?._id])
 
 
-    
+
 
     return (
         <div>
@@ -544,8 +544,9 @@ const EditCourseBuilder = () => {
                                 <div className='flexColInput'>
                                     <label>Course Slug</label>
                                     <input value={courseData.slug} type="text" placeholder='course-slug' disabled className='CBInput' />
-                                    <Link className='text-[var(--main)]' target='_blank' to={`${FRONTEND_DOMAIN}/course/${courseData?._id}/${courseData.slug}`}>
-                                        <span className='textSubtle'>Permalink</span>: {FRONTEND_DOMAIN}/course/{courseData?._id}/{courseData.slug}
+                                    <Link className='CBCourseLink' target='_blank' to={`${FRONTEND_DOMAIN}/course/${courseData?._id}/${courseData.slug}`}>
+                                        <span className='textSubtle'>Permalink: </span>
+                                        <span className='CBCourseLinkSpan'>{`${FRONTEND_DOMAIN}/course/${courseData?._id}/${courseData.slug}`}</span>
                                     </Link>
                                 </div>
 
@@ -955,7 +956,7 @@ const EditCourseBuilder = () => {
 
                                         </div>)
                                         :
-                                        (<div className='w-full px-8 mt-5'>
+                                        (<div className='CBContentDrip'>
                                             <div className='flexRowCenter'>
                                                 <input
                                                     type="checkbox"
@@ -965,47 +966,55 @@ const EditCourseBuilder = () => {
                                                     className='llInput sm'
                                                     id='enableContentDrip'
                                                 />
-                                                <label htmlFor="enableContentDrip" className='px-4 text-[16px] text-[#50545d]'>Enable</label>
+                                                <label htmlFor="enableContentDrip" className='CBContentDripEnable'>Enable</label>
                                             </div>
-                                            <div className='flex items-center gap-2 mt-5'>
-                                                <AiOutlineInfoCircle />
-                                                <h1 className='text-[#50545d] text-[15px]'>Enable / Disable content drip
-                                                </h1>
+                                            <div className='infoIconText muted my-4'>
+                                                <AiOutlineInfoCircle size={16} />
+                                                <p>Enable / Disable content drip</p>
                                             </div>
                                             <div className='mt-[20px]'>
-                                                <h1 className='text-[17px] text-[#50545d] font-[500]'>Content Drip Type</h1>
+                                                <h3 className='text-[17px] text-[#50545d] font-[500]'>Content Drip Type</h3>
                                             </div>
                                             <div>
-                                                <h1 className='text-[13px] text-[#808080] mt-3 font-[400]'>You can schedule your course content using the above content drip options.</h1>
+                                                <h3 className='text-[13px] text-[#808080] my-2 font-[400]'>You can schedule your course content using the above content drip options.</h3>
                                             </div>
-                                            <div className='flex flex-col gap-4 mt-5'>
-                                                <div className=' flexRowInput gap1'>
-                                                    <input disabled={courseData?.content_drip?.enabled ? false : true} type="radio" id="vicky" name="gender" value="by_date"
+                                            <div className='ContentDripRadioButtons'>
+                                                <div className='CBContentDripRadio'>
+                                                    <input disabled={courseData?.content_drip?.enabled ? false : true}
+                                                        type="radio"
+                                                        id="vicky"
+                                                        name="gender"
+                                                        value="by_date"
                                                         onChange={handleChangeContentGrip}
                                                         className='llInput'
                                                     />
-                                                    <label htmlFor="vicky" className='text-[17px] font-[600] text-[#50545d]'> Schedule course contents by date</label>
+                                                    <label
+                                                        htmlFor="vicky"
+                                                        className=''
+                                                    >
+                                                        Schedule course contents by date
+                                                    </label>
                                                 </div>
-                                                <div className=' flexRowInput gap1'>
+                                                <div className='CBContentDripRadio'>
                                                     <input id="female1" disabled={courseData?.content_drip?.enabled ? false : true} type="radio" name="gender" value="date_from_enrollment"
                                                         onChange={handleChangeContentGrip}
                                                         className='llInput'
                                                     />
-                                                    <label htmlFor="female1" className='text-[17px] font-[600] text-[#50545d]'> Content available after X days from enrolment</label>
+                                                    <label htmlFor="female1"> Content available after X days from enrolment</label>
                                                 </div>
-                                                <div className=' flexRowInput gap1'>
+                                                <div className='CBContentDripRadio'>
                                                     <input id="female2" disabled={courseData?.content_drip?.enabled ? false : true} type="radio" name="gender" value="sequentially"
                                                         onChange={handleChangeContentGrip}
                                                         className='llInput'
                                                     />
-                                                    <label htmlFor="female2" className='text-[17px] font-[600] text-[#50545d]'>Course content available sequentially</label>
+                                                    <label htmlFor="female2">Course content available sequentially</label>
                                                 </div>
-                                                <div className='pb-5 flexRowInput gap1'>
+                                                <div className='CBContentDripRadio'>
                                                     <input id="female3" disabled={courseData?.content_drip?.enabled ? false : true} type="radio" name="gender" value="presequisites"
                                                         onChange={handleChangeContentGrip}
                                                         className='llInput'
                                                     />
-                                                    <label htmlFor="female3" className='text-[17px] font-[600] text-[#50545d]'> Course content unlocked after finishing prerequisites</label>
+                                                    <label htmlFor="female3"> Course content unlocked after finishing prerequisites</label>
                                                 </div>
                                             </div>
                                         </div>
