@@ -323,15 +323,15 @@ table.dashboardTable {
 }
 
 table.dashboardTable tr {
-    border-bottom: 1px solid #dee2e6;
+    border-bottom: 1px solid var(--border);
 }
 
 table.dashboardTable tbody tr:hover {
-    background-color: #EAEAEA;
+    background-color: var(--bg-subtle);
 }
 
 table.dashboardTable.striped tbody>tr:nth-of-type(odd) {
-    background-color: #F2F2F2;
+    background-color: var(--bg-muted);
 }
 
 table.dashboardTable.striped tbody>tr:hover {

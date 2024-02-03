@@ -70,14 +70,14 @@ const Login = () => {
                         <div className="inputIcon">
                             <MdAlternateEmail size={20} />
                         </div>
-                        <input autoComplete="one-time-code" value={email} onChange={(e) => setEmail(e.target.value)} type="text" placeholder='Email Address' />
+                        <input autoComplete="one-time-code" value={email} onChange={(e) => setEmail(e.target.value)} type="text" placeholder='example@gmail.com' />
                     </div>
 
                     <div className='inputDiv'>
                         <div className="inputIcon">
                             <FiLock size={20} />
                         </div>
-                        <input autoComplete="one-time-code" type={showPassword ? 'text' : 'password'} onChange={(e) => setPassword(e.target.value)} placeholder='Enter password' />
+                        <input autoComplete="one-time-code" type={showPassword ? 'text' : 'password'} onChange={(e) => setPassword(e.target.value)} placeholder='pass****' />
                         <span className='passwordEyeBtn' onClick={togglePasswordVisibility}>
                             {showPassword ? <FaEyeSlash /> : <FaEye />}
                         </span>

@@ -114,8 +114,8 @@
 .examToppers,
 .recentTransactions {
     width: 100%;
-    background-color: white;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border); 
     border-radius: 15px;
 }
 

@@ -41,8 +41,8 @@ const Navbar = () => {
     return (
         <div className={`adminNavbarGrid  ${sidebarOpen ? "open" : "close"}`}>
             <div className='adminNavLogo'>
-                <img src={"https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/logoLandscape.png"} alt="Edtech Name" />
-                <p className='adminNavCloseTXT'>LL</p>
+                {/* <img src={"https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/logoLandscape.png"} alt="Edtech Name" /> */}
+                <p className='adminNavCloseTXT'>EdTech</p>
             </div>
             <div className={`adminNavbarMain`}>
                 <div className='navMain1'>

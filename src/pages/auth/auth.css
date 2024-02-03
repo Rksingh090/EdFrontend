@@ -54,7 +54,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: var(--bg-subtle);
+    background-color: var(--bg-muted);
     border: 1px solid var(--border-subtle);
     border-collapse: collapse;
     border-radius: 5px;
@@ -76,7 +76,7 @@
 
 .inputDiv>svg {
     width: 50px;
-    color: black;
+    color: var(--text);
 }
 
 .inputDiv>input {
@@ -288,15 +288,16 @@
 
 .registerButton>div>button {
     padding: 15px 0;
-    background-color: var(--main);
-    color: white;
-    border-radius: 10px;
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+    color: var(--text);
+    border-radius: 100px;
     width: 100%;
 }
 
 .alternateText {
     font-size: 12px;
-    color: rgb(122, 122, 122);
+    color: var(--text-muted);
     font-weight: 500;
     margin: 15px 0;
 }
@@ -329,7 +330,7 @@
     padding: 12px 0;
     border-radius: 50px;
     column-gap: 20px;
-    box-shadow: 1px 1px 3px 2px #d9d9d9;
+    border: 1px solid var(--border);
 }
 
 .goToLoginText {

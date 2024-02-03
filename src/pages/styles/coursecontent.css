@@ -66,6 +66,8 @@
     max-height: var(--courseContentBodyHeight);
     overflow-y: auto;
     background-color: var(--bg);
+    padding: 10px;
+    gap: 5px;
 }
 
 .courseTopicsContainer::-webkit-scrollbar {
@@ -86,7 +88,8 @@
 }
 
 .singleTopicsAndItems {
-    border-bottom: .1px solid var(--border-muted);
+    border: 1px solid var(--border-subtle);
+    border-radius: 5px;
 }
 
 .courseTopicItem {
@@ -100,12 +103,14 @@
     transition: all .3s ease;
     z-index: 788;
     position: relative;
-    border-left: 4px solid transparent;
+    overflow: hidden;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 1px solid transparent;
 }
 
 .courseTopicItem.active {
-    background-color: var(--bg-subtle);
-    border-left: 4px solid var(--main);
+    border-bottom: 1px solid var(--border-subtle);
+    background-color: var(--bg-muted);
 }
 
 
@@ -135,8 +140,7 @@
     flex-direction: column;
     overflow: hidden;
     transition: all .5s cubic-bezier(.17, .68, .27, .84);
-    /* padding-left: 40px; */
-    /* background-color: var(--bg-muted); */
+    border-radius: 0 0 5px 5px;
 }
 
 
@@ -148,16 +152,15 @@
     cursor: pointer;
     font-family: var(--poppins);
     height: 40px;
-    border-left: 2px solid transparent;
-    border-left: 2px solid var(--main);
 }
 
 .courseItemLink.active {
-    background-color: var(--bg-subtle);
+    /* border: 1px solid var(--main); */
+    background-color: var(--bg-muted);
 }
 
 .courseItemLink:hover {
-    background-color: var(--bg-subtle);
+    background-color: var(--bg-muted);
 }
 
 .courseItemLink .itemLinkTitle {
@@ -1076,7 +1079,7 @@
 
 .CCRecordingContainer .CBOneRecording {
     transition: all .5s ease-in-out;
-    height: 80px;
+    height: 100px;
     cursor: pointer;
 }
 

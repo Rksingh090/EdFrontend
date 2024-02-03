@@ -78,7 +78,7 @@ const AllRecordings = () => {
                                 <MdSlowMotionVideo />
                             </div>
                             <div className='OneRecordingMeta'>
-                                <h2 >{recordingItem?.title}</h2>
+                                <h3 >{recordingItem?.title}</h3>
                                 <p>Class Date: {toDateString(recordingItem?.class_date)}</p>
                             </div>
                         </div>
