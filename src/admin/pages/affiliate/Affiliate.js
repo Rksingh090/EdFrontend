@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import AdminBase from '../../adminBase/AdminBase'
 import { Link } from 'react-router-dom'
 import { BsCheck2 } from 'react-icons/bs'
 import { RxCopy } from 'react-icons/rx'
@@ -27,11 +26,9 @@ const Affiliate = () => {
 	}, [pageNo, dispatch])
 
 	return (
-		<AdminBase>
-			<div className='affiliatePage'>
-				<AffiliateTableView />
-			</div>
-		</AdminBase>
+		<div className='affiliatePage'>
+			<AffiliateTableView />
+		</div>
 	)
 }
 
@@ -99,13 +96,13 @@ const AffiliateTableView = () => {
 										<td className='tableActionBtns'>
 											<Switch title={
 												affiliateItem?.account_status === "active" ?
-												    "Ban Affiliate" :
+													"Ban Affiliate" :
 													affiliateItem?.account_status === "not-approved" ?
 														"Approve Affiliate" :
 														affiliateItem?.account_status === "not-verified" ?
 															"Activate Account"
 															: "Unban Affiliate"
-												} className={"noStyle"} value={affiliateItem?.account_status === "active"} />
+											} className={"noStyle"} value={affiliateItem?.account_status === "active"} />
 											<Link title='Edit Coupon' to={`/admin/affiliate/edit/${affiliateItem?._id}`} className='edit'><MdModeEdit size={18} /></Link>
 											{/* <div title='Delete Coupon' className='delete'><AiOutlineDelete size={17} /></div> */}
 											<div title='Copy Teacher ID' className='view' onClick={() => copyID(affiliateItem?._id)} >

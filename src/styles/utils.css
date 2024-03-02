@@ -152,12 +152,13 @@
     display: flex;
     flex-direction: row;
     gap: 8px;
-    background-color: #E5E5E9;
+    background-color: var(--bg-muted);
+    border: 1px solid var(--bg-subtle);
     border-radius: 50px;
 }
 
 .Breadcrumb>* {
-    color: #888;
+    color: var(--text-emphasis);
 }
 
 .homeBreadCrumb,
@@ -280,34 +281,22 @@
 }
 
 .tableActionBtns>.edit {
-    color: #4caf50;
-    background-color: #CCFFCE;
+    color: var(--text-success);
+    background-color: var(--bg-success);
 }
 
-.tableActionBtns>.edit:hover {
-    background-color: #4caf50;
-    color: white;
-}
 
 .tableActionBtns>.delete {
-    color: #fa6c39;
-    background-color: #FFDACC;
+    color: var(--text-error);
+    background-color: var(--bg-error);
 }
 
-.tableActionBtns>.delete:hover {
-    background-color: #fa6c39;
-    color: #FFF;
-}
 
 .tableActionBtns>.view {
-    color: #397dfa;
-    background-color: #ccdeff;
+    color: var(--text-info);
+    background-color: var(--bg-info);
 }
 
-.tableActionBtns>.view:hover {
-    background-color: #397dfa;
-    color: #FFF;
-}
 
 
 
@@ -335,7 +324,7 @@ table.dashboardTable.striped tbody>tr:nth-of-type(odd) {
 }
 
 table.dashboardTable.striped tbody>tr:hover {
-    background-color: #EAEAEA;
+    background-color: var(--bg-subtle);
 }
 
 table.dashboardTable thead {
@@ -464,8 +453,6 @@ table.dashboardTable .tableProfileImg>img {
 
 .paginationNo>p:first-child {
     border-radius: 5px 0 0 5px;
-    border: 1px solid var(--bg-emphasis);
-    background-color: var(--bg-subtle);
 }
 
 .paginationNo>p:last-child {
@@ -474,11 +461,12 @@ table.dashboardTable .tableProfileImg>img {
 }
 
 .paginationNo>p {
+    border: 1px solid var(--bg-emphasis);
+    background-color: var(--bg-subtle);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 7px 10px;
-    background-color: var(--bg-subtle);
+    padding: 7px 15px;
     font-family: var(--poppins);
     cursor: pointer;
     color: var(--text);
@@ -486,7 +474,6 @@ table.dashboardTable .tableProfileImg>img {
 
 .paginationNo>p.active {
     background-color: var(--bg-emphasis);
-    padding: 7px 15px;
 }
 
 
@@ -519,7 +506,8 @@ table.dashboardTable .tableProfileImg>img {
     width: 100%;
     outline: none;
     border: none;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--border-emphasis);
+    background-color: transparent;
     padding-bottom: 5px;
     font-size: 12px;
 }
@@ -622,7 +610,7 @@ textarea.FormInput {
     gap: 10px;
     width: 100%;
     aspect-ratio: 1.8;
-    background-color: #EAEAED;
+    background-color: var(--bg-subtle);
     color: #333;
     border-radius: 15px;
 }
@@ -630,7 +618,7 @@ textarea.FormInput {
 /* card header  */
 .adminCard {
     width: 100%;
-    background-color: white;
+    background-color: var(--bg-muted);
     border-radius: 10px;
     box-shadow: var(--adminSmallShadow);
     font-family: var(--poppins);
@@ -679,7 +667,7 @@ textarea.FormInput {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-top: 1px solid #3333;
+    border-top: 1px solid var(--border-subtle);
     font-family: var(--poppins);
     padding: 10px 0;
 }

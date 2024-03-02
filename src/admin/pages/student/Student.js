@@ -8,54 +8,69 @@ import { AiOutlineDelete, AiOutlinePlus } from 'react-icons/ai';
 import { MdModeEdit } from 'react-icons/md';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getStudentByPage } from '../../reducers/AdminReducer';
+import { getStudentByPage } from '../../reducers/StudentReducer';
 import { BsCheck2 } from 'react-icons/bs';
 import { RxCopy } from 'react-icons/rx';
+import Pagination from '../../../utils/Pagination';
 
 const Student = () => {
 
 	const [viewMode, setViewMode] = useState("table");
 
 	const dispatch = useDispatch();
-	const { student: { perPage, pageNo } } = useSelector(state => state.admin);
+	const { student: { perPage, pageNo, totalStudents, pagination } } = useSelector(state => state.adminstudent);
+
+	console.log(perPage, pageNo);
+	
 
 	useEffect(() => {
 		dispatch(getStudentByPage({ perPage, pageNo }))
 	}, [dispatch, perPage, pageNo])
 
 	return (
-		<AdminBase>
-			<div className='adminCoupons'>
-				<div className="headingBar">
-					<h2 className='PageHeading'>Students</h2>
-					<Breadcrumb breadcrumbData={[
-						{
-							link: "/admin/student",
-							text: "Students"
-						}
-					]} />
-				</div>
-
-				<div className='displayDataView'>
-					<button className={`${viewMode === "table" ? "active" : ""}`} onClick={() => setViewMode("table")}>List View</button>
-					<button className={`${viewMode === "grid" ? "active" : ""}`} onClick={() => setViewMode("grid")}>Grid View</button>
-				</div>
-				{viewMode === "table" ?
-					(
-						<TeachersTableView />
-					)
-					: (
-						<TeachersGridView />
-					)
-				}
-
+		<div className='adminCoupons'>
+			<div className="headingBar">
+				<h2 className='PageHeading'>Students</h2>
+				<Breadcrumb breadcrumbData={[
+					{
+						link: "/admin/student",
+						text: "Students"
+					}
+				]} />
 			</div>
-		</AdminBase>
+
+			<div className='displayDataView'>
+				<button className={`${viewMode === "table" ? "active" : ""}`} onClick={() => setViewMode("table")}>List View</button>
+				<button className={`${viewMode === "grid" ? "active" : ""}`} onClick={() => setViewMode("grid")}>Grid View</button>
+			</div>
+			{viewMode === "table" ?
+				(
+					<StudentTableView />
+				)
+				: (
+					<StudentGridView />
+				)
+			}
+
+			<Pagination
+				pageNo={pageNo}
+				pagination={pagination}
+				perPage={perPage}
+				options={{
+					whiteBG: true
+				}}
+				totalPages={totalStudents}
+				onPageChange={(page) => dispatch({ type: "adminstudent/setPageNo", payload: page })}
+				goNext={() => pageNo < pagination.length ? dispatch({ type: "adminstudent/setPageNo", payload: pageNo + 1 }) : null}
+				goPrev={() => pageNo > 1 ? dispatch({ type: "adminstudent/setPageNo", payload: pageNo - 1 }) : null}
+			/>
+
+		</div>
 	)
 }
 
-const TeachersGridView = () => {
-	const { student: { students } } = useSelector(state => state.admin);
+const StudentGridView = () => {
+	const { student: { students } } = useSelector(state => state.adminstudent);
 
 
 	return (
@@ -81,11 +96,11 @@ const TeachersGridView = () => {
 	)
 }
 
-const TeachersTableView = () => {
+const StudentTableView = () => {
 
 	const [currentCopyId, setCurrentCopyId] = useState("")
 
-	const { student: { students } } = useSelector(state => state.admin);
+	const { student: { students, perPage, pageNo, } } = useSelector(state => state.adminstudent);
 
 	const copyID = (teacherId) => {
 		navigator.clipboard.writeText(teacherId)
@@ -145,7 +160,7 @@ const TeachersTableView = () => {
 							students.map((studentItem, idx) => {
 								return (
 									<tr key={studentItem?._id}>
-										<td>{idx + 1}</td>
+										<td>{(Number(perPage) * Number(pageNo - 1)) + idx + 1}</td>
 										<td>{studentItem?.first_name} {studentItem?.last_name}</td>
 										<td>{studentItem?.gender || "-"}</td>
 										<td>{studentItem?.highest_education || "B.Sc"}</td>
@@ -175,7 +190,11 @@ const TeachersTableView = () => {
 					</tbody>
 				</table>
 			</div>
-			<div className='paginationDiv'>
+
+
+
+
+			{/* <div className='paginationDiv'>
 				<div className='paginationShown'>
 					<span>Showing {1} to {10} of {18} entries</span>
 				</div>
@@ -184,7 +203,7 @@ const TeachersTableView = () => {
 					<p className='active'>1</p>
 					<p>Next</p>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	)
 }

@@ -11,6 +11,7 @@ import CouponReducer from '../reducers/CouponReducer';
 
 import AdminReducer from '../admin/reducers/AdminReducer';
 import AdminTeacherReducer from '../admin/reducers/TeacherReducer';
+import AdminStudentReducer from '../admin/reducers/StudentReducer';
 import AdminAffiliateReducer from '../admin/reducers/AffiliateReducer';
 
 import AffiliateCouponReducer from "../affiliate/reducer/affiliateCouponReducer"
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
     coupon: CouponReducer,
     admin: AdminReducer,
     adminteacher: AdminTeacherReducer,
+    adminstudent: AdminStudentReducer,
     adminaffiliate: AdminAffiliateReducer,
     affiliatecoupon: AffiliateCouponReducer,
     affiliateSearch: affiliateSearchReducer,

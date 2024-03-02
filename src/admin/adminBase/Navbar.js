@@ -48,7 +48,9 @@ const Navbar = () => {
                     <RxHamburgerMenu className='hmb' onClick={() => dispatch({ type: "admin/toggleSidebar" })} size={24} />
                     <div className='adminNavSearch'>
                         <input type="text" placeholder='Search...' />
-                        <AiOutlineSearch size={20} />
+                        <div className='adminNavSearchIcon'>
+                            <AiOutlineSearch size={20} />
+                        </div>
                     </div>
                 </div>
                 <DivOutsideClick onOutsideClick={() => dispatch({ type: "admin/hideActiveMenus" })} className='navMain2'>

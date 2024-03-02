@@ -5,7 +5,7 @@
     align-items: flex-start;
     width: 100%;
     padding: 10px 25px;
-    background: #EAEEF3;
+    background: var(--bg);
     min-height: 100vh;
 }
 
@@ -46,9 +46,10 @@
 }
 
 .perEntrySelect>select {
-    border: 1px solid #a8a8a8;
+    border: 1px solid var(--border-subtle);
     padding: 0 3px;
-    color: #353535;
+    background-color: transparent;
+    color: var(--text);
     outline: none;
 }
 
@@ -66,8 +67,9 @@
 
 .tableSearchContainer>input {
     font-family: var(--poppins);
-    border: 1px solid #aaaaaa;
-    color: #aaa;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-subtle);
+    background-color: transparent;
     outline: none;
     padding: 7px 10px;
     font-size: 12px;
@@ -102,8 +104,6 @@
 }
 
 .createCouponForm {
-    background-color: white;
-    border-radius: 10px;
     padding: 20px;
     display: flex;
     flex-direction: column;

@@ -15,8 +15,8 @@ import { LuNetwork } from 'react-icons/lu';
 
 const Sidebar = () => {
     const urlPath = useMemo(() => window.location.pathname, []);
-    
-    const {user} = useSelector((state) => state.user);
+
+    const { user } = useSelector((state) => state.user);
 
     const [activeSubMenu, setActiveSubmenu] = useState("dashboard")
     const { sidebarOpen } = useSelector(state => state.admin);
@@ -101,6 +101,7 @@ const Sidebar = () => {
             type: "button",
             title: "Staff",
             Icon: GrUserSettings,
+            IconClass: "AdminMenuStaffIcon",
             hasMenu: true,
             submenu: [
                 {
@@ -138,7 +139,7 @@ const Sidebar = () => {
             title: "User Query",
             Icon: BiMessageRoundedDots,
             hasMenu: false,
-            link:"/admin/user-query"
+            link: "/admin/user-query"
         },
         {
             type: "button",
@@ -260,7 +261,9 @@ const Sidebar = () => {
 
                                         >
                                             <div className='linkTextIcon'>
-                                                {<listItem.Icon />}
+                                                {listItem.Icon &&
+                                                    <listItem.Icon className={listItem?.IconClass ? listItem.IconClass : ""} />
+                                                }
                                                 <span>{listItem?.title}</span>
                                             </div>
                                             {listItem.hasMenu && <MdOutlineKeyboardArrowRight className={`arrowIOS ${activeSubMenu === listItem?.title ? "active" : "inactive"}`} />}

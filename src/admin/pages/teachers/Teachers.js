@@ -16,7 +16,9 @@ import Pagination from '../../../utils/Pagination';
 
 const Teachers = () => {
 	const dispatch = useDispatch();
-	const { teacher: { perPage, pageNo } } = useSelector(state => state.adminteacher);
+	const { teacher: { perPage, pageNo,pagination, totalTeachers } } = useSelector(state => state.adminteacher);
+	// const { teacher: { teachers, totalTeachers, perPage, pageNo, pagination } } = useSelector(state => state.adminteacher);
+
 
 	const [viewMode, setViewMode] = useState("table");
 
@@ -25,31 +27,44 @@ const Teachers = () => {
 	}, [dispatch, perPage, pageNo])
 
 	return (
-			<div className='adminCoupons'>
-				<div className="headingBar">
-					<h2 className='PageHeading'>Teachers</h2>
-					<Breadcrumb breadcrumbData={[
-						{
-							link: "/admin/teachers",
-							text: "Teachers"
-						}
-					]} />
-				</div>
-
-				<div className='displayDataView'>
-					<button className={`${viewMode === "table" ? "active" : ""}`} onClick={() => setViewMode("table")}>List View</button>
-					<button className={`${viewMode === "grid" ? "active" : ""}`} onClick={() => setViewMode("grid")}>Grid View</button>
-				</div>
-				{viewMode === "table" ?
-					(
-						<TeachersTableView />
-					)
-					: (
-						<TeachersGridView />
-					)
-				}
-
+		<div className='adminCoupons'>
+			<div className="headingBar">
+				<h2 className='PageHeading'>Teachers</h2>
+				<Breadcrumb breadcrumbData={[
+					{
+						link: "/admin/teachers",
+						text: "Teachers"
+					}
+				]} />
 			</div>
+
+			<div className='displayDataView'>
+				<button className={`${viewMode === "table" ? "active" : ""}`} onClick={() => setViewMode("table")}>List View</button>
+				<button className={`${viewMode === "grid" ? "active" : ""}`} onClick={() => setViewMode("grid")}>Grid View</button>
+			</div>
+			{viewMode === "table" ?
+				(
+					<TeachersTableView />
+				)
+				: (
+					<TeachersGridView />
+				)
+			}
+
+			<Pagination
+				pageNo={pageNo}
+				pagination={pagination}
+				perPage={perPage}
+				options={{
+					whiteBG: true
+				}}
+				totalPages={totalTeachers}
+				onPageChange={(page) => dispatch({ type: "adminteacher/setPageNo", payload: page })}
+				goNext={() => pageNo < pagination.length ? dispatch({ type: "adminteacher/setPageNo", payload: pageNo + 1 }) : null}
+				goPrev={() => pageNo > 1 ? dispatch({ type: "adminteacher/setPageNo", payload: pageNo - 1 }) : null}
+			/>
+
+		</div>
 	)
 }
 
@@ -185,15 +200,7 @@ const TeachersTableView = () => {
 					</tbody>
 				</table>
 			</div>
-			<Pagination
-				pageNo={pageNo}
-				pagination={pagination}
-				perPage={perPage}
-				totalPages={totalTeachers}
-				onPageChange={(page) => dispatch({type: "adminteacher/setPageNo", payload: page})}
-				goNext={() => pageNo < pagination.length ? dispatch({type: "adminteacher/setPageNo", payload: pageNo + 1 }) : null}
-				goPrev={() => pageNo > 1 ? dispatch({type: "adminteacher/setPageNo", payload: pageNo -1 }) : null}
-			/>
+
 		</div>
 	)
 }

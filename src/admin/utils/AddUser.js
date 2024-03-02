@@ -156,7 +156,7 @@ const AddUser = ({ type, role, breadcrumKey, breadcrumbName, onAddUser, onUpdate
                     <p className='multiInputheading'>Basic Details</p>
 
                     <div className='flex flex-col gap-2 w-[200px]'>
-                        <div className="flex justify-center items-center aspect-square w-full overflow-hidden rounded-[10px] bg-[#EAEAEA]">
+                        <div className="AddUserPhotoContainer">
                             {userSchema?.dp ? (
                                 <img className='w-full h-full object-cover' src={userSchema?.dp} alt="" />
                             ) : (

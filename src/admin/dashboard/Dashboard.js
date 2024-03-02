@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./dashboard.css";
 
 import AdminBase from '../adminBase/AdminBase';
@@ -17,6 +17,8 @@ import { getAllDashboarData } from '../reducers/AdminReducer';
 import { toDateString } from '../../functions/dateformate';
 import axios from 'axios';
 import { API } from '../../constant';
+import { IoScanOutline } from 'react-icons/io5';
+import FullScreenAdminContainer from '../../components/utils/FullScreenAdminContainer';
 
 
 const Dashboard2 = () => {
@@ -110,54 +112,47 @@ const Dashboard2 = () => {
 				</div>
 			</div>
 
-			<div className='dashboardRow2'>
-				<div className='tableContainer dashboard'>
-					<div className='tableHeading'>
-						<h2 className='heading'>Teachers List</h2>
-					</div>
-					<div className="dashTable">
-						<table className="dashboardTable">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Name</th>
-									<th>Email</th>
-									<th>Course Created</th>
-									<th>Rating</th>
-									<th>Action</th>
-								</tr>
-							</thead>
-							<tbody>
-								{
-									teachers &&
-									teachers.length > 0 &&
-									teachers.map((teacherItem) => {
-										return (
-											<tr key={teacherItem?._id}>
-												<td className='tableProfileImg'><img src={teacherItem?.dp || "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"} alt={teacherItem?.first_name} /></td>
-												<td>{teacherItem?.first_name} {teacherItem?.last_name}</td>
-												<td>{teacherItem?.email || "N/A"} </td>
-												<td>{teacherItem?.courseCreated || 0}</td>
-												<td>4.5 / 5</td>
-												<td className='tableActionBtns'>
-													<div title='Edit Coupon' className='edit'><MdModeEdit size={15} /></div>
-													<div title='Delete Coupon' className='delete'><AiOutlineDelete size={17} /></div>
-												</td>
-											</tr>
+			<FullScreenAdminContainer className='dashboardRow2' title={"Teachers List"}>
+				<div className="dashTable">
+					<table className="dashboardTable">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Course Created</th>
+								<th>Rating</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{
+								teachers &&
+								teachers.length > 0 &&
+								teachers.map((teacherItem) => {
+									return (
+										<tr key={teacherItem?._id}>
+											<td className='tableProfileImg'><img src={teacherItem?.dp || "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"} alt={teacherItem?.first_name} /></td>
+											<td>{teacherItem?.first_name} {teacherItem?.last_name}</td>
+											<td>{teacherItem?.email || "N/A"} </td>
+											<td>{teacherItem?.courseCreated || 0}</td>
+											<td>4.5 / 5</td>
+											<td className='tableActionBtns'>
+												<div title='Edit Coupon' className='edit'><MdModeEdit size={15} /></div>
+												<div title='Delete Coupon' className='delete'><AiOutlineDelete size={17} /></div>
+											</td>
+										</tr>
 
-										)
-									})
-								}
-							</tbody>
-						</table>
-					</div>
+									)
+								})
+							}
+						</tbody>
+					</table>
 				</div>
-			</div>
+			</FullScreenAdminContainer>
 
-			<div className='examToppers'>
-				<div className='tableHeading'>
-					<h2 className='heading'>Exam Toppers</h2>
-				</div>
+
+			<FullScreenAdminContainer className='examToppers' title={"Exam Toppers"}>
 				<div className='examToppersTable'>
 					<table className="dashboardTable striped">
 						<thead>
@@ -199,11 +194,10 @@ const Dashboard2 = () => {
 						</tbody>
 					</table>
 				</div>
-			</div>
-			<div className='recentTransactions'>
-				<div className='tableHeading'>
-					<h2 className='heading'>Recent Transcations</h2>
-				</div>
+			</FullScreenAdminContainer>
+
+
+			<FullScreenAdminContainer className='recentTransactions' title={"Recent Transcations"}>
 				<div className='examToppersTable'>
 					<table className="dashboardTable striped">
 						<thead>
@@ -266,12 +260,47 @@ const Dashboard2 = () => {
 						</tbody>
 					</table>
 				</div>
-			</div>
+			</FullScreenAdminContainer>
 
 			{/* <div className="dashboardRow3 gridCol2">
 				</div> */}
 
-			<div className="dashboardRow4 ">
+			<FullScreenAdminContainer className='dashboardRow4' title={"Send Email"}>
+				<div className='adminSendMail'>
+					<div className='adminMailInput'>
+						<label htmlFor="mailtoEmail">To:</label>
+						<input value={mailData.sendTo} onChange={e => setMailData(prev => ({ ...prev, sendTo: e.target.value }))} type="text" id="mailtoEmail" />
+					</div>
+					{/* <div className='adminMailInput'>
+								<label htmlFor="mailCC">Cc:</label>
+								<input type="text" id="mailCC" />
+							</div>
+							<div className='adminMailInput'>
+								<label htmlFor="mailtoEmail">Bcc:</label>
+								<input type="text" id="mailtoEmail" />
+							</div> */}
+					<div className='adminMailInput'>
+						<label htmlFor="mailSubject">Subject:</label>
+						<input value={mailData.subject} onChange={e => setMailData(prev => ({ ...prev, subject: e.target.value }))} type="text" id="mailSubject" />
+					</div>
+					<div>
+						<QuillToolbar hasSeparation={true} className={"DashboardMailSendQuill"} />
+						<ReactQuill theme={"snow"}
+							placeholder={"Write something awesome..."}
+							modules={modules}
+							formats={formats}
+							className='adminDashEditor'
+							value={mailData.htmlData}
+							onChange={(data) => setMailData(prev => ({ ...prev, htmlData: data }))}
+						/>
+					</div>
+					<div>
+						<button onClick={sendMailToUser} className='sendThisMail'>Send Mail!</button>
+					</div>
+				</div>
+			</FullScreenAdminContainer>
+			
+			{/* <div className="dashboardRow4 ">
 				<div className="adminMailSender">
 					<div className='tableHeading'>
 						<h2 className='heading'>Send Email</h2>
@@ -281,14 +310,6 @@ const Dashboard2 = () => {
 							<label htmlFor="mailtoEmail">To:</label>
 							<input value={mailData.sendTo} onChange={e => setMailData(prev => ({ ...prev, sendTo: e.target.value }))} type="text" id="mailtoEmail" />
 						</div>
-						{/* <div className='adminMailInput'>
-								<label htmlFor="mailCC">Cc:</label>
-								<input type="text" id="mailCC" />
-							</div>
-							<div className='adminMailInput'>
-								<label htmlFor="mailtoEmail">Bcc:</label>
-								<input type="text" id="mailtoEmail" />
-							</div> */}
 						<div className='adminMailInput'>
 							<label htmlFor="mailSubject">Subject:</label>
 							<input value={mailData.subject} onChange={e => setMailData(prev => ({ ...prev, subject: e.target.value }))} type="text" id="mailSubject" />
@@ -309,7 +330,7 @@ const Dashboard2 = () => {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
 
 			<div className='dashboardRow2'>
 				<div className='tableContainer dashboard'>

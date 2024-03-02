@@ -41,46 +41,44 @@ const Course = () => {
 
 
     return (
-        <AdminBase>
-            <div className='adminCoupons'>
-                <div className="headingBar">
-                    <h2 className='PageHeading'>Courses</h2>
-                    <Breadcrumb breadcrumbData={[
-                        {
-                            link: "/admin/course",
-                            text: "Course"
-                        }
-                    ]} />
-                </div>
-
-                <div className='displayDataView'>
-                    <button className={`${viewMode === "table" ? "active" : ""}`} onClick={() => setViewMode("table")}>List View</button>
-                    <button className={`${viewMode === "grid" ? "active" : ""}`} onClick={() => setViewMode("grid")}>Grid View</button>
-                </div>
-                {viewMode === "table" ?
-                    (
-                        <CourseTableView />
-                    )
-                    : (
-                        <CourseGridView />
-                    )
-                }
-
-                <Pagination
-                    perPage={perPage}
-                    pageNo={pageNo}
-                    pagination={pagination}
-                    totalPages={totalCourses}
-                    onPageChange={(page) => dispatch({ type: "admin/setCoursePage", payload: page })}
-                    goNext={goNext}
-                    goPrev={goPrev}
-                    options={{
-                        whiteBG: true
-                    }}
-                />
-
+        <div className='adminCoupons'>
+            <div className="headingBar">
+                <h2 className='PageHeading'>Courses</h2>
+                <Breadcrumb breadcrumbData={[
+                    {
+                        link: "/admin/course",
+                        text: "Course"
+                    }
+                ]} />
             </div>
-        </AdminBase>
+
+            <div className='displayDataView'>
+                <button className={`${viewMode === "table" ? "active" : ""}`} onClick={() => setViewMode("table")}>List View</button>
+                <button className={`${viewMode === "grid" ? "active" : ""}`} onClick={() => setViewMode("grid")}>Grid View</button>
+            </div>
+            {viewMode === "table" ?
+                (
+                    <CourseTableView />
+                )
+                : (
+                    <CourseGridView />
+                )
+            }
+
+            <Pagination
+                perPage={perPage}
+                pageNo={pageNo}
+                pagination={pagination}
+                totalPages={totalCourses}
+                onPageChange={(page) => dispatch({ type: "admin/setCoursePage", payload: page })}
+                goNext={goNext}
+                goPrev={goPrev}
+                options={{
+                    whiteBG: true
+                }}
+            />
+
+        </div>
     )
 }
 

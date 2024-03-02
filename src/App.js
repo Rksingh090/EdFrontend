@@ -410,27 +410,19 @@ const router = createBrowserRouter([
                         element: <AdminDashboard />,
                     },
                     {
-                        path: "/admin/coupon",
-                        element: <AdminCoupon />
-                    },
-                    {
-                        path: "/admin/coupon/add",
-                        element: <AdminAddCoupon />
-                    },
-                    {
                         path: "/admin/teachers",
                         element: <AdminTeachers />
                     },
                     {
-                        path: "/admin/teachers/add",
+                        path: "/admin/teacher/add",
                         element: <AdminTeacherAdd />
                     },
                     {
-                        path: "/admin/teachers/edit/:userId",
+                        path: "/admin/teacher/edit/:userId",
                         element: <AdminTeacherEdit />
                     },
                     {
-                        path: "/admin/teachers/about/:teacherId",
+                        path: "/admin/teacher/about/:teacherId",
                         element: <AboutTeacher />
                     },
                     {
@@ -448,6 +440,14 @@ const router = createBrowserRouter([
                     {
                         path: "/admin/course/edit/:course_id",
                         element: <EditCourseBuilderComponent />
+                    },
+                    {
+                        path: "/admin/coupon",
+                        element: <AdminCoupon />
+                    },
+                    {
+                        path: "/admin/coupon/add",
+                        element: <AdminAddCoupon />
                     },
                     {
                         path: "/admin/user-query",

@@ -14,17 +14,6 @@ export const getAllDashboarData = createAsyncThunk(
     }
 )
 
-export const getStudentByPage = createAsyncThunk(
-    "admin/getStudentByPage",
-    async ({ pageNo, perPage }) => {
-        const response = await axios.get(`${API}/admin/students/${pageNo}?perPage=${perPage}`, {
-            headers: {
-                token: localStorage.getItem("token")
-            }
-        })
-        return response.data;
-    }
-)
 
 export const getCourseByPage = createAsyncThunk(
     "admin/getCourseByPage",
@@ -50,14 +39,9 @@ const initialState = {
         newStudentsCount: 0,
         transaction: []
     },
-    student: {
-        students: [],
-        perPage: 10,
-        pageNo: 1
-    },
     course: {
         courses: [],
-        perPage: 10,
+        perPage: 1,
         pageNo: 1,
         pagination: [],
         totalCourses: 0
@@ -100,12 +84,7 @@ const adminReducer = createSlice({
             }
         })
        
-        builder.addCase(getStudentByPage.fulfilled, (state, action) => {
-            const { students, status } = action.payload;
-            if (status === "success") {
-                state.student.students = students;
-            }
-        })
+    
         builder.addCase(getCourseByPage.fulfilled, (state, action) => {
             const { courses, status, pagination, totalCourses } = action.payload;
             if (status === "success") {

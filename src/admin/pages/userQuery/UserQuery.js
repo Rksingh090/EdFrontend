@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import AdminBase from '../../adminBase/AdminBase'
 import Breadcrumb from '../../../utils/Breadcrumb'
 import { AiOutlineEye } from 'react-icons/ai'
 import "./UserQuery.css";
@@ -37,80 +36,78 @@ function UserQuery() {
 
     return (
 
-        <AdminBase>
-            <div className='userQueryPage'>
-                <div className="headingBar">
-                    <h2 className='PageHeading'>User Query</h2>
-                    <Breadcrumb breadcrumbData={[
-                        {
-                            link: "/admin/user-query",
-                            text: "User Query"
-                        }
-                    ]} />
-                </div>
-                <div className='tableContainer'>
-                    <div className='tableHeading'>
-                        <h2 className='heading'>All User query</h2>
-                    </div>
-
-                    <div className="couponTable">
-                        <table className='styled-table'>
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Mobile No.</th>
-                                    <th>father name</th>
-                                    <th>School name</th>
-                                    <th>Query Date</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {data.map((item, index) => {
-                                    return (
-                                        <tr key={item._id}>
-                                            <td>{(((pageNo - 1) * Number(10)) + index + 1)}</td>
-                                            <td>
-                                                <Link className='text-[var(--main)]' to={`/admin/user-query/about/${item?._id}`}>
-                                                    {item?.student_name}
-                                                </Link>
-                                            </td>
-                                            {/* <td>{item?.student_name}</td> */}
-                                            <td>{item.email}</td>
-                                            <td>{item.primary_number}</td>
-                                            <td>{item.father_name}</td>
-                                            <td>{item.school_name}</td>
-                                            <td>{toDateString(item.createdAt, true)}</td>
-                                            <td className='tableActionBtns'>
-                                                <Link title='Delete Coupon' className='view' to={`/admin/user-query/about/${item?._id}`}>
-                                                    {/* {item?.student_name}        */}
-                                                    <AiOutlineEye size={17} />
-                                                </Link>
-                                            </td>
-                                        </tr>
-                                    )
-                                })}
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <Pagination
-                        pageNo={pageNo}
-                        pagination={paginationNo}
-                        perPage={10}
-                        totalPages={totalQueryNo}
-                        goNext={() => pageNo < paginationNo.length ? setPageno(pageNo + 1) : null}
-                        goPrev={() => pageNo > 1 ? setPageno(pageNo - 1) : null}
-                        onPageChange={(page) => {
-                            setPageno(page)
-                        }}
-                    />
-                </div>
+        <div className='userQueryPage'>
+            <div className="headingBar">
+                <h2 className='PageHeading'>User Query</h2>
+                <Breadcrumb breadcrumbData={[
+                    {
+                        link: "/admin/user-query",
+                        text: "User Query"
+                    }
+                ]} />
             </div>
-        </AdminBase>
+            <div className='tableContainer'>
+                <div className='tableHeading'>
+                    <h2 className='heading'>All User query</h2>
+                </div>
+
+                <div className="couponTable">
+                    <table className='styled-table'>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Mobile No.</th>
+                                <th>father name</th>
+                                <th>School name</th>
+                                <th>Query Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.map((item, index) => {
+                                return (
+                                    <tr key={item._id}>
+                                        <td>{(((pageNo - 1) * Number(10)) + index + 1)}</td>
+                                        <td>
+                                            <Link className='text-[var(--main)]' to={`/admin/user-query/about/${item?._id}`}>
+                                                {item?.student_name}
+                                            </Link>
+                                        </td>
+                                        {/* <td>{item?.student_name}</td> */}
+                                        <td>{item.email}</td>
+                                        <td>{item.primary_number}</td>
+                                        <td>{item.father_name}</td>
+                                        <td>{item.school_name}</td>
+                                        <td>{toDateString(item.createdAt, true)}</td>
+                                        <td className='tableActionBtns'>
+                                            <Link title='Delete Coupon' className='view' to={`/admin/user-query/about/${item?._id}`}>
+                                                {/* {item?.student_name}        */}
+                                                <AiOutlineEye size={17} />
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                )
+                            })}
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <Pagination
+                    pageNo={pageNo}
+                    pagination={paginationNo}
+                    perPage={10}
+                    totalPages={totalQueryNo}
+                    goNext={() => pageNo < paginationNo.length ? setPageno(pageNo + 1) : null}
+                    goPrev={() => pageNo > 1 ? setPageno(pageNo - 1) : null}
+                    onPageChange={(page) => {
+                        setPageno(page)
+                    }}
+                />
+            </div>
+        </div>
     )
 }
 
