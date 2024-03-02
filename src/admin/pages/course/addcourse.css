@@ -41,12 +41,12 @@
 }
 
 .editCourseRQuill .ql-toolbar.ql-snow {
-    border: 1px solid #333;
+    border: 1px solid var(--border-subtle);
     border-bottom: none;
 }
 
 .editCourseRQuill .ql-container.ql-snow {
-    border: 1px solid #333;
+    border: 1px solid var(--border-subtle);
     border-top: none;
 }
 

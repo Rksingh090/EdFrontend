@@ -72,7 +72,7 @@ const ForgetPassword = () => {
                 }
             })
     }
-
+ 
 
     return (
         <div className='forgetPassPage'>

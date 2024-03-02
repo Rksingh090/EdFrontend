@@ -11,6 +11,7 @@ console.log(process.env.NODE_ENV)
 if(process.env.NODE_ENV === "production"){
     FRONTEND_DOMAIN = window.location.protocol + "//" + window.location.host;
     API = "https://edtech-backend-08jx.onrender.com/api/v1";
+    BACKEND_URL = "https://edtech-backend-08jx.onrender.com";
 }
 
 

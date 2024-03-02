@@ -52,7 +52,8 @@ Font.whitelist = [
   "courier-new",
   "georgia",
   "helvetica",
-  "lucida"
+  "lucida",
+  "poppins"
 ];
 Quill.register(Font, true);
 
@@ -96,7 +97,7 @@ export const formats = [
 
 // Quill Toolbar component
 export const QuillToolbar = ({ hasSeparation, className }) => (
-  <div id="toolbar" className={`${hasSeparation ? "quillSeparation" : ""} ${className}`}>
+  <div id="toolbar" className={`${hasSeparation ? "quillSeparation" : ""} ${className ? className : ""}`}>
     <span className="ql-formats">
       <select className="ql-font" defaultValue="arial">
         <option value="arial">Arial</option>
@@ -105,6 +106,7 @@ export const QuillToolbar = ({ hasSeparation, className }) => (
         <option value="georgia">Georgia</option>
         <option value="helvetica">Helvetica</option>
         <option value="lucida">Lucida</option>
+        <option value="poppins">Poppins</option>
       </select>
       <select className="ql-size">
         <option value="10px">10px</option>

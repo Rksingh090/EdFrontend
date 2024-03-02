@@ -1,0 +1,18 @@
+.ql-toolbar.ql-snow .ql-picker.ql-expanded .ql-picker-options {
+    background-color: var(--bg-muted);
+}
+.ql-snow .ql-stroke {
+    stroke: var(--text-emphasis);
+}
+
+.ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
+    fill: var(--text-emphasis);
+}
+
+.ql-font-poppins {
+    font-family: "Poppins", sans-serif;
+}
+
+.ql-font-comic-sans {
+    font-family: "Fira Code", monospace;
+}

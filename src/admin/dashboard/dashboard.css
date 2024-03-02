@@ -131,18 +131,20 @@
 .adminDashEditor .ql-editor {
     min-height: 200px;
 }
-
+.adminDashEditor > .ql-container.ql-snow {
+    border: 1px solid var(--border-subtle);
+}
 .adminMailSender,
 .activityFeed {
-    background-color: white;
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-subtle);
     width: 100%;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
 }
 
 
 .borderedBox {
-    border: 1px solid #d9d9d9;
+    border: 1px solid var(--border-subtle);
     border-radius: 15px;
     padding: 15px;
     display: flex;
@@ -157,24 +159,31 @@
     padding: 20px;
 }
 
+.DashboardMailSendQuill.ql-toolbar.ql-snow {
+    border: 1px solid var(--border-subtle);
+}
+
+
 .adminMailInput {
     display: grid;
     grid-template-columns: 80px 1fr;
     align-items: center;
     height: 40px;
     width: 100%;
-    border: 1px solid #d9d9d9;
+    border: 1px solid var(--border-subtle);
 }
 
 .adminMailInput>label {
     padding: 0 10px;
-    background-color: #d9d9d9;
+    background-color: var(--bg-subtle);
+    border-right: 1px solid var(--border-subtle);
     display: flex;
     align-items: center;
     height: 100%;
 }
 
 .adminMailInput>input {
+    background-color: var(--bg-muted);
     width: 100%;
     height: 100%;
     padding: 0 10px;

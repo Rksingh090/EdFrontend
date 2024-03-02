@@ -294,7 +294,7 @@ const Dashboard2 = () => {
 							<input value={mailData.subject} onChange={e => setMailData(prev => ({ ...prev, subject: e.target.value }))} type="text" id="mailSubject" />
 						</div>
 						<div>
-							<QuillToolbar hasSeparation={true} />
+							<QuillToolbar hasSeparation={true} className={"DashboardMailSendQuill"} />
 							<ReactQuill theme={"snow"}
 								placeholder={"Write something awesome..."}
 								modules={modules}

@@ -238,7 +238,7 @@ const Sidebar = () => {
         <div className={`adminSidebar ${sidebarOpen ? "open" : "close"}`}>
             <div className={`sidebarAvatar ${!sidebarOpen ? "hidden" : "flex"}`}>
                 <img src={user.dp ? user?.dp : "https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/homeGirl.d9eeaffee7b085135ccc+(1).png"} alt="" className='imkl' />
-                <h2>Dinesh Kumar Jain</h2>
+                <h2>Rishab Singh</h2>
                 <p>Administrator</p>
             </div>
 

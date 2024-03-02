@@ -126,6 +126,7 @@ import CourseContentBase from './pages/coursecontent/CourseContentBase';
 import { setTheme, toggleTheme } from './reducers/AppSettingReducer';
 import useKeybinds from './hooks/useKeyBinds';
 import AdminBase from './admin/adminBase/AdminBase';
+import ForgetPassword from './pages/auth/ForgotPassword';
 
 
 
@@ -212,6 +213,10 @@ const router = createBrowserRouter([
             {
                 path: "/affiliate/register",
                 element: <OtpVerify />
+            },
+            {
+                path: "/forgot-password",
+                element: <ForgetPassword />
             },
         ]
     },

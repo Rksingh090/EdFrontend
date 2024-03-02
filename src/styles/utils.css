@@ -499,7 +499,7 @@ table.dashboardTable .tableProfileImg>img {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px dotted var(--bg-subtle);
+    border-bottom: 1px dotted var(--border-subtle);
 }
 
 .tableHeading>.heading {
