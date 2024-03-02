@@ -11,6 +11,12 @@ import { FiPlusSquare } from 'react-icons/fi';
 import { IoCloudUploadOutline, IoSettingsOutline } from 'react-icons/io5';
 import { RxImage } from 'react-icons/rx';
 
+import axios from 'axios';
+import { API, FRONTEND_DOMAIN } from '../../constant';
+
+// course context
+import { useCourse } from '../../context/CourseBuilderProvider';
+
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import 'react-quill/dist/quill.bubble.css'
@@ -20,22 +26,20 @@ import '../styles/coursebuilder.css';
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 
-// course context 
-import { useCourse } from '../../context/CourseBuilderProvider';
+// course functions
+import { formatBytes } from '../../functions/formatebyte';
+import { slugify } from '../../functions/slugify';
+import { uploadImage } from '../../functions/uploader';
 
+// course components
 import Switch from '../../components/utils/Switch';
 import AddNewTopic from '../../components/coursebuilder/AddNewTopic';
 import AddNewQuiz from '../../components/coursebuilder/AddNewQuiz';
-import { slugify } from '../../functions/slugify';
 import AssignmentForm from '../../components/coursebuilder/AssignmentForm';
-import { API, FRONTEND_DOMAIN } from '../../constant';
-import axios from 'axios';
 import QuillToolbar, { formats, modules } from '../../components/utils/EditorToolbar';
 import AddLessonForm from '../../components/coursebuilder/AddLessonForm';
-import { uploadImage } from '../../functions/uploader';
 import EditCourseHeader from '../../components/coursebuilder/EditCourseHeader';
 import AddRecording from '../../components/coursebuilder/AddRecording';
-import { formatBytes } from '../../functions/formatebyte';
 
 const EditCourseBuilder = () => {
     const { course_id } = useParams();
@@ -343,7 +347,6 @@ const EditCourseBuilder = () => {
         if (!e.target.files || e.target.files.length === 0) {
             return;
         }
-
         const file = e.target.files[0];
         const imgData = await uploadImage(file, "course-thumbnail");
 
@@ -357,8 +360,7 @@ const EditCourseBuilder = () => {
     const uploadImageInCourseDesc = () => {
         if (!courseDescRef?.current) return;
         const editor = courseDescRef.current.getEditor();
-        console.log(editor)
-
+        
         const input = document.createElement("input");
         input.setAttribute("type", "file");
         input.setAttribute("accept", "image/*");
