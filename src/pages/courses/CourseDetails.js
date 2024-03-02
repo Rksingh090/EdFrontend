@@ -139,7 +139,7 @@ const CourseDetails = () => {
             <div className='courseProgressMainPage'>
                 <div className='MaxAreaContainer courseProgressContainer'>
                     <div className='courseProgressCol1'>
-                        <div className='courseThumbnailAndMeta'>
+                        <div className='courseThumbnailAndMeta'> 
                             <div className='courseTitleAndCat'>
                                 <p className='CPCourseTitle'>{courseContent?.title}, </p>
                                 <p className='CPCourseSubTitle'>{courseContent?.category?.name}, {courseContent?.sub_category?.name}</p>
@@ -147,8 +147,9 @@ const CourseDetails = () => {
                             {/* <div className="playIconForVideo">
                                 <BsFillPlayFill size={25} />
                             </div> */}
-                            
-                            <img  src={courseContent?.thumbnail || "https://letslearn-storage.s3.ap-south-1.amazonaws.com/image/front-view-1686118474450.webp"} alt="" className="CPCourseHeroImg" />
+                            <div className='CPCourseHeroImg'>
+                            <img  src={courseContent?.thumbnail || "https://letslearn-storage.s3.ap-south-1.amazonaws.com/image/front-view-1686118474450.webp"} alt="" />
+                            </div>
                         </div>
 
                         {/* tabmenu  */}

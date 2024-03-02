@@ -28,11 +28,11 @@ import AddNewTopic from '../../components/coursebuilder/AddNewTopic';
 import AddNewQuiz from '../../components/coursebuilder/AddNewQuiz';
 import { slugify } from '../../functions/slugify';
 import AssignmentForm from '../../components/coursebuilder/AssignmentForm';
-import { API, FRONTEND_DOMAIN } from '../../constant';
+import { API, BACKEND_URL, FRONTEND_DOMAIN } from '../../constant';
 import axios from 'axios';
 import QuillToolbar, { formats, modules } from '../../components/utils/EditorToolbar';
 import AddLessonForm from '../../components/coursebuilder/AddLessonForm';
-import { uploadImage } from '../../functions/uploader';
+import { uploadImage, uploadVideo } from '../../functions/uploader';
 import EditCourseHeader from '../../components/coursebuilder/EditCourseHeader';
 import AddRecording from '../../components/coursebuilder/AddRecording';
 import { formatBytes } from '../../functions/formatebyte';
@@ -350,9 +350,25 @@ const EditCourseBuilder = () => {
 
         setCourseData(prev => ({
             ...prev,
-            thumbnail: imgData.imgUrl
+            thumbnail: `${BACKEND_URL}/${imgData.imgUrl}`
         }))
     }
+
+    // upload video thumbnail course 
+    const handleUploadVThumbnail = async (e) => {
+        if (!e.target.files || e.target.files.length === 0) {
+            return;
+        }
+
+        const file = e.target.files[0];
+        const videoData = await uploadVideo(file, "course-vthumbnail");
+
+        setCourseData(prev => ({
+            ...prev,
+            video: `${BACKEND_URL}/${videoData.videoUrl}`
+        }))
+    }
+
 
     // img upload and add to quill editor 
     const uploadImageInCourseDesc = () => {
@@ -619,7 +635,7 @@ const EditCourseBuilder = () => {
                                             <p>Drag & Drop Your Video</p>
                                             <p>File Format: .mp4</p>
                                             <p>or</p>
-                                            <input type="file" ref={videoInputRef} name="file" accept='video/*' hidden />
+                                            <input type="file" ref={videoInputRef} onChange={handleUploadVThumbnail} name="file" accept='video/*' hidden />
                                             <button onClick={handleVideoFile} className='browseFileBTN'> Browse File</button>
                                         </div>
                                     </div>

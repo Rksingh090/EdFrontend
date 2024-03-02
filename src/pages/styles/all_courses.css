@@ -293,7 +293,8 @@
     gap: 20px;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 2px 4px 10px #a9a9a9;
+    border: 1px solid var(--bg-subtle);
+    /* box-shadow: 2px 4px 10px var(--bg-backdrop); */
     height: 250px;
     width: 100%;
 }
