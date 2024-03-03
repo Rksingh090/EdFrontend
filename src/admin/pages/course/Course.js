@@ -13,6 +13,7 @@ import { getCourseByPage } from '../../reducers/AdminReducer';
 import { BsCheck2 } from 'react-icons/bs';
 import { RxCopy } from 'react-icons/rx';
 import { Link } from 'react-router-dom';
+import FullScreenAdminContainer from '../../../components/utils/FullScreenAdminContainer';
 
 const Course = () => {
     const dispatch = useDispatch()
@@ -26,18 +27,7 @@ const Course = () => {
     }, [dispatch, perPage, pageNo])
 
 
-    const goNext = () => {
-        if (pageNo < pagination[pagination.length - 1]) {
-            dispatch({ type: "admin/setCoursePage", payload: pageNo + 1 })
-        }
-    }
-
-    const goPrev = () => {
-        if (pageNo > 1) {
-            dispatch({ type: "admin/setCoursePage", payload: pageNo - 1 })
-        }
-    }
-
+    
 
 
     return (
@@ -65,7 +55,7 @@ const Course = () => {
                 )
             }
 
-            <Pagination
+            {/* <Pagination
                 perPage={perPage}
                 pageNo={pageNo}
                 pagination={pagination}
@@ -76,7 +66,7 @@ const Course = () => {
                 options={{
                     whiteBG: true
                 }}
-            />
+            /> */}
 
         </div>
     )
@@ -84,7 +74,27 @@ const Course = () => {
 
 const CourseGridView = () => {
 
-    const { course: { courses } } = useSelector(state => state.admin);
+    const dispatch = useDispatch();
+
+    const goNext = () => {
+        if (pageNo < pagination[pagination.length - 1]) {
+            dispatch({ type: "admin/setCoursePage", payload: pageNo + 1 })
+        }
+    }
+
+    const goPrev = () => {
+        if (pageNo > 1) {
+            dispatch({ type: "admin/setCoursePage", payload: pageNo - 1 })
+        }
+    }
+
+
+    const {
+        course: {
+            courses, perPage,
+            pageNo, pagination, totalCourses,
+        }
+    } = useSelector(state => state.admin);
 
     return (
         <div className="mainCourseGrid">
@@ -123,7 +133,18 @@ const CourseGridView = () => {
                     })
                 }
             </div>
-
+            <Pagination
+                perPage={perPage}
+                pageNo={pageNo}
+                pagination={pagination}
+                totalPages={totalCourses}
+                onPageChange={(page) => dispatch({ type: "admin/setCoursePage", payload: page })}
+                goNext={goNext}
+                goPrev={goPrev}
+                options={{
+                    whiteBG: true
+                }}
+            />
         </div>
     )
 }
@@ -131,7 +152,7 @@ const CourseGridView = () => {
 const CourseTableView = () => {
     const dispatch = useDispatch();
 
-    const { course: { courses, perPage, pageNo } } = useSelector(state => state.admin);
+    const { course: { courses, perPage, pagination, totalCourses, pageNo } } = useSelector(state => state.admin);
 
     const [currentCopyId, setCurrentCopyId] = useState("")
 
@@ -143,12 +164,21 @@ const CourseTableView = () => {
         }, 1000)
     }
 
+    const goNext = () => {
+        if (pageNo < pagination[pagination.length - 1]) {
+            dispatch({ type: "admin/setCoursePage", payload: pageNo + 1 })
+        }
+    }
+
+    const goPrev = () => {
+        if (pageNo > 1) {
+            dispatch({ type: "admin/setCoursePage", payload: pageNo - 1 })
+        }
+    }
+
 
     return (
-        <div className='tableContainer'>
-            <div className='tableHeading'>
-                <h2 className='heading'>All Courses</h2>
-            </div>
+        <FullScreenAdminContainer title={"All Courses"} style={{ width: "100%" }}>
             <div className='couponCreateDiv'>
                 <button>
                     <span>Add New</span>
@@ -243,8 +273,19 @@ const CourseTableView = () => {
                     </tbody>
                 </table>
             </div>
-
-        </div>
+            <Pagination
+                perPage={perPage}
+                pageNo={pageNo}
+                pagination={pagination}
+                totalPages={totalCourses}
+                onPageChange={(page) => dispatch({ type: "admin/setCoursePage", payload: page })}
+                goNext={goNext}
+                goPrev={goPrev}
+                options={{
+                    whiteBG: true
+                }}
+            />
+        </FullScreenAdminContainer>
     )
 }
 export default Course

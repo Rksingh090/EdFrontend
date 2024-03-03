@@ -112,7 +112,6 @@ import LessonPage from './pages/coursecontent/LessonPage';
 import AllRecordings from "./pages/coursecontent/AllRecordings";
 
 // affiliate
-import AffiliateRegister from "./pages/auth/AffiliateRegister"
 import AffilateDashboard from "./affiliate/dashboard/Dashboard"
 import AffilateCoupon from "./affiliate/coupon/Coupon";
 import AffiliateCreateCoupon from "./affiliate/coupon/CreateCoupon";
@@ -127,6 +126,7 @@ import { setTheme, toggleTheme } from './reducers/AppSettingReducer';
 import useKeybinds from './hooks/useKeyBinds';
 import AdminBase from './admin/adminBase/AdminBase';
 import ForgetPassword from './pages/auth/ForgotPassword';
+import RegisterForm from './landings/RegisterForm';
 
 
 
@@ -177,6 +177,10 @@ const router = createBrowserRouter([
     {
         path: "/applications",
         element: <Application />
+    },
+    {
+        path: "/registration-form",
+        element: <RegisterForm />
     },
     {
         path: "/profile",
@@ -402,6 +406,10 @@ const router = createBrowserRouter([
         element: <Protected validRoles={["admin"]} />,
         children: [
             {
+                path: "/admin/course/edit/:course_id",
+                element: <EditCourseBuilderComponent />
+            },
+            {
                 path: "/admin",
                 element: <AdminBase />,
                 children: [
@@ -437,10 +445,7 @@ const router = createBrowserRouter([
                         path: "/admin/course/about/:courseId",
                         element: <AdminAboutCourse />
                     },
-                    {
-                        path: "/admin/course/edit/:course_id",
-                        element: <EditCourseBuilderComponent />
-                    },
+                    
                     {
                         path: "/admin/coupon",
                         element: <AdminCoupon />

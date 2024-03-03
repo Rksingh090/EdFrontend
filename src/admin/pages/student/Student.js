@@ -12,6 +12,7 @@ import { getStudentByPage } from '../../reducers/StudentReducer';
 import { BsCheck2 } from 'react-icons/bs';
 import { RxCopy } from 'react-icons/rx';
 import Pagination from '../../../utils/Pagination';
+import { BACKEND_URL } from '../../../constant';
 
 const Student = () => {
 
@@ -81,7 +82,7 @@ const StudentGridView = () => {
 					return (
 						<div className='TeacherCard' key={studentItem?._id}>
 							<div className='teacherProfileImg'>
-								<img src={studentItem?.dp || "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"} alt={studentItem?.first_name || "profile"} />
+								<img src={studentItem?.dp ? `${BACKEND_URL}/${studentItem?.dp}` : "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"} alt={studentItem?.first_name || "profile"} />
 							</div>
 							<h3 className='teacherName'>{studentItem?.first_name} {studentItem?.last_name}</h3>
 							<p className='teacherPText'>{studentItem?.skills?.length > 0 ? studentItem?.skills[0]?.name : "N/A"} </p>

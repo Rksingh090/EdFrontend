@@ -63,25 +63,25 @@ const Settings = () => {
                     {showTab === "social" &&
                         <div className='STPLinkTab'>
                             <h1 className='STPLinkTabHeading'>Social Profile Link</h1>
-                            <div className='inputDiv whiteBG withShadow nopad'>
+                            <div className='inputDiv whiteBG nopad'>
                                 <BsPerson size={20} />
-                                <input type="text" placeholder='https://portfolio.com' className='w-[500px] gap-8 outline-none border-[1px] border-gray-300 p-2 rounded-md' />
+                                <input type="text" placeholder='https://portfolio.com' />
                             </div>
-                            <div className="inputDiv whiteBG withShadow nopad">
+                            <div className="inputDiv whiteBG nopad">
                                 <CiFacebook size={22} />
-                                <input type="text" placeholder='https://facebook.com' className='w-[500px] gap-8 outline-none border-[1px] border-gray-300 p-2 rounded-md' />
+                                <input type="text" placeholder='https://facebook.com' />
                             </div>
-                            <div className='inputDiv whiteBG withShadow nopad'>
+                            <div className='inputDiv whiteBG nopad'>
                                 <RiTwitterXFill size={18} />
-                                <input type="text" placeholder='https://x.com' className='w-[500px] gap-8 outline-none border-[1px] border-gray-300 p-2 rounded-md' />
+                                <input type="text" placeholder='https://x.com' />
                             </div>
-                            <div className='inputDiv whiteBG withShadow nopad'>
+                            <div className='inputDiv whiteBG nopad'>
                                 <CiLinkedin size={22} />
-                                <input type="text" placeholder='https://linkedin.com' className='w-[500px] gap-8 outline-none border-[1px] border-gray-300 p-2 rounded-md' />
+                                <input type="text" placeholder='https://linkedin.com' />
                             </div>
-                            <div className='inputDiv whiteBG withShadow nopad'>
+                            <div className='inputDiv whiteBG nopad'>
                                 <FiGithub size={18} />
-                                <input type="text" placeholder='https://github.com' className='w-[500px] gap-8 outline-none border-[1px] border-gray-300 p-2 rounded-md' />
+                                <input type="text" placeholder='https://github.com' />
                             </div>
                         </div>
                     }

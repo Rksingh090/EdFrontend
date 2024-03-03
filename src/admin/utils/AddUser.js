@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { API } from '../../constant';
+import { API, BACKEND_URL } from '../../constant';
 import Breadcrumb from '../../utils/Breadcrumb';
 
 import { AiOutlinePlus } from 'react-icons/ai';
@@ -158,7 +158,7 @@ const AddUser = ({ type, role, breadcrumKey, breadcrumbName, onAddUser, onUpdate
                     <div className='flex flex-col gap-2 w-[200px]'>
                         <div className="AddUserPhotoContainer">
                             {userSchema?.dp ? (
-                                <img className='w-full h-full object-cover' src={userSchema?.dp} alt="" />
+                                <img className='w-full h-full object-cover' src={`${BACKEND_URL}/${userSchema?.dp}`} alt="" />
                             ) : (
                                 <FaRegImages size={35} color='#999' />
                             )}

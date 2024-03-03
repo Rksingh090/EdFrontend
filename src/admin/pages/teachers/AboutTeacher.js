@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { API } from '../../../constant'
+import { API, BACKEND_URL } from '../../../constant'
 import Breadcrumb from '../../../utils/Breadcrumb';
 
 
@@ -79,7 +79,7 @@ const AboutTeacher = () => {
                         {/* card one  */}
                         <div className="adminCard aboutTeacherMeta">
                             <div className="roundedImgDiv withOutline" style={{ height: "120px" }}>
-                                <img src={teacherData.dp ? teacherData.dp : "https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/elephant.jpg"} alt="" />
+                                <img src={teacherData.dp ? `${BACKEND_URL}/${teacherData.dp}` : "https://letslearn-storage.s3.ap-south-1.amazonaws.com/home/elephant.jpg"} alt="" />
                             </div>
                             <div className='flexCenter pt-1 pb-3'>
                                 <h2 className='adminBoldMDHeading'>{teacherData?.name}</h2>

@@ -10,6 +10,7 @@ import { IoVolumeMuteSharp } from 'react-icons/io5'
 
 import Duration from './Duration'
 import CustomRangeInput from '../components/utils/CustomRangeInput'
+import { BACKEND_URL } from '../constant'
 
 
 const MyReactPlayer = ({ url }) => {
@@ -200,7 +201,7 @@ const MyReactPlayer = ({ url }) => {
             >
 
                 <ReactPlayer
-                    url={url}
+                    url={`${BACKEND_URL}/${url}`}
                     width={"100%"}
                     height={"100%"}
                     ref={playerRef}

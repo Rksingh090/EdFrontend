@@ -16,7 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllDashboarData } from '../reducers/AdminReducer';
 import { toDateString } from '../../functions/dateformate';
 import axios from 'axios';
-import { API } from '../../constant';
+import { API, BACKEND_URL } from '../../constant';
 import { IoScanOutline } from 'react-icons/io5';
 import FullScreenAdminContainer from '../../components/utils/FullScreenAdminContainer';
 
@@ -132,7 +132,7 @@ const Dashboard2 = () => {
 								teachers.map((teacherItem) => {
 									return (
 										<tr key={teacherItem?._id}>
-											<td className='tableProfileImg'><img src={teacherItem?.dp || "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"} alt={teacherItem?.first_name} /></td>
+											<td className='tableProfileImg'><img src={teacherItem?.dp ? `${BACKEND_URL}/${teacherItem?.dp}`: "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"} alt={teacherItem?.first_name} /></td>
 											<td>{teacherItem?.first_name} {teacherItem?.last_name}</td>
 											<td>{teacherItem?.email || "N/A"} </td>
 											<td>{teacherItem?.courseCreated || 0}</td>
@@ -299,40 +299,47 @@ const Dashboard2 = () => {
 					</div>
 				</div>
 			</FullScreenAdminContainer>
-			
-			{/* <div className="dashboardRow4 ">
-				<div className="adminMailSender">
-					<div className='tableHeading'>
-						<h2 className='heading'>Send Email</h2>
-					</div>
-					<div className='adminSendMail'>
-						<div className='adminMailInput'>
-							<label htmlFor="mailtoEmail">To:</label>
-							<input value={mailData.sendTo} onChange={e => setMailData(prev => ({ ...prev, sendTo: e.target.value }))} type="text" id="mailtoEmail" />
-						</div>
-						<div className='adminMailInput'>
-							<label htmlFor="mailSubject">Subject:</label>
-							<input value={mailData.subject} onChange={e => setMailData(prev => ({ ...prev, subject: e.target.value }))} type="text" id="mailSubject" />
-						</div>
-						<div>
-							<QuillToolbar hasSeparation={true} className={"DashboardMailSendQuill"} />
-							<ReactQuill theme={"snow"}
-								placeholder={"Write something awesome..."}
-								modules={modules}
-								formats={formats}
-								className='adminDashEditor'
-								value={mailData.htmlData}
-								onChange={(data) => setMailData(prev => ({ ...prev, htmlData: data }))}
-							/>
-						</div>
-						<div>
-							<button onClick={sendMailToUser} className='sendThisMail'>Send Mail!</button>
-						</div>
-					</div>
-				</div>
-			</div> */}
 
-			<div className='dashboardRow2'>
+
+			<FullScreenAdminContainer className='dashboardRow2' title={"New Student List"}>
+				<div className="dashTable">
+					<table className="dashboardTable">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Name</th>
+								<th>Date of Joining</th>
+								<th>Fees</th>
+								<th>Enrolled Courses</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{
+								newStudents &&
+								newStudents.length > 0 &&
+								newStudents.map((student, idx) => {
+									return (
+										<tr key={student?._id}>
+											<td>{idx + 1}</td>
+											<td>{student?.first_name} {student?.last_name}</td>
+											<td>{new Date(student.createdAt).toLocaleDateString()}</td>
+											<td className='tableBadge success'><p>Paid</p></td>
+											<td>{student?.enrolledCourseCount}</td>
+											<td className='tableActionBtns'>
+												<div title='Edit Coupon' className='edit'><MdModeEdit size={15} /></div>
+												<div title='Delete Coupon' className='delete'><AiOutlineDelete size={17} /></div>
+											</td>
+										</tr>
+									)
+								})
+							}
+						</tbody>
+					</table>
+				</div>
+			</FullScreenAdminContainer>
+
+			{/* <div className='dashboardRow2'>
 				<div className='tableContainer dashboard'>
 					<div className='tableHeading'>
 						<h2 className='heading'>New Student List</h2>
@@ -373,7 +380,7 @@ const Dashboard2 = () => {
 						</table>
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	)
 }

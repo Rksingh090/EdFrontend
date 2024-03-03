@@ -628,6 +628,92 @@
 }
 
 
+/* icon btn  */
+.iconBtn {
+    background-color: var(--main);
+    color: var(--text-emphasis);
+    border: 1px solid transparent;
+    outline: none;
+    padding: 10px 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.iconBtn.autoWidth {
+    width: auto;
+}
+
+.iconBtn:disabled {
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border);
+    color: var(--text-subtle);
+}
+
+
+.iconBtn,
+.iconBtn * {
+    transition: all .1s ease;
+}
+.iconBtn.mutedSubtle{ 
+    background-color: var(--bg-subtle);
+    border: 1px solid var(--border);
+    color: var(--text-emphasis);
+}
+
+.iconBtn.small {
+    padding: 4px 7px;
+    font-size: 11px;
+}
+
+.iconBtn span,
+.iconBtn svg {
+    color: inherit;
+}
+
+.iconBtn.noPad {
+    padding: 0;
+}
+
+.iconBtn.round {
+    border-radius: 5px;
+}
+
+
+.iconLoading {
+    animation: spin 1s infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+.iconBtn.success {
+    background-color: var(--bg-success);
+    color: var(--text-success);
+}
+
+.iconBtn.warning {
+    background-color: var(--bg-warning);
+    color: var(--text-warning);
+}
+
+.iconBtn.error {
+    background-color: var(--bg-error);
+    color: var(--text-error);
+}
+
+.iconBtn.info {
+    background-color: var(--bg-info);
+    color: var(--text-info);
+}
+
+
 
 @media only screen and (max-width: 500px) {
     .SPTProfileUploadContainer {

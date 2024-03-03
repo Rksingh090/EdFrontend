@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { API } from '../../constant';
 import { useDispatch } from 'react-redux';
 import { sendOtpToUser, setUser } from '../../reducers/UserReducer';
+import IconButton from '../../components/utils/IconButton';
 
 
 const ForgetPassword = () => {
@@ -14,6 +15,7 @@ const ForgetPassword = () => {
     const [otpSend, setOtpSend] = useState(false);
 
     const [otpVerified, setOtpVerifed] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const [passwordData, setPasswordData] = useState({
         password: "",
@@ -23,7 +25,7 @@ const ForgetPassword = () => {
     // verify otp login 
     const handleOTPVerify = async (e) => {
         e.preventDefault();
-
+        setIsLoading(true);
         axios.post(`${API}/auth/otp/login`, {
             email,
             otp
@@ -37,29 +39,39 @@ const ForgetPassword = () => {
             .catch((err) => {
                 alert("Error: " + err.response.data.message);
             })
+            .finally(() => {
+                setIsLoading(false);
+            })
     }
 
     // send otp 
-    const handleOTPsend = (e) => {
-        e.preventDefault();
-        if (!email || email === "" || email === undefined) return;
-        dispatch(sendOtpToUser({ email }))
-            .then((action) => {
-                if (action.type === "user/sendOtpToUser/rejected") {
-                    console.log("User not found");
-                } else {
-                    const { status } = action.payload;
-                    if (status === "success") {
-                        setOtpSend(true)
-                        alert("OTP Send")
-                    }
+    const handleOTPsend = async (e) => {
+        try {
+            e.preventDefault();
+            setIsLoading(true);
+            if (!email || email === "" || email === undefined) return;
+            const action = await dispatch(sendOtpToUser({ email }))
+            if (action.type === "user/sendOtpToUser/rejected") {
+                console.log("User not found");
+            } else {
+                const { status } = action.payload;
+                if (status === "success") {
+                    setOtpSend(true)
+                    alert("OTP Send")
                 }
-            })
+            }
+        } catch (error) {
+            console.log(error);
+        }
+        finally {
+            setIsLoading(false);
+        }
     }
 
     // change password 
     const changePassword = (e) => {
         e.preventDefault();
+        setIsLoading(true);
         axios.post(`${API}/auth/otp/change-password`, {
             email,
             ...passwordData
@@ -71,8 +83,14 @@ const ForgetPassword = () => {
                     window.location.href = "/login"
                 }
             })
+            .catch((e) => {
+                console.log(e);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            })
     }
- 
+
 
     return (
         <div className='forgetPassPage'>
@@ -98,15 +116,23 @@ const ForgetPassword = () => {
                                 otpSend ?
                                     (<div className='verifyOtpDiv'>
                                         <button type='button' className='resendOTPBtn' onClick={(e) => handleOTPsend(e, "resend")}>Resend OTP</button>
-                                        <button className="forgotSendOTP" type='submit'>
-                                            Verify OTP
-                                        </button>
+                                      
+                                        <IconButton
+                                            text={"Verify OTP"}
+                                            type={"submit"}
+                                            classList={"autoWidth round"}
+                                            loading={isLoading}
+                                            loadingSize={22}
+                                        />
                                     </div>
                                     ) : (
-
-                                        <button className="forgotSendOTP" type='submit'>
-                                            Send OTP
-                                        </button>
+                                        <IconButton
+                                            text={"Send OTP"}
+                                            type={"submit"}
+                                            classList={"autoWidth round"}
+                                            loading={isLoading}
+                                            loadingSize={22}
+                                        />
                                     )
                             }
                         </div>
@@ -122,9 +148,16 @@ const ForgetPassword = () => {
                             <input type="password" value={passwordData.confirm_password} onChange={(e) => setPasswordData(prev => ({ ...prev, confirm_password: e.target.value }))} id='forgotPassEmail' />
                         </div>
                         <div className='forgotPassOTPDiv'>
-                            <button className="forgotSendOTP" type='submit'>
+                            <IconButton
+                                text={"Change Password"}
+                                type={"submit"}
+                                classList={"autoWidth round"}
+                                loading={isLoading}
+                                loadingSize={22}
+                            />
+                            {/* <button className="forgotSendOTP" type='submit'>
                                 Change Password
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 </form>

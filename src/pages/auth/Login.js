@@ -10,12 +10,14 @@ import { MdAlternateEmail } from 'react-icons/md'
 import { FiLock } from 'react-icons/fi'
 import { FcGoogle } from 'react-icons/fc'
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { CiDark } from "react-icons/ci";
 
 import { Link, useSearchParams } from 'react-router-dom'
+import IconButton from '../../components/utils/IconButton';
+import { AiOutlineLogin } from "react-icons/ai";
 
 const Login = () => {
 
+    const [isLoading, setIsLoading] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
@@ -28,11 +30,12 @@ const Login = () => {
 
     const [urlSearchParman, setUrlSearchParam] = useSearchParams();
     const nextUrl = useMemo(() => urlSearchParman.get("next"), [urlSearchParman]);
-    // const recaptchaRef = useRef(null)
+
 
     // handle email & pass login 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true)
         axios.post(`${API}/auth/login`,
             {
                 email,
@@ -58,8 +61,9 @@ const Login = () => {
             .catch((err) => {
                 alert("Login Failed: " + err.response.data?.message)
             })
+            .finally(() => setIsLoading(false))
     }
-  
+
 
     return (
         <div className='authContainer'>
@@ -83,7 +87,15 @@ const Login = () => {
                         </span>
                     </div>
                     <div className='submitButton'>
-                        <button type="submit">Login</button>
+                        <IconButton
+                            Icon={<AiOutlineLogin size={22} />}
+                            text={"Login"}
+                            classList={"round mutedSubtle"}
+                            loading={isLoading}
+                            type={"submit"}
+                            loadingSize={22}
+                        />
+                        {/* <button type="submit">Login</button> */}
                         <Link to="/forgot-password" className='forgotPasswordLink' >Forgot Password?</Link>
                     </div>
                 </div>

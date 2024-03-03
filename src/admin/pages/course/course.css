@@ -14,8 +14,8 @@
 
 .courseCard {
     width: 100%;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    background-color: white;
+    border: 1px solid var(--border);
+    background-color: var(--bg-muted);
     display: grid;
     grid-template-rows: repeat(2, minmax(200px, 1fr));
     height: 450px;
@@ -173,7 +173,7 @@
 
 .CourseBatchDays>p {
     padding: 4px 8px;
-    background-color: #DDDDDD;
+    background-color: var(--bg-subtle);
     font-size: 13px;
     font-family: var(--poppins);
     border-radius: 40px;

@@ -1852,7 +1852,7 @@ textarea.assignmentFormInput {
 }
 
 .html5Style {
-    background-color: white;
+    background-color: var(--bg-muted);
     height: 250px;
     display: flex;
     flex-direction: column;
@@ -1865,7 +1865,7 @@ textarea.assignmentFormInput {
     padding: 5px 8px;
     border: 1px solid var(--main);
     color: var(--main);
-    background-color: rgba(217, 161, 255, 0.5);
+    background-color: transparent;
     border-radius: 5px;
 }
 
@@ -1991,7 +1991,8 @@ textarea.assignmentFormInput {
 /* recording form  */
 .CBRecordingForm {
     width: 700px;
-    background-color: white;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
     border-radius: 10px;
     display: grid;
     grid-template-rows: 80px minmax(0, 1fr) 80px;
@@ -2002,7 +2003,7 @@ textarea.assignmentFormInput {
     overflow-y: auto;
     overflow-x: hidden;
     max-height: 500px;
-    background-color: rgb(232, 237, 241);
+    background-color: var(--bg-muted);
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -2021,7 +2022,8 @@ textarea.assignmentFormInput {
 }
 
 .CBFormInput {
-    border: 1px solid #d9d9d9;
+    background-color: var(--bg);
+    border: 1px solid var(--border-subtle);
     width: 100%;
     padding: 10px;
     border-radius: 5px;

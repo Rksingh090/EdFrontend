@@ -41,7 +41,7 @@ const initialState = {
     },
     course: {
         courses: [],
-        perPage: 1,
+        perPage: 10,
         pageNo: 1,
         pagination: [],
         totalCourses: 0

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { API } from '../../constant';
 import { Outlet } from 'react-router-dom';
+import PageLoader from '../utils/PageLoader';
 
 const Protected = ({ reverse, validRoles }) => {
 
@@ -49,7 +50,7 @@ const Protected = ({ reverse, validRoles }) => {
 
     return (
         <div>
-            {showComponent && <Outlet />}
+            {showComponent ? <Outlet /> : <PageLoader />}
         </div>
     )
 }

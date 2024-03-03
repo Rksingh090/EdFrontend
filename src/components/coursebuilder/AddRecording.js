@@ -12,7 +12,8 @@ import { TfiShortcode } from 'react-icons/tfi';
 
 import { uploadVideo } from '../../functions/uploader';
 import axios from 'axios';
-import { API } from '../../constant';
+import { API, BACKEND_URL } from '../../constant';
+import SelectOption from '../utils/SelectOption';
 
 const AddRecording = () => {
     const {
@@ -26,33 +27,33 @@ const AddRecording = () => {
     const recordingHTML5VideoRef = useRef();
 
     const handleUploadVideo = async (e) => {
-		let videoFile = e.target.files[0];
-		if (!videoFile || videoFile === null) return;
+        let videoFile = e.target.files[0];
+        if (!videoFile || videoFile === null) return;
 
-		const formData = new FormData();
-		formData.append("video", videoFile);
+        const formData = new FormData();
+        formData.append("video", videoFile);
 
 
-		const { videoUrl, videoKey,fileSize, status } = await uploadVideo(videoFile, "recordings");
+        const { videoUrl, videoKey, fileSize, status } = await uploadVideo(videoFile, "recordings");
 
-		if (status === "success") {
-			setRecordingData(prev => ({
-				...prev,
-				video_source_title: videoKey,
-				video_source: videoUrl,
+        if (status === "success") {
+            setRecordingData(prev => ({
+                ...prev,
+                video_source_title: videoKey,
+                video_source: videoUrl,
                 file_size: fileSize
-			}))
-		}
+            }))
+        }
     }
 
     const handleAddRecording = () => {
-        axios.post(`${API}/recording`, {...recordingData,course: courseData._id  }, {
+        axios.post(`${API}/recording`, { ...recordingData, course: courseData._id }, {
             headers: {
                 token: localStorage.getItem("token")
             }
         }).then((res) => {
-            const {status, recording} = res.data;
-            if(status === "success"){
+            const { status, recording } = res.data;
+            if (status === "success") {
                 closeRecordingForm()
                 setAllRecordings(prev => [...prev, recording])
             }
@@ -72,30 +73,30 @@ const AddRecording = () => {
                 <div className='CBRecordingFormBody'>
                     <div className="CBInputGroup">
                         <label htmlFor="recordingTitle">Title</label>
-                        <input type="text" 
-                        value={recordingData.title}
-                        onChange={(e) => setRecordingData(prev => ({
-                            ...prev,
-                            title: e.target.value
-                        }))}
-                        id="recordingTitle" className='CBFormInput' />
+                        <input type="text"
+                            value={recordingData.title}
+                            onChange={(e) => setRecordingData(prev => ({
+                                ...prev,
+                                title: e.target.value
+                            }))}
+                            id="recordingTitle" className='CBFormInput' />
                     </div>
                     <div className="CBInputGroup">
                         <label htmlFor="recordingDescription">Description</label>
-                        <textarea rows={7} 
-                        value={recordingData.description}
-                        onChange={(e) => setRecordingData(prev => ({
-                            ...prev,
-                            description: e.target.value
-                        }))}
-                        id="recordingDescription" className='CBFormInput'>
+                        <textarea rows={7}
+                            value={recordingData.description}
+                            onChange={(e) => setRecordingData(prev => ({
+                                ...prev,
+                                description: e.target.value
+                            }))}
+                            id="recordingDescription" className='CBFormInput'>
 
                         </textarea>
                     </div>
 
                     <div className='assignButton'>
                         <p className="quizFormInputText">Video Source</p>
-                        <div className='customSelectInput'>
+                        {/* <div className='customSelectInput'>
                             <div className='fixedSelectIcon'>
                                 {recordingData.video_source_type === "html5" && (
                                     <ImHtmlFive size={20} />
@@ -112,26 +113,40 @@ const AddRecording = () => {
                                 {recordingData.video_source_type === "shortcode" && (
                                     <TfiShortcode size={20} />
                                 )}
-                            </div>
-
-                            <select
+                            </div> */}
+                            <SelectOption
                                 value={recordingData.video_source_type}
-                                onChange={(e) => {
+                                onChange={(val) => {
                                     setRecordingData(prev => ({
                                         ...prev,
                                         video_source: "",
-                                        video_source_type: e.target.value
+                                        video_source_type: val
                                     }))
                                 }}
-                                className='padding'>
-                                <option value="none">None</option>
-                                <option value="html5">HTML 5(mp4)</option>
-                                <option value="external-url">External URL</option>
-                                <option value="youtube">YouTube</option>
-                                <option value="embeded">Embeded</option>
-                                <option value="shortcode">Shortcode</option>
-                            </select>
-                        </div>
+                                maxHeight={"400px"}
+                                label={"Select Upload Type"}
+                                valueField={"val"}
+                                textField={"text"}
+                                iconField={"icon"}
+                                options={[
+                                    { icon: <ImHtmlFive size={20} />, text: "HTML 5(mp4", val: "html5" },
+                                    { icon: <BsCodeSlash size={20} />, text: "External URL", val: "external-url" },
+                                    { icon: <BiLink size={20} />, text: "YouTube", val: "youtube" },
+                                    { icon: <TfiShortcode size={20} />, text: "Embeded", val: "embeded" },
+                                ]}
+                                
+                                selectStyle={{
+                                    height: "auto"
+                                }}
+                                optionStyle={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "10px"
+                                }}
+                                style={{
+                                    padding: "10px",
+                                }}
+                            />
 
 
                         {recordingData.video_source_type === "html5" && (
@@ -142,7 +157,7 @@ const AddRecording = () => {
                                         recordingData.video_source !== "" ? (
                                         <div className='h-max w-full overflow-hidden'>
                                             <video controls>
-                                                <source src={recordingData.video_source} />
+                                                <source src={`${BACKEND_URL}/${recordingData.video_source}`} />
                                             </video>
                                         </div>
 
@@ -216,7 +231,7 @@ const AddRecording = () => {
                         onCancle={() => setShowRecordingForm(prev => !prev)}
                         submitText={"Add Recording"}
                         onSubmit={handleAddRecording}
-                        
+
                     />
                 </div>
 

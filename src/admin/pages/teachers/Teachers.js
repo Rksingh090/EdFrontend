@@ -13,6 +13,7 @@ import { RxCopy } from 'react-icons/rx';
 import { BsCheck2 } from 'react-icons/bs';
 import Switch from '../../../components/utils/Switch';
 import Pagination from '../../../utils/Pagination';
+import { BACKEND_URL } from '../../../constant';
 
 const Teachers = () => {
 	const dispatch = useDispatch();
@@ -80,7 +81,7 @@ const TeachersGridView = () => {
 					return (
 						<div className='TeacherCard' key={teacherItem?._id}>
 							<div className='teacherProfileImg'>
-								<img src={teacherItem?.dp || "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"} alt={teacherItem?.first_name || "profile"} />
+								<img src={teacherItem?.dp ? `${BACKEND_URL}/${teacherItem?.dp}` : "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"} alt={teacherItem?.first_name || "profile"} />
 							</div>
 							<h3 className='teacherName'>{teacherItem?.first_name} {teacherItem?.last_name}</h3>
 							<p className='teacherPText'>{teacherItem?.skills?.length > 0 && teacherItem?.skills[0]?.name}</p>

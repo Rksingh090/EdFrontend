@@ -4,7 +4,7 @@ import { AiFillCaretDown } from 'react-icons/ai'
 const SelectOption = ({
     classes, value, onChange, label, options,
     maxHeight, textField, valueField, style, selectStyle,
-    iconField,
+    iconField, optionStyle,
     optionClass
 }) => {
     const [showCategoryOptions, setShowCategoryOptions] = useState(false)
@@ -98,6 +98,7 @@ const SelectOption = ({
                             return (
                                 <p
                                     key={opValue}
+                                    style={optionStyle ? optionStyle : {}}
                                     className={`option ${optionClass ? optionClass : ""} ${opValue === value ? "selected" : ""}`}
                                     ref={opValue === value ? optionRef : null}
                                     onClick={(e) => {

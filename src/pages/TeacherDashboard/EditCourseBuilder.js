@@ -18,7 +18,7 @@ import 'react-quill/dist/quill.bubble.css'
 import '../styles/coursebuilder.css';
 
 import { useSelector } from 'react-redux';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 // course context 
 import { useCourse } from '../../context/CourseBuilderProvider';
@@ -39,6 +39,7 @@ import { formatBytes } from '../../functions/formatebyte';
 import SelectOption from '../../components/utils/SelectOption';
 
 const EditCourseBuilder = () => {
+    const navigate = useNavigate();
     const { course_id } = useParams();
 
     const { categories, subcategories } = useSelector(state => state.category);
@@ -445,7 +446,7 @@ const EditCourseBuilder = () => {
                 });
                 setCourseData(response.data.course);
             } catch (error) {
-                console.log(error);
+                navigate("/teacher/course")
             }
         }
         getCourseById(course_id);
@@ -518,6 +519,7 @@ const EditCourseBuilder = () => {
 
 
 
+    console.log(courseData);
 
     return (
         <div>
@@ -1415,7 +1417,7 @@ const EditCourseBuilder = () => {
                                             height: "40px"
                                         }}
                                         label={"Select Language"}
-                                        onChange={(e) => setCourseData(data => { return { ...data, course_language: e.target.value } })}
+                                        onChange={(val) => setCourseData(data => ({ ...data, course_language: val }))}
                                         options={[
                                             { val: "hinglish", text: "Hinglish" },
                                             { val: "english", text: "English" },

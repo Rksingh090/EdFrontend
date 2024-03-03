@@ -55,8 +55,17 @@
     margin: 5px 0;
 }
 
-/* heading styles  */
 
+.pageLoader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: color-mix(in srgb, var(--bg) 100%, transparent 0%);
+}
+
+/* heading styles  */
 .adminBoldLGHeading,
 .adminLGHeading,
 .adminBoldMDHeading,
@@ -107,9 +116,10 @@
 
 .adminSubtitle {
     font-family: var(--poppins);
-    color: #333;
+    color: var(--text);
     font-weight: 400;
     font-size: 12px;
+    margin-top: 5px;
 }
 
 .adminSubtitle.sm {
@@ -141,7 +151,7 @@
     font-size: 16px;
     font-weight: 500;
     font-family: "Poppins", sans-serif;
-    color: #666;
+    color: var(--text-emphasis);
 }
 
 .Breadcrumb {
@@ -496,6 +506,13 @@ table.dashboardTable .tableProfileImg>img {
     color: var(--text);
 }
 
+.tableHeading>div>.right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
 .tableHeading>.heading.lg {
     font-size: 16px;
     font-weight: 600;
@@ -618,19 +635,18 @@ textarea.FormInput {
 /* card header  */
 .adminCard {
     width: 100%;
+    border: 1px solid var(--border-subtle);
     background-color: var(--bg-muted);
     border-radius: 10px;
-    box-shadow: var(--adminSmallShadow);
-    font-family: var(--poppins);
-    color: #222;
+    color: var(--text);
 }
 
 .adminCard .cardHeading {
     width: 100%;
     padding: 10px;
-    border-bottom: 1px dotted #333;
+    border-bottom: 1px dotted var(--border-emphasis);
     font-weight: 600;
-    color: #444;
+    color: var(--text);
 }
 
 
@@ -650,7 +666,7 @@ textarea.FormInput {
 
 .rectImgDiv.withOutline,
 .roundedImgDiv.withOutline {
-    outline: 3px solid #DADADA;
+    outline: 3px solid var(--border-emphasis);
     outline-offset: 3px;
 }
 
@@ -749,7 +765,6 @@ textarea.FormInput {
     border-radius: 5px;
     color: var(--text);
     border: 1px solid var(--border-subtle);
-    /* box-shadow: var(--adminSmallShadow); */
     cursor: pointer;
     outline: none;
     position: relative;
@@ -788,7 +803,7 @@ textarea.FormInput {
     width: 100%;
     overflow-y: auto;
     background-color: var(--bg-subtle);
-    z-index: 7676;
+    z-index: 77;
     border: 1px solid var(--border-subtle);
     border-radius: 5px;
     /* box-shadow: var(--adminSmallShadow); */
