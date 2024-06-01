@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { IoScanOutline } from 'react-icons/io5';
 import { FaAngleDown } from "react-icons/fa6";
+import { TbFocus } from "react-icons/tb";
 
-const FullScreenAdminContainer = ({ children, title, headers, ref, ...props }) => {
+const FullScreenAdminContainer = ({ children, title, headers, ref, fullWidth, ...props }) => {
     const elemref = useRef(null);
     const tableHeadingHeight = useRef(null);
     const tableRef = useRef(null);
@@ -31,21 +32,21 @@ const FullScreenAdminContainer = ({ children, title, headers, ref, ...props }) =
         }
     }
 
-    useEffect(()=>{
-        if(tableRef?.current){
+    useEffect(() => {
+        if (tableRef?.current) {
             setTimeout(() => {
                 const tHeight = tableRef?.current?.getBoundingClientRect()?.height;
                 setInitialHeight(tHeight)
                 setTableHeight(tHeight)
             }, 2000);
         }
-    },[])
+    }, [])
 
 
 
     return (
-        <div {...props} ref={elemref}>
-            <div className='tableContainer dashboard' ref={tableRef} style={{ height: tableHeight }}>
+        <div {...props} ref={elemref} style={{ width: fullWidth ? "100%" : "auto", overflowY: "auto" }}>
+            <div className={`tableContainer dashboard`} ref={tableRef} style={{ height: tableHeight }}>
                 <div className='tableHeading' ref={tableHeadingHeight}>
                     <h2 className='heading'>{title}</h2>
                     <div>

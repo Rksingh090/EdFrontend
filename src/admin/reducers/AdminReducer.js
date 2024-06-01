@@ -14,6 +14,18 @@ export const getAllDashboarData = createAsyncThunk(
     }
 )
 
+export const getAllCategories = createAsyncThunk(
+    "admin/getAllCategories",
+    async () => {
+        const response = await axios.get(`${API}/category`, {
+            headers: {
+                token: localStorage.getItem("token")
+            }
+        })
+        return response.data;
+    }
+)
+
 
 export const getCourseByPage = createAsyncThunk(
     "admin/getCourseByPage",

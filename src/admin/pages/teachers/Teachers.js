@@ -14,10 +14,11 @@ import { BsCheck2 } from 'react-icons/bs';
 import Switch from '../../../components/utils/Switch';
 import Pagination from '../../../utils/Pagination';
 import { BACKEND_URL } from '../../../constant';
+import FullScreenAdminContainer from '../../../components/utils/FullScreenAdminContainer';
 
 const Teachers = () => {
 	const dispatch = useDispatch();
-	const { teacher: { perPage, pageNo,pagination, totalTeachers } } = useSelector(state => state.adminteacher);
+	const { teacher: { perPage, pageNo, pagination, totalTeachers } } = useSelector(state => state.adminteacher);
 	// const { teacher: { teachers, totalTeachers, perPage, pageNo, pagination } } = useSelector(state => state.adminteacher);
 
 
@@ -52,6 +53,53 @@ const Teachers = () => {
 				)
 			}
 
+			{/* <Pagination
+				pageNo={pageNo}
+				pagination={pagination}
+				perPage={perPage}
+				options={{
+					whiteBG: true
+				}}
+				totalPages={totalTeachers}
+				onPageChange={(page) => dispatch({ type: "adminteacher/setPageNo", payload: page })}
+				goNext={() => pageNo < pagination.length ? dispatch({ type: "adminteacher/setPageNo", payload: pageNo + 1 }) : null}
+				goPrev={() => pageNo > 1 ? dispatch({ type: "adminteacher/setPageNo", payload: pageNo - 1 }) : null}
+			/> */}
+
+		</div>
+	)
+}
+
+const TeachersGridView = () => {
+
+	const dispatch = useDispatch();
+	const { teacher: {
+		teachers, perPage, pageNo,
+		pagination, totalTeachers
+	} } = useSelector(state => state.adminteacher);
+
+	return (
+		<>
+			<div className='gridView'>
+				{teachers
+					&& teachers.length > 0 &&
+					teachers.map((teacherItem) => {
+						return (
+							<div className='TeacherCard' key={teacherItem?._id}>
+								<div className='teacherProfileImg'>
+									<img src={teacherItem?.dp ? `${BACKEND_URL}/${teacherItem?.dp}` : "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"} alt={teacherItem?.first_name || "profile"} />
+								</div>
+								<h3 className='teacherName'>{teacherItem?.first_name} {teacherItem?.last_name}</h3>
+								<p className='teacherPText'>{teacherItem?.skills?.length > 0 && teacherItem?.skills[0]?.name}</p>
+								<p className='teacherPText'>{teacherItem?.bio}</p>
+								<p className='teacherPText'>{teacherItem?.email} </p>
+								<a className='mobileNo' href={`tel:+91 ${teacherItem?.phone}`}>{teacherItem?.phone}</a>
+								<button className='teacherReadMore'>Read More</button>
+							</div>
+						)
+					})
+				}
+			</div>
 			<Pagination
 				pageNo={pageNo}
 				pagination={pagination}
@@ -64,36 +112,7 @@ const Teachers = () => {
 				goNext={() => pageNo < pagination.length ? dispatch({ type: "adminteacher/setPageNo", payload: pageNo + 1 }) : null}
 				goPrev={() => pageNo > 1 ? dispatch({ type: "adminteacher/setPageNo", payload: pageNo - 1 }) : null}
 			/>
-
-		</div>
-	)
-}
-
-const TeachersGridView = () => {
-
-	const { teacher: { teachers } } = useSelector(state => state.adminteacher);
-
-	return (
-		<div className='gridView'>
-			{teachers
-				&& teachers.length > 0 &&
-				teachers.map((teacherItem) => {
-					return (
-						<div className='TeacherCard' key={teacherItem?._id}>
-							<div className='teacherProfileImg'>
-								<img src={teacherItem?.dp ? `${BACKEND_URL}/${teacherItem?.dp}` : "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"} alt={teacherItem?.first_name || "profile"} />
-							</div>
-							<h3 className='teacherName'>{teacherItem?.first_name} {teacherItem?.last_name}</h3>
-							<p className='teacherPText'>{teacherItem?.skills?.length > 0 && teacherItem?.skills[0]?.name}</p>
-							<p className='teacherPText'>{teacherItem?.bio}</p>
-							<p className='teacherPText'>{teacherItem?.email} </p>
-							<a className='mobileNo' href={`tel:+91 ${teacherItem?.phone}`}>{teacherItem?.phone}</a>
-							<button className='teacherReadMore'>Read More</button>
-						</div>
-					)
-				})
-			}
-		</div>
+		</>
 	)
 }
 
@@ -120,10 +139,11 @@ const TeachersTableView = () => {
 	}
 
 	return (
-		<div className='tableContainer'>
-			<div className='tableHeading'>
-				<h2 className='heading'>All Teachers</h2>
-			</div>
+		<FullScreenAdminContainer title={"All Teachers"} fullWidth>
+			{/* <div className='tableContainer'>
+				<div className='tableHeading'>
+					<h2 className='heading'>All Teachers</h2>
+				</div> */}
 			<div className='couponCreateDiv'>
 				<Link to="/admin/teacher/add">
 					<span>Add New</span>
@@ -202,7 +222,22 @@ const TeachersTableView = () => {
 				</table>
 			</div>
 
-		</div>
+			<div className="p-4">
+				<Pagination
+					pageNo={pageNo}
+					pagination={pagination}
+					perPage={perPage}
+					options={{
+						whiteBG: true
+					}}
+					totalPages={totalTeachers}
+					onPageChange={(page) => dispatch({ type: "adminteacher/setPageNo", payload: page })}
+					goNext={() => pageNo < pagination.length ? dispatch({ type: "adminteacher/setPageNo", payload: pageNo + 1 }) : null}
+					goPrev={() => pageNo > 1 ? dispatch({ type: "adminteacher/setPageNo", payload: pageNo - 1 }) : null}
+				/>
+			</div>
+			{/* </div> */}
+		</FullScreenAdminContainer>
 	)
 }
 export default Teachers

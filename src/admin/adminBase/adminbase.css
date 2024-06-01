@@ -38,7 +38,7 @@
 
 .adminContent {
     overflow-y: auto;
-    padding: 20px 0;
+    padding: 10px 0;
     background-color: var(--bg);
 }
 
@@ -426,6 +426,10 @@
 
 .navAbsBox.profile>div>svg {
     font-size: 15px;
+}
+
+.navAbsBox.profile>div>svg.whiteOutline  path{
+    stroke: white;
 }
 
 .navAbsBox.profile>div>span {

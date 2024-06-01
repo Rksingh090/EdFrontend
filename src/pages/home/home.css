@@ -46,12 +46,13 @@
     width: 90%;
     transition: transform .8s ease, box-shadow .2s ease;
     margin-top: 30px;
-    z-index: 38486;
+    z-index: 486;
 }
 
 
 .homeCourseSearch:has(>input:focus) {
     box-shadow: 0vh 0vh 70vh 100vh rgba(0, 0, 0, 0.45);
+    z-index: 48600;
 }
 
 .homeCourseSearch>input {
@@ -86,7 +87,7 @@
     border-radius: 25px;
 }
 
-.homeHeroImage>img {
+.homeHeroImage>svg {
     width: 100%;
     height: 100%;
     object-fit: cover;

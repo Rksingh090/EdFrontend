@@ -27,7 +27,7 @@ const Course = () => {
     }, [dispatch, perPage, pageNo])
 
 
-    
+
 
 
     return (
@@ -178,7 +178,7 @@ const CourseTableView = () => {
 
 
     return (
-        <FullScreenAdminContainer title={"All Courses"} style={{ width: "100%" }}>
+        <FullScreenAdminContainer title={"All Courses"} style={{ width: "100%" }} fullWidth>
             <div className='couponCreateDiv'>
                 <button>
                     <span>Add New</span>
@@ -273,18 +273,20 @@ const CourseTableView = () => {
                     </tbody>
                 </table>
             </div>
-            <Pagination
-                perPage={perPage}
-                pageNo={pageNo}
-                pagination={pagination}
-                totalPages={totalCourses}
-                onPageChange={(page) => dispatch({ type: "admin/setCoursePage", payload: page })}
-                goNext={goNext}
-                goPrev={goPrev}
-                options={{
-                    whiteBG: true
-                }}
-            />
+            <div className="p-4">
+                <Pagination
+                    perPage={perPage}
+                    pageNo={pageNo}
+                    pagination={pagination}
+                    totalPages={totalCourses}
+                    onPageChange={(page) => dispatch({ type: "admin/setCoursePage", payload: page })}
+                    goNext={goNext}
+                    goPrev={goPrev}
+                    options={{
+                        whiteBG: true
+                    }}
+                />
+            </div>
         </FullScreenAdminContainer>
     )
 }

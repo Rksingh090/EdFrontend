@@ -13,16 +13,15 @@ import { BsCheck2 } from 'react-icons/bs';
 import { RxCopy } from 'react-icons/rx';
 import Pagination from '../../../utils/Pagination';
 import { BACKEND_URL } from '../../../constant';
+import FullScreenAdminContainer from '../../../components/utils/FullScreenAdminContainer';
 
 const Student = () => {
 
 	const [viewMode, setViewMode] = useState("table");
 
 	const dispatch = useDispatch();
-	const { student: { perPage, pageNo, totalStudents, pagination } } = useSelector(state => state.adminstudent);
+	const { student: { perPage, pageNo } } = useSelector(state => state.adminstudent);
 
-	console.log(perPage, pageNo);
-	
 
 	useEffect(() => {
 		dispatch(getStudentByPage({ perPage, pageNo }))
@@ -53,6 +52,38 @@ const Student = () => {
 				)
 			}
 
+
+
+		</div>
+	)
+}
+
+const StudentGridView = () => {
+	const dispatch = useDispatch();
+	const { student: { students, perPage, pageNo, totalStudents, pagination } } = useSelector(state => state.adminstudent);
+
+
+	return (
+		<>
+			<div className='gridView'>
+				{students &&
+					students.length > 0 &&
+					students.map((studentItem) => {
+						return (
+							<div className='TeacherCard' key={studentItem?._id}>
+								<div className='teacherProfileImg'>
+									<img src={studentItem?.dp ? `${BACKEND_URL}/${studentItem?.dp}` : "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"} alt={studentItem?.first_name || "profile"} />
+								</div>
+								<h3 className='teacherName'>{studentItem?.first_name} {studentItem?.last_name}</h3>
+								<p className='teacherPText'>{studentItem?.skills?.length > 0 ? studentItem?.skills[0]?.name : "N/A"} </p>
+								<p className='teacherPText'>{studentItem?.bio}</p>
+								<p className='teacherPText'>{studentItem?.email} </p>
+								<a className='mobileNo' href={`tel:+91 ${studentItem?.phone}`}>{studentItem?.phone}</a>
+								<button className='teacherReadMore'>Read More</button>
+							</div>
+						)
+					})}
+			</div>
 			<Pagination
 				pageNo={pageNo}
 				pagination={pagination}
@@ -65,43 +96,15 @@ const Student = () => {
 				goNext={() => pageNo < pagination.length ? dispatch({ type: "adminstudent/setPageNo", payload: pageNo + 1 }) : null}
 				goPrev={() => pageNo > 1 ? dispatch({ type: "adminstudent/setPageNo", payload: pageNo - 1 }) : null}
 			/>
-
-		</div>
-	)
-}
-
-const StudentGridView = () => {
-	const { student: { students } } = useSelector(state => state.adminstudent);
-
-
-	return (
-		<div className='gridView'>
-			{students &&
-				students.length > 0 &&
-				students.map((studentItem) => {
-					return (
-						<div className='TeacherCard' key={studentItem?._id}>
-							<div className='teacherProfileImg'>
-								<img src={studentItem?.dp ? `${BACKEND_URL}/${studentItem?.dp}` : "https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png"} alt={studentItem?.first_name || "profile"} />
-							</div>
-							<h3 className='teacherName'>{studentItem?.first_name} {studentItem?.last_name}</h3>
-							<p className='teacherPText'>{studentItem?.skills?.length > 0 ? studentItem?.skills[0]?.name : "N/A"} </p>
-							<p className='teacherPText'>{studentItem?.bio}</p>
-							<p className='teacherPText'>{studentItem?.email} </p>
-							<a className='mobileNo' href={`tel:+91 ${studentItem?.phone}`}>{studentItem?.phone}</a>
-							<button className='teacherReadMore'>Read More</button>
-						</div>
-					)
-				})}
-		</div>
+		</>
 	)
 }
 
 const StudentTableView = () => {
-
+	const dispatch = useDispatch();
 	const [currentCopyId, setCurrentCopyId] = useState("")
 
-	const { student: { students, perPage, pageNo, } } = useSelector(state => state.adminstudent);
+	const { student: { students, perPage, pageNo, pagination, totalStudents } } = useSelector(state => state.adminstudent);
 
 	const copyID = (teacherId) => {
 		navigator.clipboard.writeText(teacherId)
@@ -113,10 +116,7 @@ const StudentTableView = () => {
 
 
 	return (
-		<div className='tableContainer'>
-			<div className='tableHeading'>
-				<h2 className='heading'>All Teachers</h2>
-			</div>
+		<FullScreenAdminContainer title={"All Students"} fullWidth>
 			<div className='couponCreateDiv'>
 				<button>
 					<span>Add New</span>
@@ -192,20 +192,21 @@ const StudentTableView = () => {
 				</table>
 			</div>
 
-
-
-
-			{/* <div className='paginationDiv'>
-				<div className='paginationShown'>
-					<span>Showing {1} to {10} of {18} entries</span>
-				</div>
-				<div className='paginationNo'>
-					<p>Previous</p>
-					<p className='active'>1</p>
-					<p>Next</p>
-				</div>
-			</div> */}
-		</div>
+			<div className="p-4">
+				<Pagination
+					pageNo={pageNo}
+					pagination={pagination}
+					perPage={perPage}
+					options={{
+						whiteBG: true
+					}}
+					totalPages={totalStudents}
+					onPageChange={(page) => dispatch({ type: "adminstudent/setPageNo", payload: page })}
+					goNext={() => pageNo < pagination.length ? dispatch({ type: "adminstudent/setPageNo", payload: pageNo + 1 }) : null}
+					goPrev={() => pageNo > 1 ? dispatch({ type: "adminstudent/setPageNo", payload: pageNo - 1 }) : null}
+				/>
+			</div>
+		</FullScreenAdminContainer>
 	)
 }
 export default Student

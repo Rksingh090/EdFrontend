@@ -1,24 +1,25 @@
 import React, { useState } from 'react';
-import './home.css';
 
 import Base from '../../components/base/Base';
 import { useSelector } from 'react-redux';
-import { BsArrowRight, BsSearch } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import homeHeroSection from "../../assets/images/home-hero.webp"
 
-import teacherExpertise from '../../assets/images/homeSection3.png'
+import { BsArrowRight, BsSearch } from 'react-icons/bs';
 import { AiFillCheckCircle } from 'react-icons/ai';
 
+import './home.css';
+
+import EducationHero from "../../assets/svg/EducationHero"
+
+import homeHeroSection from "../../assets/images/home-hero.webp"
+import teacherExpertise from '../../assets/images/homeSection3.png'
+
 const Home = () => {
-
     const { categories } = useSelector(({ category }) => category);
-
 
     return (
         <Base bodyClass={"flexCenter homePageBg"}>
             <div className='MaxAreaContainer'>
-
                 <section className="homeHero">
                     <div className="homeHero-content">
                         <p className='fadeText'>Interactive Courses</p>
@@ -37,7 +38,8 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='homeHeroImage'>
-                        <img src={homeHeroSection} />
+                        <EducationHero />
+                        {/* <img src={HeroSVGHome} /> */}
                     </div>
                 </section>
 
@@ -47,7 +49,7 @@ const Home = () => {
                     </div>
                     <div className="teacherCol2">
                         <h2>Join Us as a Mentor and Share Your Expertise</h2>
-                        <p>High-definition video offers superior quality and resolution compared to standard-definition. While the term 'high-definition' lacks a strict definition, it typically refers to video of enhanced quality.</p>
+                        <p>High-definition video offers superior quality and resolution compared to standard-definition. While the term 'high-definition' lacks a strict definition, it typically refers to video of enhanced quality X.</p>
                         <ul className='teacherCol2Ul'>
                             <li>
                                 <AiFillCheckCircle size={24} />

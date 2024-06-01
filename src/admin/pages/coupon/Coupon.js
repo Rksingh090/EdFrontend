@@ -19,13 +19,18 @@ import Pagination from '../../../utils/Pagination';
 const Coupon = () => {
     const dispatch = useDispatch();
 
-    const [currentCopyId, setCurrentCopyId] = useState("")
+    const [currentCopyId, setCurrentCopyId] = useState("");
+
     const copyID = (teacherId) => {
-        navigator.clipboard.writeText(teacherId)
-        setCurrentCopyId(teacherId)
-        setTimeout(() => {
-            setCurrentCopyId("")
-        }, 1000)
+        if(navigator.clipboard){
+            navigator.clipboard.writeText(teacherId)
+            setCurrentCopyId(teacherId)
+            setTimeout(() => {
+                setCurrentCopyId("")
+            }, 1000)
+        }else{
+        
+        }
     }
 
     const { coupons, currPageNo, perPageItem } = useSelector(state => state.coupon);
@@ -108,7 +113,7 @@ const Coupon = () => {
                                         <td className='tableActionBtns'>
                                             <div title='Edit Coupon' className='edit'><MdModeEdit size={15} /></div>
                                             <div title='Delete Coupon' className='delete' onClick={() => deleteCoupon(single_coupon?._id)}><AiOutlineDelete size={17} /></div>
-                                            <div title='Copy Coupon' className='view' onClick={() => copyID(single_coupon._id)}>
+                                            <div title='Copy Coupon' className='view' onClick={() => copyID(single_coupon.coupon_code)}>
                                                 {
                                                     currentCopyId === single_coupon._id ?
                                                         (

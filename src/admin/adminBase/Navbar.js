@@ -128,7 +128,7 @@ const Navbar = () => {
                         <BsThreeDotsVertical size={23} onClick={() => handleNavBtnClick("profile")} />
                         <div className={`navAbsBox profile ${activeNavMenu === "profile" ? "show" : ""}`}>
                             <div>
-                                <GrUserSettings />
+                                <GrUserSettings className='whiteOutline' />
                                 <span>Profile</span>
                             </div>
                             <div>

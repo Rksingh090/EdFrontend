@@ -8,6 +8,7 @@ import Breadcrumb from '../../utils/Breadcrumb';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { FaRegImages } from 'react-icons/fa';
 import { uploadImage } from '../../functions/uploader';
+import FullScreenAdminContainer from '../../components/utils/FullScreenAdminContainer';
 
 const AddUser = ({ type, role, breadcrumKey, breadcrumbName, onAddUser, onUpdateUser }) => {
     const dispatch = useDispatch();
@@ -145,13 +146,7 @@ const AddUser = ({ type, role, breadcrumKey, breadcrumbName, onAddUser, onUpdate
                 ]} />
             </div>
 
-
-            <div className="tableContainer">
-                <div className="tableHeading">
-                    <h2 className='heading'>Add New {breadcrumbName.substring(0, breadcrumbName.length - 1)}</h2>
-                </div>
-
-
+            <FullScreenAdminContainer title={`Add New ${breadcrumbName.substring(0, breadcrumbName.length - 1)}`} fullWidth>
                 <form className='teacherColInputs' onSubmit={type === "edit" ? updateUser : addUserToDB}>
                     <p className='multiInputheading'>Basic Details</p>
 
@@ -358,7 +353,9 @@ const AddUser = ({ type, role, breadcrumKey, breadcrumbName, onAddUser, onUpdate
                     }
 
                 </form>
-            </div>
+                {/* </div> */}
+            </FullScreenAdminContainer>
+
         </div>
     )
 }

@@ -627,6 +627,10 @@
     background-color: var(--bg-subtle);
 }
 
+/* svg undraw fill stroke and color */
+.fillMain {
+    fill: var(--main);
+}
 
 /* icon btn  */
 .iconBtn {

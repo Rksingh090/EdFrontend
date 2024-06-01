@@ -87,6 +87,8 @@ import AdminTeacherAdd from './admin/pages/teachers/AddTeacher';
 import AdminTeacherEdit from './admin/pages/teachers/EditTeacher';
 import AboutTeacher from './admin/pages/teachers/AboutTeacher';
 
+import AdminCategories from './admin/pages/categories/Categories';
+
 // admin course
 import AdminCourse from './admin/pages/course/Course';
 import AdminAboutCourse from './admin/pages/course/AboutCourse';
@@ -124,10 +126,13 @@ import AffiliateProfile from "./affiliate/profile/Profile";
 import CourseContentBase from './pages/coursecontent/CourseContentBase';
 import { setTheme, toggleTheme } from './reducers/AppSettingReducer';
 import useKeybinds from './hooks/useKeyBinds';
-import AdminBase from './admin/adminBase/AdminBase';
+
+// other pages 
 import ForgetPassword from './pages/auth/ForgotPassword';
 import RegisterForm from './landings/RegisterForm';
 
+// base 
+import AdminBase from './admin/adminBase/AdminBase';
 
 
 
@@ -481,6 +486,10 @@ const router = createBrowserRouter([
                     {
                         path: "/admin/affiliate/about/:affiliateId",
                         element: <AboutAffiliate />
+                    },
+                    {
+                        path: "/admin/categories",
+                        element: <AdminCategories />
                     },
                 ]
             },

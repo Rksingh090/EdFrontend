@@ -134,31 +134,7 @@ const Sidebar = () => {
                 }
             ]
         },
-        {
-            type: "link",
-            title: "User Query",
-            Icon: BiMessageRoundedDots,
-            hasMenu: false,
-            link: "/admin/user-query"
-        },
-        {
-            type: "button",
-            title: "Partners",
-            Icon: MdOutlineStorefront,
-            hasMenu: true,
-            submenu: [
-                {
-                    type: "link",
-                    title: "All Franchise",
-                    link: "/admin/franchise"
-                },
-                {
-                    type: "link",
-                    title: "Add Franchise",
-                    link: "/admin/franchise/add"
-                }
-            ]
-        },
+
         {
             type: "button",
             title: "Coupon",
@@ -188,51 +164,12 @@ const Sidebar = () => {
             ]
         },
         {
-            type: "button",
-            title: "Department",
-            Icon: BiLayout,
-            hasMenu: true,
-            submenu: [
-                {
-                    type: "link",
-                    title: "All Departments",
-                    link: "/admin/email"
-                },
-                {
-                    type: "link",
-                    title: "Add Department",
-                    link: "/admin/department/add"
-                },
-                {
-                    type: "link",
-                    title: "Edit Department",
-                    link: "/admin/department/about"
-                }
-            ]
+            type: "link",
+            title: "User Query",
+            Icon: BiMessageRoundedDots,
+            hasMenu: false,
+            link: "/admin/user-query"
         },
-        {
-            type: "button",
-            title: "Fees",
-            Icon: FiDollarSign,
-            hasMenu: true,
-            submenu: [
-                {
-                    type: "link",
-                    title: "Fees Collection",
-                    link: "/admin/fees"
-                },
-                {
-                    type: "link",
-                    title: "Add Fee",
-                    link: "/admin/fees/add"
-                },
-                {
-                    type: "link",
-                    title: "Fee Receipt",
-                    link: "/admin/fees/receipt"
-                }
-            ]
-        }
     ], [])
 
     return (

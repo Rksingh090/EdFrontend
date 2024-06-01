@@ -28,7 +28,7 @@ import AddNewTopic from '../../components/coursebuilder/AddNewTopic';
 import AddNewQuiz from '../../components/coursebuilder/AddNewQuiz';
 import { slugify } from '../../functions/slugify';
 import AssignmentForm from '../../components/coursebuilder/AssignmentForm';
-import { API, BACKEND_URL, FRONTEND_DOMAIN } from '../../constant';
+import { API, BACKEND_URL } from '../../constant';
 import axios from 'axios';
 import QuillToolbar, { formats, modules } from '../../components/utils/EditorToolbar';
 import AddLessonForm from '../../components/coursebuilder/AddLessonForm';
@@ -562,9 +562,9 @@ const EditCourseBuilder = () => {
                                 <div className='flexColInput'>
                                     <label>Course Slug</label>
                                     <input value={courseData.slug} type="text" placeholder='course-slug' disabled className='CBInput' />
-                                    <Link className='CBCourseLink' target='_blank' to={`${FRONTEND_DOMAIN}/course/${courseData?._id}/${courseData.slug}`}>
+                                    <Link className='CBCourseLink' target='_blank' to={`/course/${courseData?._id}/${courseData.slug}`}>
                                         <span className='textSubtle'>Permalink: </span>
-                                        <span className='CBCourseLinkSpan'>{`${FRONTEND_DOMAIN}/course/${courseData?._id}/${courseData.slug}`}</span>
+                                        <span className='CBCourseLinkSpan'>{`/course/${courseData?._id}/${courseData.slug}`}</span>
                                     </Link>
                                 </div>
 
@@ -587,7 +587,7 @@ const EditCourseBuilder = () => {
                         </div>
 
                         {/* course thumbnail  */}
-                        <div className="tableContainer dashboard">
+                        <div className="tableContainer dashboard overflowAllow">
                             <div className="tableHeading">
                                 <h2 className="heading">Course Thumbnail</h2>
                             </div>
@@ -1100,10 +1100,8 @@ const EditCourseBuilder = () => {
                     </div>
 
                     <div className='courseBuilderDiv2'>
-
                         {/* course pricing card admin only  */}
-                        {
-                            user?.role === "admin" && (
+                        {user?.role === "admin" && (
                                 <div className="tableContainer dashboard">
                                     <div className="tableHeading">
                                         <h2 className="heading">Course Publish</h2>
@@ -1132,8 +1130,7 @@ const EditCourseBuilder = () => {
                         }
 
                         {/* course pricing card admin only  */}
-                        {
-                            user?.role === "admin" && (
+                        {user?.role === "admin" && (
                                 <div className='tableContainer dashboard'>
                                     <div className="tableHeading">
                                         <h2 className="heading">Course Pricing (Admin Only.)</h2>
@@ -1358,7 +1355,7 @@ const EditCourseBuilder = () => {
                         }
 
                         {/* category and language  */}
-                        <div className='tableContainer dashboard'>
+                        <div className='tableContainer dashboard overflowAllow'>
                             <div className="tableHeading">
                                 <h2 className="heading">Course Category & Language</h2>
                             </div>
