@@ -133,6 +133,7 @@ import RegisterForm from './landings/RegisterForm';
 
 // base 
 import AdminBase from './admin/adminBase/AdminBase';
+import AdminChatArea from './admin/pages/chat/AdminChatArea';
 
 
 
@@ -490,6 +491,10 @@ const router = createBrowserRouter([
                     {
                         path: "/admin/categories",
                         element: <AdminCategories />
+                    },
+                    {
+                        path: "/admin/chat",
+                        element: <AdminChatArea />
                     },
                 ]
             },

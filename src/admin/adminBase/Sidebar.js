@@ -4,11 +4,10 @@ import { RxDashboard } from 'react-icons/rx';
 import { AiOutlineUser } from 'react-icons/ai';
 import { RiBookLine, RiCouponLine } from 'react-icons/ri';
 import { TbUsers } from 'react-icons/tb';
-import { BiLayout, BiMessageRoundedDots } from 'react-icons/bi';
+import { BiMessageRoundedDots } from 'react-icons/bi';
 import { GrUserSettings } from 'react-icons/gr';
-import { FiDollarSign } from 'react-icons/fi';
-
-
+import { FaQuestion } from "react-icons/fa6";
+import { IoChatbubblesOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { LuNetwork } from 'react-icons/lu';
@@ -165,8 +164,15 @@ const Sidebar = () => {
         },
         {
             type: "link",
+            title: "Chat",
+            Icon: IoChatbubblesOutline,
+            hasMenu: false,
+            link: "/admin/chat"
+        },
+        {
+            type: "link",
             title: "User Query",
-            Icon: BiMessageRoundedDots,
+            Icon: FaQuestion,
             hasMenu: false,
             link: "/admin/user-query"
         },

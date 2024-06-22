@@ -6,15 +6,16 @@ import './adminbase.css';
 
 import { useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
+import ChatContext from '../../context/ChatContext';
 
 
 const AdminBase = () => {
   const navigate = useNavigate();
 
   const [isUserValid, setIsUserValid] = useState(false);
-  
+
   const { sidebarOpen } = useSelector(state => state.admin);
-  const { user,userLoading } = useSelector((state) => state.user);
+  const { user, userLoading } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (!userLoading && user?.role !== "admin") {
@@ -25,27 +26,30 @@ const AdminBase = () => {
   }, [navigate, user.role, userLoading])
 
   return (
-    <div className='admin'>
-      {
-        isUserValid ?
-          (
-            <>
+    <ChatContext>
+      <div className='admin'>
+        {
+          isUserValid ?
+            (
+              <>
 
-              <AdminNavbar />
-              <div className={`adminMainSection ${sidebarOpen ? "open" : "close"}`}>
-                <Sidebar />
-                <div className='adminContent'>
-                  <Outlet />
+                <AdminNavbar />
+                <div className={`adminMainSection ${sidebarOpen ? "open" : "close"}`}>
+                  <Sidebar />
+                  <div className='adminContent'>
+                    <Outlet />
+                  </div>
                 </div>
-              </div>
-            </>
-          )
-          :
-          (
-            <div>Loading..</div>
-          )
-      }
-    </div>
+              </>
+            )
+            :
+            (
+              <div>Loading..</div>
+            )
+        }
+      </div>
+    </ChatContext>
+
   )
 }
 export default AdminBase
