@@ -161,14 +161,14 @@ const Careers = () => {
 
 							<tr >
 								<td className='datatable'>English Teacher</td>
-								<td className='datatable'>Edtech Name Academy - English</td>
+								<td className='datatable'>Laxmi Ratan College - English</td>
 								<td className='datatable'>Delhi</td>
 								<td className='datatable'>Member</td>
 								<td className='datatable'>May 2, 2023</td>
 							</tr>
 							<tr >
 								<td className='datatable'>Math's Teacher</td>
-								<td className='datatable'>Edtech Name Academy - Mathematics</td>
+								<td className='datatable'>Laxmi Ratan College - Mathematics</td>
 								<td className='datatable'>Multiple locations</td>
 								<td className='datatable'>New Delhi</td>
 								<td className='datatable'>May 2, 2023</td>

@@ -41,7 +41,7 @@ const Navbar = () => {
     return (
         <div className={`adminNavbarGrid  ${sidebarOpen ? "open" : "close"}`}>
             <div className='adminNavLogo'>
-                <p className='adminNavCloseTXT'>{sidebarOpen ? "EdTech" : "EdT"}</p>
+                <p className='adminNavCloseTXT'>{sidebarOpen ? "Laxmi Ratan College" : "LRC"}</p>
             </div>
             <div className={`adminNavbarMain`}>
                 <div className='navMain1'>

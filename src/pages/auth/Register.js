@@ -29,12 +29,7 @@ const Register = () => {
       .then((res) => {
         if (res.data.status === "success") {
           alert("User registered, Verify otp on next screen");
-          window.location.href = `/otp-verify?email=${res.data.email}`
-        } else {
-          if (res.data.account_status === "not-verified") {
-            alert("You are already registered, Verify Otp to Login.")
-            window.location.href = `/otp-verify?email=${res.data.email}`;
-          }
+          window.location.href = `/login?email=${res.data.email}`
         }
       }).catch((err) => {
         alert(err.response.data.message)

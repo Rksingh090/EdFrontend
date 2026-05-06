@@ -34,7 +34,7 @@ const Navbar = ({ showSideMenu }) => {
 
    const toggleThemeFn = () => {
       dispatch(toggleTheme());
-  }
+   }
 
    return (
       <div className={`navbarMainContainer`}>
@@ -99,7 +99,7 @@ const Navbar = ({ showSideMenu }) => {
          <div className={`${mobileMenu ? "active" : "deactive"} mobileMenu`}>
             <div className='mobileNavHeading'>
                <div></div>
-               <h2 className='heading'>Edtech Name</h2>
+               <h2 className='heading'>Laxmi Ratan College</h2>
                <IoMdClose size={25} onClick={handleHideAllMobileMenu} />
             </div>
             <ul className={'mob-navlinks'}>
