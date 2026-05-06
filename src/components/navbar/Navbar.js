@@ -206,7 +206,6 @@ const NavProfileMenu = () => {
                      <div>
                         <Link to={"/teacher/analytics"}>Analytics</Link>
                         <Link to={"/teacher/zoom"}>Zoom Meeting</Link>
-                        <Link to={"/teacher/withdrawls"}>Withdrawls</Link>
                         <Link to={"/settings"}>Setting</Link>
                         <button type='button' onClick={() => {
                            dispatch(UserLogOut())

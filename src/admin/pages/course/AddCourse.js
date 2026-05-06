@@ -10,8 +10,11 @@ import { FaRegImages } from 'react-icons/fa';
 import { LuFileVideo } from 'react-icons/lu';
 import { BsInfoCircle } from 'react-icons/bs';
 import Switch from '../../../components/utils/Switch';
+import { useSelector } from 'react-redux';
 
 const EditCourse = () => {
+    const { categories, subcategories } = useSelector(state => state.category);
+
 	return (
 		<div>
 			<div className='editCoursePage'>
@@ -142,13 +145,19 @@ const EditCourse = () => {
 								<div className="flexColInput">
 									<label htmlFor="courseCat">Category</label>
 									<select id='courseCat' className="FormInput" >
-										<option value="academics">Academics</option>
+                                        <option value="">Select Category</option>
+                                        {categories.map(catItem => (
+                                            <option key={catItem.category._id} value={catItem.category._id}>{catItem.category.name}</option>
+                                        ))}
 									</select>
 								</div>
 								<div className="flexColInput">
 									<label htmlFor="courseSubCat">Sub Category</label>
 									<select id='courseSubCat' className="FormInput" >
-										<option value="class-7th">Class 7th</option>
+                                        <option value="">Select Sub Category</option>
+                                        {subcategories.map(subCat => (
+                                            <option key={subCat._id} value={subCat._id}>{subCat.name}</option>
+                                        ))}
 									</select>
 								</div>
 								<div className='flexColInput'>

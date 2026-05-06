@@ -3,7 +3,7 @@ import { MdOutlineAssignment, MdOutlineAssignmentTurnedIn } from 'react-icons/md
 import { AiOutlineUser, AiOutlineBuild, AiOutlineLogout } from 'react-icons/ai';
 import { BsCalendar4Event, BsCameraVideo, BsGear, BsQuestionSquare } from 'react-icons/bs';
 import { FiShoppingCart } from 'react-icons/fi';
-import { TfiAnnouncement, TfiWallet } from 'react-icons/tfi';
+import { TfiAnnouncement } from 'react-icons/tfi';
 import { SlGraduation } from 'react-icons/sl';
 import { RxDashboard } from 'react-icons/rx';
 import { HiOutlineCalendar } from 'react-icons/hi';
@@ -93,14 +93,14 @@ const TeacherSidebar = ({ children, showMenu, style }) => {
             text: "Assignments"
         },
         {
-            link: "/teacher/withdrawls",
-            icon: <TfiWallet />,
-            text: "Withdrawls"
-        },
-        {
             link: "/teacher/analytics",
             icon: <IoAnalytics />,
             text: "Analytics"
+        },
+        {
+            link: "/teacher/attendance",
+            icon: <AiOutlineUser />,
+            text: "Attendance"
         },
         {
             link: "/settings",

@@ -26,6 +26,18 @@ export const getAllCategories = createAsyncThunk(
     }
 )
 
+export const createCategory = createAsyncThunk(
+    "admin/createCategory",
+    async (data) => {
+        const response = await axios.post(`${API}/category`, data, {
+            headers: {
+                token: localStorage.getItem("token")
+            }
+        })
+        return response.data;
+    }
+)
+
 
 export const getCourseByPage = createAsyncThunk(
     "admin/getCourseByPage",

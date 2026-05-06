@@ -33,8 +33,10 @@ import Quiz from './pages/TeacherDashboard/Quiz';
 import CalendarEvents from './pages/TeacherDashboard/CalendarEvents';
 import EditCourseBuilder from './pages/TeacherDashboard/EditCourseBuilder';
 import QuizDetails from './pages/TeacherDashboard/QuizDetails';
+import Attendance from './pages/TeacherDashboard/Attendance';
 
 // commons 
+
 import Settings from './pages/common/Settings';
 import Myprofile from './pages/common/Myprofile';
 
@@ -324,6 +326,10 @@ const router = createBrowserRouter([
                 element: <Analytics />
             },
             {
+                path: "/teacher/attendance",
+                element: <Attendance />
+            },
+            {
                 path: "/teacher/profile",
                 element: <Myprofile />
             },
@@ -451,7 +457,7 @@ const router = createBrowserRouter([
                         path: "/admin/course/about/:courseId",
                         element: <AdminAboutCourse />
                     },
-                    
+
                     {
                         path: "/admin/coupon",
                         element: <AdminCoupon />
@@ -515,7 +521,7 @@ const router = createBrowserRouter([
 
 const App = () => {
     const dispatch = useDispatch();
-    
+
 
     useEffect(() => {
         let tokenVal = localStorage.getItem("token");
@@ -540,7 +546,7 @@ const App = () => {
             router.dispose();
         };
     }, [dispatch]);
-    
+
 
     useKeybinds([
         {
@@ -573,7 +579,7 @@ const App = () => {
     }, [dispatch]);
 
     return (
-        
+
         <RouterProvider router={router} />
     )
 }

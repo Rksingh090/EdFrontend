@@ -274,7 +274,7 @@ const SingleCourseCard = ({ layout, courseData }) => {
 
                 <div className='courseDetails'>
                     <h2 className='courseCardTitle'>{courseData?.title}</h2>
-                    <p>{courseData.category.name}, {courseData.sub_category.name}</p>
+                    <p>{courseData?.category?.name}, {courseData?.sub_category?.name}</p>
                 </div>
 
                 <div className='courseCardMeta'>

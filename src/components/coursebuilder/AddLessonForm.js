@@ -17,7 +17,7 @@ import { uploadImage, uploadPdfFile, uploadVideo } from '../../functions/uploade
 import Switch from '../utils/Switch';
 import ProgressBar from '../utils/ProgressBar';
 import axios from 'axios';
-import { API } from '../../constant';
+import { API, BACKEND_URL } from '../../constant';
 import SelectOption from '../utils/SelectOption';
 
 
@@ -60,7 +60,7 @@ const AddLessonForm = ({ showLesson }) => {
 			if (/^image\//.test(file.type)) {
 				const { status, imgUrl } = await uploadImage(file, "lesson-images"); // upload data into server or aws or cloudinary
 				if (status === "success") {
-					editor.insertEmbed(editor.getSelection(), "image", imgUrl);
+					editor.insertEmbed(editor.getSelection(), "image", BACKEND_URL + "/" + imgUrl);
 				}
 			} else {
 				alert('You could only upload images.');
@@ -118,7 +118,7 @@ const AddLessonForm = ({ showLesson }) => {
 			setLessonData(prev => ({
 				...prev,
 				video_source_title: videoKey,
-				video_source: videoUrl,
+				video_source: BACKEND_URL + videoUrl,
 			}))
 		}
 		setVideoUploading(false)
@@ -250,17 +250,17 @@ const AddLessonForm = ({ showLesson }) => {
 								</select>
 							</div> */}
 
-							<SelectOption 
+							<SelectOption
 								iconField={"icon"}
 								valueField={"value"}
 								textField={"text"}
 								options={[
-									{value:"html5", text: "HTML 5", icon: <ImHtmlFive size={16} /> },
-									{value:"external-url", text: "External URL", icon: <BiLink size={16} /> },
-									{value:"youtube", text: "Youtube", icon: <AiOutlineYoutube size={16} /> },
-									{value:"vimeo", text: "Vimeo", icon: <RiVimeoLine size={16} /> },
-									{value:"embeded", text: "Embdeded", icon: <BsCodeSlash size={16} /> },
-									{value:"shortcode", text: "Shortcdoe", icon: <TfiShortcode size={16} /> },
+									{ value: "html5", text: "HTML 5", icon: <ImHtmlFive size={16} /> },
+									{ value: "external-url", text: "External URL", icon: <BiLink size={16} /> },
+									{ value: "youtube", text: "Youtube", icon: <AiOutlineYoutube size={16} /> },
+									{ value: "vimeo", text: "Vimeo", icon: <RiVimeoLine size={16} /> },
+									{ value: "embeded", text: "Embdeded", icon: <BsCodeSlash size={16} /> },
+									{ value: "shortcode", text: "Shortcdoe", icon: <TfiShortcode size={16} /> },
 								]}
 								onChange={(value) => {
 									setLessonData(prev => ({
